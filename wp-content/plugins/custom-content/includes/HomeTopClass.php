@@ -12,12 +12,12 @@ public function display_home_top_section() {
     $args = array(
         'post_type' => 'custom_content',
         'posts_per_page' => -1, 
-        'tax_query' => array(
+        /*'tax_query' => array(
             array(
             'taxonomy' => 'custom_category',
             'field' => 'term_id',
-            'terms' => 25)
-        )
+            'terms' => 24)
+        )*/
     );
     
     $query = new WP_Query($args);    

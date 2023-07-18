@@ -3,9 +3,11 @@
  * Template Name:Home
  */
 get_header(); ?>
-<div class="top-header-block col-md-12"><?php	
+<div class="top-header-block col-md-12">
+	    <?php	
 			get_template_part( 'template-parts/home-top-section' );
-		?></div>
+		?>
+</div>
 <div class="most-popular-block">
 	<div class="col-md-8">
 		<div class="row">			
