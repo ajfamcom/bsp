@@ -18,7 +18,7 @@
 
 	<?php get_template_part( 'template-parts/header/site-header' ); ?>
 	
-    <?php include "searchform.php";?>
+   
 	<div id="content" class="site-content">
 		<div id="primary" class="content-area">
 			<main id="main" class="site-main">
