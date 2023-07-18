@@ -16,7 +16,7 @@ $wrapper_classes .= has_nav_menu( 'primary' ) ? ' has-menu' : '';
 <header id="masthead" class="<?php echo esc_attr( $wrapper_classes ); ?>">
    
     <?php get_template_part( 'template-parts/news-header-section' );?>   
-	<div class="col-md-12"><?php get_template_part( 'template-parts/header/site-branding' ); ?></div>
+	<div class="col-md-12"><?php get_template_part( 'template-parts/header/site-branding' ); ?>x
 	<?php get_template_part( 'template-parts/header/site-nav' ); ?>
-
+    </div>
 </header><!-- #masthead -->
