@@ -7,7 +7,7 @@
 </div>
 <div class="col-md-6">    
 <div class="row">  
-<?php include "../searchform.php";?>
+<?php include "../template-parts/searchform.php";?>
 </div>
 </div>
 </div>
