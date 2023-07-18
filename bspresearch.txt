@@ -1,0 +1,14 @@
+1.LatestNews on top (remove or add conditionally from database).
+2.Contact Us and Search(Add this in top.
+Search functionality same as implemented in localhost
+)
+3.In header additional link:Polls
+  what should be there under peoples
+4.About Us Section
+(Remove it completely .confirm with sir)
+5.Most Poular or Recent Research will be Latest from bsp and will have blogs posts the more recent will be shown here and the 3 other latest will be shown one by one. 
+6.Remove right side Services and Expertise and show Hot Categories and this will be mentions.
+Query: Will this be a new section or data will come from existing database.
+7.Subscribe remove from down
+8.Team members show four
+
