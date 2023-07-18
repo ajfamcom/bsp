@@ -8,7 +8,7 @@
  */
 
 ?>
-<div><?php get_template_part( 'template-parts/news-header-section' );?></div>
+
 <?php if ( has_nav_menu( 'primary' ) ) : ?>
 	<nav id="site-navigation" class="primary-navigation" aria-label="<?php esc_attr_e( 'Primary menu', 'twentytwentyone' ); ?>">
 	
