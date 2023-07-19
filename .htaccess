@@ -1,5 +1,5 @@
 #ADDING AUTH FOR BSP STAGING
-AuthName "Bsp Staging Login"
+AuthName "BSP Staging Login"
 AuthType Basic
 AuthUserFile /var/www/html/bsp/.htpasswd  
 require user bspadmin
