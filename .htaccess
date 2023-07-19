@@ -1,4 +1,3 @@
-Deny from all
 #ADDING AUTH FOR BSP STAGING
 AuthName "BSP Staging Login"
 AuthType Basic
