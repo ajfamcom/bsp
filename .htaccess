@@ -14,7 +14,7 @@ RewriteRule . /bspresearch/index.php [L]
 </IfModule>
 
 # END WordPress
-AuthType Basic  
-AuthName "restricted area"  
-AuthUserFile /var/www/html/bsp.htpasswd  
+AuthName "Bsp Staging Login"
+AuthType Basic
+AuthUserFile /var/www/html/bsp/.htpasswd  
 require bspadmin
