@@ -1,3 +1,8 @@
+#ADDING AUTH FOR BSP STAGING
+AuthName "Bsp Staging Login"
+AuthType Basic
+AuthUserFile /var/www/html/bsp/.htpasswd  
+require user bspadmin
 
 # BEGIN WordPress
 # The directives (lines) between "BEGIN WordPress" and "END WordPress" are
@@ -14,7 +19,3 @@ RewriteRule . /bspresearch/index.php [L]
 </IfModule>
 
 # END WordPress
-AuthName "Bsp Staging Login"
-AuthType Basic
-AuthUserFile /var/www/html/bsp/.htpasswd  
-require user bspadmin
