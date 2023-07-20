@@ -110,3 +110,34 @@ function custom_news_and_analysis_register_post_type() {
     register_post_type( 'news_analysis', $args );
 }
 add_action( 'init', 'custom_news_and_analysis_register_post_type' );
+
+
+// Add the filter to modify the search query
+add_filter('posts_search', 'custom_posts_search', 10, 2);
+
+function custom_posts_search($search, $query) {
+    global $wpdb;
+
+    // Check if the current query is a search query
+    if (is_search() && !empty($query->query_vars['s'])) {
+        // Get the search term
+        $search_term = $query->query_vars['s'];
+
+        // Modify the search SQL query to include your custom condition for the post_content field
+// $search = " AND ({$wpdb->posts}.post_content LIKE '%[wpdm_package id=%' AND {$wpdb->posts}.post_status='publish')";
+$mquery='SELECT * FROM wp_posts WHERE (`post_content` LIKE "%'.$search_term.'%" || `post_title` LIKE "%'.$search_term.'%" || `post_excerpt` LIKE "%'.$search_term.'%") AND post_type="wpdmpro" AND post_status="publish" GROUP BY ID';
+$result =$wpdb->get_results($mquery);	
+	
+   
+	if($result){
+		
+    foreach($result as $data){	
+       	
+		$search .= " AND ({$wpdb->posts}.post_content LIKE '%[wpdm_package id=\'{$data->ID}\']%')";
+	}
+  }
+		
+    }
+
+    return $search;
+}
