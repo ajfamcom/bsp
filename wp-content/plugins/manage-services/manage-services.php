@@ -24,14 +24,14 @@ function custom_plugin_services_post_type() {
 	$labels = array(
 	'name' => __('Manage Services', 'manage-services'),
 	'singular_name' => __('Manage Services ', 'manage-services'),
-	'add_new' => __('New Manage Services ', 'manage-services'),
-	'add_new_item' => __('Add new Manage Services ', 'manage-services'),
+	'add_new' => __('New Service', 'manage-services'),
+	'add_new_item' => __('Add new service', 'manage-services'),
 	'edit_item' => __('Edit Manage Services ', 'manage-services'),
 	'new_item' => __('New Manage Services ', 'manage-services'),
-	'view_item' => __('View Manage Services ', 'manage-services'),
-	'search_item' => __('Search Manage Services ', 'manage-services'),
-	'not_found' => __('No The Manage Services Found', 'manage-services'),
-	'not_found_in_trash' => __('No The Manage Services found in trash', 'manage-services')
+	'view_item' => __('View Services ', 'manage-services'),
+	'search_item' => __('Search Services ', 'manage-services'),
+	'not_found' => __('No Services Found', 'manage-services'),
+	'not_found_in_trash' => __('No Services found in trash', 'manage-services')
 	);
     $args = array(
         'public' => true,
