@@ -89,5 +89,23 @@ function custom_teammember_register_post_type() {
 add_action( 'init', 'custom_teammember_register_post_type' );
 
 
-
+function custom_news_and_analysis_register_post_type() {
+	$labels = array(
+	'name' => __('News And Analysis', 'news-and-analysis'),
+	'singular_name' => __('News And Analysis ', 'news-and-analysis'),
+	'add_new' => __('New News And Analysis ', 'news-and-analysis'),
+	'add_new_item' => __('Add new News And Analysis ', 'news-and-analysis'),
+	'edit_item' => __('Edit News And Analysis ', 'news-and-analysis'),
+	'new_item' => __('New News And Analysis ', 'news-and-analysis'),
+	'view_item' => __('View News And Analysis ', 'news-and-analysis'),
+	'search_item' => __('Search News And Analysis ', 'news-and-analysis'),
+	'not_found' => __('No News And Analysis Found', 'news-and-analysis'),
+	'not_found_in_trash' => __('No News And Analysis found in trash', 'team-members')
+	);
+    $args = array(
+        'public' => true,
+        'labels'  => $labels,
+        'supports' => array( 'title', 'editor', 'thumbnail' ),
+    );
+    register_post_type( 'news_analysis', $args );
 
