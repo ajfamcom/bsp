@@ -20,7 +20,7 @@ define('CUSTOMCONTENT_PLUGINURI',plugin_dir_url( __FILE__ ));
  register_activation_hook( __FILE__, 'myplugin_activate' );
  */
 
-function custom_plugin_register_post_type() {
+function custom_plugin_services_post_type() {
 	$labels = array(
 	'name' => __('Manage Services', 'manage-services'),
 	'singular_name' => __('Manage Services ', 'manage-services'),
@@ -38,7 +38,7 @@ function custom_plugin_register_post_type() {
         'labels'  => $labels,
         'supports' => array( 'title', 'editor', 'thumbnail' ),
     );
-    register_post_type( 'custom_content', $args );
+    register_post_type( 'manage_services', $args );
 
 
  $taxonomy_args = array(
@@ -46,11 +46,11 @@ function custom_plugin_register_post_type() {
         'label' => 'Custom Categories',
         'rewrite' => array( 'slug' => 'custom-category' ),
     );
-    register_taxonomy( 'custom_category', 'custom_content', $taxonomy_args );
+    register_taxonomy( 'manage_services', 'manage_services', $taxonomy_args );
 
     
 }
-add_action( 'init', 'custom_plugin_register_post_type' );
+add_action( 'init', 'custom_plugin_services_post_type' );
 //include CUSTOMCONTENT_PLUGINPATH."includes/HomeTopClass.php";
 //include CUSTOMCONTENT_PLUGINPATH."includes/HeaderNewsClass.php";
 
