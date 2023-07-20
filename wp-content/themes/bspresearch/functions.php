@@ -108,4 +108,5 @@ function custom_news_and_analysis_register_post_type() {
         'supports' => array( 'title', 'editor', 'thumbnail' ),
     );
     register_post_type( 'news_analysis', $args );
-
+}
+add_action( 'init', 'custom_news_and_analysis_register_post_type' );
