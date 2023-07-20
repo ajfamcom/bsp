@@ -76,7 +76,7 @@ function custom_teammember_register_post_type() {
     );
     register_post_type( 'team_members', $args );
 
-
+/*
  $taxonomy_args = array(
         'hierarchical' => true,
         'label' => 'Custom Team-member Categories',
@@ -84,7 +84,7 @@ function custom_teammember_register_post_type() {
     );
     register_taxonomy( 'custom-team-member-category', 'team_members', $taxonomy_args );
 
-    
+ */   
 }
 add_action( 'init', 'custom_teammember_register_post_type' );
 
