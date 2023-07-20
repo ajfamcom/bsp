@@ -43,8 +43,8 @@ function custom_plugin_services_post_type() {
 
  $taxonomy_args = array(
         'hierarchical' => true,
-        'label' => 'Custom Categories',
-        'rewrite' => array( 'slug' => 'custom-category' ),
+        'label' => 'Service Categories',
+        'rewrite' => array( 'slug' => 'service-category' ),
     );
     register_taxonomy( 'manage_services', 'manage_services', $taxonomy_args );
 
