@@ -1,4 +1,5 @@
 <?php /**Template Name: Most Popular Posts */?>
+<p><h3>Latest From BSP</h3></p>
 <div class="col-md-6">
 <?php
 

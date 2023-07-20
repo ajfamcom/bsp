@@ -9,6 +9,19 @@
     $args = array(
         'post_type' => 'team_members',
         'posts_per_page' => 4,
+        'meta_query' => array(
+            array(
+                'key' => 'member_status', 
+                'value'   => 'Active', // Serialized value for 'Yes'
+                'compare' => '='
+            ),
+            array(
+                'key' => 'member_display_on_homepage', 
+                'value'   => 'Yes', // Serialized value for 'Yes'
+                'compare' => '='
+            ),
+        ),
+        
     );
     
     $query = new WP_Query($args);
