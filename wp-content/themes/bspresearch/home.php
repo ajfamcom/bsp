@@ -3,7 +3,8 @@
  * Template Name:Home
  */
 get_header(); ?>
-<div class="top-header-block col-md-12">
+<div class="container ">
+<div class="top-header-block col-md-12 d-flex justify-content-center text-center" style="text-align:center;" >
 	    <?php	
 			get_template_part( 'template-parts/home-top-section' );
 		?>
@@ -18,9 +19,10 @@ get_header(); ?>
     </div>
     <div class="col-md-4">
 		<?php	
-			get_template_part( 'template-parts/side-hot-categories' );
+			get_template_part( 'template-parts/news-and-analysis' );
 		?>
     </div>
+</div>
 </div>
 <?php 
 get_footer();

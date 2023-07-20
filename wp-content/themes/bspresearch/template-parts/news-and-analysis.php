@@ -1,0 +1,1 @@
+<?php /**Template Name:News And Analysis */

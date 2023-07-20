@@ -26,9 +26,25 @@ public function display_home_top_section() {
             $query->the_post();  
             $post_id = get_the_ID();
             $position = get_field('position', $post_id);
-            if($position=='Home-Top')  {
-            the_title(); 
-            the_content(); 
+            $status = get_field('status', $post_id);
+            if($position=='Home-Top' && $status=='Active')  {
+                $line1=get_field('line1', $post_id);
+                $line2=get_field('line2', $post_id);
+                $line3=get_field('line3', $post_id);
+                $status=get_field('status', $post_id);
+                $link=get_field('link', $post_id);
+                $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post_id) );
+                echo '<div class="card d-flex justify-content-center">
+                <img width="500" src="'.$feat_image.'" decoding="async" loading="lazy" style="background:cover;">
+                <div class="card-body">
+                  <h5 class="card-title">'.the_title().'</h5>
+                  <p class="card-text">'.$line1.'</p>
+                  <p class="card-text">'.$line2.'</p>
+                  <p class="card-text">'.$line3.'</p>
+                  <a href="'.$link.'" class="btn btn-primary">CONTACT US</a>
+                </div>
+              </div>';           
+            
             }
         }
         wp_reset_postdata();

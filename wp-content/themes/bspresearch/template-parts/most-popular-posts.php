@@ -1,24 +1,31 @@
 <?php /**Template Name: Most Popular Posts */?>
 <div class="col-md-6">
-
-
-
-
 <?php
+
 $args = array(
     'post_type' => 'post',
-    'posts_per_page' => 1,
-    'orderby' => 'date',
-    'order' => 'DESC',
+    'posts_per_page' => 1,    
+    'meta_query' => array(
+        array(
+            'key' => 'is_featured_post', 
+            'value'   => 'Yes', // Serialized value for 'Yes'
+            'compare' => 'LIKE'
+        ),
+    ),
 );
 
-$query = new WP_Query($args);
+$query = new WP_Query( $args );
+
 
 if ($query->have_posts()) {
     while ($query->have_posts()) {
         $query->the_post();
+        $post_id = get_the_ID();
+        $featured_post = get_field('featured', $post_id);
+        
         ?>
-    <div>
+    <?php //if(isset($featured_post) && $featured_post[0]=='Yes'){ ?>
+    <div class="featured-post">
     <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 	<p style="width:300px;">
 	<?php
@@ -30,6 +37,7 @@ if ($query->have_posts()) {
     <p><?php the_excerpt(); ?></p>
    
     </div>
+    <?php //} ?>
         <?php
     }
  wp_reset_postdata();
@@ -42,14 +50,22 @@ if ($query->have_posts()) {
 </div>
 <div class="col-md-6">
 <?php
+
+
 $args = array(
     'post_type' => 'post',
-    'posts_per_page' => 3,  
-    'offset' => 1, 
+    'posts_per_page' => 3,
     'orderby' => 'date',
-    'order' => 'DESC',
+    'order' => 'ASC',    
+    'meta_query' => array(
+        array(
+            'key' => 'is_featured_post', 
+            'value'   => 'No', // Serialized value for 'Yes'
+            'compare' => '='
+        ),
+    ),
+    
 );
-
 
 $query = new WP_Query($args);
 

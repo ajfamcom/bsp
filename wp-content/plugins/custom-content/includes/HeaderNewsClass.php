@@ -24,7 +24,8 @@ public function display_news_header_section() {
              $query->the_post();
              $post_id = get_the_ID();
              $position = get_field('position', $post_id);
-             if($position=='Header-Top')  {
+             $status = get_field('status', $post_id);
+             if($position=='Header-Top' && $status=='Active')  {
                 the_title(); 
                 the_content(); 
              }
