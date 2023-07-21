@@ -35,6 +35,6 @@
 		);
 		?>
 	</nav><!-- #site-navigation -->
-	<button class="btn-subscribe btn btn-primarys">Contact Us</button>
+	<button class="btn-subscribe btn btn-primarys">Subscribe</button>
 	<?php
 endif;
