@@ -35,5 +35,6 @@
 		);
 		?>
 	</nav><!-- #site-navigation -->
+	<button class="btn-subscribe btn btn-primarys">Contact Us</button>
 	<?php
 endif;
