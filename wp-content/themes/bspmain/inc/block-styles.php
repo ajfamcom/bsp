@@ -22,8 +22,8 @@ if ( function_exists( 'register_block_style' ) ) {
 		register_block_style(
 			'core/columns',
 			array(
-				'name'  => 'twentytwentyone-columns-overlap',
-				'label' => esc_html__( 'Overlap', 'twentytwentyone' ),
+				'name'  => 'bspmain-columns-overlap',
+				'label' => esc_html__( 'Overlap', 'bspmain' ),
 			)
 		);
 
@@ -31,8 +31,8 @@ if ( function_exists( 'register_block_style' ) ) {
 		register_block_style(
 			'core/cover',
 			array(
-				'name'  => 'twentytwentyone-border',
-				'label' => esc_html__( 'Borders', 'twentytwentyone' ),
+				'name'  => 'bspmain-border',
+				'label' => esc_html__( 'Borders', 'bspmain' ),
 			)
 		);
 
@@ -40,8 +40,8 @@ if ( function_exists( 'register_block_style' ) ) {
 		register_block_style(
 			'core/group',
 			array(
-				'name'  => 'twentytwentyone-border',
-				'label' => esc_html__( 'Borders', 'twentytwentyone' ),
+				'name'  => 'bspmain-border',
+				'label' => esc_html__( 'Borders', 'bspmain' ),
 			)
 		);
 
@@ -49,8 +49,8 @@ if ( function_exists( 'register_block_style' ) ) {
 		register_block_style(
 			'core/image',
 			array(
-				'name'  => 'twentytwentyone-border',
-				'label' => esc_html__( 'Borders', 'twentytwentyone' ),
+				'name'  => 'bspmain-border',
+				'label' => esc_html__( 'Borders', 'bspmain' ),
 			)
 		);
 
@@ -58,8 +58,8 @@ if ( function_exists( 'register_block_style' ) ) {
 		register_block_style(
 			'core/image',
 			array(
-				'name'  => 'twentytwentyone-image-frame',
-				'label' => esc_html__( 'Frame', 'twentytwentyone' ),
+				'name'  => 'bspmain-image-frame',
+				'label' => esc_html__( 'Frame', 'bspmain' ),
 			)
 		);
 
@@ -67,8 +67,8 @@ if ( function_exists( 'register_block_style' ) ) {
 		register_block_style(
 			'core/latest-posts',
 			array(
-				'name'  => 'twentytwentyone-latest-posts-dividers',
-				'label' => esc_html__( 'Dividers', 'twentytwentyone' ),
+				'name'  => 'bspmain-latest-posts-dividers',
+				'label' => esc_html__( 'Dividers', 'bspmain' ),
 			)
 		);
 
@@ -76,8 +76,8 @@ if ( function_exists( 'register_block_style' ) ) {
 		register_block_style(
 			'core/latest-posts',
 			array(
-				'name'  => 'twentytwentyone-latest-posts-borders',
-				'label' => esc_html__( 'Borders', 'twentytwentyone' ),
+				'name'  => 'bspmain-latest-posts-borders',
+				'label' => esc_html__( 'Borders', 'bspmain' ),
 			)
 		);
 
@@ -85,8 +85,8 @@ if ( function_exists( 'register_block_style' ) ) {
 		register_block_style(
 			'core/media-text',
 			array(
-				'name'  => 'twentytwentyone-border',
-				'label' => esc_html__( 'Borders', 'twentytwentyone' ),
+				'name'  => 'bspmain-border',
+				'label' => esc_html__( 'Borders', 'bspmain' ),
 			)
 		);
 
@@ -94,8 +94,8 @@ if ( function_exists( 'register_block_style' ) ) {
 		register_block_style(
 			'core/separator',
 			array(
-				'name'  => 'twentytwentyone-separator-thick',
-				'label' => esc_html__( 'Thick', 'twentytwentyone' ),
+				'name'  => 'bspmain-separator-thick',
+				'label' => esc_html__( 'Thick', 'bspmain' ),
 			)
 		);
 
@@ -103,8 +103,8 @@ if ( function_exists( 'register_block_style' ) ) {
 		register_block_style(
 			'core/social-links',
 			array(
-				'name'  => 'twentytwentyone-social-icons-color',
-				'label' => esc_html__( 'Dark gray', 'twentytwentyone' ),
+				'name'  => 'bspmain-social-icons-color',
+				'label' => esc_html__( 'Dark gray', 'bspmain' ),
 			)
 		);
 	}

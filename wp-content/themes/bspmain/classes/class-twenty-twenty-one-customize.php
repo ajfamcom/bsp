@@ -72,7 +72,7 @@ if ( ! class_exists( 'Twenty_Twenty_One_Customize' ) ) {
 				array(
 					'type'    => 'checkbox',
 					'section' => 'title_tagline',
-					'label'   => esc_html__( 'Display Site Title & Tagline', 'twentytwentyone' ),
+					'label'   => esc_html__( 'Display Site Title & Tagline', 'bspmain' ),
 				)
 			);
 
@@ -82,7 +82,7 @@ if ( ! class_exists( 'Twenty_Twenty_One_Customize' ) ) {
 			$wp_customize->add_section(
 				'excerpt_settings',
 				array(
-					'title'    => esc_html__( 'Excerpt Settings', 'twentytwentyone' ),
+					'title'    => esc_html__( 'Excerpt Settings', 'bspmain' ),
 					'priority' => 120,
 				)
 			);
@@ -103,10 +103,10 @@ if ( ! class_exists( 'Twenty_Twenty_One_Customize' ) ) {
 				array(
 					'type'    => 'radio',
 					'section' => 'excerpt_settings',
-					'label'   => esc_html__( 'On Archive Pages, posts show:', 'twentytwentyone' ),
+					'label'   => esc_html__( 'On Archive Pages, posts show:', 'bspmain' ),
 					'choices' => array(
-						'excerpt' => esc_html__( 'Summary', 'twentytwentyone' ),
-						'full'    => esc_html__( 'Full text', 'twentytwentyone' ),
+						'excerpt' => esc_html__( 'Summary', 'bspmain' ),
+						'full'    => esc_html__( 'Full text', 'bspmain' ),
 					),
 				)
 			);
@@ -135,7 +135,7 @@ if ( ! class_exists( 'Twenty_Twenty_One_Customize' ) ) {
 					$wp_customize,
 					'background_color',
 					array(
-						'label'   => esc_html_x( 'Background color', 'Customizer control', 'twentytwentyone' ),
+						'label'   => esc_html_x( 'Background color', 'Customizer control', 'bspmain' ),
 						'section' => 'colors',
 						'palette' => $colors,
 					)

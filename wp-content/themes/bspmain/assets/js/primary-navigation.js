@@ -12,22 +12,22 @@
  * @param {Element} el - The element.
  * @param {boolean} withListeners - Whether we want to add/remove listeners or not.
  */
-function twentytwentyoneToggleAriaExpanded( el, withListeners ) {
+function bspmainToggleAriaExpanded( el, withListeners ) {
 	if ( 'true' !== el.getAttribute( 'aria-expanded' ) ) {
 		el.setAttribute( 'aria-expanded', 'true' );
-		twentytwentyoneSubmenuPosition( el.parentElement );
+		bspmainSubmenuPosition( el.parentElement );
 		if ( withListeners ) {
-			document.addEventListener( 'click', twentytwentyoneCollapseMenuOnClickOutside );
+			document.addEventListener( 'click', bspmainCollapseMenuOnClickOutside );
 		}
 	} else {
 		el.setAttribute( 'aria-expanded', 'false' );
 		if ( withListeners ) {
-			document.removeEventListener( 'click', twentytwentyoneCollapseMenuOnClickOutside );
+			document.removeEventListener( 'click', bspmainCollapseMenuOnClickOutside );
 		}
 	}
 }
 
-function twentytwentyoneCollapseMenuOnClickOutside( event ) {
+function bspmainCollapseMenuOnClickOutside( event ) {
 	if ( ! document.getElementById( 'site-navigation' ).contains( event.target ) ) {
 		document.getElementById( 'site-navigation' ).querySelectorAll( '.sub-menu-toggle' ).forEach( function( button ) {
 			button.setAttribute( 'aria-expanded', 'false' );
@@ -42,7 +42,7 @@ function twentytwentyoneCollapseMenuOnClickOutside( event ) {
  *
  * @param {Element} li - The li element.
  */
-function twentytwentyoneSubmenuPosition( li ) {
+function bspmainSubmenuPosition( li ) {
 	var subMenu = li.querySelector( 'ul.sub-menu' ),
 		rect,
 		right,
@@ -72,7 +72,7 @@ function twentytwentyoneSubmenuPosition( li ) {
  *
  * @param {Element} el - The element.
  */
-function twentytwentyoneExpandSubMenu( el ) { // jshint ignore:line
+function bspmainExpandSubMenu( el ) { // jshint ignore:line
 	// Close other expanded items.
 	el.closest( 'nav' ).querySelectorAll( '.sub-menu-toggle' ).forEach( function( button ) {
 		if ( button !== el ) {
@@ -81,7 +81,7 @@ function twentytwentyoneExpandSubMenu( el ) { // jshint ignore:line
 	} );
 
 	// Toggle aria-expanded on the button.
-	twentytwentyoneToggleAriaExpanded( el, true );
+	bspmainToggleAriaExpanded( el, true );
 
 	// On tab-away collapse the menu.
 	el.parentNode.querySelectorAll( 'ul > li:last-child > a' ).forEach( function( linkEl ) {
@@ -115,7 +115,7 @@ function twentytwentyoneExpandSubMenu( el ) { // jshint ignore:line
 			mobileButton.onclick = function() {
 				wrapper.classList.toggle( id + '-navigation-open' );
 				wrapper.classList.toggle( 'lock-scrolling' );
-				twentytwentyoneToggleAriaExpanded( mobileButton );
+				bspmainToggleAriaExpanded( mobileButton );
 				mobileButton.focus();
 			};
 		}
@@ -146,7 +146,7 @@ function twentytwentyoneExpandSubMenu( el ) { // jshint ignore:line
 			if ( escKey ) {
 				event.preventDefault();
 				wrapper.classList.remove( id + '-navigation-open', 'lock-scrolling' );
-				twentytwentyoneToggleAriaExpanded( mobileButton );
+				bspmainToggleAriaExpanded( mobileButton );
 				mobileButton.focus();
 			}
 
@@ -176,7 +176,7 @@ function twentytwentyoneExpandSubMenu( el ) { // jshint ignore:line
 			// If target onclick is <a> with # within the href attribute
 			if ( event.target.hash ) {
 				wrapper.classList.remove( id + '-navigation-open', 'lock-scrolling' );
-				twentytwentyoneToggleAriaExpanded( mobileButton );
+				bspmainToggleAriaExpanded( mobileButton );
 				// Wait 550 and scroll to the anchor.
 				setTimeout(function () {
 					var anchor = document.getElementById(event.target.hash.slice(1));
@@ -190,7 +190,7 @@ function twentytwentyoneExpandSubMenu( el ) { // jshint ignore:line
 		navMenuEl.querySelectorAll( '.menu-wrapper > .menu-item-has-children' ).forEach( function( li ) {
 			li.addEventListener( 'mouseenter', function() {
 				this.querySelector( '.sub-menu-toggle' ).setAttribute( 'aria-expanded', 'true' );
-				twentytwentyoneSubmenuPosition( li );
+				bspmainSubmenuPosition( li );
 			} );
 			li.addEventListener( 'mouseleave', function() {
 				this.querySelector( '.sub-menu-toggle' ).setAttribute( 'aria-expanded', 'false' );

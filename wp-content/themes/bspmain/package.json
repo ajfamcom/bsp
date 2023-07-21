@@ -1,5 +1,5 @@
 {
-	"name": "twentytwentyone",
+	"name": "bspmain",
 	"version": "1.8.0",
 	"description": "Default WP Theme",
 	"author": "The WordPress Contributors",
@@ -11,7 +11,7 @@
 	"bugs": {
 		"url": "https://core.trac.wordpress.org/"
 	},
-	"homepage": "https://wordpress.org/themes/twentytwentyone/",
+	"homepage": "https://wordpress.org/themes/bspmain/",
 	"devDependencies": {
 		"@wordpress/browserslist-config": "^5.9.0",
 		"@wordpress/eslint-plugin": "^9.3.0",

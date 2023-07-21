@@ -1,5 +1,5 @@
 <!doctype html>
-<html <?php language_attributes(); ?> <?php twentytwentyone_the_html_classes(); ?>>
+<html <?php language_attributes(); ?> <?php bspmain_the_html_classes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,7 +15,7 @@
 	<a class="skip-link screen-reader-text" href="#content">
 		<?php
 		/* translators: Hidden accessibility text. */
-		esc_html_e( 'Skip to content', 'twentytwentyone' );
+		esc_html_e( 'Skip to content', 'bspmain' );
 		?>
 	</a>
 
