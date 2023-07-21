@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?><!DOCTYPE html>
 <?php astra_html_before(); ?>
 <html <?php language_attributes(); ?>>
+    
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -42,8 +43,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 >
 	<?php
 	astra_header_before();
+	?>
+   <?php get_template_part( 'template-parts/news-header-section' );?>   
+	<?php get_template_part( 'template-parts/header/site-branding' ); ?><img src="<?php bloginfo('template_directory'); ?>/assets/images/logo.svg">
+	<?php get_template_part( 'template-parts/header/site-nav' ); ?>
+	<?php
 
-	astra_header();
+	astra_header();?>
+
+	<?php
 
 	astra_header_after();
 
