@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		
 	astra_footer_before();
 		
-	astra_footer();
+	//astra_footer();
 		
 	astra_footer_after(); 
 ?>
