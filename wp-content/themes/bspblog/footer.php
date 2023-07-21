@@ -21,9 +21,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php 
 	astra_content_after();
 		
-	astra_footer_before();
-		
-	//astra_footer();
+	astra_footer_before();?>
+	 <div class="col-md-12">
+		<div class="row">
+			<p>BSP Research</p>
+			<p>Start working with our team today</p>
+			<small>Interested in polling or message testing research?Focus groups or qualitative interviews?Modeling and data analytics?Contact us today to discuss the possibilites...</small>
+		</div>
+     </div> 
+	
+	 <div class="col-md-12">
+		<div class="row">
+		<?php get_template_part( 'template-parts/footer/footer-widgets' ); ?>
+         </div>
+		 <div class="row">Copyright@ 2023 BSP Research _all Rights Reserved.</div>
+     </div>
+	<?php //astra_footer();
 		
 	astra_footer_after(); 
 ?>
