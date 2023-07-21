@@ -1,10 +1,10 @@
 <?php
 /**
- * Displays the site navigation.
+ * Displays header site branding
  *
  * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
+ * @subpackage BSPmain
+ * @since BSPmain 1.0
  */
 
 ?>
