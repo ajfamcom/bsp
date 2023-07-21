@@ -655,7 +655,7 @@ if ( ! function_exists( 'wp_get_list_item_separator' ) ) :
 	}
 endif;
 
-/***********search start here***********/
+/////custom codess
 function fetchSearchResult(){
 	$response=array();
 	global $wpdb;
