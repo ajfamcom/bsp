@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div><!-- #page -->
 <?php 
 	astra_body_bottom();    
-	wp_footer(); 
+	//wp_footer(); 
 ?>
 <footer id="colophon" class="custom-site-footer ">
      <div class="col-md-12">
