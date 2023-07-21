@@ -37,4 +37,22 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     margin-right: 8px;
 }
+.head-search form.search-form {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+input#search-field {
+    min-width: 100%;
+}
+.head-search input {
+    background: #2a5c7f;
+    color: #000;
+    border: none;
+    height: 46px;
+    padding: 10px;
+    margin: 0;
+    font-size: 14px;
+    border-radius: 0px;
+}
 /*====== /header-top-bar ========*/
