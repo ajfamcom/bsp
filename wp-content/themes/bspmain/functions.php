@@ -1,22 +1,13 @@
 <?php
-/**
- * Functions and definitions
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package WordPress
- * @subpackage BSPmain
- * @since BSPmain 1.0
- */
 // Enqueue child theme stylesheets and scripts
-/*function child_theme_scripts() {
+function child_theme_scripts() {
     // Enqueue child theme stylesheet
     wp_enqueue_style( 'child-theme-style', get_stylesheet_uri() );
 
     // Enqueue child theme scripts
     // wp_enqueue_script( 'child-theme-script', get_stylesheet_directory_uri() . '/js/script.js', array(), '1.0', true );
-}*/
-//add_action( 'wp_enqueue_scripts', 'child_theme_scripts' );
+}
+add_action( 'wp_enqueue_scripts', 'child_theme_scripts' );
 
 // Add your custom functions below this line
 /***********search start here***********/
