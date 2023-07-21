@@ -44,7 +44,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php
 	astra_header_before();
 	?>
-   <?php echo 'testingsss';?>
+	
+    <div class="col-md-6"><?php get_template_part( 'template-parts/news-header-section' );?> </div>
+	<div class="col-md-6"><?php include "searchform.php";?> </div>
 	<?php
 
 	astra_header();?>
