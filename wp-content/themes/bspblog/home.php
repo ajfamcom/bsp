@@ -3,12 +3,15 @@
  * Template Name:Home
  */
 get_header(); ?>
-<div class="container ">
-<div class="top-header-block col-md-12 d-flex justify-content-center text-center" style="text-align:center;" >
+
+
+<div class="banner-section">
 	    <?php	
 			get_template_part( 'template-parts/home-top-section' );
 		?>
 </div>
+
+<div class="container ">
 <div class="top-header-block col-md-12 d-flex justify-content-center text-center" style="text-align:center;" >
 	    <?php	
 			get_template_part( 'template-parts/services-and-expertise' );

@@ -58,5 +58,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 	astra_content_before();
 	?>
 	<div id="content" class="site-content">
-		<div class="ast-container">
+		<div class="main-content">
 		<?php astra_content_top(); ?>
