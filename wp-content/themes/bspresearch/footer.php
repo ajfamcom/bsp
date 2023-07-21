@@ -21,7 +21,7 @@
 	<footer id="colophon" class="custom-site-footer ">
      <div class="col-md-12">
 		<div class="row">
-			<p>BSP Research</p>
+			<p>BSP Researchs</p>
 			<p>Start working with our team today</p>
 			<small>Interested in polling or message testing research?Focus groups or qualitative interviews?Modeling and data analytics?Contact us today to discuss the possibilites...</small>
 		</div>
