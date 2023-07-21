@@ -655,6 +655,27 @@ if ( ! function_exists( 'wp_get_list_item_separator' ) ) :
 	}
 endif;
 
-function custom_hello_world() {
-    echo 'Hello, World!';
+
+
+function custom_teammember_register_post_type() {
+	$labels = array(
+	'name' => __('Team Members', 'team-members'),
+	'singular_name' => __('Team Members ', 'team-members'),
+	'add_new' => __('New Team Member ', 'team-members'),
+	'add_new_item' => __('Add new Team Member ', 'team-members'),
+	'edit_item' => __('Edit Team Member ', 'team-members'),
+	'new_item' => __('New Team Member ', 'team-members'),
+	'view_item' => __('View Team Member ', 'team-members'),
+	'search_item' => __('Search Team Member ', 'team-members'),
+	'not_found' => __('No Team Member Found', 'team-members'),
+	'not_found_in_trash' => __('No Team Member found in trash', 'team-members')
+	);
+    $args = array(
+        'public' => true,
+        'labels'  => $labels,
+        'supports' => array( 'title', 'editor', 'thumbnail' ),
+    );
+    register_post_type( 'team_members', $args );
+  
 }
+add_action( 'init', 'custom_teammember_register_post_type' );
