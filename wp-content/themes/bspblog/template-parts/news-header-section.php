@@ -5,7 +5,7 @@
     <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <?php do_shortcode('[news_header]'); ?>
+            <div class="head-news"><?php do_shortcode('[news_header]'); ?></div>
         </div>
         <div class="col-md-6">
             <?php include "searchform.php"; ?>
