@@ -655,8 +655,122 @@ if ( ! function_exists( 'wp_get_list_item_separator' ) ) :
 	}
 endif;
 
-// Add your custom functions below this line
+/*************Custom Code start here*****************************/
+/*
+function custom_widget_area() {
+    register_sidebar( array(
+        'name'          => __( 'SERVICES AND EXPERTISE', 'your-theme-textdomain' ),
+        'id'            => 'services-expertise-area',
+        'description'   => __( 'Add widgets here to display in the custom widget area.', 'twentytwentyone-textdomain' ),
+        'before_widget' => '<div class="widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+}
+add_action( 'widgets_init', 'custom_widget_area' );
+
+
+
+
+// Register the FAQ post type
+function faq_generator_register_post_type() {
+    $labels = array(
+        'name' => 'FAQs',
+        'singular_name' => 'FAQ',
+        'menu_name' => 'FAQs',
+        'add_new' => 'Add New',
+        'add_new_item' => 'Add New FAQ',
+        'edit_item' => 'Edit FAQ',
+        'new_item' => 'New FAQ',
+        'view_item' => 'View FAQ',
+        'view_items' => 'View FAQs',
+        'search_items' => 'Search FAQs',
+        'not_found' => 'No FAQs found',
+        'not_found_in_trash' => 'No FAQs found in Trash',
+        'parent_item_colon' => '',
+        'all_items' => 'All FAQs',
+        'archives' => 'FAQ Archives',
+        'attributes' => 'FAQ Attributes',
+        'insert_into_item' => 'Insert into FAQ',
+        'uploaded_to_this_item' => 'Uploaded to this FAQ',
+        'featured_image' => 'Featured Image',
+        'set_featured_image' => 'Set featured image',
+        'remove_featured_image' => 'Remove featured image',
+        'use_featured_image' => 'Use as featured image',
+        'filter_items_list' => 'Filter FAQs list',
+        'items_list_navigation' => 'FAQs list navigation',
+        'items_list' => 'FAQs list',
+        'item_published' => 'FAQ published.',
+        'item_published_privately' => 'FAQ published privately.',
+        'item_reverted_to_draft' => 'FAQ reverted to draft.',
+        'item_scheduled' => 'FAQ scheduled.',
+        'item_updated' => 'FAQ updated.',
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'menu_icon' => 'dashicons-editor-help',
+        'supports' => array( 'title', 'editor' ),
+        'has_archive' => true,
+        'rewrite' => array( 'slug' => 'faq' ),
+    );
+
+    register_post_type( 'faq', $args );
+}
+add_action( 'init', 'faq_generator_register_post_type' );
+
+// Add FAQ meta box
+function faq_generator_add_meta_box() {
+    add_meta_box(
+        'faq_meta_box',
+        'FAQ Details',
+        'faq_generator_render_meta_box',
+        'faq',
+        'normal',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'faq_generator_add_meta_box' );
+
+// Render the FAQ meta box
+function faq_generator_render_meta_box( $post ) {
+    // Retrieve existing values from the database
+    $faq_question = get_post_meta( $post->ID, 'faq_question', true );
+    $faq_answer = get_post_meta( $post->ID, 'faq_answer', true );
+
+    // Output the fields
+    ?>
+    <label for="faq_question">Question:</label>
+    <input type="text" id="faq_question" name="faq_question" value="<?php echo esc_attr( $faq_question ); ?>">
+
+    <label for="faq_answer">Answer:</label>
+    <textarea id="faq_answer" name="faq_answer"><?php echo esc_textarea( $faq_answer ); ?></textarea>
+    <?php
+}
+
+// Save FAQ meta box data
+function faq_generator_save_meta_box( $post_id ) {
+    // Check if the current user can edit the post
+    if ( ! current_user_can( 'edit_post', $post_id ) ) {
+        return;
+    }
+
+    // Save the FAQ question
+    if ( isset( $_POST['faq_question'] ) ) {
+        update_post_meta( $post_id, 'faq_question', sanitize_text_field( $_POST['faq_question'] ) );
+    }
+
+    // Save the FAQ answer
+    if ( isset( $_POST['faq_answer'] ) ) {
+        update_post_meta( $post_id, 'faq_answer', wp_kses_post( $_POST['faq_answer'] ) );
+    }
+}
+add_action( 'save_post_faq', 'faq_generator_save_meta_box' );
+*/
 /***********search start here***********/
+/*
 function fetchSearchResult(){
 	$response=array();
 	global $wpdb;
@@ -699,91 +813,4 @@ function fetchSearchResult(){
 }
 add_action("wp_ajax_fetchSearchResult", "fetchSearchResult");
 add_action("wp_ajax_nopriv_fetchSearchResult", "fetchSearchResult");
-
-/**Team Posts*/
-
-function custom_teammember_register_post_type() {
-	$labels = array(
-	'name' => __('Team Members', 'team-members'),
-	'singular_name' => __('Team Members ', 'team-members'),
-	'add_new' => __('New Team Member ', 'team-members'),
-	'add_new_item' => __('Add new Team Member ', 'team-members'),
-	'edit_item' => __('Edit Team Member ', 'team-members'),
-	'new_item' => __('New Team Member ', 'team-members'),
-	'view_item' => __('View Team Member ', 'team-members'),
-	'search_item' => __('Search Team Member ', 'team-members'),
-	'not_found' => __('No Team Member Found', 'team-members'),
-	'not_found_in_trash' => __('No Team Member found in trash', 'team-members')
-	);
-    $args = array(
-        'public' => true,
-        'labels'  => $labels,
-        'supports' => array( 'title', 'editor', 'thumbnail' ),
-    );
-    register_post_type( 'team_members', $args );
-
-/*
- $taxonomy_args = array(
-        'hierarchical' => true,
-        'label' => 'Custom Team-member Categories',
-        'rewrite' => array( 'slug' => 'custom-team-member-category' ),
-    );
-    register_taxonomy( 'custom-team-member-category', 'team_members', $taxonomy_args );
-
- */   
-}
-add_action( 'init', 'custom_teammember_register_post_type' );
-
-
-function custom_news_and_analysis_register_post_type() {
-	$labels = array(
-	'name' => __('News And Analysis', 'news-and-analysis'),
-	'singular_name' => __('News And Analysis ', 'news-and-analysis'),
-	'add_new' => __('New News And Analysis ', 'news-and-analysis'),
-	'add_new_item' => __('Add new News And Analysis ', 'news-and-analysis'),
-	'edit_item' => __('Edit News And Analysis ', 'news-and-analysis'),
-	'new_item' => __('New News And Analysis ', 'news-and-analysis'),
-	'view_item' => __('View News And Analysis ', 'news-and-analysis'),
-	'search_item' => __('Search News And Analysis ', 'news-and-analysis'),
-	'not_found' => __('No News And Analysis Found', 'news-and-analysis'),
-	'not_found_in_trash' => __('No News And Analysis found in trash', 'team-members')
-	);
-    $args = array(
-        'public' => true,
-        'labels'  => $labels,
-        'supports' => array( 'title', 'editor', 'thumbnail' ),
-    );
-    register_post_type( 'news_analysis', $args );
-}
-add_action( 'init', 'custom_news_and_analysis_register_post_type' );
-
-
-// Add the filter to modify the search query
-add_filter('posts_search', 'custom_posts_search', 10, 2);
-
-function custom_posts_search($search, $query) {
-    global $wpdb;
-
-    // Check if the current query is a search query
-    if (is_search() && !empty($query->query_vars['s'])) {
-        // Get the search term
-        $search_term = $query->query_vars['s'];
-
-        // Modify the search SQL query to include your custom condition for the post_content field
-// $search = " AND ({$wpdb->posts}.post_content LIKE '%[wpdm_package id=%' AND {$wpdb->posts}.post_status='publish')";
-$mquery='SELECT * FROM wp_posts WHERE (`post_content` LIKE "%'.$search_term.'%" || `post_title` LIKE "%'.$search_term.'%" || `post_excerpt` LIKE "%'.$search_term.'%") AND post_type="wpdmpro" AND post_status="publish" GROUP BY ID';
-$result =$wpdb->get_results($mquery);	
-	
-   
-	if($result){
-		
-    foreach($result as $data){	
-       	
-		$search .= " AND ({$wpdb->posts}.post_content LIKE '%[wpdm_package id=\'{$data->ID}\']%')";
-	}
-  }
-		
-    }
-
-    return $search;
-}
+*/
