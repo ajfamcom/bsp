@@ -70,5 +70,9 @@ input#search-field {
     background-repeat: no-repeat;
     padding: 100px 0 150px 0;
     color: #fff;
+    text-align: center;
+}
+.banner-section img {
+    display: none;
 }
 /*========== /banner ================*/
