@@ -1,9 +1,9 @@
 /*
-Theme Name: Bspresearch
+Theme Name: Bspmain
 Description: Research website theme
 Author: Famcom
 Author URI: https://famcom.com
-Template: twentytwentyone
+Template: bspmain
 Version: 1.0.0
 */
-@import url('../twentytwentyone/style.css');
+@import url('style.css');
