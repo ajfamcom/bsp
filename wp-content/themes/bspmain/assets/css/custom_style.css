@@ -12,8 +12,8 @@ ul, ol {
 }
 body {
     background: #fff;
-    font-family: 'League Spartan', sans-serif !important;
+    font-family: 'League Spartan', sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
-    color: var(--blue) !important;
+    color: var(--blue);
 }
