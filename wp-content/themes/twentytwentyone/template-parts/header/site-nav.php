@@ -11,7 +11,9 @@
 
 <?php if ( has_nav_menu( 'primary' ) ) : ?>
 	<nav id="site-navigation" class="primary-navigation" aria-label="<?php esc_attr_e( 'Primary menu', 'twentytwentyone' ); ?>">
+	
 		<div class="menu-button-container">
+		
 			<button id="primary-mobile-menu" class="button" aria-controls="primary-menu-list" aria-expanded="false">
 				<span class="dropdown-icon open"><?php esc_html_e( 'Menu', 'twentytwentyone' ); ?>
 					<?php echo twenty_twenty_one_get_icon_svg( 'ui', 'menu' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
@@ -33,5 +35,6 @@
 		);
 		?>
 	</nav><!-- #site-navigation -->
+	<button class="btn-subscribe btn btn-primarys">Subscribe</button>
 	<?php
 endif;
