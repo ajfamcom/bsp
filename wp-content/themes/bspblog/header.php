@@ -44,7 +44,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php
 	astra_header_before();
 	?>
-   <?php get_template_part( 'template-parts/news-header-section' );?>   
+   <?php //get_template_part( 'template-parts/news-header-section' );?>   
 	<?php get_template_part( 'template-parts/header/site-branding' ); ?><img src="<?php bloginfo('template_directory'); ?>/assets/images/logo.svg">
 	<?php get_template_part( 'template-parts/header/site-nav' ); ?>
 	<?php
