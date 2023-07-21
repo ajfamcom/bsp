@@ -22,7 +22,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	astra_content_after();
 		
 	astra_footer_before();?>
-	 <div class="col-md-12">
+	 
+	<?php //astra_footer();
+		
+	astra_footer_after(); 
+?>
+	</div><!-- #page -->
+<?php 
+	astra_body_bottom(); 
+	?>
+	<footer>
+	<div class="col-md-12">
 		<div class="row">
 			<p>BSP Research</p>
 			<p>Start working with our team today</p>
@@ -36,13 +46,8 @@ if ( ! defined( 'ABSPATH' ) ) {
          </div>
 		 <div class="row">Copyright@ 2023 BSP Research _all Rights Reserved.</div>
      </div>
-	<?php //astra_footer();
-		
-	astra_footer_after(); 
-?>
-	</div><!-- #page -->
-<?php 
-	astra_body_bottom();    
+</footer>
+	<?php   
 	wp_footer(); 
 ?>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
