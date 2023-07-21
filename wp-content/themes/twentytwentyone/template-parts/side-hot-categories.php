@@ -1,0 +1,1 @@
+<?php /**Template Name:Hot Categories */

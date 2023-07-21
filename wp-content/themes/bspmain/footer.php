@@ -21,7 +21,7 @@
 	<footer id="colophon" class="custom-site-footer ">
      <div class="col-md-12">
 		<div class="row">
-			<p>BSP Researches</p>
+			<p>BSP Research</p>
 			<p>Start working with our team today</p>
 			<small>Interested in polling or message testing research?Focus groups or qualitative interviews?Modeling and data analytics?Contact us today to discuss the possibilites...</small>
 		</div>
@@ -31,6 +31,7 @@
 		<div class="row">
 		<?php get_template_part( 'template-parts/footer/footer-widgets' ); ?>
          </div>
+		 <div class="row">Copyright@ 2023 BSP Research _all Rights Reserved.</div>
      </div>
 	 <!--footer area-->
 </div><!-- #page -->
@@ -40,6 +41,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script>
+	/*
 $(document).ready(function(){
 	$('#search-data-btn').on('click',function(){
 		
@@ -90,7 +92,7 @@ $(document).ready(function(){
 	
 	
 	})
-});
+});*/
 </script>
 </body>
 </html>
