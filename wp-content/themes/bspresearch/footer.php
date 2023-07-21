@@ -31,6 +31,7 @@
 		<div class="row">
 		<?php get_template_part( 'template-parts/footer/footer-widgets' ); ?>
          </div>
+		 <div class="row">Copyright@ 2023 BSP Research _all Rights Reserved.</div>
      </div>
 	 <!--footer area-->
 </div><!-- #page -->
