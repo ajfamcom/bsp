@@ -5,8 +5,8 @@
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @package WordPress
- * @subpackage BSPmain
- * @since BSPmain 1.0
+ * @subpackage Twenty_Twenty_One
+ * @since Twenty Twenty-One 1.0
  */
 
 // This theme requires WordPress 5.3 or later.
