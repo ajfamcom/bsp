@@ -43,16 +43,20 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: end;
 }
 input#search-field {
-    min-width: 100%;
+    width: 100%;
 }
 .head-search input {
-    background: #2a5c7f;
+    background: #2a5c7f !important;
     color: #000;
-    border: none;
-    height: 46px;
-    padding: 10px;
+    border: none !important;
+    height: 46px !important;
+    padding: 10px !important;
     margin: 0;
     font-size: 14px;
-    border-radius: 0px;
+    border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    -ms-border-radius: 0px !important;
+    -o-border-radius: 0px !important;
 }
 /*====== /header-top-bar ========*/
