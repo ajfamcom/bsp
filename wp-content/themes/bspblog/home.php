@@ -39,6 +39,9 @@ get_header(); ?>
     </div>
 	</div>
 </div>
+</div>
+
+<div class="container">
 <div class="team-members-block  d-flex justify-content-center">
 	    <?php	
 			get_template_part( 'template-parts/team-members' );
