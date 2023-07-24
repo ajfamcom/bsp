@@ -61,6 +61,9 @@ input#search-field {
     -ms-border-radius: 0px !important;
     -o-border-radius: 0px !important;
 }
+.ast-desktop .ast-primary-header-bar .main-header-menu > .menu-item:last-child a {
+    padding: 0;
+}
 /*====== /header-top-bar ========*/
 
 /*=========== banner ================*/
@@ -97,7 +100,7 @@ input#search-field {
     border-radius: 0;
     background: var(--orange);
     border: none;
-    padding: 12px 20px;
+    padding: 14px 20px 12px;
     letter-spacing: 1px;
 }
 .btn.btn-primary:hover {
@@ -114,11 +117,13 @@ input#search-field {
     border-radius: 0;
     background: var(--blue);
     border: none;
-    padding: 12px 20px;
+    padding: 14px 20px 12px;
     letter-spacing: 1px;
+    color: #fff;
 }
 .btn.btn-default:hover {
-    background: var(--blue);
+    background: var(--orange);
+    color: #fff;
     transition: all ease-in-out 0.3s;
     -webkit-transition: all ease-in-out 0.3s;
     -moz-transition: all ease-in-out 0.3s;
