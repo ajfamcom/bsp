@@ -19,7 +19,7 @@
 <div class="main-header-bar-wrap">
 	<div <?php echo astra_attr( 'main-header-bar' ); ?>>
 		<?php astra_main_header_bar_top(); ?>
-		<div class="ast-container">
+		<div class="ast-container-abcd">
 
 			<div class="ast-flex main-header-container">
 				<?php astra_masthead_content(); ?>
