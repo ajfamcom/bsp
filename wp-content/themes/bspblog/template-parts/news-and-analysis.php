@@ -1,5 +1,5 @@
 <?php /**Template Name:News And Analysis */?>
-<p><h3>News And Analysis</h3></p>
+<p><h3 class="small-title">News And Analysis</h3></p>
 <?php
 $args = array(
     'post_type' => 'news_analysis',

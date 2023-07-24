@@ -1,5 +1,5 @@
 <?php /**Template Name: Most Popular Posts */?>
-<p><h3>Latest From BSP</h3></p>
+<p><h1 class="title">Latest From BSP</h1></p>
 <div class="col-md-7">
 <?php
 
@@ -48,6 +48,7 @@ if ($query->have_posts()) {
 // Reset the query to avoid conflicts with other queries
  
 ?>  
+<div class="static-post"><img src=""><>Georgios Political power grows</h3>Septemeber 7,2023</div>
 </div>
 <div class="col-md-5">
 <?php
