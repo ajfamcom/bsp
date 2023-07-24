@@ -4,7 +4,7 @@ class HomeTopClass {
 public function __construct(){
     
     add_shortcode( 'home_top', array($this,'display_home_top_section'));
-    //add_filter('the_title', array($this,'top_section_title'));
+    add_filter('the_title', array($this,'top_section_title'));
 }
 
 public function display_home_top_section() {
@@ -66,7 +66,7 @@ public function top_section_title($title) {
         //if(!is_admin() && has_term( '25' ,'custom_category',$id)){
         $position = get_field('position', $id);
        if(!is_admin() && $position=='Home-Top'){     
-	    return $title;
+	    return trim(strip_tags($title));
     }
     else{
         return $title;
