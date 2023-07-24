@@ -4,7 +4,7 @@ class HomeTopClass {
 public function __construct(){
     
     add_shortcode( 'home_top', array($this,'display_home_top_section'));
-    add_filter('the_title', array($this,'top_section_title'));
+    //add_filter('the_title', array($this,'top_section_title'));
 }
 
 public function display_home_top_section() {
