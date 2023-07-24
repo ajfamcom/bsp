@@ -90,7 +90,7 @@ input#search-field {
     display: none;
 }
 .bnr-title {
-    font-size: 78px;
+    font-size: 78px !important;
     font-weight: bold;
     color: var(--orange) !important;
     line-height: 1.2em;
