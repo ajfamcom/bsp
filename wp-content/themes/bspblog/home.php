@@ -11,8 +11,9 @@ get_header(); ?>
 		?>
 </div>
 
-<div class="services-block">
+
 <div class="container">
+<div class="services-block">
 	    <div class="row">
 		<?php	
 			get_template_part( 'template-parts/services-and-expertise' );
