@@ -18,6 +18,12 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--blue) !important;
     font-weight: bold !important;
 }
+h1 {
+    font-size: 42px;
+}
+h3 {
+    font-size: 28px;
+}
 
 /*======= header-top-bar ========*/
 .latest-news-top-section {
@@ -197,3 +203,34 @@ input#search-field {
     margin: 0;
 }
 /*========== /services-block ================*/
+
+/*================latest-news-section================*/
+.most-popular-block .title {
+    position: relative;
+}
+.most-popular-block .title:after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background: #d7d7d7;
+    margin: 0 auto;
+    right: 0;
+}
+.most-popular-block .small-title {
+    position: relative;
+}
+.most-popular-block .small-title:after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background: #d7d7d7;
+    margin: 0 auto;
+    right: 0;
+}
+/*===============/latest-news-section================*/

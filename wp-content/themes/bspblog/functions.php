@@ -325,3 +325,17 @@ function remove_ast_container_class() {
     <?php
 }
 add_action('wp_footer', 'remove_ast_container_class');
+
+function replace_readmore_with_post_date( $content ) {
+    global $post;
+    
+    // Check if it's a single post and not a page or custom post type
+    if ( is_single() && $post->post_type === 'post' ) {
+        $post_date = get_the_date( 'F j, Y', $post->ID );
+        $read_more_text = '<a href="' . esc_url( get_permalink() ) . '">' . $post_date . '</a>';
+        $content = str_replace( 'Read more', $read_more_text, $content );
+    }
+
+    return $content;
+}
+add_filter( 'the_content', 'replace_readmore_with_post_date' );
