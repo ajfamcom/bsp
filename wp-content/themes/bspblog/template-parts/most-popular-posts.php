@@ -27,14 +27,15 @@ if ($query->have_posts()) {
         ?>
     <?php //if(isset($featured_post) && $featured_post[0]=='Yes'){ ?>
     <div class="featured-post">
-    <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-	<p style="width:300px;">
+    <p style="width:300px;">
 	<?php
     if (has_post_thumbnail()) {
     the_post_thumbnail(); 
     }
     ?>
     </p>
+    <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+	
     <p class="post-date"><?php echo $post_date;?></p>
    
     </div>
@@ -81,14 +82,15 @@ if ($query->have_posts()) :
         $post_date = get_the_date( 'M j, Y', $post_id );
         ?>
         <div class="side-fpost">
-        <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-	<p style="width:100px;">
+        <p style="width:100px;">
 	<?php
     if (has_post_thumbnail()) {
     the_post_thumbnail(); 
     }
     ?>
     </p>
+        <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+	
     <p class="post-date"><?php echo $post_date;?></p>
 </div>
     <?php
