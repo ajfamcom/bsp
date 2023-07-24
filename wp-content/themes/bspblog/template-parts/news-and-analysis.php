@@ -29,13 +29,13 @@ if ($query->have_posts()) {
         
         ?>
 <div class="news-single-block">
-    
+    <div class="sidebar-img">
 	<?php
     if (has_post_thumbnail()) {
     the_post_thumbnail(); 
     }
     ?>
-    
+    </div>
     <p><?php echo $short_desc;?></p>
 </div>
 <?php
