@@ -44,6 +44,6 @@
 </div>
 <?php endwhile; ?>
 <?php endif;?>
-<div class="col-12"><p><a href="#."><button type="button" class="btn btn-primary">MEET THE TEAM</button></a></p></div>
+<div class="col-12 text-center"><p><a href="#."><button type="button" class="btn btn-primary">MEET THE TEAM</button></a></p></div>
 </div>
 
