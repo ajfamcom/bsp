@@ -52,6 +52,10 @@ h3 {
 }
 input#search-field {
     width: 100%;
+    color: #fff;
+}
+input#search-field::placeholder {
+    color: rgba(255,255,255,0.5);
 }
 .head-search input {
     background: #2a5c7f !important;
