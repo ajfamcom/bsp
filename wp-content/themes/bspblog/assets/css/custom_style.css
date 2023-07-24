@@ -75,4 +75,26 @@ input#search-field {
 .banner-section img {
     display: none;
 }
+.bnr-title {
+    font-size: 78px;
+    font-weight: bold;
+    color: var(--orange) !important;
+}
+.bnr-subtitle {
+    font-size: 36px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+a.btn.btn-primary {
+    font-size: 13px;
+    text-transform: uppercase;
+    border-radius: 0;
+    background: var(--orange);
+    border: none;
+    padding: 12px 20px;
+    letter-spacing: 1px;
+}
+a.btn.btn-primary:hover {
+    background: var(--blue);
+}
 /*========== /banner ================*/
