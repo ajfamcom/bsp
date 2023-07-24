@@ -144,6 +144,7 @@ input#search-field::placeholder {
     color: #fff !important;
     letter-spacing: 2px;
     font-weight: 400 !important;
+    margin-bottom: 1%;
 }
 .banner-section p {
     font-size: 36px;
