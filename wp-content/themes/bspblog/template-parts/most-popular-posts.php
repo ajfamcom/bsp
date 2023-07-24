@@ -35,7 +35,7 @@ if ($query->have_posts()) {
     }
     ?>
     </p>
-    <p><?php the_excerpt(); ?></p>
+    <p class="post-date">7 September, 2023</p>
    
     </div>
     <?php //} ?>
@@ -48,7 +48,10 @@ if ($query->have_posts()) {
 // Reset the query to avoid conflicts with other queries
  
 ?>  
-<div class="static-post"><img src=""><>Georgios Political power grows</h3>Septemeber 7,2023</div>
+<div class="static-post"><img src=""><>Georgios Political power grows</h3>
+<p class="post-date">7 September, 2023</p>
+
+</div>
 </div>
 <div class="col-md-5">
 <?php
@@ -84,7 +87,8 @@ if ($query->have_posts()) :
     }
     ?>
     </p>
-    <p><?php the_excerpt(); ?></p></div>
+    <p class="post-date">7 September, 2023</p>
+</div>
     <?php
     endwhile;
     wp_reset_postdata();
