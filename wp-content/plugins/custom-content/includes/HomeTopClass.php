@@ -34,7 +34,7 @@ public function display_home_top_section() {
                 $status=get_field('status', $post_id);
                 $link=get_field('link', $post_id);
                 $title=the_title();
-                $title=strip_tags($title);
+                $title='Welcome to BSP RESEARCH';
                 $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post_id) );
                 echo '<div class="banner">
                 <img width="500" src="'.$feat_image.'" decoding="async" loading="lazy" style="background:cover;">
