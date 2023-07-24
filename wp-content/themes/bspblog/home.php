@@ -23,12 +23,10 @@ get_header(); ?>
 <div class="container">
 <div class="most-popular-block">
 	<div class="row">
-	<div class="col-md-9">
-		<div class="row">			
+	<div class="col-md-9">		
 		<?php	
 			get_template_part( 'template-parts/most-popular-posts' );
 		?>
-		</div>
     </div>
     <div class="col-md-3">
 		<?php	
