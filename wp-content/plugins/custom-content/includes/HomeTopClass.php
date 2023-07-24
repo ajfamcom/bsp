@@ -37,7 +37,7 @@ public function display_home_top_section() {
                 echo '<div class="banner">
                 <img width="500" src="'.$feat_image.'" decoding="async" loading="lazy" style="background:cover;">
                 <div class="container">
-                  <h1 class="bnr-title">'.the_title().$line1.$line2.'</h1>
+                  <h1 class="bnr-title">'.$line1.$line2.'</h1>
                   <p class="card-text">'.$line3.'</p>
                   <a href="'.$link.'" class="btn btn-primary">CONTACT US</a>
                 </div>
