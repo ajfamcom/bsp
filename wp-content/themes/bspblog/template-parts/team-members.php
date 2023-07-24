@@ -1,10 +1,11 @@
 <?php /**Template Name:Home Top Section */ ?>
 
 
-<div  class="col-md-12">
+<div  class="col-12 text-center">
+<p>Our Team</p>
+    <h1>Meet Our Team</h1>
+</div>
 <div class="row"> 
-    <p>Our Team</p>
-    <p>Meet Our Team</p>
     <?php 
     $args = array(
         'post_type' => 'team_members',
@@ -37,12 +38,12 @@
             ?> 
 <div class="single-team-member col-md-3">
     <p class="member-image"><img src="<?php echo $image['url'];?>" width="200px;"/></p>
-    <p class="member-details"><span class="member-name"><?php echo $fullname; ?></span>,<span class="member-education"><?php echo $education;?></span></p>
+    <h4 class="member-details"><span class="member-name"><?php echo $fullname; ?></span>,<span class="member-education"><?php echo $education;?></span></h4>
     <p class="other-details"><span class="member-position"><?php echo $designation;?></span></p>
-    <p class="bio"><?php the_content(); ?></p>
+    <!-- <p class="bio"><?php the_content(); ?></p> -->
 </div>
 <?php endwhile; ?>
 <?php endif;?>
-<p><a href="#."><button type="button" class="btn btn-primary">MEET THE TEAM</button></a></p>
+<div class="col-12"><p><a href="#."><button type="button" class="btn btn-primary">MEET THE TEAM</button></a></p></div>
 </div>
-</div>
+

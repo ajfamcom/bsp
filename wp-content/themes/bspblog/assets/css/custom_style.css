@@ -139,7 +139,7 @@ input#search-field {
 .banner-section h4 {
     color: #fff !important;
     letter-spacing: 2px;
-    font-weight: 400;
+    font-weight: 400 !important;
 }
 .banner-section p {
     font-size: 36px;
