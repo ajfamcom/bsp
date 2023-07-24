@@ -34,14 +34,14 @@ public function display_home_top_section() {
                 $status=get_field('status', $post_id);
                 $link=get_field('link', $post_id);
                
-                $title=the_title();
+                
                 $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post_id) );
                 echo '<div class="banner">
                 <img width="500" src="'.$feat_image.'" decoding="async" loading="lazy" style="background:cover;">
                 <div class="container">
                     <div class="row">
                     <div class="col-md-8 col-sm-8 col-12 offset-md-2 offset-sm-2">
-                  <h1 class="bnr-title">'.the_title().$line1 .$line2.'</h1>
+                  <h1 class="bnr-title">'.the_title().'<span style="color:#fff;">'.$line1.'</span>'.'<span>'.$line2.'</span>'.'</h1>
                   <p class="bnr-snbtitle">'.$line3.'</p>
                   <a href="'.$link.'" class="btn btn-primary">CONTACT US</a>
                   </div>
@@ -60,13 +60,14 @@ public function display_home_top_section() {
     
 }
 
+
 public function top_section_title($title) {
     global $id, $post;
     
         //if(!is_admin() && has_term( '25' ,'custom_category',$id)){
         $position = get_field('position', $id);
        if(!is_admin() && $position=='Home-Top'){     
-	    return trim(strip_tags($title));
+	    return '<h4>'.trim(strip_tags($title)).'</h4>';
     }
     else{
         return $title;
