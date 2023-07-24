@@ -60,6 +60,7 @@ public function display_home_top_section() {
     
 }
 
+
 public function top_section_title($title) {
     global $id, $post;
     
