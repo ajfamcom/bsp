@@ -20,8 +20,8 @@ get_header(); ?>
 </div>
 </div>
 
-<div class="container">
-<div class="most-popular-block">
+<div class="container pb-5 mb-5">
+<div class="most-popular-block pb-md-4">
 	<div class="row">
 	<div class="col-md-9">		
 		<div class="row">
