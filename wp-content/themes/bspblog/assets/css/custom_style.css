@@ -16,6 +16,7 @@ body {
 }
 h1, h2, h3, h4, h5, h6 {
     color: var(--blue) !important;
+    font-weight: bold !important;
 }
 
 /*======= header-top-bar ========*/
@@ -71,7 +72,7 @@ input#search-field {
     padding: 50px 0 150px 0;
     color: #fff;
     text-align: center;
-    height: 100vh;
+    height: calc(100vh - 200px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -119,3 +120,47 @@ a.btn.btn-primary:hover {
     margin-bottom: 25px;
 }
 /*========== /banner ================*/
+
+/*=========== services-block ================*/
+.services-block {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #fff;
+    box-shadow: 0px 5px 10px 0px #d4d4d4;
+    justify-content: space-between;
+    padding: 25px;
+    position: relative;
+    top: -120px;
+}
+.services-block h3 {
+    font-size: 32px;
+    color: var(--blue);
+}
+.services-post {
+    flex-basis: 30.333%;
+}
+.services-post img {
+    width: 100%;
+    max-height: 240px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+.services-post h2 {
+    font-size: 18px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 60%;
+    bottom: 20px;
+    text-align: center;
+    line-height: 1.4em;
+}
+.services-post h2 a {
+    color: #fff !important;
+}
+.services-post p {
+    margin: 0;
+}
+/*========== /services-block ================*/

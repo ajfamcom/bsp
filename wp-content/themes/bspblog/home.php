@@ -14,11 +14,9 @@ get_header(); ?>
 
 <div class="container">
 <div class="services-block">
-	    <div class="row">
 		<?php	
 			get_template_part( 'template-parts/services-and-expertise' );
 		?>
-		</div>
 </div>
 <div class="most-popular-block">
 	<div class="col-md-8">
