@@ -395,12 +395,12 @@ input#search-field::placeholder {
     color: #000;
 }
 .static-post-img {
-    flex-basis: 45%;
+    flex-basis: 37%;
     border-radius: 6px;
     overflow: hidden;
 }
 .static-post-discription {
-    flex-basis: 55%;
+    flex-basis: 57%;
 }
 p.post-date {
     color: var(--orange);
