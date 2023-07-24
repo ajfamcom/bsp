@@ -36,10 +36,8 @@ public function display_home_top_section() {
                 $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post_id) );
                 echo '<div class="banner">
                 <img width="500" src="'.$feat_image.'" decoding="async" loading="lazy" style="background:cover;">
-                <div class="card-body">
-                  <h5 class="card-title">'.the_title().'</h5>
-                  <p class="card-text">'.$line1.'</p>
-                  <p class="card-text">'.$line2.'</p>
+                <div class="container">
+                  <h1 class="bnr-title">'.the_title().$line1.$line2.'</h1>
                   <p class="card-text">'.$line3.'</p>
                   <a href="'.$link.'" class="btn btn-primary">CONTACT US</a>
                 </div>
