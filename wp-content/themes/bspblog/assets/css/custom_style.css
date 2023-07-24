@@ -401,3 +401,11 @@ p.post-date {
     margin: 0;
 }
 /*===============/latest-news-section================*/
+
+/*=================== footer =====================*/
+footer {
+    background: var(--blue);
+    text-align: center;
+    color: #fff;
+}
+/*================== /footer =====================*/

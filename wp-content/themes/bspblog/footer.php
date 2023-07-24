@@ -32,11 +32,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	astra_body_bottom(); 
 	?>
 	<footer>
+		<div class="container">
 	<div class="col-md-12">
 		<div class="row">
-			<p>BSP Research</p>
+			<!-- <p>BSP Research</p>
 			<p>Start working with our team today</p>
-			<small>Interested in polling or message testing research?Focus groups or qualitative interviews?Modeling and data analytics?Contact us today to discuss the possibilites...</small>
+			<small>Interested in polling or message testing research?Focus groups or qualitative interviews?Modeling and data analytics?Contact us today to discuss the possibilites...</small> -->
+			<img src="<?php bloginfo('template_directory'); ?>assets/images/footer-logo.png">
 		</div>
      </div> 
 	
@@ -46,6 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
          </div>
 		 <div class="row">Copyright@ 2023 BSP Research _all Rights Reserved.</div>
      </div>
+	 </div>
 </footer>
 	<?php   
 	wp_footer(); 
