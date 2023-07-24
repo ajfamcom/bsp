@@ -27,13 +27,13 @@ if ($query->have_posts()) {
         ?>
     <?php //if(isset($featured_post) && $featured_post[0]=='Yes'){ ?>
     <div class="featured-post">
-    <p style="width:300px;">
+    <div class="featured-post-img">
 	<?php
     if (has_post_thumbnail()) {
     the_post_thumbnail(); 
     }
     ?>
-    </p>
+    </div>
     <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 	
     <p class="post-date"><?php echo $post_date;?></p>
@@ -89,9 +89,10 @@ if ($query->have_posts()) :
     }
     ?>
     </div>
+        <div class="side-fpost-discription">
         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-	
-    <p class="post-date"><?php echo $post_date;?></p>
+        <p class="post-date"><?php echo $post_date;?></p>
+        </div>
 </div>
     <?php
     endwhile;
