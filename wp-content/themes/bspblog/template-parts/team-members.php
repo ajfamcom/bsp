@@ -37,7 +37,7 @@
             $image = get_field('profile_image', $post_id);
             ?> 
 <div class="single-team-member col-md-3">
-    <img class="member-image" src="<?php echo $image['url'];?>" width="200px;"/>
+    <div class="member-image"><img src="<?php echo $image['url'];?>" /></div>
     <h4 class="member-details"><span class="member-name"><?php echo $fullname; ?></span>,<span class="member-education"><?php echo $education;?></span></h4>
     <p class="other-details"><span class="member-position"><?php echo $designation;?></span></p>
     <!-- <p class="bio"><?php the_content(); ?></p> -->
