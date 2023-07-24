@@ -324,4 +324,7 @@ input#search-field {
     height: 177px;
     object-fit: cover;
 }
+.side-fpost-discription p {
+    margin: 0;
+}
 /*===============/latest-news-section================*/

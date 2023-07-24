@@ -34,10 +34,11 @@ if ($query->have_posts()) {
     }
     ?>
     </div>
+    <div class="featured-post-discription">
     <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 	
     <p class="post-date"><?php echo $post_date;?></p>
-   
+    </div>
     </div>
     <?php //} ?>
         <?php
