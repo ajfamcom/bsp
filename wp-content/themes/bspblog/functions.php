@@ -326,7 +326,7 @@ function remove_ast_container_class() {
 }
 add_action('wp_footer', 'remove_ast_container_class');
 
-function replace_readmore_with_post_date( $content ) {
+/*function replace_readmore_with_post_date( $content ) {
     global $post;
     
     // Check if it's a single post and not a page or custom post type
@@ -338,4 +338,4 @@ function replace_readmore_with_post_date( $content ) {
 
     return $content;
 }
-add_filter( 'the_content', 'replace_readmore_with_post_date' );
+add_filter( 'the_content', 'replace_readmore_with_post_date' );*/
