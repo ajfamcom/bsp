@@ -39,15 +39,10 @@ public function display_home_top_section() {
                 echo '<div class="banner">
                 <img width="500" src="'.$feat_image.'" decoding="async" loading="lazy" style="background:cover;">
                 <div class="container">
-<<<<<<< HEAD
                     <div class="row">
                     <div class="col-md-8 col-sm-8 col-12 offset-md-2 offset-sm-2">
-                  <h1 class="bnr-title">'.the_title().$line1.$line2.'</h1>
-                  <p class="bnr-snbtitle">'.$line3.'</p>
-=======
                   <h1 class="bnr-title">'.$title.$line1.$line2.'</h1>
-                  <p class="card-text">'.$line3.'</p>
->>>>>>> 093ef0630fde3132122860497ce6f8f88a7f3e54
+                  <p class="bnr-snbtitle">'.$line3.'</p>
                   <a href="'.$link.'" class="btn btn-primary">CONTACT US</a>
                   </div>
                 </div>
