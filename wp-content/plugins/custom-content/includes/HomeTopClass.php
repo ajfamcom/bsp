@@ -66,7 +66,7 @@ public function top_section_title($title) {
         //if(!is_admin() && has_term( '25' ,'custom_category',$id)){
         $position = get_field('position', $id);
        if(!is_admin() && $position=='Home-Top'){     
-	    return trim(strip_tags($title));
+	    return '<h4>'.trim(strip_tags($title)).'</h4>';
     }
     else{
         return $title;
