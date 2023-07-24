@@ -11,11 +11,13 @@ get_header(); ?>
 		?>
 </div>
 
-<div class="container ">
-<div class="top-header-block col-md-12 d-flex justify-content-center text-center" style="text-align:center;" >
-	    <?php	
+<div class="services-block">
+<div class="container">
+	    <div class="row">
+		<?php	
 			get_template_part( 'template-parts/services-and-expertise' );
 		?>
+		</div>
 </div>
 <div class="most-popular-block">
 	<div class="col-md-8">
