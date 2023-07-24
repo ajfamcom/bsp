@@ -23,7 +23,7 @@ if ($query->have_posts()) {
         $query->the_post();
         $post_id = get_the_ID();
         $featured_post = get_field('featured', $post_id);
-        
+        $post_date = get_the_date( 'F j, Y', $post_id );
         ?>
     <?php //if(isset($featured_post) && $featured_post[0]=='Yes'){ ?>
     <div class="featured-post">
@@ -35,7 +35,7 @@ if ($query->have_posts()) {
     }
     ?>
     </p>
-    <!--<p><?php //the_excerpt(); ?></p>-->
+    <p class="post-date"><?php echo $post_date;?></p>
    
     </div>
     <?php //} ?>
@@ -48,7 +48,10 @@ if ($query->have_posts()) {
 // Reset the query to avoid conflicts with other queries
  
 ?>  
-<div class="static-post"><img src=""><>Georgios Political power grows</h3>Septemeber 7,2023</div>
+<div class="static-post"><img src=""><>Georgios Political power grows</h3>
+<p class="post-date">Sep 7, 2023</p>
+
+</div>
 </div>
 <div class="col-md-5">
 <?php
@@ -74,6 +77,8 @@ $query = new WP_Query($args);
 if ($query->have_posts()) :
     while ($query->have_posts()) :
         $query->the_post();
+        $post_id = get_the_ID();
+        $post_date = get_the_date( 'F j, Y', $post_id );
         ?>
         <div class="side-fpost">
         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -84,7 +89,8 @@ if ($query->have_posts()) :
     }
     ?>
     </p>
-    <!--<p><?php //the_excerpt(); ?></p></div>-->
+    <p class="post-date"><?php echo $post_date;?></p>
+</div>
     <?php
     endwhile;
     wp_reset_postdata();
