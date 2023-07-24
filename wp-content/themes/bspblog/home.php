@@ -41,14 +41,11 @@ get_header(); ?>
 </div>
 </div>
 
-<div class="team-section">
-
+<div class="team-members-block">
 	<div class="container">
-		<div class="team-members-block">
 			<?php	
 			get_template_part( 'template-parts/team-members' );
 			?>
-			</div>
 </div>
 </div>
 <?php 
