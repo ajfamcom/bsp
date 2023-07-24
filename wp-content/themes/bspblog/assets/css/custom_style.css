@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold !important;
 }
 h1 {
-    font-size: 42px;
+    font-size: 2.6rem !important;
 }
 h3 {
     font-size: 28px;
@@ -236,5 +236,28 @@ input#search-field {
 .team-members-block {
     background: #f2f2f2;
     padding: 80px 0;
+}
+.team-members-block .section-sm-title {
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--orange);
+    margin-bottom: 10px;
+}
+.section-title {
+    margin-bottom: 4%;
+    position: relative;
+    padding-bottom: 10px;
+}
+.section-title:after {
+    content: '';
+    height: 2px;
+    width: 126px;
+    background: var(--orange);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
 }
 /*===============/latest-news-section================*/
