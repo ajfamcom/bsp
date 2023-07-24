@@ -33,11 +33,13 @@ public function display_home_top_section() {
                 $line3=get_field('line3', $post_id);
                 $status=get_field('status', $post_id);
                 $link=get_field('link', $post_id);
+                $title=the_title();
+                $title=strip_tags($title);
                 $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post_id) );
                 echo '<div class="banner">
                 <img width="500" src="'.$feat_image.'" decoding="async" loading="lazy" style="background:cover;">
                 <div class="container">
-                  <h1 class="bnr-title">'.strip_tags(the_title()).$line1.$line2.'</h1>
+                  <h1 class="bnr-title">'.$title.$line1.$line2.'</h1>
                   <p class="card-text">'.$line3.'</p>
                   <a href="'.$link.'" class="btn btn-primary">CONTACT US</a>
                 </div>
