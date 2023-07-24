@@ -33,7 +33,7 @@ public function display_home_top_section() {
                 $line3=get_field('line3', $post_id);
                 $status=get_field('status', $post_id);
                 $link=get_field('link', $post_id);
-                $title=the_title();
+               
                 $title='Welcome to BSP RESEARCH';
                 $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post_id) );
                 echo '<div class="banner">
