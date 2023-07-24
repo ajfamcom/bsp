@@ -33,20 +33,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 	?>
 	<footer>
 		<div class="container">
-	<div class="col-md-12">
+	<div class="col-md-12 py-5">
 		<div class="row">
 			<!-- <p>BSP Research</p>
 			<p>Start working with our team today</p>
 			<small>Interested in polling or message testing research?Focus groups or qualitative interviews?Modeling and data analytics?Contact us today to discuss the possibilites...</small> -->
+			<div class="logo">
 			<img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/assets/images/footer-logo.png">
+			</div>
+			<div class="row">
+		<?php get_template_part( 'template-parts/footer/footer-widgets' ); ?>
+         </div>
 		</div>
      </div> 
 	
 	 <div class="col-md-12">
-		<div class="row">
-		<?php get_template_part( 'template-parts/footer/footer-widgets' ); ?>
-         </div>
-		 <div class="row">Copyright@ 2023 BSP Research _all Rights Reserved.</div>
+		 <div class="copyright">Copyright@ 2023 BSP Research _all Rights Reserved.</div>
      </div>
 	 </div>
 </footer>

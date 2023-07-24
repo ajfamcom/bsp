@@ -408,4 +408,22 @@ footer {
     text-align: center;
     color: #fff;
 }
+.copyright {
+    padding: 13px 0;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    font-size: 13px;
+}
+.social-links a {
+    font-size: 26px;
+    padding: 0px 5px;
+    margin: 4% 0;
+}
+.social-links a:hover {
+    color: #fff;
+    transition: all ease-in-out 0.5s;
+    -webkit-transition: all ease-in-out 0.5s;
+    -moz-transition: all ease-in-out 0.5s;
+    -ms-transition: all ease-in-out 0.5s;
+    -o-transition: all ease-in-out 0.5s;
+}
 /*================== /footer =====================*/
