@@ -312,3 +312,16 @@ $result =$wpdb->get_results($mquery);
 
     return $search;
 }
+
+function remove_ast_container_class() {
+    ?>
+    <script>
+        jQuery(document).ready(function($) {
+            // Replace 'site-primary-header-wrap' with the ID or class of the parent element of the div
+            $('.site-primary-header-wrap').removeClass('ast-container');
+			$('.site-primary-header-wrap').addClass('container');
+        });
+    </script>
+    <?php
+}
+add_action('wp_footer', 'remove_ast_container_class');
