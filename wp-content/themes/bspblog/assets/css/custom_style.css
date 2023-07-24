@@ -260,4 +260,21 @@ input#search-field {
     bottom: 0;
     margin: 0 auto;
 }
+.member-image img {
+    border-radius: 50%;
+}
+.member-image {
+    padding: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+    overflow: hidden;
+    margin: 5% 0;
+}
+.single-team-member {
+    text-align: center;
+}
+.single-team-member .other-details {
+    color: var(--orange);
+    font-size: 18px;
+}
 /*===============/latest-news-section================*/
