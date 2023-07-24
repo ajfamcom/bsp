@@ -24,14 +24,18 @@ get_header(); ?>
 <div class="most-popular-block">
 	<div class="row">
 	<div class="col-md-9">		
-		<?php	
+		<div class="row">
+			<?php	
 			get_template_part( 'template-parts/most-popular-posts' );
-		?>
+			?>
+			</div>
     </div>
     <div class="col-md-3">
+	<div class="row">
 		<?php	
 			get_template_part( 'template-parts/news-and-analysis' );
 		?>
+	</div>
     </div>
 	</div>
 </div>
