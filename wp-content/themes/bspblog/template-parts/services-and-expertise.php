@@ -12,17 +12,15 @@ if ($query->have_posts()) {
         $post_id = get_the_ID();
         
 ?>
-  <div class="col-md-3">    
     <div class="services-post">
     <h2><a href="#."><?php the_title(); ?></a></h2>
-	<p style="width:300px;">
+	<p>
 	<?php
     if (has_post_thumbnail()) {
     the_post_thumbnail(); 
     }
     ?>
     </p>       
-    </div>
     </div>
         <?php
     }
