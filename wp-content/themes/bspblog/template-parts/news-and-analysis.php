@@ -1,5 +1,5 @@
 <?php /**Template Name:News And Analysis */?>
-<p><h3 class="small-title">News And Analysis</h3></p>
+<h3 class="small-title">News And Analysis</h3>
 <?php
 $args = array(
     'post_type' => 'news_analysis',
@@ -29,13 +29,13 @@ if ($query->have_posts()) {
         
         ?>
 <div class="news-single-block">
-    <p style="width:300px;">
+    
 	<?php
     if (has_post_thumbnail()) {
     the_post_thumbnail(); 
     }
     ?>
-    </p>
+    
     <p><?php echo $short_desc;?></p>
 </div>
 <?php
