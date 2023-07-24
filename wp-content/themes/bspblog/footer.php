@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<!-- <p>BSP Research</p>
 			<p>Start working with our team today</p>
 			<small>Interested in polling or message testing research?Focus groups or qualitative interviews?Modeling and data analytics?Contact us today to discuss the possibilites...</small> -->
-			<img src="<?php bloginfo('template_directory'); ?>assets/images/footer-logo.png">
+			<img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/assets/images/footer-logo.png">
 		</div>
      </div> 
 	
