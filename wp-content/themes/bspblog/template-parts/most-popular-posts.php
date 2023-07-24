@@ -82,13 +82,13 @@ if ($query->have_posts()) :
         $post_date = get_the_date( 'M j, Y', $post_id );
         ?>
         <div class="side-fpost">
-        <p style="width:100px;">
+        <div class="side-fpost-img">
 	<?php
     if (has_post_thumbnail()) {
     the_post_thumbnail(); 
     }
     ?>
-    </p>
+    </div>
         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 	
     <p class="post-date"><?php echo $post_date;?></p>
