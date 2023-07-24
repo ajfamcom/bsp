@@ -35,7 +35,7 @@ if ($query->have_posts()) {
     }
     ?>
     </p>
-    <p><?php the_excerpt(); ?></p>
+    <!--<p><?php //the_excerpt(); ?></p>-->
    
     </div>
     <?php //} ?>
@@ -84,7 +84,7 @@ if ($query->have_posts()) :
     }
     ?>
     </p>
-    <p><?php the_excerpt(); ?></p></div>
+    <!--<p><?php //the_excerpt(); ?></p></div>-->
     <?php
     endwhile;
     wp_reset_postdata();
