@@ -49,8 +49,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	
 	<?php
 
-	astra_header();?>
-
+	astra_header();
+	
+	?>
+   
 	<?php
 
 	astra_header_after();
