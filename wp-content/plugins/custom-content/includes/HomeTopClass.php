@@ -34,7 +34,7 @@ public function display_home_top_section() {
                 $status=get_field('status', $post_id);
                 $link=get_field('link', $post_id);
                
-                $title='Welcome to BSP RESEARCH';
+                $title=the_title();
                 $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post_id) );
                 echo '<div class="banner">
                 <img width="500" src="'.$feat_image.'" decoding="async" loading="lazy" style="background:cover;">
@@ -62,7 +62,7 @@ public function top_section_title($title) {
         //if(!is_admin() && has_term( '25' ,'custom_category',$id)){
         $position = get_field('position', $id);
        if(!is_admin() && $position=='Home-Top'){     
-	    return '<span style="text-align:center;">'.$title.'</span>';
+	    return $title;
     }
     else{
         return $title;
