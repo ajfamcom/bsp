@@ -41,11 +41,7 @@ public function display_home_top_section() {
                 <div class="container">
                     <div class="row">
                     <div class="col-md-8 col-sm-8 col-12 offset-md-2 offset-sm-2">
-<<<<<<< HEAD
                   <h1 class="bnr-title">'.the_title().$line1 .$line2.'</h1>
-=======
-                  <h1 class="bnr-title">'.$title.$line1.$line2.'</h1>
->>>>>>> 411a8b6ad6e9e2e1f5c430cb169e5983ea28f20b
                   <p class="bnr-snbtitle">'.$line3.'</p>
                   <a href="'.$link.'" class="btn btn-primary">CONTACT US</a>
                   </div>
