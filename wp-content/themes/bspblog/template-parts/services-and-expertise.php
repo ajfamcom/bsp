@@ -4,6 +4,9 @@
 $args = array(
     'post_type' => 'manage_services',
     'posts_per_page' => 4,
+    'meta_key'       => 'services_sort_order', // New parameter for sorting
+    'orderby'        => 'meta_value_num',    // Sort by numeric value of meta_key
+    'order'          => 'ASC',              // Ascending order
 );
 $query = new WP_Query( $args );
 if ($query->have_posts()) {
