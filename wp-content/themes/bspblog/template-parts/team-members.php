@@ -7,7 +7,7 @@
 </div>
 <div class="row"> 
     <?php 
-    $args = array(
+   /* $args = array(
         'post_type' => 'team_members',
         'posts_per_page' => 4,
         'meta_query' => array(
@@ -25,7 +25,29 @@
         
     );
     
-    $query = new WP_Query($args);
+    $query = new WP_Query($args);*/
+
+    $args = array(
+        'post_type'      => 'team_members',
+        'posts_per_page' => 4,
+        'meta_query'     => array(
+            array(
+                'key'     => 'member_status',
+                'value'   => 'Active', // Serialized value for 'Yes'
+                'compare' => '='
+            ),
+            array(
+                'key'     => 'member_display_on_homepage',
+                'value'   => 'Yes', // Serialized value for 'Yes'
+                'compare' => '='
+            ),
+        ),
+        'meta_key'       => 'member_sort_order', // New parameter for sorting
+        'orderby'        => 'meta_value_num',    // Sort by numeric value of meta_key
+        'order'          => 'ASC',              // Ascending order
+    );
+    
+    $query = new WP_Query( $args );
     
     if ($query->have_posts()) :
         while ($query->have_posts()) :
