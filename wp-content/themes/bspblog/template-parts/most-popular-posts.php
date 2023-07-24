@@ -49,7 +49,7 @@ if ($query->have_posts()) {
  
 ?>  
 <div class="static-post"><img src=""><>Georgios Political power grows</h3>
-<p class="post-date">7 September, 2023</p>
+<p class="post-date">Sep 7, 2023</p>
 
 </div>
 </div>
