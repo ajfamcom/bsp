@@ -23,7 +23,7 @@ if ($query->have_posts()) {
         $query->the_post();
         $post_id = get_the_ID();
         $featured_post = get_field('featured', $post_id);
-        $post_date = get_the_date( 'F j, Y', $post_id );
+        $post_date = get_the_date( 'M j, Y', $post_id );
         ?>
     <?php //if(isset($featured_post) && $featured_post[0]=='Yes'){ ?>
     <div class="featured-post">
@@ -78,7 +78,7 @@ if ($query->have_posts()) :
     while ($query->have_posts()) :
         $query->the_post();
         $post_id = get_the_ID();
-        $post_date = get_the_date( 'F j, Y', $post_id );
+        $post_date = get_the_date( 'M j, Y', $post_id );
         ?>
         <div class="side-fpost">
         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
