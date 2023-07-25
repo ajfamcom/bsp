@@ -306,11 +306,12 @@ $result =$wpdb->get_results($mquery);
        	
 		$search .= " AND ({$wpdb->posts}.post_content LIKE '%[wpdm_package id=\'{$data->ID}\']%')";
 	}
+	return $search;
   }
 		
     }
-
-    return $search;
+ 
+    
 }
 
 function remove_ast_container_class() {
