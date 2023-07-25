@@ -15,7 +15,7 @@
 			<?php
 			$args = array(
 			'post_type'      => 'team_members',
-			'posts_per_page' => 4,
+			'posts_per_page' => -1,
 			'meta_query'     => array(
 				array(
 					'key'     => 'member_status',
@@ -44,7 +44,7 @@
 						$designation = get_field('designation', $post_id);
 						$image = get_field('profile_image', $post_id);
 						?> 
-							<div class="single-team-member col-md-3">
+							<div class="single-team-member col-md-4">
 								<div class="member-image-square"><img src="<?php echo $image['url'];?>" /></div>
 								<h4 class="member-details"><span class="member-name"><?php echo $fullname; ?></span>,<span class="member-education"><?php echo $education;?></span></h4>
 								<p class="other-details"><span class="member-position"><?php echo $designation;?></span></p>
