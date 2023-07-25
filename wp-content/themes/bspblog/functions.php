@@ -357,3 +357,33 @@ add_action('wp_footer', 'remove_ast_container_class');
     return $content;
 }
 add_filter( 'the_content', 'replace_readmore_with_post_date' );*/
+
+function get_breadcrumbs() {
+    $breadcrumbs = '<div class="breadcrumbs">';
+    $breadcrumbs .= '<a href="' . home_url() . '">Home</a>';
+
+    if (is_category() || is_single()) {
+        $category = get_the_category();
+        if ($category) {
+            $breadcrumbs .= '<span class="separator"> > </span>';
+            $breadcrumbs .= '<a href="' . get_category_link($category[0]->term_id) . '">' . $category[0]->name . '</a>';
+        }
+    } elseif (is_page()) {
+        $post = get_post();
+        if ($post->post_parent) {
+            $ancestors = get_post_ancestors($post->ID);
+            $ancestors = array_reverse($ancestors);
+            foreach ($ancestors as $ancestor) {
+                $breadcrumbs .= '<span class="separator"> > </span>';
+                $breadcrumbs .= '<a href="' . get_permalink($ancestor) . '">' . get_the_title($ancestor) . '</a>';
+            }
+        }
+    }
+
+    $breadcrumbs .= '<span class="separator"> > </span>';
+    $breadcrumbs .= '<span class="current">' . get_the_title() . '</span>';
+    $breadcrumbs .= '</div>';
+
+    return $breadcrumbs;
+}
+
