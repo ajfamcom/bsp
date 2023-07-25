@@ -1,5 +1,5 @@
 <?php /**Template Name: Most Popular Posts */?>
-<p><h3>Services And Expertise</h3></p>
+<h3>Services And Expertise</h3>
 <?php
 $args = array(
     'post_type' => 'manage_services',
