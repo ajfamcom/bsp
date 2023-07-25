@@ -61,8 +61,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script>
 	$(document).ready(function(){
+		if (window.innerWidth < 768) {
 		$('.desktop-contact').css('display','none');
 		$('.desktop-subscribe').css('display','none');
+		}
+		else{
+		$('.desktop-contact').css('display','block');
+		$('.desktop-subscribe').css('display','block');
+		}
 	})
 </script>
 	</body>
