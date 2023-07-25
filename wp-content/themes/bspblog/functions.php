@@ -312,10 +312,12 @@ $result =$wpdb->get_results($mquery);
     }
 	if (is_search() && $query->is_main_query() && empty($query->query_vars['s'])) {
         // Set the search query to an arbitrary value to prevent results from showing
-        $query->set('s', '00000');
+        $query->set('s', '');
         
         // Set the search order to none to avoid executing the search query
         $query->set('order', 'none');
+
+		return '';
     }
     
 }
