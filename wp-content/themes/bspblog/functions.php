@@ -294,7 +294,9 @@ function custom_posts_search($search, $query) {
 
 		
       
-        echo $search_term = $query->query_vars['s'];die();     
+         $search_term = $query->query_vars['s'];
+		 echo $search;
+		 die();     
 
 		$mquery='SELECT * FROM wp_posts WHERE (`post_content` LIKE "%'.$search_term.'%" || `post_title` LIKE "%'.$search_term.'%" || `post_excerpt` LIKE "%'.$search_term.'%") AND post_type="wpdmpro" AND post_status="publish" GROUP BY ID';
 		$result =$wpdb->get_results($mquery);	
