@@ -526,7 +526,10 @@ footer {
 .mobile-btns {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+}
+.mobile-btns a {
+    font-size: 13px;
 }
 .ast-mobile-header-wrap .ast-button-wrap .menu-toggle.main-header-menu-toggle {
     border: 1px solid var(--blue);
