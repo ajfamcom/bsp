@@ -14,6 +14,7 @@ if ( 'full-width' === $astra_mobile_header_type ) {
 
 ?>
 <div id="ast-mobile-header" class="ast-mobile-header-wrap " data-type="<?php echo esc_attr( $astra_mobile_header_type ); ?>">
+<div class="col-md-12"><?php echo get_template_part( "template-parts/mobile-header-section" );?></div>
 	<?php
 		do_action( 'astra_mobile_header_bar_top' );
 
