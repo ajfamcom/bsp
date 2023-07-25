@@ -296,6 +296,9 @@ function custom_posts_search($search, $query) {
 
         // Modify the search SQL query to include your custom condition for the post_content field
 // $search = " AND ({$wpdb->posts}.post_content LIKE '%[wpdm_package id=%' AND {$wpdb->posts}.post_status='publish')";
+if (is_search() && !is_admin()) {
+	$query->set('post_type', 'post');
+}
 $mquery='SELECT * FROM wp_posts WHERE (`post_content` LIKE "%'.$search_term.'%" || `post_title` LIKE "%'.$search_term.'%" || `post_excerpt` LIKE "%'.$search_term.'%") AND post_type="wpdmpro" AND post_status="publish" GROUP BY ID';
 $result =$wpdb->get_results($mquery);	
 	
