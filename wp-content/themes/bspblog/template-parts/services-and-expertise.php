@@ -16,7 +16,7 @@ if ($query->have_posts()) {
         
 ?>
     <div class="services-post">
-    <!--<h2><a href="#."><?php //the_title(); ?></a></h2>-->
+    <h2><a href="#."><?php the_title(); ?></a></h2>
 	<div class="services-featured-image">
 	<?php
     if (has_post_thumbnail()) {
