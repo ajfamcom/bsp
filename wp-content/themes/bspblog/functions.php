@@ -292,7 +292,7 @@ function custom_posts_search($search, $query) {
     
     if (is_search() && !empty($query->query_vars['s'])) {
 
-		echo 'case1';die();
+		
       
         $search_term = $query->query_vars['s'];     
 
@@ -313,13 +313,13 @@ function custom_posts_search($search, $query) {
 
 	else if (is_search()  && empty($query->query_vars['s'])) {
 
-		echo 'case2';die();
+	
 		global $wpdb;
         $search = " AND 0 = 1";
 		return $search;
     }
 	else{
-		echo 'case3';die();
+
 	}
     
 }
