@@ -302,11 +302,16 @@ function custom_posts_search($search, $query) {
 	
 	 
 		if($result){
-		 $search ='';	
+			
 		foreach($result as $data){	
 			
-			$search .= " ({$wpdb->posts}.post_type='post') AND ({$wpdb->posts}.post_content LIKE '%[wpdm_package id=\'{$data->ID}\']%')";
+			$search .= "AND ({$wpdb->posts}.post_type='post') AND ({$wpdb->posts}.post_content LIKE '%[wpdm_package id=\'{$data->ID}\']%')";
 		}
+		return $search;
+	   }
+	   else{
+		global $wpdb;
+        $search = " AND 0 = 1";
 		return $search;
 	   }
 		
