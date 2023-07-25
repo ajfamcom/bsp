@@ -391,5 +391,5 @@ function get_breadcrumbs() {
 function custom_content_inside_header() {
     echo '<div class="col-md-12">'.get_template_part( "template-parts/news-header-section" ).'</div>';
 }
-add_action('astra_header', 'custom_content_inside_header');
+add_action('astra_header_before', 'custom_content_inside_header');
 
