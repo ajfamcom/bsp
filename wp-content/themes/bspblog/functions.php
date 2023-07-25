@@ -311,7 +311,7 @@ function custom_posts_search($search, $query) {
 		
     }
 
-	else if (is_search() && $query->is_main_query() && empty($query->query_vars['s'])) {
+	else if (is_search()  && empty($query->query_vars['s'])) {
 
 		echo 'case2';die();
 		global $wpdb;
