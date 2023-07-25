@@ -289,36 +289,38 @@ add_filter('posts_search', 'custom_posts_search', 10, 2);
 function custom_posts_search($search, $query) {
     global $wpdb;
 
-    // Check if the current query is a search query
+    
     if (is_search() && !empty($query->query_vars['s'])) {
-        // Get the search term
-        $search_term = $query->query_vars['s'];
 
-        // Modify the search SQL query to include your custom condition for the post_content field
-// $search = " AND ({$wpdb->posts}.post_content LIKE '%[wpdm_package id=%' AND {$wpdb->posts}.post_status='publish')";
-if (is_search() && !is_admin()) {
-	$query->set('post_type', 'post');
-}
-$mquery='SELECT * FROM wp_posts WHERE (`post_content` LIKE "%'.$search_term.'%" || `post_title` LIKE "%'.$search_term.'%" || `post_excerpt` LIKE "%'.$search_term.'%") AND post_type="wpdmpro" AND post_status="publish" GROUP BY ID';
-$result =$wpdb->get_results($mquery);	
+		echo 'case1';die();
+      
+        $search_term = $query->query_vars['s'];     
+
+		$mquery='SELECT * FROM wp_posts WHERE (`post_content` LIKE "%'.$search_term.'%" || `post_title` LIKE "%'.$search_term.'%" || `post_excerpt` LIKE "%'.$search_term.'%") AND post_type="wpdmpro" AND post_status="publish" GROUP BY ID';
+		$result =$wpdb->get_results($mquery);	
 	
-   
-	if($result){
-		
-    foreach($result as $data){	
-       	
-		$search .= " AND ({$wpdb->posts}.post_content LIKE '%[wpdm_package id=\'{$data->ID}\']%')";
-	}
-	return $search;
-  }
+	
+		if($result){
+			
+		foreach($result as $data){	
+			
+			$search .= " AND ({$wpdb->posts}.post_content LIKE '%[wpdm_package id=\'{$data->ID}\']%')";
+		}
+		return $search;
+	   }
 		
     }
-	if (is_search() && $query->is_main_query() && empty($query->query_vars['s'])) {
+
+	else if (is_search() && $query->is_main_query() && empty($query->query_vars['s'])) {
+
+		echo 'case2';die();
 		global $wpdb;
         $search = " AND 0 = 1";
-
 		return $search;
     }
+	else{
+		echo 'case3';die();
+	}
     
 }
 
