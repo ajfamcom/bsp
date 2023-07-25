@@ -31,6 +31,6 @@ $twentytwentyone_aria_label = ! empty( $args['aria_label'] ) ? 'aria-label="' . 
 <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
     <!-- <label for="search-field">Search:</label> -->
     <input type="search" id="search-field" class="search-field" placeholder="Search" value="<?php echo get_search_query(); ?>" name="s" />
-    <input type="submit" class="search-submit btn btn-primary" value="Search" />
+    <input type="submit" class="search-submit btn btn-primary" value="" />
 </form>
 
