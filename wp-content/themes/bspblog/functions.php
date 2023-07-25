@@ -292,7 +292,7 @@ function custom_posts_search($search, $query) {
     // Check if the current query is a search query
     if (is_search() && !empty($query->query_vars['s'])) {
         // Get the search term
-        echo $search_term = $query->query_vars['s'];die();
+        $search_term = $query->query_vars['s'];
 
         // Modify the search SQL query to include your custom condition for the post_content field
 // $search = " AND ({$wpdb->posts}.post_content LIKE '%[wpdm_package id=%' AND {$wpdb->posts}.post_status='publish')";
