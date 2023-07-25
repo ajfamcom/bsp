@@ -300,12 +300,12 @@ function custom_posts_search($search, $query) {
 		$mquery='SELECT * FROM wp_posts WHERE (`post_content` LIKE "%'.$search_term.'%" || `post_title` LIKE "%'.$search_term.'%" || `post_excerpt` LIKE "%'.$search_term.'%") AND post_type="wpdmpro" AND post_status="publish" GROUP BY ID';
 		$result =$wpdb->get_results($mquery);	
 	
-	
+	 
 		if($result){
-			
+		 $search ='';	
 		foreach($result as $data){	
 			
-			$search .= " AND ({$wpdb->posts}.post_type='post') AND ({$wpdb->posts}.post_content LIKE '%[wpdm_package id=\'{$data->ID}\']%')";
+			$search .= " ({$wpdb->posts}.post_type='post') AND ({$wpdb->posts}.post_content LIKE '%[wpdm_package id=\'{$data->ID}\']%')";
 		}
 		return $search;
 	   }
