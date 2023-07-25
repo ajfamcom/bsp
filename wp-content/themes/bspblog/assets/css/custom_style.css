@@ -538,5 +538,12 @@ footer {
 .single-team-member.col-md-3 {
     display: none;
 }
+.logo {
+    margin-bottom: 4%;
+}
+footer .py-5 {
+    padding-top: 1.5rem!important;
+    padding-bottom: 1.5rem!important;
+}
 }
 /*================================= /media-queries ==================================*/
