@@ -532,5 +532,8 @@ footer {
     border: 1px solid var(--blue);
     border-radius: 4px;
 }
+.single-team-member.col-md-3 {
+    display: none;
+}
 }
 /*================================= /media-queries ==================================*/
