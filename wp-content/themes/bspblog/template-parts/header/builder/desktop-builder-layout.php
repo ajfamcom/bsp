@@ -13,6 +13,7 @@ if ( 'full-width' === $astra_mobile_header_type ) {
 }
 ?>
 <div id="ast-desktop-header" data-toggle-type="<?php echo esc_attr( $astra_mobile_header_type ); ?>">
+<div class="col-md-12"><?php echo get_template_part( "template-parts/news-header-section" );?></div>
 	<?php
 		astra_main_header_bar_top();
 
