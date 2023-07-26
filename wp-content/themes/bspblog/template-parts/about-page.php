@@ -15,7 +15,7 @@
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4 col-12">
-				<img class="bnr-simg" src="<?php bloginfo('template_directory'); ?>/assets/images/about-side-bnrimg.png" alt="side-bnrimg">
+				<img class="img-fluid bnr-simg" src="<?php bloginfo('template_directory'); ?>/assets/images/about-side-bnrimg.png" alt="side-bnrimg">
 			</div>
 		</div>
 	</div>
@@ -25,8 +25,8 @@
 	<div class="row py-md-5 my-md-5">
 		<div class="col-md-5 col-sm-5 col-12">
 			<div class="image-group">
-				<img src="<?php bloginfo('template_directory'); ?>/assets/images/about-img1.png" alt="bodyimage">
-				<img src="<?php bloginfo('template_directory'); ?>/assets/images/about-img2.png" alt="bodyimage">
+				<img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/assets/images/about-img1.png" alt="bodyimage">
+				<img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/assets/images/about-img2.png" alt="bodyimage">
 			</div>
 		</div>
 		<div class="col-md-7 col-sm-7 col-12">
