@@ -40,7 +40,7 @@
 
 <div class="track-record-section">
 	<div class="container py-5">
-		<div class="row py-md-5 my-md-5">
+		<div class="row">
 			<div class="col-12 text-center">
 				<h1>A Proven Track Record</h1>
 				<p class="subtitle">We work with a large number of clients from various industries, including:</p>
