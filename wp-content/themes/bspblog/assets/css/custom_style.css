@@ -455,6 +455,19 @@ footer {
 }
 /*================== /footer =====================*/
 
+/*------ about-us ------*/
+.inner-bnr {
+    max-height: 300px;
+    min-height: 300px;
+}
+.inner-bnr.about-bnr {
+    background-image: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(../images/about-bnr.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/*----- /about-us ------*/
+
 /*================================== media-queries ==================================*/
 @media screen and (max-width: 768px) and (min-width:320px) {
 h1, .entry-content h1 {
