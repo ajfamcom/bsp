@@ -15,56 +15,25 @@
 			</div>
 		</div>
 		<div class="col-md-4 col-sm-4 col-12">
-			<img class="bnr-simg" src="<?php bloginfo('template_directory'); ?>/assets/images/about-side-bnrimg.png">
+			<img class="bnr-simg" src="<?php bloginfo('template_directory'); ?>/assets/images/about-side-bnrimg.png" alt="side-bnrimg">
 		</div>
 		</div>
 	</div>
 </div>
 
-<div class="container">
-	<div class="col-md-12">
-		<div class="row">
-			<?php
-			$args = array(
-				'post_type'      => 'team_members',
-				'posts_per_page' => -1,
-				'meta_query'     => array(
-					array(
-						'key'     => 'member_status',
-						'value'   => 'Active',
-						'compare' => '='
-					),
-					array(
-						'key'     => 'member_display_on_homepage',
-						'value'   => 'Yes',
-						'compare' => '='
-					),
-				),
-				'meta_key'       => 'member_sort_order',
-				'orderby'        => 'meta_value_num',
-				'order'          => 'ASC',
-			);
-
-			$query = new WP_Query($args);
-
-			if ($query->have_posts()) :
-				while ($query->have_posts()) :
-					$query->the_post();
-					$post_id = get_the_ID();
-					$fullname = get_field('full_name', $post_id);
-					$education = get_field('education', $post_id);
-					$designation = get_field('designation', $post_id);
-					$image = get_field('profile_image', $post_id);
-			?>
-					<div class="single-team-member col-md-4">
-						<div class="member-image-square"><img src="<?php echo $image['url']; ?>" /></div>
-						<h4 class="member-details"><span class="member-name"><?php echo $fullname; ?></span>,<span class="member-education"><?php echo $education; ?></span></h4>
-						<p class="other-details"><span class="member-position"><?php echo $designation; ?></span></p>
-						<p class="bio"><a href="#.">Full Bio -></a></p>
-					</div>
-				<?php endwhile; ?>
-			<?php endif; ?>
+<div class="container py-5">
+	<div class="row py-md-5 my-md-5">
+		<div class="col-md-5 col-sm-5 col-12">
+			<div class="image-group">
+				<img src="<?php bloginfo('template_directory'); ?>/assets/images/about-img1.png" alt="bodyimage">
+				<img src="<?php bloginfo('template_directory'); ?>/assets/images/about-img2.png" alt="bodyimage">
+			</div>
 		</div>
-
+		<div class="col-md-7 col-sm-7 col-12">
+			<h2>Cultural Competence in Today's America</h2>
+			<p>For the past 20 years, we have helped political, corporate and community-based organizations understand a diverse America, and craft the best messages to communicate. Our process is designed to work with you, solicit your input, so we can empower your organization with the specific and customized messages, data and tools needed to succeed. Our team deeply understands the diversity that is America today.</p>
+			<h2>Our Analytical Approach</h2>
+			<p>Bad data is worse than just guessing, it leads you to the wrong conclusions. Our first priority is to make sure we have accurate, culturally competent and representative data to inform our models and analysis.  Today, there is vast variability in the quality of data, especially when it comes to Latinos, immigrants and under-represented Americans.  Do not accept low quality data to inform your project.  Our data scientists have quite literally written the book on research methodology, modeling and data analytics of communities of color.</p>
+		</div>
 	</div>
 </div>
