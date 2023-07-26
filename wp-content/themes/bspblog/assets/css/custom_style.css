@@ -531,6 +531,10 @@ footer {
     color: var(--orange);
     margin-bottom: 7%;
 }
+.track-record-section .subtitle {
+    font-size: 20px;
+    margin-bottom: 0;
+}
 /*----- /about-us ------*/
 
 /*================================== media-queries ==================================*/
