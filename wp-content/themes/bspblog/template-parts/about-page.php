@@ -49,25 +49,25 @@
 
 		<div class="row">
 
-			<div class="col-md-3 col-sm-4 col-12 my-4">
+			<div class="col-md-3 col-sm-4 col-12 my-2 my-md-4">
 				<div class="track-div">
 					<i class="fa-regular fa-circle-check"></i>
 					<h4>Political Campaigns</h4>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-4 col-12 my-5">
+			<div class="col-md-3 col-sm-4 col-12 my-2 my-md-5">
 				<div class="track-div">
 					<i class="fa-regular fa-circle-check"></i>
 					<h4>Issue Advocacy Groups</h4>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-4 col-12 my-4">
+			<div class="col-md-3 col-sm-4 col-12 my-2 my-md-4">
 				<div class="track-div">
 					<i class="fa-regular fa-circle-check"></i>
 					<h4>Civic Engagement Orgs</h4>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-4 col-12 my-5">
+			<div class="col-md-3 col-sm-4 col-12 my-2 my-md-5">
 				<div class="track-div">
 					<i class="fa-regular fa-circle-check"></i>
 					<h4>Media</h4>
