@@ -505,6 +505,14 @@ footer {
       -o-transform: translateY(-15px);
 }
   }
+  .image-group {
+    position: relative;
+}
+.image-group img:last-child {
+    position: absolute;
+    right: 20px;
+    top: 50px;
+}
 /*----- /about-us ------*/
 
 /*================================== media-queries ==================================*/
