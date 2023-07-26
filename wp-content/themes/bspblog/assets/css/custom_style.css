@@ -459,13 +459,29 @@ footer {
 .inner-bnr {
     max-height: 300px;
     min-height: 300px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.inner-bnr .breadcrumbs {
+    position: absolute;
+    top: 25px;
+    color: var(--orange);
+}
+.inner-bnr .breadcrumbs a {
+    color: #fff;
+}
+.inner-bnr .page-title h3 {
+    font-size: 62px;
+    color: #fff !important;
 }
 .inner-bnr.about-bnr {
     background-image: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(../images/about-bnr.jpg);
-    background-position: center;
+    background-position: 100% 25%;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 /*----- /about-us ------*/
 
 /*================================== media-queries ==================================*/
