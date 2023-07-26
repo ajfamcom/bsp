@@ -3,12 +3,17 @@
 
 ?>
 <?php get_header();?>
-<div class="col-md-12">
-	<div class="row page-banner" style='height: 200px; background-image: url(<?php echo bloginfo("template_directory")."/assets/images/banner-img.jpg";?>);'>
+<div class="inner-bnr about-bnr">
+	<div class="container">
+	<div class="col-md-12">
+	<div class="row page-banner">
 		<?php echo get_breadcrumbs(); ?>
 		<div class="page-title"><h3><?php echo get_the_title(); ?></h3></div>
 	</div>
 </div>
+	</div>
+</div>
+
 <div class="container">	
 	<div class="col-md-12">
 		<div class="row">
