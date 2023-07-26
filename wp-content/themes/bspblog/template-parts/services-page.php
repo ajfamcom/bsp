@@ -31,7 +31,7 @@
 			<h2>Data Analytics and Modeling</h2>
 			<p>Big data can be overwhelming. Our team of data scientists have pioneered some of the leading methodology and statistical techniques to best assess large datasets and distill them into digestible patterns</p>
 			<h2>Focus Groups and Qualitative</h2>
-			<p class="mb-0">Whether it is at the start of a new project, or to wrap up a quantitative study, having in-depth conversations with everyday people is crucial to telling the full story and going beyond numbers. We have extensive experience with qualitative research, including focusing in on diverse and underrepresented populations.</p>
+			<p class="mb-5 mb-md-0">Whether it is at the start of a new project, or to wrap up a quantitative study, having in-depth conversations with everyday people is crucial to telling the full story and going beyond numbers. We have extensive experience with qualitative research, including focusing in on diverse and underrepresented populations.</p>
 		</div>
 		<div class="col-md-6 col-sm-6 col-12">
 				<img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/assets/images/services-pageimg.png" alt="bodyimage">
