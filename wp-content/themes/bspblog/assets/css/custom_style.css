@@ -513,6 +513,24 @@ footer {
     right: 20px;
     top: 50px;
 }
+.track-record-section {
+    background: #f7f7f7;
+    padding: 60px 0;
+}
+.track-div {
+    background: #fff;
+    text-align: center;
+    padding: 40px 0;
+}
+.track-div h4 {
+    font-size: 20px;
+    color: #333 !important;
+}
+.track-div .fa-circle-check {
+    font-size: 52px;
+    color: var(--orange);
+    margin-bottom: 7%;
+}
 /*----- /about-us ------*/
 
 /*================================== media-queries ==================================*/

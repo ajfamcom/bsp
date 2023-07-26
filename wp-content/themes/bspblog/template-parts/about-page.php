@@ -21,7 +21,7 @@
 	</div>
 </div>
 
-<div class="container py-5">
+<div class="container py-5 my-md-5">
 	<div class="row py-md-5 my-md-5">
 		<div class="col-md-5 col-sm-5 col-12">
 			<div class="image-group">
@@ -76,8 +76,8 @@
 		</div>
 
 		<div class="row">
-			<div class="col-12">
-				<p>Our political experts are ready assist you in developing a plan that drives helps you achieve your goals. In addition to delivering high quality research to our clients, we can work directly with our extensive political and media contacts to make sure your results penetrate the bubble and help inform the highest level decisions makers.</p>
+			<div class="col-12 text-center">
+				<p class="mb-0">Our political experts are ready assist you in developing a plan that drives helps you achieve your goals. In addition to delivering high quality research to our clients, we can work directly with our extensive political and media contacts to make sure your results penetrate the bubble and help inform the highest level decisions makers.</p>
 			</div>
 		</div>
 	</div>
