@@ -22,7 +22,7 @@
 </div>
 
 <div class="container py-5 my-md-5">
-	<div class="row py-md-5 my-md-5">
+	<div class="row align-items-center py-md-5 my-md-5">
 		<div class="col-md-6 col-sm-6 col-12">
 			<h2>Public Opinion Polling</h2>
 			<p>Whether you are interested in a statewide sample or drilling down in Latinos, our firm has expertise in sample, mixed-mode methodology, and helping you understand and analyze public opinion</p>
