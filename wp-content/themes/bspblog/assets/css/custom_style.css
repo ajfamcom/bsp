@@ -467,6 +467,12 @@ footer {
     position: absolute;
     top: 25px;
     color: var(--orange);
+    font-size: 18px;
+}
+.inner-bnr .breadcrumbs i {
+    font-size: 13px;
+    margin: 0 3px;
+    color: #ffff;
 }
 .inner-bnr .breadcrumbs a {
     color: #fff;
@@ -476,7 +482,7 @@ footer {
     color: #fff !important;
 }
 .inner-bnr.about-bnr {
-    background-image: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(../images/about-bnr.jpg);
+    background-image: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../images/about-bnr.jpg);
     background-position: 100% 25%;
     background-repeat: no-repeat;
     background-size: cover;
