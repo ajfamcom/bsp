@@ -487,7 +487,20 @@ footer {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+.inner-bnr .bnr-simg {
+    position: absolute;
+    top: 80px;
+    animation: moveUpDown 100ms ease;
+    -webkit-animation: moveUpDown 100ms ease;
+}
+@keyframes moveUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
 /*----- /about-us ------*/
 
 /*================================== media-queries ==================================*/
