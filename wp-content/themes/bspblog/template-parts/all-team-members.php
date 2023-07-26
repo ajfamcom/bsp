@@ -3,14 +3,27 @@
 
 ?>
 <?php get_header();?>
-<div class="col-md-12">
-	<div class="row page-banner" style='height: 200px; background-image: url(<?php echo bloginfo("template_directory")."/assets/images/banner-img.jpg";?>);'>
-		<?php echo get_breadcrumbs(); ?>
-		<div class="page-title"><h3><?php echo get_the_title(); ?></h3></div>
+
+<div class="inner-bnr team-bnr">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-sm-8 col-12">
+				<div class="row page-banner">
+					<?php echo get_breadcrumbs(); ?>
+					<div class="page-title">
+						<h3><?php echo get_the_title(); ?></h3>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 col-12">
+				<img class="img-fluid bnr-simg" src="<?php bloginfo('template_directory'); ?>/assets/images/team-side-bnrimg.png" alt="side-bnrimg">
+			</div>
+		</div>
 	</div>
 </div>
+
 <div class="container">	
-	<div class="col-md-12">
+	<div class="col-md-12 py-5">
 		<div class="row">
 			<?php
 			$args = array(
