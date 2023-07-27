@@ -31,7 +31,7 @@
 	<div class="col-md-12 py-5">
 		<div class="row">			
 							<div class="single-team-member col-md-4">
-                            <h4 class="member-details"><span class="member-name"><?php //echo $fullname; ?></span>,<span class="member-education"><?php echo //$education;?></span></h4>
+                            <h4 class="member-details"><span class="member-name"><?php //echo $fullname; ?></span>,<span class="member-education"><?php //echo //$education;?></span></h4>
 							<div class="member-image-square"><img src="<?php //echo $image['url'];?>" /></div></div>
                             <div class="single-team-member col-md-8">								
 								<p class="other-details"><span class="member-position"><?php //echo $designation;?></span></p>
