@@ -672,14 +672,21 @@ footer {
     font-size: 20px;
 }
 .-single-member-image p {
-    margin: 10px 0;
+    margin: 7px 0;
     font-size: 18px;
     color: #333;
+    text-align: left;
+    background: #f2f2f2;
+    padding: 8px;
 }
 .-single-member-image p .fa {
-    color: var(--orange);
+    color: #fff;
     margin-right: 6px;
     vertical-align: middle;
+    background: var(--orange);
+    padding: 8px;
+    border-radius: 50px;
+    font-size: 14px;
 }
 .-single-member-image p a {
     color: #333;
