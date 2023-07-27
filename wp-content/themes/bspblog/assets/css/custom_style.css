@@ -656,8 +656,11 @@ footer {
     gap: 20px;
 }
 .single-member-info .other-details {
-    font-size: 24px;
-    margin-bottom: 0px;
+    font-size: 20px;
+    margin-bottom: 1em;
+}
+.single-member-info p {
+    margin-bottom: 1em;
 }
 .single-inner-bnr .breadcrumbs {
     margin-bottom: 15px;
@@ -677,5 +680,8 @@ footer {
     color: var(--orange);
     margin-right: 6px;
     vertical-align: middle;
+}
+.-single-member-image p a {
+    color: #333;
 }
 /*---- /our-team-page -----*/
