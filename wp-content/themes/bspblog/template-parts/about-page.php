@@ -6,9 +6,8 @@
 $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
-if ($query->have_posts()) :
-	while ($query->have_posts()) :
-		$query->the_post();
+
+		
 		$post_id = get_the_ID();
 		$top_image_one = get_field('top_image_one', $post_id);
 		$top_image_two = get_field('top_image_two', $post_id);
@@ -21,8 +20,7 @@ if ($query->have_posts()) :
 		$proven_track_record_three=get_field('proven_track_record_three', $post_id);
 		$proven_track_record_four=get_field('proven_track_record_four', $post_id);
 		$concluding_para=get_field('concluding_para', $post_id);
-	endwhile;
-endif;	
+		
 ?>
 
 <div class="inner-bnr about-bnr" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<?php echo $full_banner['url']; ?>')">
