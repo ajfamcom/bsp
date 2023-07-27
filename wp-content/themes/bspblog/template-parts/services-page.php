@@ -48,7 +48,13 @@ if ($query->have_posts()) {
 ?>  			
 		</div>
 		<div class="col-md-6 col-sm-6 col-12">
-				<img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/assets/images/services-pageimg.png" alt="bodyimage">
+		     <?php
+				$post_id = get_the_ID();
+				if (has_post_thumbnail($post_id)) {   
+					$thumbnail_url = get_the_post_thumbnail_url($post_id, 'full');    
+					echo '<img class="img-fluid" src="' . esc_url($thumbnail_url) . '" alt="' . get_the_title() . '">';
+				}
+             ?>
 		</div>
 	</div>
 </div>
