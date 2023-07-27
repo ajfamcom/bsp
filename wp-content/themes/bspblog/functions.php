@@ -411,7 +411,7 @@ add_filter('the_title', 'remove_extra_p_tags_from_title');
 
 function get_custom_page_id($custom_post_type,$parent_slug){
 
-	$rewrite_slug = get_post_type_object($custom_post_type)->rewrite['slug'];	
+	/*$rewrite_slug = get_post_type_object($custom_post_type)->rewrite['slug'];	
 	$page = get_page_by_path($parent_slug);
 	
 	if ($page) {
@@ -420,8 +420,22 @@ function get_custom_page_id($custom_post_type,$parent_slug){
 		
 	} else {
     $page_id =0;
-}
+}*/
+// Get the post type object for the custom post type
+$post_type_object = get_post_type_object($custom_post_type);
 
+
+if ($post_type_object->hierarchical && $post_type_object->parent) {
+  
+    $parent_post_type_object = get_post_type_object($post_type_object->parent);
+
+    
+    $parent_slug = $parent_post_type_object->rewrite['slug'];
+    echo 'Parent Slug: ' . $parent_slug;die();
+} else {
+    
+    $page_id =0;
+}
 return $page_id;
 }
 
