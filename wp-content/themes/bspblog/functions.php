@@ -388,7 +388,7 @@ function get_breadcrumbs() {
 }
 
 
-function remove_extra_p_tags($content) {
+/*function remove_extra_p_tags($content) {
    
     $content = preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/i', '$1$2$3', $content);
 
@@ -398,7 +398,7 @@ function remove_extra_p_tags($content) {
 
     return $content;
 }
-add_filter('the_content', 'remove_extra_p_tags');
+add_filter('the_content', 'remove_extra_p_tags');*/
 
 function remove_extra_p_tags_from_title($title) {
     // Remove <p> and <div> tags from the beginning and end of the title
