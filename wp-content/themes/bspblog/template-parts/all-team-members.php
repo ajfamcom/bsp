@@ -61,7 +61,7 @@
 								<div class="member-image-square"><img src="<?php echo $image['url'];?>" /></div>
 								<h4 class="member-details"><span class="member-name"><?php echo $fullname; ?></span>,<span class="member-education"><?php echo $education;?></span></h4>
 								<p class="other-details"><span class="member-position"><?php echo $designation;?></span></p>
-								<p class="bio"><a href="<?php echo site_url('single-team-member').'?id='.$post_id;?>">Full Bio -></a></p>
+								<p class="bio"><a href="<?php the_permalink();?>">Full Bio -></a></p>
 							</div>
 					<?php endwhile; ?>
 			<?php endif;?>
