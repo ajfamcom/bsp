@@ -497,7 +497,7 @@ footer {
     margin: 0 !important;
 }
 .inner-bnr.about-bnr {
-    background-image: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../images/about-bnr.jpg);
+    
     background-position: 100% 25%;
     background-repeat: no-repeat;
     background-size: cover;
