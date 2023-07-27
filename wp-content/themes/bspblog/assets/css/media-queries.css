@@ -119,6 +119,16 @@ footer .py-5 {
 .track-record-section {
     padding: 10px 0;
 }
+.single-team-mem-content {
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.single-team-mem-content .-single-member-image {
+    flex-basis: 100%;
+}
+.single-member-info {
+    flex-basis: 100%;
+}
 /*---- /about-page -----*/
 }
 /*================================= /media-queries ==================================*/

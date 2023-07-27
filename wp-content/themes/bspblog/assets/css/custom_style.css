@@ -661,4 +661,10 @@ footer {
 .single-inner-bnr .breadcrumbs {
     margin-bottom: 15px;
 }
+.single-member-info p:last-child {
+    margin-bottom: 0px;
+}
+.single-member-info .other-details {
+    font-size: 20px;
+}
 /*---- /our-team-page -----*/
