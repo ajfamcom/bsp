@@ -388,8 +388,16 @@ function get_breadcrumbs() {
 }
 
 
-/*function custom_content_inside_header() {
-    echo '<div class="col-md-12">'.get_template_part( "template-parts/news-header-section" ).'</div>';
+function remove_extra_p_tags($content) {
+   
+    $content = preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/i', '$1$2$3', $content);
+
+    
+    $content = preg_replace('/<p>\s*(.*)\s*<\/p>/i', '$1', $content);
+    $content = preg_replace('/<div>\s*(.*)\s*<\/div>/i', '$1', $content);
+
+    return $content;
 }
-add_action('astra_header', 'custom_content_inside_header');*/
+add_filter('the_content', 'remove_extra_p_tags');
+
 
