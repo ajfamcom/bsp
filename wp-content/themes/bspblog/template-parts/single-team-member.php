@@ -1,6 +1,11 @@
 <?php
 /* Template Name:Single team Member  */
-echo $_GET['id'];
+ 
+$post_id = $_GET['id'];
+						$fullname = get_field('full_name', $post_id);
+						$education = get_field('education', $post_id);
+						$designation = get_field('designation', $post_id);
+						$image = get_field('profile_image', $post_id);
 ?>
 <?php get_header();?>
 
@@ -26,11 +31,11 @@ echo $_GET['id'];
 	<div class="col-md-12 py-5">
 		<div class="row">			
 							<div class="single-team-member col-md-4">
-                            <h4 class="member-details"><span class="member-name"><?php //echo $fullname; ?></span>,<span class="member-education"><?php echo $education;?></span></h4>
-							<div class="member-image-square"><img src="<?php //echo $image['url'];?>" /></div></div>
+                            <h4 class="member-details"><span class="member-name"><?php echo $fullname; ?></span>,<span class="member-education"><?php echo $education;?></span></h4>
+							<div class="member-image-square"><img src="<?php echo $image['url'];?>" /></div></div>
                             <div class="single-team-member col-md-8">								
-								<p class="other-details"><span class="member-position"><?php //echo $designation;?></span></p>
-								<p class="bio"><a href="#.">Content here</a></p>
+								<p class="other-details"><span class="member-position"><?php echo $designation;?></span></p>
+								<p class="bio"><?php the_content();?></p>
 							</div>
 					
         </div>
