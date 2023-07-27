@@ -51,9 +51,9 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 		</div>
 		<div class="col-md-7 col-sm-7 col-12">
 			<h2><?php echo $first_para_title;?></h2>
-			<p><?php echo $first_para_description;?></p>
+			<?php echo $first_para_description;?>
 		    <h2><?php echo $second_para_title;?></h2>
-			<p><?php echo $second_para_description;?></p>
+			<?php echo $second_para_description;?>
 		</div>
 	</div>
 </div>
