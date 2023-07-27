@@ -21,7 +21,7 @@ $args = array(
      } 
 ?> 
 
-<div class="banner-section" style="background-image: url('<?php echo $thumbnail_url; ?>'); background-size: cover; width: 400px; height: 300px;">
+<div class="banner-section" style="background-image: url('<?php echo $thumbnail_url; ?>'); background-size: cover;">
 	    <?php	
 			get_template_part( 'template-parts/home-top-section' );
 		?>
