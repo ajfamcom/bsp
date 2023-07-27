@@ -8,7 +8,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 if (have_posts()) :
     while (have_posts()) : the_post();
         $post_id = get_the_ID();
-
+		echo $parent_page_id = wp_get_post_parent_id($post_id);
 						$fullname = get_field('full_name', $post_id);
 						$education = get_field('education', $post_id);
 						$designation = get_field('designation', $post_id);
