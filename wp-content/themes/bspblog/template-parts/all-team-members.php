@@ -1,6 +1,8 @@
 <?php
 /* Template Name:All team Members  */
-
+$page_id = get_the_ID();
+$full_banner = get_field('full_banner', $page_id);
+$image_over_banner = get_field('image_over_banner', $page_id);
 ?>
 <?php get_header();?>
 
@@ -16,7 +18,7 @@
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4 col-12">
-				<img class="img-fluid bnr-simg" src="<?php bloginfo('template_directory'); ?>/assets/images/team-side-bnrimg.png" alt="side-bnrimg">
+				<img class="img-fluid bnr-simg" src="<?php echo $image_over_banner['url'];?>" alt="side-bnrimg">
 			</div>
 		</div>
 	</div>

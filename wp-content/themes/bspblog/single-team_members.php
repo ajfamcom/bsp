@@ -1,5 +1,8 @@
 <?php
 /* Template Name:Custom Team Members Template  */
+$page_id = get_the_ID();
+$full_banner = get_field('full_banner', $page_id);
+$image_over_banner = get_field('image_over_banner', $page_id);
 if (have_posts()) :
     while (have_posts()) : the_post();
         $post_id = get_the_ID();
@@ -13,7 +16,7 @@ endif;
 ?>
 <?php get_header();?>
 
-<div class="inner-bnr team-bnr">
+<div class="inner-bnr team-bnr" style="background-image: url('<?php echo $full_banner; ?>'); background-size: cover;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-sm-8 col-12">
@@ -25,7 +28,7 @@ endif;
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4 col-12">
-				<img class="img-fluid bnr-simg" src="<?php bloginfo('template_directory'); ?>/assets/images/team-side-bnrimg.png" alt="side-bnrimg">
+				<img class="img-fluid bnr-simg" src="<?php echo $image_over_banner['url'];?>" alt="side-bnrimg">
 			</div>
 		</div>
 	</div>
