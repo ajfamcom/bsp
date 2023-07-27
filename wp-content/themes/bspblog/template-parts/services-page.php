@@ -1,6 +1,8 @@
 <?php
 /* Template Name: Services Template */
-
+$page_id = get_the_ID();
+$full_banner = get_field('full_banner', $page_id);
+$image_over_banner = get_field('image_over_banner', $page_id);
 ?>
 <?php get_header(); ?>
 <div class="inner-bnr services-bnr">
@@ -15,7 +17,7 @@
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4 col-12">
-				<!--<img class="img-fluid bnr-simg" src="<?php //bloginfo('template_directory'); ?>/assets/images/services-side-bnrimg.png" alt="side-bnrimg">-->
+				<img class="img-fluid bnr-simg" src="<?php echo $image_over_banner['url'];?>" alt="side-bnrimg">
 			</div>
 		</div>
 	</div>
@@ -49,9 +51,9 @@ if ($query->have_posts()) {
 		</div>
 		<div class="col-md-6 col-sm-6 col-12">
 		     <?php
-				$post_id = get_the_ID();
-				if (has_post_thumbnail($post_id)) {   
-					$thumbnail_url = get_the_post_thumbnail_url($post_id, 'full');    
+				
+				if (has_post_thumbnail($page_id)) {   
+					$thumbnail_url = get_the_post_thumbnail_url($page_id, 'full');    
 					echo '<img class="img-fluid" src="' . esc_url($thumbnail_url) . '" alt="' . get_the_title() . '">';
 				}
              ?>
