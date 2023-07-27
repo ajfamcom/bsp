@@ -658,4 +658,7 @@ footer {
     font-size: 24px;
     margin-bottom: 0px;
 }
+.single-inner-bnr .breadcrumbs {
+    margin-bottom: 15px;
+}
 /*---- /our-team-page -----*/
