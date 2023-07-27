@@ -5,6 +5,7 @@ $post_id = get_the_ID();
 $post_data = get_post($post_id);
 
 // Check if the post has a parent
+print_r($post_data);
 $parent_page_id = $post_data->post_parent;
 echo $page_id = $parent_page_id;
 $full_banner = get_field('full_banner', $page_id);
