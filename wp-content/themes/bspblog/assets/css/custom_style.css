@@ -615,4 +615,32 @@ footer {
     font-weight: bold;
     margin-left: 2%;
 }
+
+
+.single-inner-bnr {
+    background: #f2f2f2;
+    padding: 30px 0;
+}
+.single-inner-bnr .breadcrumbs a {
+    color: #333;
+}
+.single-inner-bnr .breadcrumbs span.separator {
+    font-size: 10px;
+    margin: 0 5px;
+}
+.single-inner-bnr .breadcrumbs span.current {
+    color: var(--orange);
+}
+.single-inner-bnr .page-title {
+    margin: 0;
+}
+.-single-member-image {
+    width: 30%;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+.single-member-info {
+    float: left;
+}
 /*---- /our-team-page -----*/
