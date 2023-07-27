@@ -6,6 +6,23 @@
 $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
+if ($query->have_posts()) :
+	while ($query->have_posts()) :
+		$query->the_post();
+		$post_id = get_the_ID();
+		$top_image_one = get_field('top_image_one', $post_id);
+		$top_image_two = get_field('top_image_two', $post_id);
+		$first_para_title = get_field('first_para_title', $post_id);
+		$first_para_description = get_field('first_para_description', $post_id);
+		$second_para_title = get_field('second_para_title', $post_id);
+		$second_para_description = get_field('second_para_description', $post_id);
+		$proven_track_record_one=get_field('proven_track_record_one', $post_id);
+		$proven_track_record_two=get_field('proven_track_record_two', $post_id);
+		$proven_track_record_three=get_field('proven_track_record_three', $post_id);
+		$proven_track_record_four=get_field('proven_track_record_four', $post_id);
+		$concluding_para=get_field('concluding_para', $post_id);
+	endwhile;
+endif;	
 ?>
 
 <div class="inner-bnr about-bnr" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<?php echo $full_banner['url']; ?>')">
@@ -20,7 +37,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4 col-12">
-				<img class="img-fluid bnr-simg" src="<?php bloginfo('template_directory'); ?>/assets/images/about-side-bnrimg.png" alt="side-bnrimg">
+				<img class="img-fluid bnr-simg" src="<?php echo $image_over_banner['url'];?>" alt="side-bnrimg">
 			</div>
 		</div>
 	</div>
@@ -30,15 +47,15 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 	<div class="row py-md-5 my-md-5">
 		<div class="col-md-5 col-sm-5 col-12">
 			<div class="image-group">
-				<img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/assets/images/about-img1.png" alt="bodyimage">
-				<img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/assets/images/about-img2.png" alt="bodyimage">
+				<img class="img-fluid" src="<?php $top_image_one['url']; ?>" alt="bodyimage">
+				<img class="img-fluid" src="<?php $top_image_two['url']; ?>" alt="bodyimage">
 			</div>
 		</div>
 		<div class="col-md-7 col-sm-7 col-12">
-			<h2>Cultural Competence in Today's America</h2>
-			<p>For the past 20 years, we have helped political, corporate and community-based organizations understand a diverse America, and craft the best messages to communicate. Our process is designed to work with you, solicit your input, so we can empower your organization with the specific and customized messages, data and tools needed to succeed. Our team deeply understands the diversity that is America today.</p>
-			<h2>Our Analytical Approach</h2>
-			<p>Bad data is worse than just guessing, it leads you to the wrong conclusions. Our first priority is to make sure we have accurate, culturally competent and representative data to inform our models and analysis. Today, there is vast variability in the quality of data, especially when it comes to Latinos, immigrants and under-represented Americans. Do not accept low quality data to inform your project. Our data scientists have quite literally written the book on research methodology, modeling and data analytics of communities of color.</p>
+			<h2><?php echo $first_para_title;?></h2>
+			<p><?php echo $first_para_description;?></p>
+		    <h2><?php echo $second_para_title;?></h2>
+			<p><?php echo $second_para_description;?></p>
 		</div>
 	</div>
 </div>
@@ -57,32 +74,32 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 			<div class="col-md-3 col-sm-4 col-12 my-2 my-md-4">
 				<div class="track-div">
 					<i class="fa-regular fa-circle-check"></i>
-					<h4>Political Campaigns</h4>
+					<h4><?php echo $proven_track_record_one; ?></h4>
 				</div>
 			</div>
 			<div class="col-md-3 col-sm-4 col-12 my-2 my-md-5">
 				<div class="track-div">
 					<i class="fa-regular fa-circle-check"></i>
-					<h4>Issue and Community Advocacy Groups</h4>
+					<h4><?php echo $proven_track_record_two; ?></h4>
 				</div>
 			</div>
 			<div class="col-md-3 col-sm-4 col-12 my-2 my-md-4">
 				<div class="track-div">
 					<i class="fa-regular fa-circle-check"></i>
-					<h4>Academics/Researchers</h4>
+					<h4><?php echo $proven_track_record_three; ?></h4>
 				</div>
 			</div>
 			<div class="col-md-3 col-sm-4 col-12 my-2 my-md-5">
 				<div class="track-div">
 					<i class="fa-regular fa-circle-check"></i>
-					<h4>Media</h4>
+					<h4><?php echo $proven_track_record_four; ?></h4>
 				</div>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-12 text-center">
-				<p class="mb-0">Our political experts are ready assist you in developing a plan that drives helps you achieve your goals. In addition to delivering high quality research to our clients, we can work directly with our extensive political and media contacts to make sure your results penetrate the bubble and help inform the highest level decisions makers.</p>
+				<p class="mb-0"><?php echo $concluding_para; ?></p>
 			</div>
 		</div>
 	</div>
