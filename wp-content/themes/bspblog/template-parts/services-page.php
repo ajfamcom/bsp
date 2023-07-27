@@ -40,7 +40,7 @@ if ($query->have_posts()) {
         
 ?>
 			<h2><?php the_title(); ?></h2>
-			<p><?php the_content();?></p>
+			<?php the_content();?>
 			<?php
     }
  wp_reset_postdata();    
