@@ -16,7 +16,7 @@ endif;
 ?>
 <?php get_header();?>
 
-<div class="inner-bnr team-bnr" style="background-image: url('<?php echo $full_banner; ?>');">
+<div class="inner-bnr team-bnr" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<?php echo $full_banner['url']; ?>')">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-sm-8 col-12">
