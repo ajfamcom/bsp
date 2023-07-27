@@ -40,8 +40,8 @@ endif;
 				<div class="single-team-mem-content">
 					<div class="-single-member-image">
 					<img src="<?php echo $image['url']; ?>" />
-				    <p><i class="fa-regular fa-circle-check"></i><?php echo $contact_email ;?></p>
-					<p><i class="fa-regular fa-circle-check"></i><?php echo $contact_phone ;?></p>
+				    <p><i class="fa fa-envelope"></i><?php echo $contact_email ;?></p>
+					<p><i class="fa fa-phone"></i><?php echo $contact_phone ;?></p>
 				    </div>
 					<div class="single-member-info">
 						<h1 class="member-details"><span class="member-name"><?php echo $fullname; ?></span>,<span class="member-education"><?php echo $education; ?></span></h1>
