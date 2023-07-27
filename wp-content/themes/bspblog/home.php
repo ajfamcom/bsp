@@ -3,9 +3,25 @@
  * Template Name:Home
  */
 get_header(); ?>
+<?php
+$args = array(
+        'post_type' => 'custom_content',
+        'posts_per_page' => -1,      
+    );
+    
+    $query = new WP_Query($args);    
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();  
+            $post_id = get_the_ID();
+            if (has_post_thumbnail($post_id)) {   
+	    $thumbnail_url = get_the_post_thumbnail_url($post_id, 'full');
+            }
+         }
+     } 
+?> 
 
-
-<div class="banner-section">
+<div class="banner-section" style="background-image: url('<?php echo $thumbnail_url; ?>'); background-size: cover; width: 400px; height: 300px;">
 	    <?php	
 			get_template_part( 'template-parts/home-top-section' );
 		?>
