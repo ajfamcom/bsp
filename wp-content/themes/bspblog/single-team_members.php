@@ -10,6 +10,8 @@ if (have_posts()) :
 		$education = get_field('education', $post_id);
 		$designation = get_field('designation', $post_id);
 		$image = get_field('profile_image', $post_id);
+		$contact_email = get_field('contact_email', $post_id);
+		$contact_phone = get_field('contact_phone', $post_id);
 	endwhile;
 endif;
 ?>
@@ -36,7 +38,11 @@ endif;
 
 			<div class="single-team-member col-12">
 				<div class="single-team-mem-content">
-					<div class="-single-member-image"><img src="<?php echo $image['url']; ?>" /></div>
+					<div class="-single-member-image">
+					<img src="<?php echo $image['url']; ?>" />
+				    <p><i class="fa-regular fa-circle-check"></i><?php echo $contact_email ;?></p>
+					<p><i class="fa-regular fa-circle-check"></i><?php echo $contact_phone ;?></p>
+				    </div>
 					<div class="single-member-info">
 						<h1 class="member-details"><span class="member-name"><?php echo $fullname; ?></span>,<span class="member-education"><?php echo $education; ?></span></h1>
 						<p class="other-details"><span class="member-position"><?php echo $designation; ?></span></p>
