@@ -56,12 +56,14 @@
 						$education = get_field('education', $post_id);
 						$designation = get_field('designation', $post_id);
 						$image = get_field('profile_image', $post_id);
+						$permalink = get_permalink($post_id);
+
 						?> 
 							<div class="single-team-member col-md-4">
 								<div class="member-image-square"><img src="<?php echo $image['url'];?>" /></div>
 								<h4 class="member-details"><span class="member-name"><?php echo $fullname; ?></span>,<span class="member-education"><?php echo $education;?></span></h4>
 								<p class="other-details"><span class="member-position"><?php echo $designation;?></span></p>
-								<p class="bio"><a href="<?php the_permalink();?>">Full Bio -></a></p>
+								<p class="bio"><a href="<?php echo $permalink;?>">Full Bio -></a></p>
 							</div>
 					<?php endwhile; ?>
 			<?php endif;?>
