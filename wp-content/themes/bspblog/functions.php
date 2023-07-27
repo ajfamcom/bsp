@@ -411,15 +411,14 @@ add_filter('the_title', 'remove_extra_p_tags_from_title');
 
 function get_custom_page_id($custom_post_type){
 
-$args = array(
-    'post_type'      => $custom_post_type,
-    'posts_per_page' => 1,
-);
-$posts = get_posts($args);
-
-if ($posts ) {   
-    $page_id = $posts[0]->ID;   
-} else {
+	$rewrite_slug = get_post_type_object($custom_post_type)->rewrite['slug'];	
+	$page = get_page_by_path($rewrite_slug);
+	
+	if ($page) {
+		
+		$page_id = $page->ID;
+		
+	} else {
     $page_id =0;
 }
 

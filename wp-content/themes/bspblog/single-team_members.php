@@ -1,6 +1,6 @@
 <?php
 /* Template Name:Custom Team Members Template  */
-echo $page_id =get_custom_page_id('team_members');
+$page_id =get_custom_page_id('team_members');
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
 if (have_posts()) :
