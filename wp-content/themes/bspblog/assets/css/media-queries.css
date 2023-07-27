@@ -19,6 +19,9 @@ h1, .entry-content h1 {
     height: calc(100vh - 40vh);
     padding: 50px 15px;
 }
+.banner-section::before {
+    height: calc(100vh - 40vh);
+}
 .services-block h3 {
     font-size: 28px;
     padding-bottom: 14px;
