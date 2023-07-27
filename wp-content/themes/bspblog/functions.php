@@ -411,7 +411,7 @@ add_filter('the_title', 'remove_extra_p_tags_from_title');
 
 function get_custom_page_id($custom_post_type){
 
-	$rewrite_slug = get_post_type_object($custom_post_type)->rewrite['slug'];	
+	echo $rewrite_slug = get_post_type_object($custom_post_type)->rewrite['slug'];	die();
 	$page = get_page_by_path($rewrite_slug);
 	
 	if ($page) {
