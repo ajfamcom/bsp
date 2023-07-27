@@ -409,5 +409,22 @@ function remove_extra_p_tags_from_title($title) {
 }
 add_filter('the_title', 'remove_extra_p_tags_from_title');
 
+function get_custom_page_id($custom_post_type){
+
+$args = array(
+    'post_type'      => $custom_post_type,
+    'posts_per_page' => 1,
+);
+$posts = get_posts($args);
+
+if ($posts ) {   
+    $page_id = $posts[0]->ID;   
+} else {
+    $page_id =0;
+}
+
+return $page_id;
+}
+
 
 

@@ -1,13 +1,6 @@
 <?php
 /* Template Name:Custom Team Members Template  */
-
-$post_id = get_the_ID();
-$post_data = get_post($post_id);
-
-// Check if the post has a parent
-print_r($post_data);
-$parent_page_id = $post_data->post_parent;
-echo $page_id = $parent_page_id;
+$page_id =get_custom_page_id('team_members');
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
 if (have_posts()) :
