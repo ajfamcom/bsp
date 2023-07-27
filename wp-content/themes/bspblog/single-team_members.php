@@ -40,9 +40,16 @@ endif;
 				<div class="single-team-mem-content">
 					<div class="-single-member-image">
 					<img src="<?php echo $image['url']; ?>" />
-				    <p><i class="fa fa-envelope"></i><a href="mailto:<?php echo $contact_email; ?>"><?php echo $contact_email; ?></a></p>
+					<?php 
+					if($contact_email)
+					{ ?>
+					<p><i class="fa fa-envelope"></i><a href="mailto:<?php echo $contact_email; ?>"><?php echo $contact_email; ?></a></p>
+					<?php } ?>
+					<?php 
+					if($contact_phone)
+					{ ?>
                     <p><i class="fa fa-phone"></i><a href="tel:<?php echo $contact_phone; ?>"><?php echo $contact_phone; ?></a></p>
-
+					<?php } ?>
 				    </div>
 					<div class="single-member-info">
 						<h1 class="member-details"><span class="member-name"><?php echo $fullname; ?></span>,<span class="member-education"><?php echo $education; ?></span></h1>
