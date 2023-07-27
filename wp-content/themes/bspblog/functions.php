@@ -400,4 +400,14 @@ function remove_extra_p_tags($content) {
 }
 add_filter('the_content', 'remove_extra_p_tags');
 
+function remove_extra_p_tags_from_title($title) {
+    // Remove <p> and <div> tags from the beginning and end of the title
+    $title = preg_replace('/<p>\s*(.*)\s*<\/p>/i', '$1', $title);
+    $title = preg_replace('/<div>\s*(.*)\s*<\/div>/i', '$1', $title);
+
+    return $title;
+}
+add_filter('the_title', 'remove_extra_p_tags_from_title');
+
+
 
