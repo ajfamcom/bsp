@@ -27,9 +27,9 @@
 			<h2>Start working with our team today</h2>
 			<p>Interested in polling or message testing research? Focus groups or qualitative interviews? Modeling and data analytics? Contact us today to discuss the possibilities...</p>
 			<ul class="contact-social-links">
-				<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-				<li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-				<li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+				<li><a href="#"><i class="fa-brands fa-facebook-f"></i> - Facebook</a></li>
+				<li><a href="#"><i class="fa-brands fa-instagram"></i> - Instagram</a></li>
+				<li><a href="#"><i class="fa-brands fa-twitter"></i> - Twitter</a></li>
 			</ul>
 		</div>
 		<div class="col-md-8 col-sm-8 col-12">
