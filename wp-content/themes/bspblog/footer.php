@@ -64,10 +64,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 		if (window.innerWidth < 768) {
 		$('.desktop-contact').css('display','none');
 		$('.desktop-subscribe').css('display','none');
+		$("#menu-primary li").slice(-2).hide();
 		}
 		else{
 		$('.desktop-contact').css('display','block');
 		$('.desktop-subscribe').css('display','block');
+		$("#menu-primary li").slice(-2).show();
 		}
 	})
 </script>
