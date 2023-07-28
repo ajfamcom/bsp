@@ -36,12 +36,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 					'key'     => 'member_status',
 					'value'   => 'Active', 
 					'compare' => '='
-				),
-				array(
-					'key'     => 'member_display_on_homepage',
-					'value'   => 'Yes', 
-					'compare' => '='
-				),
+				),				
 			),
 			'meta_key'       => 'member_sort_order', 
 			'orderby'        => 'meta_value_num',    
