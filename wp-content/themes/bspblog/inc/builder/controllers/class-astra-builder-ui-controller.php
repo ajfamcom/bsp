@@ -245,7 +245,7 @@ if ( ! class_exists( 'Astra_Builder_UI_Controller' ) ) {
 					 <div class="logo">
 			         <img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/assets/images/footer-logo.png">
 			         </div>					
-					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">X</button>
+					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 				</div>
 				<div class="offcanvas-body">
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
