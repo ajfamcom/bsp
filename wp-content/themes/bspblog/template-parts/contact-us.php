@@ -3,7 +3,7 @@
 
 ?>
 <?php get_header(); ?>
-<div class="inner-bnr services-bnr">
+<div class="inner-bnr contact-bnr">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-sm-8 col-12">
@@ -15,7 +15,7 @@
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4 col-12">
-				<img class="img-fluid bnr-simg" src="<?php bloginfo('template_directory'); ?>/assets/images/services-side-bnrimg.png" alt="side-bnrimg">
+				<img class="img-fluid bnr-simg" src="<?php bloginfo('template_directory'); ?>/assets/images/contact-side-bnrimg.png" alt="side-bnrimg">
 			</div>
 		</div>
 	</div>

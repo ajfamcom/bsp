@@ -496,8 +496,7 @@ footer {
 .inner-bnr .page-title {
     margin: 0 !important;
 }
-.inner-bnr.about-bnr {
-    
+.inner-bnr.about-bnr {    
     background-position: 100% 25%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -692,3 +691,12 @@ footer {
     color: #333;
 }
 /*---- /our-team-page -----*/
+
+/*---- contact-page -----*/
+.inner-bnr.contact-bnr {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7), url(../images/contact-bnr.jpg));
+    background-position: 100% 25%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/*--- /contact-page -----*/
