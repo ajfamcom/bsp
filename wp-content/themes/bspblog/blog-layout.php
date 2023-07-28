@@ -32,18 +32,8 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 		<div class="row">
 			<?php
 			$args = array(
-			'post_type'      => 'team_members',
-			'posts_per_page' => -1,
-			'meta_query'     => array(
-				array(
-					'key'     => 'member_status',
-					'value'   => 'Active', 
-					'compare' => '='
-				),				
-			),
-			'meta_key'       => 'member_sort_order', 
-			'orderby'        => 'meta_value_num',    
-			'order'          => 'ASC',              
+			'post_type'      => 'post',
+			'posts_per_page' => -1,			          
 		    );
     
           $query = new WP_Query( $args );
@@ -52,19 +42,16 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 					while ($query->have_posts()) :
 						$query->the_post();
 						$post_id = get_the_ID();
-						$fullname = get_field('full_name', $post_id);
-						$education = get_field('education', $post_id);
-						$designation = get_field('designation', $post_id);
-						$image = get_field('profile_image', $post_id);
+						
 						$permalink = get_permalink($post_id);
 
 						?> 
-							<div class="single-team-member col-md-4">
-								<div class="member-image-square"><img src="<?php echo $image['url'];?>" /></div>
-								<div class="member-info">
-								<h4 class="member-details"><span class="member-name"><?php echo $fullname; ?></span>,<span class="member-education"><?php echo $education;?></span></h4>
-								<p class="other-details"><span class="member-position"><?php echo $designation;?></span></p>
-								<p class="bio"><a href="<?php echo $permalink;?>">Full Bio</a></p>
+							<div class="news-block col-md-4">
+								<div class="news-image"><img src="" /></div>
+								<div class="news-info">
+								<h4 class="news-details"><span class="news-title"><?php the_title(); ?></span></h4>
+								<p class="news-other-details"><span class="news-date">date</span></p>
+								<p class="news-content"><a href="<?php echo $permalink;?>">Read More</a></p>
 								</div>
 							</div>
 					<?php endwhile; ?>
