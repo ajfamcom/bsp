@@ -3,51 +3,76 @@
 Template Name: Blog Page
 */
 get_header();
+$page_id = get_the_ID();
+$full_banner = get_field('full_banner', $page_id);
+$image_over_banner = get_field('image_over_banner', $page_id);
 ?>
+<?php get_header();?>
 
-<div id="primary" class="content-area">
-    <main id="main" class="site-main">
-        <div class="container">
+<div class="inner-bnr team-bnr" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<?php echo $full_banner['url']; ?>')">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-sm-8 col-12">
+				<div class="row page-banner">
+					<?php echo get_breadcrumbs(); ?>
+					<div class="page-title">
+						<h3><?php echo get_the_title(); ?></h3>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 col-12">
+				<img class="img-fluid bnr-simg" src="<?php echo $image_over_banner['url'];?>" alt="side-bnrimg">
+			</div>
+		</div>
+	</div>
+</div>
 
-            <?php
-            // The main WordPress loop
-            if (have_posts()) :
-                while (have_posts()) : the_post();
-            ?>
+<div class="container py-5 my-md-5">	
+	<div class="col-md-12 py-md-5">
+		<div class="row">
+			<?php
+			$args = array(
+			'post_type'      => 'team_members',
+			'posts_per_page' => -1,
+			'meta_query'     => array(
+				array(
+					'key'     => 'member_status',
+					'value'   => 'Active', 
+					'compare' => '='
+				),				
+			),
+			'meta_key'       => 'member_sort_order', 
+			'orderby'        => 'meta_value_num',    
+			'order'          => 'ASC',              
+		    );
+    
+          $query = new WP_Query( $args );
+    
+			if ($query->have_posts()) :
+					while ($query->have_posts()) :
+						$query->the_post();
+						$post_id = get_the_ID();
+						$fullname = get_field('full_name', $post_id);
+						$education = get_field('education', $post_id);
+						$designation = get_field('designation', $post_id);
+						$image = get_field('profile_image', $post_id);
+						$permalink = get_permalink($post_id);
 
-                <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                    <header class="entry-header">
-                        <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                        <div class="entry-meta">
-                            <?php
-                            the_time('F j, Y');
-                            echo ' | ';
-                            the_author();
-                            ?>
-                        </div>
-                    </header>
-
-                    <div class="entry-content">
-                        <?php the_excerpt(); ?>
-                    </div>
-
-                    <footer class="entry-footer">
-                        <a href="<?php the_permalink(); ?>" class="read-more">Read More</a>
-                    </footer>
-                </article>
-
-            <?php
-                endwhile;
-            else :
-                // Display message for no posts
-                echo 'No posts found.';
-            endif;
-            ?>
-            
-        </div><!-- .container -->
-    </main><!-- #main -->
-</div><!-- #primary -->
-
-<?php
+						?> 
+							<div class="single-team-member col-md-4">
+								<div class="member-image-square"><img src="<?php echo $image['url'];?>" /></div>
+								<div class="member-info">
+								<h4 class="member-details"><span class="member-name"><?php echo $fullname; ?></span>,<span class="member-education"><?php echo $education;?></span></h4>
+								<p class="other-details"><span class="member-position"><?php echo $designation;?></span></p>
+								<p class="bio"><a href="<?php echo $permalink;?>">Full Bio</a></p>
+								</div>
+							</div>
+					<?php endwhile; ?>
+			<?php endif;?>
+        </div>
+		
+    </div>
+</div>	
+<?php 
 get_footer();
 ?>
