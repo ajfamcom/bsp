@@ -237,15 +237,23 @@ if ( ! class_exists( 'Astra_Builder_UI_Controller' ) ) {
 					//}
 					?>
 				</button>-->
-				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav" aria-controls="mobileNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"><?php echo self::fetch_svg_icon( $icon ); ?></span>
+				<?php 
+				$custom_logo_id = get_theme_mod('custom_logo');
+				$custom_logo_url='';
+				if ($custom_logo_id) {
+					$custom_logo_url = wp_get_attachment_image_src($custom_logo_id, 'full')[0];
+					
+				}
+				?>
+				<button class="navbar-toggler-custom" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav" aria-controls="mobileNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
                </button>
 			   <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel">
 				<div class="offcanvas-header">					
 					 <div class="logo">
-			         <img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/assets/images/footer-logo.png">
+			         <img class="img-fluid" src="<?php echo $custom_logo_url; ?>">
 			         </div>					
-					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">X</button>
+					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 				</div>
 				<div class="offcanvas-body">
 				<nav class="navbar navbar-expand-lg navbar-light">
