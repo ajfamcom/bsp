@@ -1,5 +1,4 @@
-<?php
-/* Template Name: In the news  */
+<?php/* Template Name: In the news  */
 
 ?>
 <?php get_header(); 
