@@ -237,13 +237,21 @@ if ( ! class_exists( 'Astra_Builder_UI_Controller' ) ) {
 					//}
 					?>
 				</button>-->
+				<?php 
+				$custom_logo_id = get_theme_mod('custom_logo');
+				$custom_logo_url='';
+				if ($custom_logo_id) {
+					$custom_logo_url = wp_get_attachment_image_src($custom_logo_id, 'full')[0];
+					
+				}
+				?>
 				<button class="navbar-toggler-custom" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav" aria-controls="mobileNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
                </button>
 			   <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel">
 				<div class="offcanvas-header">					
 					 <div class="logo">
-			         <img class="img-fluid" src="<?php echo esc_url(get_custom_logo()); ?>">
+			         <img class="img-fluid" src="<?php echo $custom_logo_url; ?>">
 			         </div>					
 					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 				</div>
