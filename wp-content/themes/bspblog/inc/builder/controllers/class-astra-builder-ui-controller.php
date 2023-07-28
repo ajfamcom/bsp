@@ -248,7 +248,7 @@ if ( ! class_exists( 'Astra_Builder_UI_Controller' ) ) {
 					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">X</button>
 				</div>
 				<div class="offcanvas-body">
-				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container">
 						<!-- Add the custom class 'primary-nav' to the ul element -->
 						<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'navbar-nav primary-nav' ) ); ?>

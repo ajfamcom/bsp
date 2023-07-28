@@ -33,7 +33,7 @@
 			</ul>
 		</div>
 		<div class="col-md-8 col-sm-8 col-12">
-				<img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/assets/images/services-pageimg.png" alt="bodyimage">
+				
 		</div>
 	</div>
 </div>
