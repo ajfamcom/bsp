@@ -218,25 +218,44 @@ if ( ! class_exists( 'Astra_Builder_UI_Controller' ) ) {
 			}
 			?>
 			<div class="ast-button-wrap">
-				<button type="button" class="menu-toggle main-header-menu-toggle ast-mobile-menu-trigger-<?php echo esc_attr( $toggle_btn_style ); ?>" <?php echo apply_filters( 'astra_nav_toggle_data_attrs', '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> <?php echo esc_attr( $aria_controls ); ?> aria-expanded="false">
+				<!--<button type="button" class="dipti menu-toggle main-header-menu-toggle ast-mobile-menu-trigger-<?php //echo esc_attr( $toggle_btn_style ); ?>" <?php //echo apply_filters( 'astra_nav_toggle_data_attrs', '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> <?php //echo esc_attr( $aria_controls ); ?> aria-expanded="false">
 					<span class="screen-reader-text">Main Menu</span>
 					<span class="mobile-menu-toggle-icon">
 						<?php
-							echo self::fetch_svg_icon( $icon ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-							echo self::fetch_svg_icon( 'close' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							//echo self::fetch_svg_icon( $icon ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							//echo self::fetch_svg_icon( 'close' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						?>
 					</span>
 					<?php
-					if ( isset( $mobile_label ) && ! empty( $mobile_label ) ) {
+					//if ( isset( $mobile_label ) && ! empty( $mobile_label ) ) {
 						?>
 
 						<span class="mobile-menu-wrap">
-							<span class="mobile-menu"><?php echo esc_html( $mobile_label ); ?></span>
+							<span class="mobile-menu"><?php //echo esc_html( $mobile_label ); ?></span>
 						</span>
 						<?php
-					}
+					//}
 					?>
-				</button>
+				</button>-->
+				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav" aria-controls="mobileNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><?php echo self::fetch_svg_icon( $icon ); ?></span>
+               </button>
+			   <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel">
+				<div class="offcanvas-header">					
+					 <div class="logo">
+			         <img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/assets/images/footer-logo.png">
+			         </div>					
+					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">X</button>
+				</div>
+				<div class="offcanvas-body">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<div class="container">
+						<!-- Add the custom class 'primary-nav' to the ul element -->
+						<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'navbar-nav primary-nav' ) ); ?>
+					</div>
+					</nav>
+				</div>
+				</div>
 			</div>
 			<?php
 		}

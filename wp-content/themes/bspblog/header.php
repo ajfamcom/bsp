@@ -17,6 +17,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<?php wp_head(); ?>
 <?php astra_head_bottom(); ?>
+<style>
+	/* mobile menu Adjust the width of the off-canvas menu to control the slide effect */
+.offcanvas {
+    width: 250px; /* You can adjust this value to fit your design */
+  }
+  
+  /* Add a transition effect to create the slide-in effect */
+  .offcanvas-start {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .offcanvas.show {
+    transform: translateX(0);
+  }
+  
+  /* Custom style for the close button */
+  .offcanvas-header .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    z-index: 1;
+    color:red;
+  }
+</style>
 </head>
     
 <body <?php astra_schema_body(); ?> <?php body_class(); ?>>
