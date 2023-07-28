@@ -243,7 +243,7 @@ if ( ! class_exists( 'Astra_Builder_UI_Controller' ) ) {
 			   <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel">
 				<div class="offcanvas-header">					
 					 <div class="logo">
-			         <img class="img-fluid" src="<?php bloginfo('template_directory'); ?>/assets/images/footer-logo.png">
+			         <img class="img-fluid" src="<?php echo get_custom_logo(); ?>">
 			         </div>					
 					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 				</div>
