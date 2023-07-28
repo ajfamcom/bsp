@@ -1,21 +1,58 @@
 /*================================== media-queries ==================================*/
-@media screen and (max-width: 768px) and (min-width:320px) {
+@media screen and (max-width: 921px) and (min-width:320px) {
     button.navbar-toggler-custom {
         background: transparent;
-        border: 2px solid var(--blue);
+        border: 2px solid var(--blue) !important;
         padding: 6px 5px 4px 5px;
         border-radius: 6px;
         color: var(--blue);
         font-size: 18px;
     }
-
     span.navbar-toggler-icon {
         height: auto;
     }
-
     div#mobileNav {
         width: calc(100% - 18%);
     }
+    button.btn-close.text-reset {
+        position: absolute;
+        right: -50px;
+        opacity: 1;
+        width: auto;
+        height: auto;
+        font-size: 16px;
+        filter: brightness(0) invert(1);
+        top: 20px;
+    }
+    .ast-main-header-wrap.main-header-bar-wrap {
+        background: #fff;
+    }
+    div#mobileNav .offcanvas-body nav.navbar .navbar-nav {
+        margin: 0;
+    }
+    div#mobileNav .offcanvas-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1rem;
+        position: relative;
+        border-bottom: 1px solid #dfdfdf;
+    }
+    div#mobileNav .offcanvas-body nav.navbar .menu-primary-container {
+        width: 100%;
+    }
+    div#mobileNav .offcanvas-body {
+        padding: 0.5rem 0.3rem;
+    }
+    div#mobileNav .offcanvas-body nav.navbar .navbar-nav li {
+        border-bottom: 1px solid #dfdfdf;
+        padding: 5px;
+    }
+    div#mobileNav .offcanvas-body nav.navbar .navbar-nav li a {
+        color: #333;
+    }
+}
+@media screen and (max-width: 768px) and (min-width:320px) {    
 
     h1,
     .entry-content h1 {
@@ -126,7 +163,8 @@
     }
 
     .logo {
-        margin-bottom: 4%;
+        margin-bottom: 1% 0;
+        max-width: 40%;
     }
 
     footer .py-5 {
