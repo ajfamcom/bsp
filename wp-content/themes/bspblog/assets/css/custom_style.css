@@ -722,7 +722,6 @@ ul.contact-social-links li a i {
     -o-transition: 0.5s;
 }
 ul.contact-social-links li a:hover i {
-    background: var(--blue);
     border-radius: 50px;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
