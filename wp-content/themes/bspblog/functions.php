@@ -445,7 +445,11 @@ function custom_contact_form() {
 
     <div class="container">		
         <h2>Contact Us</h2>
-		<?php if(isset($msg)){?><div class="alert alert-success mt-3"><?php echo $msg;?></div><?php } ?>
+		<?php if(isset($msg)){?>
+			<div class="alert alert-success alert-dismissible fade show mt-3 "><?php echo $msg;?>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		    </div>
+		<?php } ?>
         <form method="post" action="<?php echo site_url('contact-us/');?>">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
