@@ -438,14 +438,13 @@ function custom_contact_form() {
             'From: ' . $name . ' <' . $email . '>',
             'Content-Type: text/html; charset=UTF-8',
         );
-        wp_mail( $to, $subject, $message, $headers );
-
-        
-        echo '<div class="alert alert-success mt-3">Thank you for your message!</div>';
+        wp_mail( $to, $subject, $message, $headers );       
+		echo '<div class="alert alert-success mt-3">Thank you for your message!</div>';
     }
     ?>
 
     <div class="container">
+	
         <h2>Contact Us</h2>
         <form method="post" action="<?php echo site_url('contact-us/');?>">
             <div class="mb-3">
