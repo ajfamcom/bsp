@@ -425,5 +425,58 @@ $rewrite_slug = get_post_type_object($custom_post_type)->rewrite['slug'];
 return $page_id;
 }
 
+function custom_contact_form() {
+    if ( isset( $_POST['submit_form'] ) ) {
+        // Process the form data here (send email, save to database, etc.).
+        // You can use the $_POST variables to access form field values.
+        // Add your form processing logic here.
+
+        // For example, to send an email notification:
+        $name = sanitize_text_field( $_POST['name'] );
+        $email = sanitize_email( $_POST['email'] );
+        $message = esc_textarea( $_POST['message'] );
+        $subject = 'Contact Form Submission';
+        $to = 'contact@example.com'; // Replace with your email address.
+        $headers = array(
+            'From: ' . $name . ' <' . $email . '>',
+            'Content-Type: text/html; charset=UTF-8',
+        );
+        wp_mail( $to, $subject, $message, $headers );
+
+        // Add a success message after form submission.
+        echo '<div class="alert alert-success mt-3">Thank you for your message!</div>';
+    }
+    ?>
+
+    <div class="container">
+        <h2>Contact Us</h2>
+        <form method="post" action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="organization" class="form-label">Organization</label>
+                <input type="text" class="form-control" id="organization" name="organization">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="signup" name="signup">
+                <label class="form-check-label" for="signup">Sign me up for email list, promotions, and more</label>
+            </div>
+            <button type="submit" name="submit_form" class="btn btn-primary mt-3">Submit</button>
+        </form>
+    </div>
+
+    <?php
+}
+add_shortcode( 'custom_contact_form', 'custom_contact_form' );
 
 
