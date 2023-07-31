@@ -439,12 +439,12 @@ function custom_contact_form() {
             'Content-Type: text/html; charset=UTF-8',
         );
         wp_mail( $to, $subject, $message, $headers );       
-		echo '<div class="alert alert-success mt-3">Thank you for your message!</div>';
+		$msg='Thank you for your message!';
     }
     ?>
 
     <div class="container">
-	
+	<div class="alert alert-success mt-3"><?php echo isset($msg)?$msg:'';?></div>	
         <h2>Contact Us</h2>
         <form method="post" action="<?php echo site_url('contact-us/');?>">
             <div class="mb-3">
