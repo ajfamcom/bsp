@@ -445,7 +445,7 @@ function custom_contact_form() {
     }
     ?>
 
-    <div class="container">
+    <div class="">
         <h2>Contact Us</h2>
         <form method="post" action="<?php echo site_url('contact-us/');?>">
             <div class="mb-3">
