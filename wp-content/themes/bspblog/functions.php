@@ -447,7 +447,7 @@ function custom_contact_form() {
 
     <div class="container">
         <h2>Contact Us</h2>
-        <form method="post" action="<?php echo site_url('contact-us') ?>">
+        <form method="post" action="https://bsp.thefamcomlab.com/contact-us/">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" name="name" required>
