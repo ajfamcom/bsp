@@ -447,7 +447,7 @@ function custom_contact_form() {
 
     <div class="container">
         <h2>Contact Us</h2>
-        <form method="post" action="https://bsp.thefamcomlab.com/contact-us/">
+        <form method="post" action="<?php echo site_url('contact-us/');?>">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" name="name" required>
@@ -468,7 +468,7 @@ function custom_contact_form() {
                 <input type="checkbox" class="form-check-input" id="signup" name="signup">
                 <label class="form-check-label" for="signup">Sign me up for email list, promotions, and more</label>
             </div>
-            <button type="submit" name="submit_form" class="btn btn-primary mt-3">Submit</button>
+            <input type="submit" name="submit_form" class="btn btn-primary mt-3">Submit</button>
         </form>
     </div>
 
