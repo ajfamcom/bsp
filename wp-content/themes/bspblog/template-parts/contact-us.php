@@ -33,7 +33,7 @@
 			</ul>
 		</div>
 		<div class="col-md-8 col-sm-8 col-12">
-		<div class="container mt-5">
+		<div class="container">
          <h2>Contact Us</h2>
 			<form>
 			<div class="mb-3">
