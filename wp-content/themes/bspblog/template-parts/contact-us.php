@@ -2,7 +2,16 @@
 /* Template Name: contact Template */
 
 ?>
-<?php get_header(); ?>
+<?php get_header();
+if(isset($_POST)){
+$name=$_POST['name'];
+$email=$_POST['email'];
+$organization=$_POST['organization'];
+echo $message=$_POST['message'];
+die();
+}
+
+?>
 <div class="inner-bnr contact-bnr">
 	<div class="container">
 		<div class="row">
@@ -35,7 +44,7 @@
 		<div class="col-md-8 col-sm-8 col-12">
 		<div class="container">
          <h2>Contact Us</h2>
-			<form>
+			<form method="POST">
 			<div class="mb-3">
 				<label for="name" class="form-label">Name</label>
 				<input type="text" class="form-control" id="name" name="name" required>
