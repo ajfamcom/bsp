@@ -426,24 +426,21 @@ return $page_id;
 }
 
 function custom_contact_form() {
-    if ( isset( $_POST['submit_form'] ) ) {
-        // Process the form data here (send email, save to database, etc.).
-        // You can use the $_POST variables to access form field values.
-        // Add your form processing logic here.
+    if ( isset( $_POST['submit_form'] ) ) {      
 
-        // For example, to send an email notification:
+       
         $name = sanitize_text_field( $_POST['name'] );
         $email = sanitize_email( $_POST['email'] );
         $message = esc_textarea( $_POST['message'] );
         $subject = 'Contact Form Submission';
-        $to = 'contact@example.com'; // Replace with your email address.
+        $to = 'dipti@famcominc.com'; // Replace with your email address.
         $headers = array(
             'From: ' . $name . ' <' . $email . '>',
             'Content-Type: text/html; charset=UTF-8',
         );
         wp_mail( $to, $subject, $message, $headers );
 
-        // Add a success message after form submission.
+        
         echo '<div class="alert alert-success mt-3">Thank you for your message!</div>';
     }
     ?>
