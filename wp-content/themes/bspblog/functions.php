@@ -429,7 +429,7 @@ function custom_contact_form() {
     if ( isset( $_POST['submit_form'] ) ) {      
 
        
-        $name = sanitize_text_field( $_POST['name'] );
+        $name = sanitize_text_field( $_POST['fname'] );
         $email = sanitize_email( $_POST['email'] );
         $message = esc_textarea( $_POST['message'] );
         $subject = 'Contact Form Submission';
@@ -445,12 +445,12 @@ function custom_contact_form() {
     }
     ?>
 
-    <div class="">
+    <div class="container">
         <h2>Contact Us</h2>
         <form method="post" action="<?php echo site_url('contact-us/');?>">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" id="fname" name="fname" required>
             </div>
             <div class="mb-3">
                 <label for="organization" class="form-label">Organization</label>
@@ -468,7 +468,7 @@ function custom_contact_form() {
                 <input type="checkbox" class="form-check-input" id="signup" name="signup">
                 <label class="form-check-label" for="signup">Sign me up for email list, promotions, and more</label>
             </div>
-            <input type="submit" name="submit_form" class="btn btn-primary mt-3">Submit</button>
+            <input type="submit" name="submit_form" class="btn btn-primary mt-3" value="Submit">
         </form>
     </div>
 
