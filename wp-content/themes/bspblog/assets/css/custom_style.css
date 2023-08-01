@@ -335,6 +335,15 @@ button.search-submit:hover {
     color: #000;
     font-weight: 500 !important;
 }
+.news-single-block p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500 !important;
+}
+.news-single-block p a {
+    color: #000;
+}
 .sidebar-img {
     border-radius: 50%;
     overflow: hidden;
