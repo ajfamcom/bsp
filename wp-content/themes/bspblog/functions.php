@@ -432,14 +432,45 @@ function custom_contact_form() {
         $name = sanitize_text_field( $_POST['fname'] );
         $email = sanitize_email( $_POST['email'] );
         $message = esc_textarea( $_POST['message'] );
+        $organization = sanitize_text_field( $_POST['organization'] );
+        $is_signup = isset($_POST['signup'])?'Yes':'No';       
         $subject = 'Contact Form Submission';
-        $to = 'dipti@famcominc.com'; // Replace with your email address.
+        $to = bloginfo('admin_email');//'dipti@famcominc.com'; // Replace with your email address.
         $headers = array(
             'From: ' . $name . ' <' . $email . '>',
             'Content-Type: text/html; charset=UTF-8',
         );
-        wp_mail( $to, $subject, $message, $headers );       
-		$msg='Thank you for your message!';
+        //save in db
+        global $wpdb;        
+        $table_name = $wpdb->prefix . 'contactus';
+
+        $data = array(
+            'name' => $name,
+            'email' => $email,
+            'message' => $message,
+            'organization' => $organization,
+            'is_signup' => $is_signup      
+        );
+        //mail to user
+        $user_subject = 'verify your email';
+        $user_to = $email;//'dipti@famcominc.com'; // Replace with your email address.
+        $admin_name='BSP Research';
+        $user_headers = array(
+            'From: ' . $admin_name . ' <' . $email . '>',
+            'Content-Type: text/html; charset=UTF-8',
+        );
+        $code=base64_encode($email);
+        $user_link='<a href="https://bsp.thefamcomlab.com/verify-email?c='.$code.'">Verify Email</a>';
+        $user_message='<p>Please click on the link to verify your email'.$user_link.'</p>';
+    if($data){
+        $wpdb->insert( $table_name, $data );
+        wp_mail( $to, $subject, $message, $headers );  
+        wp_mail( $user_to, $user_subject, $user_message, $user_headers );      
+        $msg='Thank you for your message!';
+    }
+   
+        //verfy user
+        
     }
     ?>
 
