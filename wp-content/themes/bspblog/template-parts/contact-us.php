@@ -3,14 +3,6 @@
 
 ?>
 <?php get_header();
-if(isset($_POST['submit'])){
-$name=$_POST['name'];
-$email=$_POST['email'];
-$organization=$_POST['organization'];
-echo $message=$_POST['message'];
-die();
-}
-
 ?>
 <div class="inner-bnr contact-bnr">
 	<div class="container">
@@ -47,9 +39,6 @@ die();
 		</div>
 	</div>
 </div>
-
-
-
 <?php 
 get_footer();
 ?>
