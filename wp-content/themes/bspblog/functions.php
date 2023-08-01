@@ -445,7 +445,7 @@ function custom_contact_form() {
         $table_name = $wpdb->prefix . 'contactus';
 
         $data = array(
-            'name' => $name,
+            'fullname' => $name,
             'email' => $email,
             'message' => $message,
             'organization' => $organization,
