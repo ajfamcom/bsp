@@ -26,7 +26,19 @@
         margin: 0% 0 3% 0;
     }
     .ast-desktop .ast-primary-header-bar .main-header-menu > .menu-item {
-        line-height: 40px;
+        line-height: 40px !important;
+    }
+    .ast-builder-menu-1 .menu-item > .menu-link {
+        font-size: 14px !important;
+    }
+    .main-header-menu .menu-link, .main-header-menu>a {
+        padding: 0 0.5em !important;
+    }
+    .site-navigation .btn.btn-default {
+        padding: 11px 12px 8px;
+    }
+    .site-navigation .btn.btn-primary {
+        padding: 11px 12px 8px;
     }
 }
 @media screen and (max-width: 921px) and (min-width:320px) {
