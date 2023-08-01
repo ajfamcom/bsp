@@ -1,4 +1,4 @@
-<?php /**Template Name:Home Top Section */ ?>
+<?php /**Template Name:Team Members */ ?>
 
 
 <div  class="col-12 text-center">

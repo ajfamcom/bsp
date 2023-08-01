@@ -1,4 +1,4 @@
-<?php /**Template Name: Most Popular Posts */?>
+<?php /**Template Name: Services and expertise */?>
 <h3>Services And Expertise</h3>
 <?php
 $args = array(
