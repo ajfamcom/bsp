@@ -116,7 +116,7 @@ button.search-submit:hover {
     position: absolute;
     top: 0;
 }
-.banner-section .row {
+.banner-section .banner-content {
     z-index: 1;
 }
 .banner-section img {
