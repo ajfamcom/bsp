@@ -17,6 +17,17 @@
         min-width: 100%;
         max-width: 100%;
     }
+    .mobile-btns {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .most-popular-block .small-title {
+        margin: 0% 0 3% 0;
+    }
+    .ast-desktop .ast-primary-header-bar .main-header-menu > .menu-item {
+        line-height: 40px;
+    }
 }
 @media screen and (max-width: 921px) and (min-width:320px) {
     button.navbar-toggler-custom {
