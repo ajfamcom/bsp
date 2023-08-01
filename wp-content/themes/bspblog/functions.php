@@ -435,7 +435,7 @@ function custom_contact_form() {
         $organization = sanitize_text_field( $_POST['organization'] );
         $is_signup = isset($_POST['signup'])?'Yes':'No';       
         $subject = 'Contact Form Submission';
-        $to = bloginfo('admin_email');//'dipti@famcominc.com'; // Replace with your email address.
+        $to = get_option('admin_email');
         $headers = array(
             'From: ' . $name . ' <' . $email . '>',
             'Content-Type: text/html; charset=UTF-8',
@@ -452,8 +452,8 @@ function custom_contact_form() {
             'is_signup' => $is_signup      
         );
         //mail to user
-        $user_subject = 'verify your email';
-        $user_to = $email;//'dipti@famcominc.com'; // Replace with your email address.
+        $user_subject = 'Verify your email';
+        $user_to = $email;
         $admin_name='BSP Research';
         $user_headers = array(
             'From: ' . $admin_name . ' <' . $email . '>',
