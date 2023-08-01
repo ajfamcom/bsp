@@ -1,4 +1,4 @@
 <?php /**Template Name:Home Top Section */ ?>
-<div class="row">  
+<div class="banner-content">  
 <?php do_shortcode('[home_top]'); ?>
 </div>
