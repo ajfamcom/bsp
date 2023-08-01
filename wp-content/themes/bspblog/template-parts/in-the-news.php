@@ -57,7 +57,7 @@ if ($query->have_posts()) {
             $target='_blank';
         }
         ?>
-<div class="news-single-block">
+<div class="single-block">
     <div class="sidebar-img">
 	<?php
     if (has_post_thumbnail()) {
