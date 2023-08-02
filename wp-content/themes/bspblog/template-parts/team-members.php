@@ -66,6 +66,5 @@
 </div>
 <?php endwhile; ?>
 <?php endif;?>
-<div class="col-12 text-center pt-4"><a href="<?php echo site_url('our-team');?>"><button type="button" class="btn btn-primary">MEET THE TEAM <i class="fa-solid fa-arrow-right"></i></button></a></div>
+<div class="col-12 text-center pt-4"><a href="<?php echo site_url('our-team');?>"><button type="button" class="btn btn-primary">MEET OUR TEAM <i class="fa-solid fa-arrow-right"></i></button></a></div>
 </div>
-
