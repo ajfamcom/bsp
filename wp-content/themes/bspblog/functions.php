@@ -512,3 +512,29 @@ function custom_contact_form() {
 add_shortcode( 'custom_contact_form', 'custom_contact_form' );
 
 
+function custom_polls_post_type() {
+	$labels = array(
+	'name' => __('Polls', 'polls'),
+	'singular_name' => __('Polls ', 'polls'),
+	'add_new' => __('New Poll ', 'polls'),
+	'add_new_item' => __('Add New Poll ', 'polls'),
+	'edit_item' => __('Edit Poll ', 'polls'),
+	'new_item' => __('New Poll ', 'polls'),
+	'view_item' => __('View Poll ', 'polls'),
+	'search_item' => __('Search Polls ', 'polls'),
+	'not_found' => __('No Poll Found', 'polls'),
+	'not_found_in_trash' => __('No Poll found in trash', 'polls')
+	);
+    $args = array(
+        'public' => true,
+        'labels'  => $labels,
+        'supports' => array( 'title', 'editor', 'thumbnail' ),
+    );
+    register_post_type( 'team_members', $args );
+}
+
+    add_action('init','custom_polls_post_type');
+
+
+
+
