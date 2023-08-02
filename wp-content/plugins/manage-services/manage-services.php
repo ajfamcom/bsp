@@ -10,15 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Invalid request.' );
 }
 
-define('CUSTOMCONTENT_PLUGINPATH',plugin_dir_path( __FILE__ ));
-define('CUSTOMCONTENT_PLUGINURI',plugin_dir_url( __FILE__ ));
 
-/*function myplugin_activate() {  
-    //    
- }
-
- register_activation_hook( __FILE__, 'myplugin_activate' );
- */
 
 function custom_plugin_services_post_type() {
 	$labels = array(
@@ -51,8 +43,7 @@ function custom_plugin_services_post_type() {
     
 }
 add_action( 'init', 'custom_plugin_services_post_type' );
-//include CUSTOMCONTENT_PLUGINPATH."includes/HomeTopClass.php";
-//include CUSTOMCONTENT_PLUGINPATH."includes/HeaderNewsClass.php";
+
 
 
 
