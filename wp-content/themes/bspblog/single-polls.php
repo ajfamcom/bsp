@@ -49,7 +49,7 @@ endif;
 						<?php the_content(); ?>
 					</div>
 					<div>
-					 <?php comments_template();?>
+					<?php astra_primary_content_bottom(); ?>
 					</div>
 				</div>
 			</div>
