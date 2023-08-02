@@ -48,9 +48,7 @@ endif;
 						<h1 class="poll-title"><?php the_title();?></h1>						
 						<?php the_content(); ?>
 					</div>
-					<div>
-					<?php astra_primary_content_bottom(); ?>
-					</div>
+					
 				</div>
 			</div>
           <?php endwhile; ?>
