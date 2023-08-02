@@ -76,7 +76,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 		<div class="row">
 			<?php
 			$args = array(
-			'post_type'      => 'poll',
+			'post_type'      => 'polls',
 			'posts_per_page' => -1,			          
 		    );
     
