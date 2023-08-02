@@ -32,11 +32,11 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 		<div class="row">
 			<?php
 			$fargs = array(
-			'post_type'      => 'post',
+			'post_type'      => 'polls',
 			'posts_per_page' => 1,
             'meta_query'     => array(
 				array(
-					'key'     => 'is_featured_post',
+					'key'     => 'is_featured_poll',
 					'value'   => 'Yes', 
 					'compare' => '='
 				),				
