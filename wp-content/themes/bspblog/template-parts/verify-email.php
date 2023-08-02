@@ -12,10 +12,11 @@ $data_to_update = array(
 
 // Data format (change 'data_type' to the actual data type of the column)
 $data_format = array(
-    'CHAR',
+    '%s', 
 );
 
-$wpdb->update(
+
+ $wpdb->update(
     $table_name,
     $data_to_update,
     array('email' => $email_to_update),
