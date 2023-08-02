@@ -28,6 +28,11 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 </div>
 
 <div class="container py-5 my-md-5">
+<div class="col-md-12 py-5">
+		<div class="row">
+			Search Library: Title Article Tags           Sort By
+</div>
+</div>
 <div class="col-md-12 py-md-5">
 		<div class="row">
 			<?php
