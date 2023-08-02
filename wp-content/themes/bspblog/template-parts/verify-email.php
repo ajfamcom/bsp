@@ -1,5 +1,27 @@
 <?php
 /* Template Name: Verify Email*/
+$code=$_GET['c'];
+$email_to_update=base64_decode($code);
+global $wpdb;
+$table_name = $wpdb->prefix . 'contactus'; 
+
+
+$data_to_update = array(
+    'email_verified' => 'Yes',
+);
+
+// Data format (change 'data_type' to the actual data type of the column)
+$data_format = array(
+    'char',
+);
+
+$wpdb->update(
+    $table_name,
+    $data_to_update,
+    array('email' => $email_to_update),
+    $data_format,
+    array('%s')
+);
 
 ?>
 <?php get_header();
