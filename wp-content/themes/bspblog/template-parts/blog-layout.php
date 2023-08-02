@@ -1,6 +1,6 @@
 <?php
 /**
- * Template for Blog
+ * Template Name: Blog
  *
  * @package     Astra
  * @author      Astra
