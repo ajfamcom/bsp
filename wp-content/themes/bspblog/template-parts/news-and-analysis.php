@@ -27,7 +27,7 @@ if ($query->have_posts()) {
         $post_id = get_the_ID();
         $short_desc = get_field('short_description', $post_id);
         $link_data = get_field('external_link', $post_id);
-        $link='#.';
+        $link='javascript:void(0)';
         $target="";
         if($link_data){
             $link= $link_data;
