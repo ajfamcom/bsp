@@ -461,13 +461,13 @@ function custom_contact_form() {
         );
         $code=base64_encode($email);
         $user_link='<a href="https://bsp.thefamcomlab.com/verify-email?c='.$code.'">Verify Email</a>';
-        $user_message='<p>Please click on the link to verify your email'.$user_link.'</p>';
+        $user_message='<p>Please click the link to verify your email address'.$user_link.'</p>';
     if($data){
         $wpdb->insert( $table_name, $data );
         //wp_mail('dipti@famcominc.com', 'Test Email', 'This is a test email from WordPress.');
         wp_mail( $to, $subject, $message, $headers );  
         wp_mail( $user_to, $user_subject, $user_message, $user_headers );      
-        $msg='Thank you for your message!';
+        $msg="Thank you for your inquiry! We will get back to you within 48 hours.We've sent you a confirmation email, please click the link to verify your address.";
     }
    
         //verfy user
