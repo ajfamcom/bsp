@@ -529,6 +529,7 @@ function custom_polls_post_type() {
         'public' => true,
         'labels'  => $labels,
         'supports' => array( 'title', 'editor', 'thumbnail','comments' ),
+        'taxonomies' => array('post_tag'),
     );
     register_post_type( 'polls', $args );
 }
