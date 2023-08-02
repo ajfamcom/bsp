@@ -27,9 +27,11 @@ if ($query->have_posts()) {
         $post_id = get_the_ID();
         $short_desc = get_field('short_description', $post_id);
         $link_data = get_field('external_link', $post_id);
-        $link='<a href="#.">'.the_title().'</a>';
+        $link='#.';
+        $target="";
         if($link_data){
-            $link= '<a href="'.$link_data.'" target="_blank">'.the_title().'</a>';
+            $link= $link_data;
+            $target='_blank';
         }
         ?>
 <div class="news-single-block">
@@ -40,7 +42,7 @@ if ($query->have_posts()) {
     }
     ?>
     </div>
-    <p><?php echo $link;?></p>
+    <p><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></p>
 </div>
 <?php
     }
