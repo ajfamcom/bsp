@@ -530,7 +530,7 @@ function custom_polls_post_type() {
         'labels'  => $labels,
         'supports' => array( 'title', 'editor', 'thumbnail' ),
     );
-    register_post_type( 'team_members', $args );
+    register_post_type( 'polls', $args );
 }
 
     add_action('init','custom_polls_post_type');
