@@ -40,7 +40,7 @@ if ($query->have_posts()) {
     }
     ?>
     </div>
-    <p><a href="<?php echo $link;?>"><?php the_title();?></a></p>
+    <p><a href="<?php echo $link;?>" target="_blank"><?php the_title();?></a></p>
 </div>
 <?php
     }
