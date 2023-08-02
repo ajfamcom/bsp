@@ -12,7 +12,7 @@ $data_to_update = array(
 
 // Data format (change 'data_type' to the actual data type of the column)
 $data_format = array(
-    'char',
+    'CHAR',
 );
 
 $wpdb->update(
