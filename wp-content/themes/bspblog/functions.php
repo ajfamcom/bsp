@@ -528,7 +528,7 @@ function custom_polls_post_type() {
     $args = array(
         'public' => true,
         'labels'  => $labels,
-        'supports' => array( 'title', 'editor', 'thumbnail','comments' ),
+        'supports' => array( 'title', 'editor', 'thumbnail' ),
     );
     register_post_type( 'polls', $args );
 }
