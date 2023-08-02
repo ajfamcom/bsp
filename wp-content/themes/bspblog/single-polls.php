@@ -45,6 +45,9 @@ endif;
 						<h1 class="poll-title"><?php the_title();?></h1>						
 						<?php the_content(); ?>
 					</div>
+					<div>
+					 <?php comments_template();?>
+					</div>
 				</div>
 			</div>
 
