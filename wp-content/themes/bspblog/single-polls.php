@@ -35,7 +35,10 @@ endif;
 <div class="container">
 	<div class="col-md-12 py-5">
 		<div class="row">
-
+           <?php 
+		   while (have_posts()) :
+			the_post();
+		   ?>
 			<div class="single-poll col-12">
 				<div class="single-poll-content">
 					<div class="-single-poll-image">
@@ -50,7 +53,7 @@ endif;
 					</div>
 				</div>
 			</div>
-
+          <?php endwhile; ?>
 		</div>
 
 	</div>
