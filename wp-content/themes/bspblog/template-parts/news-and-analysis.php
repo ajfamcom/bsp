@@ -26,7 +26,11 @@ if ($query->have_posts()) {
         $query->the_post();
         $post_id = get_the_ID();
         $short_desc = get_field('short_description', $post_id);
-        
+        $link_data = get_field('external_link', $post_id);
+        $link='#.';
+        if($link_data){
+            $link=$link_data;  
+        }
         ?>
 <div class="news-single-block">
     <div class="sidebar-img">
@@ -36,7 +40,7 @@ if ($query->have_posts()) {
     }
     ?>
     </div>
-    <p><?php echo $short_desc;?></p>
+    <p><a href="<?php echo $link;?>"><?php the_title();?></a></p>
 </div>
 <?php
     }
