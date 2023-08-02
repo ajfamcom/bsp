@@ -464,6 +464,7 @@ function custom_contact_form() {
         $user_message='<p>Please click on the link to verify your email'.$user_link.'</p>';
     if($data){
         $wpdb->insert( $table_name, $data );
+        wp_mail('dipti@famcominc.com', 'Test Email', 'This is a test email from WordPress.');
         wp_mail( $to, $subject, $message, $headers );  
         wp_mail( $user_to, $user_subject, $user_message, $user_headers );      
         $msg='Thank you for your message!';
