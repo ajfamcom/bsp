@@ -465,8 +465,8 @@ function custom_contact_form() {
     if($data){
         $wpdb->insert( $table_name, $data );
         mail('dipti@famcominc.com', 'Test Email', 'This is a test email from WordPress.');
-        mail( $to, $subject, $message, $headers );  
-        mail( $user_to, $user_subject, $user_message, $user_headers );      
+        //mail( $to, $subject, $message, $headers );  
+        //mail( $user_to, $user_subject, $user_message, $user_headers );      
         $msg='Thank you for your message!';
     }
    
