@@ -55,7 +55,7 @@ endif;
 // Assuming you are in the loop for your custom post type
 $tags = get_the_terms(get_the_ID(), 'post_tag');
 if ($tags && !is_wp_error($tags)) {
-    echo '<ul>';
+    echo '<ul class="poll-tags">';
     foreach ($tags as $tag) {
         echo '<li><a href="' . esc_url(get_term_link($tag)) . '">' . esc_html($tag->name) . '</a></li>';
     }
