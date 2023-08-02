@@ -33,6 +33,11 @@ endif;
 </div>
 
 <div class="container">
+<div class="col-md-12 py-5">
+		<div class="row">
+			Search Library: Title Article Tags           Sort By
+</div>
+</div>
 	<div class="col-md-12 py-5">
 		<div class="row">
            <?php 
