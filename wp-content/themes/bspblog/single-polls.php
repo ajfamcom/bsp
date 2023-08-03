@@ -37,8 +37,10 @@ endif;
 	<div class="col-md-12 py-5">
 		<div class="row">
 					<?php 
-					while (have_posts()) :
-						the_post();
+					while (have_posts()) : the_post();
+					    $post_id=get_the_ID();
+						$download_attachment=get_field('pdf_attachment',$post_id);
+
 					?>
 				<div class="single-poll col-12">
 						<div class="single-poll-content">
@@ -47,7 +49,11 @@ endif;
 							</div>
 							<div class="single-poll-info">
 								<h1 class="poll-title"><?php the_title();?></h1>						
-								<?php the_content(); ?>
+								<?php the_content(); ?>			
+						
+								<?php if($download_attachment):?>
+								<p><a href="<?php echo esc_url($download_attachment); ?>" target="_blank" rel="nofollow">Download PDF</a></p>
+								<?php endif; ?>
 							</div>
 							
 						</div>
