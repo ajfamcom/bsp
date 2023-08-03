@@ -346,7 +346,7 @@ function custom_posts_search($search, $query) {
 		//$search='';
 		//AND ({$wpdb->posts}.post_content LIKE "%'.$search_term.'%" || {$wpdb->posts}.post_title LIKE "%'.$search_term.'%" || {$wpdb->posts}.post_excerpt LIKE "%'.$search_term.'%")
 			
-			$search .= " AND ({$wpdb->posts}.post_type='post' || {$wpdb->posts}.post_type='polls' || {$wpdb->posts}.post_type='news_analysis' || {$wpdb->posts}.post_type='team_members')";	
+			$search .= " AND ({$wpdb->posts}.post_type='post' || {$wpdb->posts}.post_type='polls' || {$wpdb->posts}.post_type='news_analysis' || {$wpdb->posts}.post_type='team_members' || {$wpdb->posts}.post_type='manage_services')";	
 		
 		return $search;   
 		
