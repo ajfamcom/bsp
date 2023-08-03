@@ -51,9 +51,9 @@ print_r($download_attachment);
 								<h1 class="poll-title"><?php the_title();?></h1>						
 								<?php the_content(); ?>			
 						
-								<?php //if($download_attachment):?>
-								<p><!--<a href="<?php //echo esc_url($download_attachment); ?>" target="_blank" rel="nofollow">Download PDF</a>--></p>
-								<?php //endif; ?>
+								<?php if($download_attachment):?>
+								<p><a href="<?php echo esc_url($download_attachment['url']); ?>" target="_blank" rel="nofollow">Download PDF</a></p>
+								<?php endif; ?>
 							</div>
 							
 						</div>
