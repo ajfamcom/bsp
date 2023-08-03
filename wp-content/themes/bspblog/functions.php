@@ -542,8 +542,8 @@ function custom_polls_post_type() {
             <input type="text" name="custom_field" id="custom_field" class="form-control" /></div>';*/
     
         
-        //$comment_field = $fields['comment'];
-        //unset($fields['comment']);
+        $comment_field = $fields['comment'];
+        unset($fields['comment']);
         //$fields['comment'] = $comment_field;
         $website_field = $fields['url'];
         unset($fields['url']);
@@ -563,6 +563,7 @@ function custom_polls_post_type() {
         //$fields['url'] = str_replace('class="comment-form-url"', 'class="comment-form-url form-control"', $fields['url']);
         //$fields['author'] = str_replace('class="comment-form-author"', 'class="comment-form-author form-control"', $fields['author']);
        // $fields['email'] = str_replace('class="comment-form-email"', 'class="comment-form-email form-control"', $fields['email']);
+            $fields['comment'] = '<div class="mb-3"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></div>'; 
             $fields['url'] = '<div class="mb-3"><label for="url" class="form-label">Website</label> <span class="required">*</span>
             <input type="text" name="url" id="url" class="form-control" /></div>';
             $fields['author'] = '<div class="mb-3"><label for="author" class="form-label">Name</label> <span class="required">*</span>
