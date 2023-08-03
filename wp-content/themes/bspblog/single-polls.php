@@ -89,7 +89,7 @@ endif;
 
 											$comment_field = $comment_form_args['comment_field'];
 											unset($comment_form_args['comment_field']);
-											$comment_form_args['comment_field'] = $comment_field;
+											$comment_form_args['comment_field'] = '<div class="mb-3"><label for="comment" class="form-label">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true"></textarea></div>';
 
 											comment_form($comment_form_args);
 										} else {
