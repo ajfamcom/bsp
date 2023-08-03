@@ -2,7 +2,7 @@
 
 
 <div  class="col-12 text-center">
-<p class="section-sm-title">Our Team</p>
+<!--<p class="section-sm-title">Our Team</p>-->
     <h1 class="section-title">Meet Our Team</h1>
 </div>
 <div class="row"> 
