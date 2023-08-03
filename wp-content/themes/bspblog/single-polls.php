@@ -40,7 +40,7 @@ endif;
 					while (have_posts()) : the_post();
 					    $post_id=get_the_ID();
 						$download_attachment=get_field('pdf_attachment',$post_id);
-print_r($download_attachment);
+
 					?>
 				<div class="single-poll col-12">
 						<div class="single-poll-content">
