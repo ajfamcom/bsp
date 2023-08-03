@@ -475,7 +475,7 @@ function custom_contact_form() {
     }
     ?>
 
-    <div class="container">		
+    <div class="contact-form">		
         <h2>Contact Us</h2>
 		<?php if(isset($msg)){?>
 			<div class="alert alert-success alert-dismissible fade show mt-3 "><?php echo $msg;?>
