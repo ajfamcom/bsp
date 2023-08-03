@@ -537,16 +537,16 @@ function custom_polls_post_type() {
     add_action('init','custom_polls_post_type');
 
     function custom_comment_form_fields($fields) {
-        // Add a new field to the comment form
-        $fields['custom_field'] = '<div class="mb-3"><label for="custom_field" class="form-label">Custom Field</label> <span class="required">*</span>
-            <input type="text" name="custom_field" id="custom_field" class="form-control" /></div>';
+        
+        /*$fields['custom_field'] = '<div class="mb-3"><label for="custom_field" class="form-label">Custom Field</label> <span class="required">*</span>
+            <input type="text" name="custom_field" id="custom_field" class="form-control" /></div>';*/
     
-        // Reorder the fields - move 'comment' field to the last position
+        
         $comment_field = $fields['comment'];
         unset($fields['comment']);
         $fields['comment'] = $comment_field;
     
-        // Modify the existing fields, for example, add Bootstrap classes to the existing fields
+        
         $fields['author'] = str_replace('class="comment-form-author"', 'class="comment-form-author form-control"', $fields['author']);
         $fields['email'] = str_replace('class="comment-form-email"', 'class="comment-form-email form-control"', $fields['email']);
         $fields['url'] = str_replace('class="comment-form-url"', 'class="comment-form-url form-control"', $fields['url']);
