@@ -36,37 +36,50 @@ endif;
 
 	<div class="col-md-12 py-5">
 		<div class="row">
-           <?php 
-		   while (have_posts()) :
-			the_post();
-		   ?>
-			<div class="single-poll col-12">
-				<div class="single-poll-content">
-					<div class="-single-poll-image">
-					<img src="<?php echo $image['url']; ?>" />					
-				    </div>
-					<div class="single-poll-info">
-						<h1 class="poll-title"><?php the_title();?></h1>						
-						<?php the_content(); ?>
-					</div>
-					
-				</div>
-				<div class="tags">
-				<?php
-// Assuming you are in the loop for your custom post type
-$tags = get_the_terms(get_the_ID(), 'post_tag');
-if ($tags && !is_wp_error($tags)) {
-    echo '<ul class="poll-tags">';
-    foreach ($tags as $tag) {
-        echo '<li><a href="' . esc_url(get_term_link($tag)) . '">' . esc_html($tag->name) . '</a></li>';
-    }
-    echo '</ul>';
-}
-?>
+					<?php 
+					while (have_posts()) :
+						the_post();
+					?>
+				<div class="single-poll col-12">
+						<div class="single-poll-content">
+							<div class="-single-poll-image">
+							<img src="<?php echo $image['url']; ?>" />					
+							</div>
+							<div class="single-poll-info">
+								<h1 class="poll-title"><?php the_title();?></h1>						
+								<?php the_content(); ?>
+							</div>
+							
+						</div>
+						<div class="tags">
+								<?php
+									// Assuming you are in the loop for your custom post type
+									$tags = get_the_terms(get_the_ID(), 'post_tag');
+									if ($tags && !is_wp_error($tags)) {
+										echo '<ul class="poll-tags">';
+										foreach ($tags as $tag) {
+											echo '<li><a href="' . esc_url(get_term_link($tag)) . '">' . esc_html($tag->name) . '</a></li>';
+										}
+										echo '</ul>';
+									}
+									?>
+						</div>
+						<div class="comments-section">
+									<?php if (comments_open() || get_comments_number()) : ?>
+										<h2><?php comments_number('No Comments', '1 Comment', '% Comments'); ?></h2>
+										<?php
+										if (comments_open()) {
+											// Display comments form
+											comment_form();
+										} else {
+											echo '<p>Comments are closed.</p>';
+										}
+										?>
+									<?php endif; ?>
+                        </div>
 
-				</div>
-			</div>
-          <?php endwhile; ?>
+			    </div>
+                    <?php endwhile; ?>
 		</div>
 
 	</div>
