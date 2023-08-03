@@ -8,7 +8,7 @@ $args = array(
     'posts_per_page' => 1,    
     'meta_query' => array(
         array(
-            'key' => 'is_featured_post', 
+            'key' => 'is_featured_poll', 
             'value'   => 'Yes', // Serialized value for 'Yes'
             'compare' => 'LIKE'
         ),
