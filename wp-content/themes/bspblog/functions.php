@@ -504,7 +504,7 @@ function custom_contact_form() {
                 <label class="form-check-label" for="signup">Sign me up for email list, promotions, and more</label>
             </div>
             <div class="text-center">
-            <input type="submit" name="submit_form" class="btn btn-primary mt-3" value="Submit">
+            <input type="submit" name="submit_form" class="btn btn-primary mt-4" value="Submit">
             </div>
         </form>
     </div>

@@ -746,6 +746,7 @@ ul.contact-social-links li a:hover i {
     background: #f7f7f7;
     border: 1px solid #e2e2e2;
     padding: 60px;
+    border-radius: 6px;
 }
 .contact-form h2 {
     text-align: center;
@@ -771,7 +772,7 @@ ul.contact-social-links li a:hover i {
 .contact-form .btn.btn-primary {
     font-size: 16px;
     background: var(--blue);
-    padding: 18px 30px 12px 30px;
+    padding: 16px 30px 12px 30px;
 }
 .contact-form .btn.btn-primary:hover {
     background: var(--orange);
