@@ -549,10 +549,10 @@ function custom_polls_post_type() {
         $checkbox_field = $fields['cookies'];
         unset($fields['cookies']);
         $fields['cookies'] = $checkbox_field;
-        
+        $fields['url'] = str_replace('class="comment-form-url"', 'class="comment-form-url form-control"', $fields['url']);
         $fields['author'] = str_replace('class="comment-form-author"', 'class="comment-form-author form-control"', $fields['author']);
         $fields['email'] = str_replace('class="comment-form-email"', 'class="comment-form-email form-control"', $fields['email']);
-        $fields['url'] = str_replace('class="comment-form-url"', 'class="comment-form-url form-control"', $fields['url']);
+        
     
         return $fields;
     }
