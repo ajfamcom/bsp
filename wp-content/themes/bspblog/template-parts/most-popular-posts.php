@@ -4,7 +4,7 @@
 <?php
 
 $args = array(
-    'post_type' => 'post',
+    'post_type' => 'polls',
     'posts_per_page' => 1,    
     'meta_query' => array(
         array(
