@@ -742,4 +742,21 @@ ul.contact-social-links li a:hover i {
     -ms-transition: all ease-in-out 0.5s;
     -o-transition: all ease-in-out 0.5s;
 }
+.contact-form {
+    background: #f7f7f7;
+    border: 1px solid #e2e2e2;
+    padding: 60px;
+}
+.contact-form h2 {
+    text-align: center;
+    margin-bottom: 2%;
+}
+.contact-form .form-check input {
+    float: inherit;
+    margin-right: 5px;
+}
+.contact-form .form-check {
+    text-align: center;
+    color: #666;
+}
 /*--- /contact-page -----*/

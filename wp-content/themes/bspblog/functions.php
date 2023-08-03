@@ -484,20 +484,20 @@ function custom_contact_form() {
 		<?php } ?>
         <form method="post" action="<?php echo site_url('contact-us/');?>">
             <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="fname" name="fname" required>
+                <!-- <label for="name" class="form-label">Name</label> -->
+                <input type="text" class="form-control" id="fname" name="fname" placeholder="Name*" required>
             </div>
             <div class="mb-3">
-                <label for="organization" class="form-label">Organization</label>
-                <input type="text" class="form-control" id="organization" name="organization">
+                <!-- <label for="organization" class="form-label">Organization</label> -->
+                <input type="text" class="form-control" id="organization" name="organization" placeholder="Organization">
             </div>
             <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <!-- <label for="email" class="form-label">Email</label> -->
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email*" required>
             </div>
             <div class="mb-3">
-                <label for="message" class="form-label">Message</label>
-                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                <!-- <label for="message" class="form-label">Message</label> -->
+                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Message*" required></textarea>
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="signup" name="signup">
