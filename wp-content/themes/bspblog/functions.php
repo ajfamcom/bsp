@@ -343,11 +343,13 @@ function custom_posts_search($search, $query) {
       
          $search_term = trim($query->query_vars['s']);
          $visitor_ip =get_visitor_ip_address();
+         $tablename='wp_searchdata';
          $insert_data=array(
             'keyword'=>$search_term,
             'visitor_ip'=>$visitor_ip,
 
          );
+        $wpdb->insert($tablename,$insert_data);
 
 		//$search='';
 		//AND ({$wpdb->posts}.post_content LIKE "%'.$search_term.'%" || {$wpdb->posts}.post_title LIKE "%'.$search_term.'%" || {$wpdb->posts}.post_excerpt LIKE "%'.$search_term.'%")
