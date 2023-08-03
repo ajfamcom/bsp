@@ -52,11 +52,11 @@ if ($query->have_posts()) {
 ?>  
 <?php
 $args = array(
-    'post_type' => 'post',
+    'post_type' => 'polls',
     'posts_per_page' => 1,    
     'meta_query' => array(
         array(
-            'key' => 'is_static_post', 
+            'key' => 'is_sticky_poll', 
             'value'   => 'Yes', // Serialized value for 'Yes'
             'compare' => 'LIKE'
         ),
@@ -100,13 +100,18 @@ if ($query->have_posts()) {
 
 
 $args = array(
-    'post_type' => 'post',
+    'post_type' => 'polls',
     'posts_per_page' => 3,
     'orderby' => 'date',
     'order' => 'ASC',    
     'meta_query' => array(
         array(
-            'key' => 'is_featured_post', 
+            'key' => 'is_featured_poll', 
+            'value'   => 'No', // Serialized value for 'Yes'
+            'compare' => '='
+        ),
+        array(
+            'key' => 'is_sticky_poll', 
             'value'   => 'No', // Serialized value for 'Yes'
             'compare' => '='
         ),
