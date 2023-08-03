@@ -545,7 +545,10 @@ function custom_polls_post_type() {
         $comment_field = $fields['comment'];
         unset($fields['comment']);
         $fields['comment'] = $comment_field;
-    
+        
+        $checkbox_field = $fields['cookies'];
+        unset($fields['cookies']);
+        $fields['cookies'] = $checkbox_field;
         
         $fields['author'] = str_replace('class="comment-form-author"', 'class="comment-form-author form-control"', $fields['author']);
         $fields['email'] = str_replace('class="comment-form-email"', 'class="comment-form-email form-control"', $fields['email']);
