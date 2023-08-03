@@ -542,10 +542,10 @@ function custom_polls_post_type() {
             <input type="text" name="custom_field" id="custom_field" class="form-control" /></div>';*/
     
         
-        $comment_field = $fields['comment'];
-        unset($fields['comment']);
-        $fields['comment'] = $comment_field;
-        
+        //$comment_field = $fields['comment'];
+        //unset($fields['comment']);
+        //$fields['comment'] = $comment_field;
+
         $checkbox_field = $fields['cookies'];
         unset($fields['cookies']);
         $fields['cookies'] = $checkbox_field;
