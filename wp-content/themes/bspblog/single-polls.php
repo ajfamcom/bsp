@@ -70,8 +70,8 @@ endif;
 										<?php
 										if (comments_open()) {																
 																					
-											include( get_template_directory() . '/template-parts/custom-comment-form.php' );
-
+											comment_form();
+											
 										} else {
 											echo '<p>Comments are closed.</p>';
 										}
