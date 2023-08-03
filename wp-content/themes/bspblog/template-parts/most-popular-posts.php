@@ -109,12 +109,8 @@ $args = array(
             'key' => 'is_featured_post', 
             'value'   => 'No', // Serialized value for 'Yes'
             'compare' => '='
-        ),
-        array(
-            'key' => 'is_sticky_post', 
-            'value'   => 'No', // Serialized value for 'Yes'
-            'compare' => '='
-        ),
+        )
+       
     ),
     
 );
