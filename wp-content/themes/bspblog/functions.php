@@ -536,6 +536,16 @@ function custom_polls_post_type() {
 
     add_action('init','custom_polls_post_type');
 
+    function custom_comment_form_template( $args ) {
+        ob_start();
+        include( 'template-parts/custom-comment-form.php' );
+        $custom_template = ob_get_clean();
+    
+        return $custom_template;
+    }
+    add_filter( 'comment_form', 'custom_comment_form_template' );
+    
+
 
 
 

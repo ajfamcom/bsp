@@ -70,28 +70,8 @@ endif;
 										<?php
 										if (comments_open()) {																
 																					
-											$comment_form_args = array(
-												'title_reply' => 'Leave a Comment', 
-												'comment_notes_before' => '', 
-												'comment_notes_after' => '', 
-												'fields' => array(
-													'email' => '<div class="mb-3"><label for="email" class="form-label">' . __( 'Email', 'domain' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
-																'<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" class="form-control" ' . $aria_req . ' /></div>',
-													'author' => '<div class="mb-3"><label for="author" class="form-label">' . __( 'Name', 'domain' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
-																'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" class="form-control" ' . $aria_req . ' /></div>',
-													'url' => '<div class="mb-3"><label for="url" class="form-label">' . __( 'Website', 'domain' ) . '</label>' .
-																'<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" class="form-control" /></div>',
-												),
-												'class_submit' => 'btn btn-primary', 
-												'label_submit' => 'Post Comment',
-											);
-
-
-											$comment_field = $comment_form_args['comment_field'];
-											unset($comment_form_args['comment_field']);
-											$comment_form_args['comment_field'] = '<div class="mb-3"><label for="comment" class="form-label">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true"></textarea></div>';
-
-											comment_form($comment_form_args);
+											comment_form();
+											
 										} else {
 											echo '<p>Comments are closed.</p>';
 										}
