@@ -503,7 +503,9 @@ function custom_contact_form() {
                 <input type="checkbox" class="form-check-input" id="signup" name="signup">
                 <label class="form-check-label" for="signup">Sign me up for email list, promotions, and more</label>
             </div>
+            <div class="text-center">
             <input type="submit" name="submit_form" class="btn btn-primary mt-3" value="Submit">
+            </div>
         </form>
     </div>
 

@@ -759,4 +759,21 @@ ul.contact-social-links li a:hover i {
     text-align: center;
     color: #666;
 }
+.contact-form input, .contact-form textarea {
+    background: #fff;
+    border: 1px solid #e2e2e2;
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder {
+    font-size: 16px;
+    color: #666;
+    font-family: 'League Spartan', sans-serif !important;
+}
+.contact-form .btn.btn-primary {
+    font-size: 16px;
+    background: var(--blue);
+    padding: 18px 30px 12px 30px;
+}
+.contact-form .btn.btn-primary:hover {
+    background: var(--orange);
+}
 /*--- /contact-page -----*/
