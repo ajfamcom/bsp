@@ -182,7 +182,7 @@ require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-hooks.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-functions.php';
 
 
-function fetchSearchResult(){
+/*unction fetchSearchResult(){
 	$response=array();
 	global $wpdb;
 	$search_query=trim($_POST['searchkeyword']);
@@ -222,8 +222,10 @@ function fetchSearchResult(){
 	
 	die();
 }
+
 add_action("wp_ajax_fetchSearchResult", "fetchSearchResult");
 add_action("wp_ajax_nopriv_fetchSearchResult", "fetchSearchResult");
+*/
 
 /**Team Posts*/
 
@@ -284,9 +286,8 @@ add_action( 'init', 'custom_news_and_analysis_register_post_type' );
 
 
 // Add the filter to modify the search query
-add_filter('posts_search', 'custom_posts_search', 10, 2);
-
-function custom_posts_search($search, $query) {
+/*
+ function custom_posts_search($search, $query) {
     global $wpdb;
 
     
@@ -328,6 +329,48 @@ function custom_posts_search($search, $query) {
 	else{
 
 	}
+    
+}
+ 
+ */
+add_filter('posts_search', 'custom_posts_search', 10, 2);
+
+function custom_posts_search($search, $query) {
+    global $wpdb;
+
+    
+    if (is_search() && !empty($query->query_vars['s'])) {
+
+		
+      
+         $search_term = trim($query->query_vars['s']);
+		    
+
+		  $mquery='SELECT * FROM wp_posts WHERE (`post_content` LIKE "%'.$search_term.'%" || `post_title` LIKE "%'.$search_term.'%" || `post_excerpt` LIKE "%'.$search_term.'%") AND post_type="wpdmpro" AND post_status="publish" GROUP BY ID';
+		$result =$wpdb->get_results($mquery);	
+	
+	 
+	
+		$search='';
+		foreach($result as $data){	
+			
+			$search = "AND ({$wpdb->posts}.post_content LIKE "%'.$search_term.'%" || {$wpdb->posts}.post_title LIKE "%'.$search_term.'%" || {$wpdb->posts}.post_excerpt LIKE "%'.$search_term.'%") AND ({$wpdb->posts}.post_type='post' || {$wpdb->posts}.post_type='polls' || {$wpdb->posts}.post_type='news_analysis' || {$wpdb->posts}.post_type='team_members' )";
+		}
+		
+		return $search;
+	   
+	   
+		
+    }
+
+	else if (is_search()  && empty($query->query_vars['s'])) {
+
+	
+		global $wpdb;
+        $search = " AND 0 = 1";
+		return $search;
+    }
+	
     
 }
 
