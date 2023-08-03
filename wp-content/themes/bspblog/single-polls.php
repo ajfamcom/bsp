@@ -74,7 +74,7 @@ endif;
 												'title_reply' => 'Leave a Comment', 
 												'comment_notes_before' => '', 
 												'comment_notes_after' => '', 
-												'comment_field' => '<div class="mb-3"><label for="comment" class="form-label">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true"></textarea></div>',
+												
 												'fields' => array(
 													'author' => '<div class="mb-3"><label for="author" class="form-label">' . __( 'Name', 'domain' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
 																'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" class="form-control" ' . $aria_req . ' /></div>',
@@ -83,6 +83,7 @@ endif;
 													'url' => '<div class="mb-3"><label for="url" class="form-label">' . __( 'Website', 'domain' ) . '</label>' .
 																'<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" class="form-control" /></div>',
 												),
+												'comment_field' => '<div class="mb-3"><label for="comment" class="form-label">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true"></textarea></div>',
 												'class_submit' => 'btn btn-primary', 
 												'label_submit' => 'Post Comment', 
 											);
