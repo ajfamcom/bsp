@@ -342,6 +342,12 @@ function custom_posts_search($search, $query) {
     if (is_search() && !empty($query->query_vars['s'])) {		
       
          $search_term = trim($query->query_vars['s']);
+         $visitor_ip =get_visitor_ip_address();
+         $insert_data=array(
+            'keyword'=>$search_term,
+            'visitor_ip'=>$visitor_ip,
+
+         );
 
 		//$search='';
 		//AND ({$wpdb->posts}.post_content LIKE "%'.$search_term.'%" || {$wpdb->posts}.post_title LIKE "%'.$search_term.'%" || {$wpdb->posts}.post_excerpt LIKE "%'.$search_term.'%")
@@ -606,6 +612,17 @@ function custom_polls_post_type() {
         return $fields;
     }
     add_filter('comment_form_fields', 'custom_comment_form_fields');
+
+    function get_visitor_ip_address() {
+        $ip_address = '';
+    
+        if (isset($_SERVER['REMOTE_ADDR']) && !empty($_SERVER['REMOTE_ADDR'])) {
+            $ip_address = $_SERVER['REMOTE_ADDR'];
+        }
+    
+        return $ip_address;
+    }
+    
     
 
 
