@@ -551,6 +551,9 @@ function custom_polls_post_type() {
 
         $author_field = $fields['author'];
         unset($fields['author']);
+
+        $author_field = $fields['email'];
+        unset($fields['email']);
        // $fields['author'] = $author_field;
 
         $checkbox_field = $fields['cookies'];
