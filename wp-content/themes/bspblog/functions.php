@@ -339,33 +339,20 @@ function custom_posts_search($search, $query) {
     global $wpdb;
 
     
-    if (is_search() && !empty($query->query_vars['s'])) {
-
-		
+    if (is_search() && !empty($query->query_vars['s'])) {		
       
          $search_term = trim($query->query_vars['s']);
-		    
 
-		  $mquery='SELECT * FROM wp_posts WHERE (`post_content` LIKE "%'.$search_term.'%" || `post_title` LIKE "%'.$search_term.'%" || `post_excerpt` LIKE "%'.$search_term.'%") AND post_type="wpdmpro" AND post_status="publish" GROUP BY ID';
-		$result =$wpdb->get_results($mquery);	
-	
-	 
-	
 		$search='';
-		foreach($result as $data){	
-			
-			$search = "AND ({$wpdb->posts}.post_content LIKE "%'.$search_term.'%" || {$wpdb->posts}.post_title LIKE "%'.$search_term.'%" || {$wpdb->posts}.post_excerpt LIKE "%'.$search_term.'%") AND ({$wpdb->posts}.post_type='post' || {$wpdb->posts}.post_type='polls' || {$wpdb->posts}.post_type='news_analysis' || {$wpdb->posts}.post_type='team_members' )";
-		}
 		
-		return $search;
-	   
-	   
+			
+			$search = "AND ({$wpdb->posts}.post_content LIKE "%'.$search_term.'%" || {$wpdb->posts}.post_title LIKE "%'.$search_term.'%" || {$wpdb->posts}.post_excerpt LIKE "%'.$search_term.'%") AND ({$wpdb->posts}.post_type='post' || {$wpdb->posts}.post_type='polls' || {$wpdb->posts}.post_type='news_analysis' || {$wpdb->posts}.post_type='team_members' )";	
+		
+		return $search;   
 		
     }
 
-	else if (is_search()  && empty($query->query_vars['s'])) {
-
-	
+	else if (is_search()  && empty($query->query_vars['s'])) {	
 		global $wpdb;
         $search = " AND 0 = 1";
 		return $search;
