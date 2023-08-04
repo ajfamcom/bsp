@@ -19,13 +19,18 @@ $data_format = array(
 );
 
 
- $wpdb->update(
+ if($wpdb->update(
     $table_name,
     $data_to_update,
     array('email' => $email_to_update),
     $data_format,
     array('%s')
-);
+)){
+   $msg="Your email has been verified.";
+}
+else{
+	$msg="This email doesnot exist!";
+}
 
 ?>
 <?php get_header();
@@ -51,8 +56,7 @@ $data_format = array(
 <div class="container py-5 my-md-5">
 	<div class="row py-md-5 my-md-5">
 		<div class="col-md-4 col-sm-12 col-12">
-			<h2></h2>
-			<p>Your email has been verified.</p>
+			<h2><?php echo $msg;?></h2>	
 			
 		</div>
 		
