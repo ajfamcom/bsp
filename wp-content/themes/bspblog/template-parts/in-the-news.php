@@ -23,79 +23,26 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 		</div>
 	</div>
 </div>
-<div class="container py-5 my-md-5">
-<h3 class="small-title">News And Analysis</h3>
-<div class="col-md-12 py-md-5">
-		<div class="row">
-<?php
-$args = array(
-    'post_type' => 'news_analysis',
-    'posts_per_page' => -1,    
-    'meta_query' => array(
-        array(
-            'key' => 'news_status', 
-            'value'   => 'Active', // Serialized value for 'Yes'
-            'compare' => '='
-        ),
-      
-    ),
-);
 
-$query = new WP_Query( $args );
-
-
-if ($query->have_posts()) {
-    while ($query->have_posts()) {
-        $query->the_post();
-        $post_id = get_the_ID();
-        $short_desc = get_field('short_description', $post_id);
-        $link_data = get_field('external_link', $post_id);
-        $link='javascript:void(0)';
-        $target="";
-        if($link_data){
-            $link= $link_data;
-            $target='_blank';
-        }
-        ?>
-<div class="news-single-block">
-    <div class="sidebar-img">
-	<?php
-    if (has_post_thumbnail()) {
-    the_post_thumbnail(); 
-    }
-    ?>
-    </div>
-    <p><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></p>
-</div>
-<?php
-    }
- wp_reset_postdata();
-    
-}
-
-// Reset the query to avoid conflicts with other queries
- 
-?>  
-</div>
-</div>
-</div>
 
 <div class="container py-5 my-md-5">	
 	<div class="col-md-12 py-md-5">
 		<div class="row">
 			<?php
-			$args = array(
+			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+            $args = array(
                 'post_type' => 'news_analysis',
-                'posts_per_page' => -1,    
+                'posts_per_page' => 12, // Number of posts per page (adjust as needed)
+                'paged' => $paged, // Add pagination support
                 'meta_query' => array(
                     array(
                         'key' => 'news_status', 
                         'value'   => 'Active', // Serialized value for 'Yes'
-                        'compare' => '='
-                    ),
-                  
+                        'compare' => '=',
+                    ),    
                 ),
             );
+                     
             
             $query = new WP_Query( $args );
     
@@ -134,7 +81,17 @@ if ($query->have_posts()) {
 					<?php endwhile; ?>
 			<?php endif;?>
         </div>
-		
+		        <!-- Pagination Links -->
+                <div class="pagination">
+                    <?php
+                    echo paginate_links(array(
+                        'total' => $query->max_num_pages,
+                        'current' => $paged,
+                        'prev_text' => '&laquo; Previous',
+                        'next_text' => 'Next &raquo;',
+                    ));
+                    ?>
+                </div>
     </div>
 </div>	
 
