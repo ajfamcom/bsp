@@ -17,15 +17,17 @@ $data_to_update = array(
 $data_format = array(
     '%s', 
 );
-
-
- if($wpdb->update(
-    $table_name,
-    $data_to_update,
-    array('email' => $email_to_update),
-    $data_format,
-    array('%s')
-)){
+$sql="select * from wp_contactus where email='".$email_to_update."'";
+$result=$wpdb->get_results($sql);
+ 
+ if($result){
+	$wpdb->update(
+		$table_name,
+		$data_to_update,
+		array('email' => $email_to_update),
+		$data_format,
+		array('%s')
+	 );
    $msg="Your email has been verified.";
 }
 else{
