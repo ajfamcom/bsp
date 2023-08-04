@@ -99,49 +99,65 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 		
     </div>	
 	<div class="col-md-12 py-md-5">
-		<div class="row">
-			<?php
-			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-			$args = array(
-			'post_type'      => 'polls',
-			'posts_per_page' => -1,
-			'paged' => $paged, 			          
-		    );
-    
-          $query = new WP_Query( $args );
-    
-			if ($query->have_posts()) :
-					while ($query->have_posts()) :
-						$query->the_post();
-						$post_id = get_the_ID();
-						
-						$permalink = get_permalink($post_id);
-						if (has_post_thumbnail($post_id)) {
-                           
-                            $thumbnail_id = get_post_thumbnail_id($post_id);                            
-                            $image_url = wp_get_attachment_url($thumbnail_id);                         
-                            $theme_directory_uri = get_template_directory_uri();    
-                            $noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';                          
-                          
-                            $image_link= '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
-                        } else {
-                            $image_link= '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
-                        }
-						?> 
-							<div class="news-block col-md-4">
-								<div class="news-image"><?php echo $image_link;?></div>
-								<div class="news-info">
-								<h4 class="news-details"><span class="news-title"><?php the_title(); ?></span></h4>
-								<p class="news-other-details"><span class="news-date">date</span></p>
-								<p class="news-content"><?php the_content();?></p>
-                                <p><a href="<?php echo $permalink;?>">Read More</a></p>
-								</div>
-							</div>
-					<?php endwhile; ?>
-			<?php endif;?>
-        </div>
-		
+    <div class="row">
+        <?php
+        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+        $args = array(
+            'post_type' => 'polls',
+            'posts_per_page' => 9, // Adjust the number of posts per page as per your requirement
+            'paged' => $paged,
+        );
+
+        $query = new WP_Query($args);
+
+        if ($query->have_posts()) :
+            while ($query->have_posts()) :
+                $query->the_post();
+                $post_id = get_the_ID();
+
+                $permalink = get_permalink($post_id);
+                if (has_post_thumbnail($post_id)) {
+
+                    $thumbnail_id = get_post_thumbnail_id($post_id);
+                    $image_url = wp_get_attachment_url($thumbnail_id);
+                    $theme_directory_uri = get_template_directory_uri();
+                    $noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
+
+                    $image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
+                } else {
+                    $image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
+                }
+        ?>
+                <div class="news-block col-md-4">
+                    <div class="news-image"><?php echo $image_link; ?></div>
+                    <div class="news-info">
+                        <h4 class="news-details"><span class="news-title"><?php the_title(); ?></span></h4>
+                        <p class="news-other-details"><span class="news-date">date</span></p>
+                        <p class="news-content"><?php the_content(); ?></p>
+                        <p><a href="<?php echo $permalink; ?>">Read More</a></p>
+                    </div>
+                </div>
+        <?php
+            endwhile;
+        ?>
+            <!-- Pagination -->
+            <div class="col-md-12">
+                <?php
+                // Display pagination links
+                the_posts_pagination(array(
+                    'prev_text' => __('Previous', 'textdomain'),
+                    'next_text' => __('Next', 'textdomain'),
+                ));
+                ?>
+            </div>
+        <?php
+        else :
+            echo 'No polls found.';
+        endif;
+        ?>
     </div>
+</div>
+
 </div>	
 <?php 
 get_footer();
