@@ -64,7 +64,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
                             $thumbnail_id = get_post_thumbnail_id($post_id);                            
                             $image_url = wp_get_attachment_url($thumbnail_id);                         
                             $theme_directory_uri = get_template_directory_uri();    
-                            $noimage = $theme_directory_uri . '/assets/images/No-Image-Placeholder.svg';                          
+                            $noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';                          
                           
                             $image_link= '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
                         } else {
