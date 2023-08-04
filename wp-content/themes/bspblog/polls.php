@@ -101,9 +101,11 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 	<div class="col-md-12 py-md-5">
 		<div class="row">
 			<?php
+			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 			$args = array(
 			'post_type'      => 'polls',
-			'posts_per_page' => -1,			          
+			'posts_per_page' => 2,
+			'paged' => $paged, 			          
 		    );
     
           $query = new WP_Query( $args );
@@ -138,7 +140,17 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 					<?php endwhile; ?>
 			<?php endif;?>
         </div>
-		
+		 <!-- Pagination Links -->
+		 <div class="pagination">
+                    <?php
+                    echo paginate_links(array(
+                        'total' => $query->max_num_pages,
+                        'current' => $paged,
+                        'prev_text' => '&laquo;',
+                        'next_text' => '&raquo;',
+                    ));
+                    ?>
+                </div>
     </div>
 </div>	
 <?php 
