@@ -32,20 +32,19 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $args = array(
                 'post_type' => 'news_analysis',
-                'posts_per_page' => 3, // Number of posts per page (adjust as needed)
-                'paged' => $paged, // Add pagination support
+                'posts_per_page' => 3, 
+                'paged' => $paged, 
                 'meta_query' => array(
                     array(
                         'key' => 'news_status', 
-                        'value'   => 'Active', // Serialized value for 'Yes'
+                        'value'   => 'Active', 
                         'compare' => '=',
                     ),    
                 ),
             );
                      
             
-            $query = new WP_Query( $args );
-    
+            $query = new WP_Query( $args );   
        
     
 			if ($query->have_posts()) :
