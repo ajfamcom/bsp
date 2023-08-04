@@ -67,10 +67,20 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 						$post_id = get_the_ID();
 						
 						$permalink = get_permalink($post_id);
-
+						if (has_post_thumbnail($post_id)) {
+                           
+                            $thumbnail_id = get_post_thumbnail_id($post_id);                            
+                            $image_url = wp_get_attachment_url($thumbnail_id);                         
+                            $theme_directory_uri = get_template_directory_uri();    
+                            $noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';                          
+                          
+                            $image_link= '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
+                        } else {
+                            $image_link= '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
+                        }
 						?> 
 							<div class="news-block col-md-6">
-								<div class="news-image"><img src="" /></div>
+								<div class="news-image"><?php echo $image_link;?></div>
 								
 								</div>
 							</div>
