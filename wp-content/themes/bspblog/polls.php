@@ -104,7 +104,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
         $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
         $args = array(
             'post_type' => 'polls',
-            'posts_per_page' => 9, // Adjust the number of posts per page as per your requirement
+            'posts_per_page' => 2, // Adjust the number of posts per page as per your requirement
             'paged' => $paged,
         );
 
