@@ -823,4 +823,30 @@ ul.contact-social-links li a:hover i {
 .single-news .news-info h4 a {
     color: #fff;
 }
+.pagination {
+    justify-content: center;
+    margin-top: 5%;
+}
+.pagination span, .pagination a {
+    padding: 0;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    margin: 0 3px;
+    border-radius: 4px;
+    width: 48px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #646464;
+}
+.pagination span.page-numbers.current {
+    background: var(--blue);
+    color: #fff;
+}
+.pagination span:hover, .pagination a:hover {
+    background: var(--orange);
+    color: #fff;
+}
 /*------ /in-the-news-page -----*/
