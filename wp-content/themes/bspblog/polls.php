@@ -142,13 +142,16 @@ $image_over_banner = get_field('image_over_banner', $page_id);
         ?>
             <!-- Pagination -->
             <div class="col-md-12">
-                <?php
-                // Display pagination links
-                the_posts_pagination(array(
-                    'prev_text' => __('Previous', 'textdomain'),
-                    'next_text' => __('Next', 'textdomain'),
-                ));
-                ?>
+			<div class="pagination">
+                    <?php
+                    echo paginate_links(array(
+                        'total' => $query->max_num_pages,
+                        'current' => $paged,
+                        'prev_text' => '&laquo;',
+                        'next_text' => '&raquo;',
+                    ));
+                    ?>
+                </div>
             </div>
         <?php
         else :
