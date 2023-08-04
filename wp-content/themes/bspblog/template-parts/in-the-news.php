@@ -80,6 +80,52 @@ if ($query->have_posts()) {
 </div>
 </div>
 
+<div class="container py-5 my-md-5">	
+	<div class="col-md-12 py-md-5">
+		<div class="row">
+			<?php
+			$args = array(
+                'post_type' => 'news_analysis',
+                'posts_per_page' => -1,    
+                'meta_query' => array(
+                    array(
+                        'key' => 'news_status', 
+                        'value'   => 'Active', // Serialized value for 'Yes'
+                        'compare' => '='
+                    ),
+                  
+                ),
+            );
+            
+            $query = new WP_Query( $args );
+    
+       
+    
+			if ($query->have_posts()) :
+					while ($query->have_posts()) :
+						$query->the_post();						
+                        $post_id = get_the_ID();
+                        $short_desc = get_field('short_description', $post_id);
+                        $link_data = get_field('external_link', $post_id);
+                        $link='javascript:void(0)';
+                        $target="";
+                        if($link_data){
+                            $link= $link_data;
+                            $target='_blank';
+                        }
 
+						?> 
+							<div class="single-news col-md-4">
+								<div class="news-image-square"><img src="<?php //echo $image['url'];?>" /></div>
+								<div class="news-info">
+								<h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
+								</div>
+							</div>
+					<?php endwhile; ?>
+			<?php endif;?>
+        </div>
+		
+    </div>
+</div>	
 
 <?php get_footer();?>
