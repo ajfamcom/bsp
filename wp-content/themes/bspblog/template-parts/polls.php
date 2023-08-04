@@ -1,4 +1,4 @@
-<?php /*Template Name: Polls Page*/?>
+<?php /*Template Name: Custom Polls Page*/?>
 
 <?php
 $page_id = get_the_ID();
