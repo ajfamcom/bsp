@@ -843,6 +843,12 @@ ul.contact-social-links li a:hover i {
 }
 .pagination span.page-numbers.current {
     background: var(--blue);
+    border: 1px solid var(--blue);
+    color: #fff;
+}
+.pagination span.page-numbers.current:hover {
+    background: var(--orange);
+    border: 1px solid var(--orange);
     color: #fff;
 }
 .pagination span:hover, .pagination a:hover {
