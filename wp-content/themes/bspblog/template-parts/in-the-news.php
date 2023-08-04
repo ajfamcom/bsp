@@ -113,10 +113,20 @@ if ($query->have_posts()) {
                             $link= $link_data;
                             $target='_blank';
                         }
-
+                        if (has_post_thumbnail($post_id)) {
+                           
+                            $thumbnail_id = get_post_thumbnail_id($post_id);
+                            
+                            $image_url = wp_get_attachment_url($thumbnail_id);
+                            $noimage=bloginfo('template_directory').'/assets/images/No-Image-Placeholder.svg';
+                           
+                            $image_link= '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
+                        } else {
+                            $image_link= '<img src="' . $noimage . '" alt="Featured Image" class="news-image">';
+                        }
 						?> 
 							<div class="single-news col-md-4">
-								<div class="news-image-square"><img src="<?php //echo $image['url'];?>" /></div>
+								<div class="news-image-square"><?php echo $image_link;?></div>
 								<div class="news-info">
 								<h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
 								</div>
