@@ -538,7 +538,7 @@ function custom_contact_form() {
         <form method="post" action="<?php echo site_url('contact-us/');?>">
             <div class="mb-3">
                 <!-- <label for="name" class="form-label">Name</label> -->
-                <input type="text" class="form-control" id="fname" name="fname" placeholder="Name*" >
+                <input type="text" class="form-control" id="fname" name="fname" placeholder="Name*" required>
             </div>
             <div class="mb-3">
                 <!-- <label for="organization" class="form-label">Organization</label> -->
