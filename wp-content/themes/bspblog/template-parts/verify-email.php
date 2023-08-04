@@ -55,7 +55,7 @@ else{
 <div class="container py-5 my-md-5">
 	<div class="row py-md-5 my-md-5">
 		<div class="col-md-4 col-sm-12 col-12">
-			<h2 class="center"><?php echo $msg;?></h2>	
+			<h2><?php echo $msg;?></h2>	
 			
 		</div>
 		
