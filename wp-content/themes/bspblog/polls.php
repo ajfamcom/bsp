@@ -40,9 +40,9 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 		</div>
 	</div>
 
-	<div class="row">
+	<!-- <div class="row">
 		<?php
-		$fargs = array(
+		/* $fargs = array(
 			'post_type'      => 'polls',
 			'posts_per_page' => 1,
 			'meta_query'     => array(
@@ -52,11 +52,11 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 					'compare' => '='
 				),				
 			),			          
-		);
+		); */
 
-		$fquery = new WP_Query( $fargs );
+		//$fquery = new WP_Query( $fargs );
 
-		if ($fquery->have_posts()) :
+		/* if ($fquery->have_posts()) :
 			while ($fquery->have_posts()) :
 				$fquery->the_post();
 				$post_id = get_the_ID();
@@ -72,25 +72,25 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 					$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
 				} else {
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
-				}
+				} */
 		?>
 				<div class="news-block col-md-6">
-					<div class="news-image"><?php echo $image_link;?></div>
+					<div class="news-image"><?php //echo $image_link;?></div>
 				</div>
 				<div class="news-block col-md-6">
 					<div class="news-info">
-						<h4 class="news-details"><span class="news-title"><?php the_title(); ?></span></h4>
+						<h4 class="news-details"><span class="news-title"><?php //the_title(); ?></span></h4>
 						<p class="news-other-details"><span class="news-date">date</span></p>
-						<p class="news-content"><?php the_content();?></p>
-						<p><a href="<?php echo $permalink;?>">Read More</a></p>
+						<p class="news-content"><?php //the_content();?></p>
+						<p><a href="<?php //echo $permalink;?>">Read More</a></p>
 					</div>
 				</div>
 		<?php
-			endwhile;
-			wp_reset_postdata();
-		endif;
+			//endwhile;
+			//wp_reset_postdata();
+		//endif;
 		?>
-	</div>
+	</div> -->
 
 	<div class="row">
 		<?php
