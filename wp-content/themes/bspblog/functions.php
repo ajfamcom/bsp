@@ -466,7 +466,7 @@ return $page_id;
 function custom_contact_form() {
     if ( isset( $_POST['submit_form'] ) ) {      
 
-       
+        require_once ABSPATH . WPINC . '/pluggable.php';
         $name = sanitize_text_field( $_POST['fname'] );
         $email = sanitize_email( $_POST['email'] );
         $message = esc_textarea( $_POST['message'] );
@@ -478,6 +478,7 @@ function custom_contact_form() {
             'From: ' . $name . ' <' . $email . '>',
             'Content-Type: text/html; charset=UTF-8',
         );
+       
         //save in db
         global $wpdb;        
         $table_name = $wpdb->prefix . 'contactus';
