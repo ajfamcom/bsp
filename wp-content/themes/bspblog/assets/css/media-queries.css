@@ -299,6 +299,10 @@
     }
 
     /*---- /about-page -----*/
+    .single-news {
+        position: relative;
+        margin: 5% 0;
+    }
 }
 
 /*================================= /media-queries ==================================*/
