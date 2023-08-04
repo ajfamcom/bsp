@@ -79,3 +79,7 @@ if ($query->have_posts()) {
 </div>
 </div>
 </div>
+
+
+
+<?php get_footer();?>
