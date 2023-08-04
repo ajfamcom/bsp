@@ -137,7 +137,7 @@ get_header();
 		<?php
 			endwhile;
 			wp_reset_postdata();
-			echo 'hello'.$query->max_num_pages;
+			
 		?>
 			<!-- Pagination -->
 			<div class="col-md-12">
