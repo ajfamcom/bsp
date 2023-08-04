@@ -37,19 +37,16 @@ else{
 ?>
 <?php get_header();
 ?>
-<div class="inner-bnr contact-bnr" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<?php echo $full_banner['url']; ?>')">
+<div class="single-inner-bnr">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 col-sm-8 col-12">
+			<div class="col-12">
 				<div class="row page-banner">
 					<?php echo get_breadcrumbs(); ?>
 					<div class="page-title">
 						<h3><?php echo get_the_title(); ?></h3>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-4 col-sm-4 col-12">
-				<img class="img-fluid bnr-simg" src="<?php echo $image_over_banner['url'];?>" alt="side-bnrimg">
 			</div>
 		</div>
 	</div>
