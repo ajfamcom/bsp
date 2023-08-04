@@ -30,8 +30,19 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 <div class="container py-5 my-md-5">
 <div class="col-md-12 py-5">
 		<div class="row">
-			Search Library: Title Article Tags           Sort By
-</div>
+		    <div class="container mt-5">
+				<form class="row g-2">
+				<div class="col-md-8">
+					<!-- Search Input -->
+					<input type="text" class="form-control" placeholder="Enter your search query" aria-label="Search">
+				</div>
+				<div class="col-md-4">
+					<!-- Search Button -->
+					<button type="submit" class="btn btn-primary w-100">Search</button>
+				</div>
+				</form>
+		   </div>
+      </div>
 </div>
 <div class="col-md-12 py-md-5">
 		<div class="row">
