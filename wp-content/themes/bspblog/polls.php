@@ -4,7 +4,11 @@ $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
 ?>
-<?php get_header();?>
+<?php 
+
+get_header();
+
+?>
 
 <div class="inner-bnr team-bnr" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<?php echo $full_banner['url']; ?>')">
 	<div class="container">
@@ -133,6 +137,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 		<?php
 			endwhile;
 			wp_reset_postdata();
+			echo 'hello'.$query->max_num_pages;
 		?>
 			<!-- Pagination -->
 			<div class="col-md-12">
