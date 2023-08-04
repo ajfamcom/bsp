@@ -90,6 +90,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 				</div>
 		<?php
 			endwhile;
+			wp_reset_postdata();
 		endif;
 		?>
 	</div>
@@ -134,6 +135,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 				</div>
 		<?php
 			endwhile;
+			wp_reset_postdata();
 		?>
 			<!-- Pagination -->
 			<div class="col-md-12">
