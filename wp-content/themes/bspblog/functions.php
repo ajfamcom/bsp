@@ -467,6 +467,7 @@ function custom_contact_form() {
     if ( isset( $_POST['submit_form'] ) ) {      
 
         require_once ABSPATH . WPINC . '/pluggable.php';
+        $aname="BSP Research";
         $name = sanitize_text_field( $_POST['fname'] );
         $email = sanitize_email( $_POST['email'] );
         $message = esc_textarea( $_POST['message'] );
@@ -475,7 +476,7 @@ function custom_contact_form() {
         $subject = 'Contact Form Submission';
         $to = get_option('admin_email');
         $headers = array(
-            'From: ' . $name . ' <' . $email . '>',
+            'From: ' . $aname . ' <' . $email . '>',
             'Content-Type: text/html; charset=UTF-8',
         );
         $all_message ='<p>Find details of a new contactus submission</p>';
