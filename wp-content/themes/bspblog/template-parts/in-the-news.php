@@ -115,14 +115,14 @@ if ($query->have_posts()) {
                         }
                         if (has_post_thumbnail($post_id)) {
                            
-                            $thumbnail_id = get_post_thumbnail_id($post_id);
-                            
-                            $image_url = wp_get_attachment_url($thumbnail_id);
-                            $noimage=bloginfo('template_directory').'/assets/images/No-Image-Placeholder.svg';
-                           
+                            $thumbnail_id = get_post_thumbnail_id($post_id);                            
+                            $image_url = wp_get_attachment_url($thumbnail_id);                         
+                            $theme_directory_uri = get_template_directory_uri();    
+                            $noimage = $theme_directory_uri . '/assets/images/No-Image-Placeholder.svg';                          
+                          
                             $image_link= '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
                         } else {
-                            $image_link= '<img src="' . $noimage . '" alt="Featured Image" class="news-image">';
+                            $image_link= '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
                         }
 						?> 
 							<div class="single-news col-md-4">
