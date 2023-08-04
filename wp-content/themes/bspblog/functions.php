@@ -507,7 +507,7 @@ function custom_contact_form() {
         $code=base64_encode($email);
         $user_link='<a href="https://bsp.thefamcomlab.com/verify-email?c='.$code.'">Verify Email</a>';
         $user_message='<p>Please click the link to verify your email address'.$user_link.'</p>';
-    if(!empty($name) && !empty($email) !empty($message)){
+    if(!empty($name) && !empty($email) && !empty($message)){
         $wpdb->insert( $table_name, $data );
         //wp_mail('dipti@famcominc.com', 'Test Email', 'This is a test email from WordPress.');
         wp_mail( $to, $subject, $all_message, $headers );  
