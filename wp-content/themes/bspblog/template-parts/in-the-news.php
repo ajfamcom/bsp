@@ -87,8 +87,8 @@ $image_over_banner = get_field('image_over_banner', $page_id);
                     echo paginate_links(array(
                         'total' => $query->max_num_pages,
                         'current' => $paged,
-                        'prev_text' => '&laquo; Previous',
-                        'next_text' => 'Next &raquo;',
+                        'prev_text' => '&laquo;',
+                        'next_text' => '&raquo;',
                     ));
                     ?>
                 </div>
