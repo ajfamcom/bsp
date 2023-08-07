@@ -801,10 +801,10 @@ function get_pdf_prop($file)
 
 
 function get_pdf_metadata_custom($postid) {
-    //$fpdi_pdf_parser_path = get_template_directory() . '/pdfparser-master/alt_autoload.php-dist';
-    //require_once $fpdi_pdf_parser_path;
+    $fpdi_pdf_parser_path = get_template_directory() . '/pdfparser-master/alt_autoload.php-dist';
+    require_once $fpdi_pdf_parser_path;
     $file = get_field('pdf_attachment', $post_id);
-    $file_path=$file['url']
+    $file_path=$file['url'];
     $metaData='';
     
    /* if ($file && is_array($file)) {        
