@@ -58,7 +58,7 @@ if ($metadata) {
 						<div>
 						<?php 
 						//$pdf_file_path = 'path/to/your/pdf/file.pdf';
-						$metadata = get_pdf_metadata($post_id);
+						$metadata = get_pdf_metadata_by_post($post_id);
 						
 						if ($metadata) {
 							// Process and display the metadata as needed

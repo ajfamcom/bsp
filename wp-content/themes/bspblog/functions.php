@@ -696,6 +696,36 @@ function get_pdf_metadata($post_id) {
 
     return $metaData;
 }
+function get_pdf_metadata_by_post($post_id) {
+    // Get all attachments (including featured image) associated with the post
+    $attachments = get_children(array(
+        'post_parent' => $post_id,
+        'post_type' => 'attachment',
+        'post_mime_type' => 'application/pdf', // Only retrieve PDF attachments
+        'numberposts' => -1,
+    ));
+
+    // Check if there are any attachments
+    if (!empty($attachments)) {
+        // Get the first PDF attachment (assuming there's only one PDF attached)
+        $attachment_id = key($attachments);
+
+        // Get the attachment file path
+        $file_path = get_attached_file($attachment_id);
+
+        // Check if the file path is valid
+        if ($file_path) {
+            require_once get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
+
+            $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
+            $metaData = $streamReader->getMetaData();
+
+            return $metaData;
+        }
+    }
+
+    return array(); // Return an empty array if no PDF attachment found or invalid attachment ID
+}
 
 
 function extract_pdf_metadata_on_attachment_upload($attachment_id) {
