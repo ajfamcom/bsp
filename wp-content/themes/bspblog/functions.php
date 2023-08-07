@@ -696,6 +696,7 @@ function get_pdf_metadata($post_id) {
 
     return $metaData;
 }
+*/
 function get_pdf_metadata_by_post($post_id) {
 
     $file = get_field('pdf_attachment', $post_id);
@@ -708,15 +709,15 @@ function get_pdf_metadata_by_post($post_id) {
        
         if ($file_path) {
             require_once get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
-            $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
-            $metaData = $streamReader->getMetaData();
+            $pdfParser = new \setasign\Fpdi\PdfParser\PdfParser($streamReader);
+            $metaData = $pdfParser->getMetaData();
            
         }
 
 
         return $metaData;
 }
-
+/*
 
 function extract_pdf_metadata_on_attachment_upload($attachment_id) {
     $attachment = get_post($attachment_id);
@@ -736,6 +737,7 @@ function extract_pdf_metadata_on_attachment_upload($attachment_id) {
 
 add_action('add_attachment', 'extract_pdf_metadata_on_attachment_upload');
 */
+/*
 function get_pdf_metadata($pdf_url) {
     echo $file_path = get_attached_file($pdf_url); die();// Get the absolute file path from the URLdie()
 
@@ -749,6 +751,7 @@ function get_pdf_metadata($pdf_url) {
 
     return $file_path;
 }
+*/
 
 
 

@@ -38,7 +38,7 @@ if ($metadata) {
 					while (have_posts()) : the_post();
 					    $post_id=get_the_ID();
 						$download_attachment=get_field('pdf_attachment',$post_id);
-						$metadata = get_pdf_metadata($download_attachment['url']);
+						$metadata = get_pdf_metadata_by_post($download_attachment['url']);
 						print_r($metadata);
 						if ($metadata) {
 							
