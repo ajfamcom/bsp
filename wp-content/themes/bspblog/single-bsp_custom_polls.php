@@ -54,10 +54,7 @@ if ($metadata) {
 							<div class="single-poll-info">
 								<h1 class="poll-title"><?php the_title();?></h1>						
 								<?php the_content(); ?>	
-								<?php if($metadata){ ?>
-									<p><?php print_r($metadata); ?></p>
-								<?php } ?>	
-						
+														
 								<?php if($download_attachment):?>
 								<p><a href="<?php echo esc_url($download_attachment['url']); ?>" target="_blank" rel="nofollow">Download PDF</a></p>
 								<?php endif; ?>
