@@ -99,7 +99,7 @@ if ($query->have_posts()) {
 <?php
 
 
-$args = array(
+/*$args = array(
     'post_type' => 'posts',
     'posts_per_page' => 3,
     'orderby' => 'date',
@@ -117,13 +117,13 @@ $args = array(
         ),
     ),
     
-);
+);*/
 
 
 
 
 $args_post_type1 = array(
-    'post_type' => 'posts',
+    'post_type' => 'bsp_custom_polls',
     'posts_per_page' => 3,
     'orderby' => 'date',
     'order' => 'DESC',    
