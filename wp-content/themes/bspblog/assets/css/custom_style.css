@@ -937,6 +937,6 @@ ul.contact-social-links li a:hover i {
 }
 .news-block .news-info p a::after {
     content: '\2192';
-    font-size: 20px;
+    font-size: 18px;
 }
 /*------ /polls-page --------*/
