@@ -57,7 +57,7 @@ if ($metadata) {
 						</div>
 						<div>
 						<?php 
-						$meta=get_pdf_metadata(esc_url($download_attachment['url']));
+						$meta=get_pdf_metadata($download_attachment['url']);
 						print_r($meta);
 						?></div>
 						<div class="tags">
