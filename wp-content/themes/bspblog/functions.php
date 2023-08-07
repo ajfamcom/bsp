@@ -712,12 +712,12 @@ function get_pdf_metadata_by_post($post_id) {
            
             $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
             $pdfParser = new \setasign\Fpdi\PdfParser\PdfParser($streamReader);
-            $metaData = $pdfParser->getPdfVersion();
+            $metaData = $pdfParser->getMetaData();
            
         }
 
 
-        return $metaData;
+        return $fpdi_pdf_parser_path;
 }
 /*
 
@@ -754,7 +754,7 @@ function get_pdf_metadata($pdf_url) {
     return $file_path;
 }
 
-
+/*
 function get_pdf_prop($file)
 {
     $f = fopen($file,'rb');
@@ -796,6 +796,28 @@ function get_pdf_prop($file)
     for($i=0; $i<$n; $i++)
         $prop[$a[1][$i]] = $a[2][$i];
     return $prop;
+}*/
+
+
+
+function get_pdf_metadata_custom($postid) {
+    $fpdi_pdf_parser_path = get_template_directory() . '/pdfparser-master/alt_autoload.php-dist';
+    require_once $fpdi_pdf_parser_path;
+    $file = get_field('pdf_attachment', $postid);
+    $file_path='/var/www/html/bsp/wp-content/uploads/2023/08/Univision-Arizona-Crosstab-October-2022.pdf';//$file['url'];
+    $metaData='';
+    
+   /* if ($file && is_array($file)) {        
+        $attachment_id = $file['ID'];      
+        $file_path = get_attached_file($attachment_id);       
+    }*/
+       
+    $parser = new \Smalot\PdfParser\Parser();
+    $pdf    = $parser->parseFile($file_path);
+    $text   = $pdf->getDetails();
+
+
+        return $text;
 }
 
 
