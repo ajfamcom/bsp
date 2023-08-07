@@ -39,7 +39,7 @@ if ($metadata) {
 					    $post_id=get_the_ID();
 						$download_attachment=get_field('pdf_attachment',$post_id);
 						$metadata = get_pdf_metadata_by_post($post_id);
-						print_r($metadata);
+						
 					?>
 				<div class="single-poll col-12">
 						<div class="single-poll-content">
@@ -48,7 +48,9 @@ if ($metadata) {
 							</div>
 							<div class="single-poll-info">
 								<h1 class="poll-title"><?php the_title();?></h1>						
-								<?php the_content(); ?>			
+								<?php the_content(); 
+								print_r($metadata);
+								?>			
 						
 								<?php if($download_attachment):?>
 								<p><a href="<?php echo esc_url($download_attachment['url']); ?>" target="_blank" rel="nofollow">Download PDF</a></p>
