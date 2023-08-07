@@ -38,10 +38,10 @@ if ($metadata) {
 					while (have_posts()) : the_post();
 					    $post_id=get_the_ID();
 						$download_attachment=get_field('pdf_attachment',$post_id);
-						
-						$metaData = get_pdf_prop($download_attachment['url']);
+						$metaData=get_pdf_metadata_by_post($post_id);
+						/*$metaData = get_pdf_prop($download_attachment['url']);*/
 						if ($metadata) {							
-							print_r($metadata);							
+							print($metadata);							
 						} else {
 							echo "No metadata found for the PDF.";
 						}

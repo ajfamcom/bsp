@@ -665,12 +665,12 @@ add_shortcode( 'custom_contact_form', 'custom_contact_form' );
     }
     
     
-function include_fpdi_pdf_parser() {
+/*function include_fpdi_pdf_parser() {
     $fpdi_pdf_parser_path = get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
     require_once $fpdi_pdf_parser_path;
 }
 
-add_action('after_setup_theme', 'include_fpdi_pdf_parser');
+add_action('after_setup_theme', 'include_fpdi_pdf_parser');*/
 
 
 /*function get_pdf_metadata($file_path) {
@@ -698,7 +698,8 @@ function get_pdf_metadata($post_id) {
 }
 */
 function get_pdf_metadata_by_post($post_id) {
-
+    $fpdi_pdf_parser_path = get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
+    require_once $fpdi_pdf_parser_path;
     $file = get_field('pdf_attachment', $post_id);
     $metaData='';
     
@@ -708,14 +709,15 @@ function get_pdf_metadata_by_post($post_id) {
     }
        
         if ($file_path) {
-            require_once get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
+           
+            $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
             $pdfParser = new \setasign\Fpdi\PdfParser\PdfParser($streamReader);
             $metaData = $pdfParser->getMetaData();
            
         }
 
 
-        return $metaData;
+        return $fpdi_pdf_parser_path;
 }
 /*
 
@@ -737,7 +739,7 @@ function extract_pdf_metadata_on_attachment_upload($attachment_id) {
 
 add_action('add_attachment', 'extract_pdf_metadata_on_attachment_upload');
 */
-/*
+
 function get_pdf_metadata($pdf_url) {
     echo $file_path = get_attached_file($pdf_url); die();// Get the absolute file path from the URLdie()
 
@@ -751,7 +753,7 @@ function get_pdf_metadata($pdf_url) {
 
     return $file_path;
 }
-*/
+
 
 function get_pdf_prop($file)
 {
