@@ -82,15 +82,13 @@ get_header();
 				} 
 		?>
 				<div class="news-block">
-					<div class="news-image"><?php echo $image_link;?></div>
+					<?php echo $image_link;?>
 				</div>
 				<div class="news-block-content">
-					<div class="news-info">
 						<h4 class="news-details"><span class="news-title"><?php the_title(); ?></span></h4>
 						<p class="news-other-details"><span class="news-date">date</span></p>
 						<p class="news-content"><?php the_content();?></p>
 						<p><a href="<?php echo $permalink;?>">Read More</a></p>
-					</div>
 				</div>
 		<?php
 			endwhile;
