@@ -100,7 +100,7 @@ if ($query->have_posts()) {
 
 
 $args = array(
-    'post_type' => 'bsp_custom_polls',
+    'post_type' => 'posts',
     'posts_per_page' => 3,
     'orderby' => 'date',
     'order' => 'ASC',    
