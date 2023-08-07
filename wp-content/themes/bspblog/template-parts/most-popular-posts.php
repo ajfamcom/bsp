@@ -4,7 +4,7 @@
 <?php
 
 $args = array(
-    'post_type' => 'polls',
+    'post_type' => 'bsp_custom_polls',
     'posts_per_page' => 1,    
     'meta_query' => array(
         array(
