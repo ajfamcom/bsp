@@ -567,7 +567,7 @@ function custom_contact_form() {
 add_shortcode( 'custom_contact_form', 'custom_contact_form' );
 
 
-function custom_polls_post_type() {
+/*function custom_polls_post_type() {
 	$labels = array(
 	'name' => __('Polls', 'polls'),
 	'singular_name' => __('Polls ', 'polls'),
@@ -587,9 +587,9 @@ function custom_polls_post_type() {
         'taxonomies' => array('post_tag'),
     );
     register_post_type( 'polls', $args );
-}
+}*/
 
-    add_action('init','custom_polls_post_type');
+    //add_action('init','custom_polls_post_type');
 
     function custom_bsp_polls_post_type() {
         $labels = array(
