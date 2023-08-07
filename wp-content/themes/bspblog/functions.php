@@ -697,51 +697,24 @@ function get_pdf_metadata($post_id) {
     return $metaData;
 }
 function get_pdf_metadata_by_post($post_id) {
-    // Get all attachments (including featured image) associated with the post
-    /*$attachments = get_children(array(
-        'post_parent' => $post_id,
-        'post_type' => 'attachment',
-        'post_mime_type' => 'application/pdf', // Only retrieve PDF attachments
-        'numberposts' => -1,
-    ));*/
 
-    // Check if there are any attachments
-    //if (!empty($attachments)) {
-        // Get the first PDF attachment (assuming there's only one PDF attached)
-        //$attachment_id = key($attachments);
-
-        // Get the attachment file path
-        $file_path = get_acf_file_absolute_path($post_id, 'pdf_attachment');
-
-        // Check if the file path is valid
+    $file = get_field('pdf_attachment', $post_id);
+    $metaData='';
+    
+    if ($file && is_array($file)) {        
+        $attachment_id = $file['ID'];      
+        $file_path = get_attached_file($attachment_id);       
+    }
+       
         if ($file_path) {
             require_once get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
-
             $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
             $metaData = $streamReader->getMetaData();
-
-            return $metaData;
+           
         }
-    //}
 
-    //return $attachments; // Return an empty array if no PDF attachment found or invalid attachment ID
-}
-function get_acf_file_absolute_path($post_id, $field_name) {
-    // Get the file field value using the post ID and field name
-    $file = get_field($field_name, $post_id);
 
-    // Check if the file field has a value and if it's an array (ACF returns an array for files)
-    if ($file && is_array($file)) {
-        // Get the attachment ID from the file array
-        $attachment_id = $file['ID'];
-
-        // Get the attachment file path
-        $file_path = get_attached_file($attachment_id);
-
-        return $file_path;
-    }
-
-    return null; // Return null if the file field is empty or not found
+        return $metaData;
 }
 
 
