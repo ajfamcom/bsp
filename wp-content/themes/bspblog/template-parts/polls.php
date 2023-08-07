@@ -3,6 +3,7 @@
 $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
+$search_text=isset($_POST['search_text'])?$_POST['search_text']:'';
 ?>
 <?php 
 
@@ -31,10 +32,10 @@ get_header();
 <div class="container py-5 my-md-5">
 	<div class="row">
 		<div class="container mt-5">
-			<form class="row g-2">
+			<form class="row g-2" method="POST">
 				<div class="col-md-8">
 					<!-- Search Input -->
-					<input type="text" class="form-control" placeholder="Enter your search query" aria-label="Search">
+					<input type="text" class="form-control" name="search_text" placeholder="Enter your search query" aria-label="Search">
 				</div>
 				<div class="col-md-4">
 					<!-- Search Button -->
