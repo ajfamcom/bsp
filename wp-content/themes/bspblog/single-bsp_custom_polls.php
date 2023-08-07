@@ -59,8 +59,8 @@ if ($metadata) {
 						<?php 
 						//$pdf_file_path = 'path/to/your/pdf/file.pdf';
 						$metadata = get_pdf_metadata_by_post($post_id);
-						
-						if ($metadata) {
+						print_r($metadata);
+						/*if ($metadata) {
 							// Process and display the metadata as needed
 							$title = $metadata->get('Title');
 							$author = $metadata->get('Author');
@@ -73,7 +73,7 @@ if ($metadata) {
 							// ... Output more metadata properties as needed
 						} else {
 							echo "No metadata found in the PDF.";
-						}
+						}*/
 						?></div>
 						<div class="tags">
 								<?php
