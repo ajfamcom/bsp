@@ -712,12 +712,12 @@ function get_pdf_metadata_by_post($post_id) {
            
             $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
             $pdfParser = new \setasign\Fpdi\PdfParser\PdfParser($streamReader);
-            $metaData = $pdfParser->getMetaData();
+            $metaData = $pdfParser->getPdfVersion();
            
         }
 
 
-        return $fpdi_pdf_parser_path;
+        return $metaData;
 }
 /*
 
