@@ -1,7 +1,7 @@
 <?php
 /* Template Name:Custom Polls Template  */
 ini_set('display_errors', 1); 
-$attachment_id = get_the_ID(); 
+/* $attachment_id = get_the_ID(); 
 $metadata = get_post_meta($attachment_id, 'custom_pdf_meta', true);
 
 if ($metadata) {
@@ -11,7 +11,7 @@ if ($metadata) {
     if ($keywords) {
         echo 'Keywords: ' . $keywords;
     }
-}
+} */
 ?>
 <?php get_header(); ?>
 
@@ -38,8 +38,13 @@ if ($metadata) {
 					while (have_posts()) : the_post();
 					    $post_id=get_the_ID();
 						$download_attachment=get_field('pdf_attachment',$post_id);
-						$metadata = get_pdf_metadata_by_post($post_id);
 						
+						$metaData = get_pdf_prop($download_attachment['url']);
+						if ($metadata) {							
+							print_r($metadata);							
+						} else {
+							echo "No metadata found for the PDF.";
+						}
 					?>
 				<div class="single-poll col-12">
 						<div class="single-poll-content">

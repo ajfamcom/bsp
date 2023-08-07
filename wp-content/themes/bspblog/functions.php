@@ -681,7 +681,7 @@ add_action('after_setup_theme', 'include_fpdi_pdf_parser');
 
     return $metaData;
 }*/
-
+/*
 function get_pdf_metadata($post_id) {
     require_once get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
 
@@ -696,6 +696,7 @@ function get_pdf_metadata($post_id) {
 
     return $metaData;
 }
+*/
 function get_pdf_metadata_by_post($post_id) {
 
     $file = get_field('pdf_attachment', $post_id);
@@ -708,15 +709,15 @@ function get_pdf_metadata_by_post($post_id) {
        
         if ($file_path) {
             require_once get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
-            $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
-            $metaData = $streamReader->getMetaData();
+            $pdfParser = new \setasign\Fpdi\PdfParser\PdfParser($streamReader);
+            $metaData = $pdfParser->getMetaData();
            
         }
 
 
         return $metaData;
 }
-
+/*
 
 function extract_pdf_metadata_on_attachment_upload($attachment_id) {
     $attachment = get_post($attachment_id);
@@ -735,7 +736,65 @@ function extract_pdf_metadata_on_attachment_upload($attachment_id) {
 }
 
 add_action('add_attachment', 'extract_pdf_metadata_on_attachment_upload');
+*/
+/*
+function get_pdf_metadata($pdf_url) {
+    echo $file_path = get_attached_file($pdf_url); die();// Get the absolute file path from the URLdie()
 
+    if (!$file_path) {
+        return $file_path; // File not found or invalid URL
+    }
+
+    $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
+    $pdfParser = new \setasign\Fpdi\PdfParser\PdfParser($streamReader);
+    $metaData = $pdfParser->getMetaData();
+
+    return $file_path;
+}
+*/
+
+function get_pdf_prop($file)
+{
+    $f = fopen($file,'rb');
+    if(!$f)
+        return false;
+
+    //Read the last 16KB
+    fseek($f, -16384, SEEK_END);
+    $s = fread($f, 16384);
+
+    //Extract cross-reference table and trailer
+    if(!preg_match("/xref[\r\n]+(.*)trailer(.*)startxref/s", $s, $a))
+        return false;
+    $xref = $a[1];
+    $trailer = $a[2];
+
+    //Extract Info object number
+    if(!preg_match('/Info ([0-9]+) /', $trailer, $a))
+        return false;
+    $object_no = $a[1];
+
+    //Extract Info object offset
+    $lines = preg_split("/[\r\n]+/", $xref);
+    $line = $lines[1 + $object_no];
+    $offset = (int)$line;
+    if($offset == 0)
+        return false;
+
+    //Read Info object
+    fseek($f, $offset, SEEK_SET);
+    $s = fread($f, 1024);
+    fclose($f);
+
+    //Extract properties
+    if(!preg_match('/<<(.*)>>/Us', $s, $a))
+        return false;
+    $n = preg_match_all('|/([a-z]+) ?\((.*)\)|Ui', $a[1], $a);
+    $prop = array();
+    for($i=0; $i<$n; $i++)
+        $prop[$a[1][$i]] = $a[2][$i];
+    return $prop;
+}
 
 
 
