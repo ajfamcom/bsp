@@ -38,18 +38,10 @@ if ($metadata) {
 					while (have_posts()) : the_post();
 					    $post_id=get_the_ID();
 						$download_attachment=get_field('pdf_attachment',$post_id);
-						$attachment_id = $download_attachment['ID'];      
-                        $file_path = get_attached_file($attachment_id); 
-						require_once get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
-						$streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
-						$pdfParser = new \setasign\Fpdi\PdfParser\PdfParser($streamReader);
-						$metaData = $pdfParser->getMetaData();
-						if ($metadata) {
-							
-							echo "Title: " . $metadata->get('Title') . "<br>";
-							echo "Author: " . $metadata->get('Author') . "<br>";
-							echo "Keywords: " . $metadata->get('Keywords') . "<br>";
-							
+						
+						$metaData = get_pdf_prop($download_attachment['url']);
+						if ($metadata) {							
+							print_r($metadata);							
 						} else {
 							echo "No metadata found for the PDF.";
 						}
