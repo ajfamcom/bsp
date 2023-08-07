@@ -684,5 +684,34 @@ function get_pdf_metadata_custom($postid) {
         return $text;
 }
 
+// Replace 'your_custom_post_type' with the slug of your custom post type
+add_action('save_post_bsp_custom_polls', 'save_pdf_meta');
+
+function save_pdf_meta($post_id) {
+    // Check if it's an autosave, revision, or the post is being trashed
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+        return;
+    }
+
+    // Your custom code goes here
+    $metadata=get_pdf_metadata_custom($post_id);
+    if($metadata)
+    {
+        $pdf_keywords=$metadata['Keywords'];
+        $pdf_title=$metadata['Title'];
+        
+        update_post_meta($post_id, 'custom_pdf_keywords', $pdf_keywords);  
+        update_post_meta($post_id, 'custom_pdf_title', $pdf_title); 
+              
+    }
+    wp_reset_postdata();
+
+}
+
+
 
 
