@@ -47,6 +47,7 @@ get_header();
 		</div>
 	</div>
 
+	<div class="highlight-post">
 	<div class="row">
 		<?php
 		 $fargs = array(
@@ -97,7 +98,8 @@ get_header();
 			wp_reset_postdata();
 		endif;
 		?>
-	</div> 
+	</div>
+	</div>
 
 	<div class="row">
 		<?php
