@@ -38,7 +38,8 @@ if ($metadata) {
 					while (have_posts()) : the_post();
 					    $post_id=get_the_ID();
 						$download_attachment=get_field('pdf_attachment',$post_id);
-
+						$metadata = get_pdf_metadata_by_post($post_id);
+						print_r($metadata);
 					?>
 				<div class="single-poll col-12">
 						<div class="single-poll-content">
@@ -58,8 +59,7 @@ if ($metadata) {
 						<div>
 						<?php 
 						//$pdf_file_path = 'path/to/your/pdf/file.pdf';
-						$metadata = get_pdf_metadata_by_post($post_id);
-						print_r($metadata);
+						
 						/*if ($metadata) {
 							// Process and display the metadata as needed
 							$title = $metadata->get('Title');
