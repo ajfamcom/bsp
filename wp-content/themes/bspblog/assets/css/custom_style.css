@@ -871,6 +871,9 @@ ul.contact-social-links li a:hover i {
 .highlight-post {
     display: flex;
     background: #f7f7f7;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 5% 0;
 }
 .highlight-post .news-block {
     flex-basis: 50%;
@@ -878,5 +881,31 @@ ul.contact-social-links li a:hover i {
 .highlight-post .news-block-content {
     flex-basis: 50%;
     padding: 50px;
+}
+.highlight-post .news-block-content p {
+    margin: 0;
+}
+.highlight-post .news-block img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+.highlight-post .news-block-content p.news-other-details {
+    color: var(--orange);
+    margin: 1% 0 2% 0;
+}
+.highlight-post .news-block-content p a {
+    background: var(--blue);
+    padding: 10px 20px 6px;
+    color: #fff;
+    margin-top: 4%;
+    display: inline-block;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.highlight-post .news-block-content p a:hover {
+    background: var(--orange);
+    color: #fff;
 }
 /*------ /polls-page --------*/

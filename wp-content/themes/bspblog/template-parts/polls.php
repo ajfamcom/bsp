@@ -85,7 +85,7 @@ get_header();
 					<?php echo $image_link;?>
 				</div>
 				<div class="news-block-content">
-						<h4 class="news-details"><span class="news-title"><?php the_title(); ?></span></h4>
+						<h2 class="news-details"><span class="news-title"><?php the_title(); ?></span></h2>
 						<p class="news-other-details"><span class="news-date">date</span></p>
 						<p class="news-content"><?php the_content();?></p>
 						<p><a href="<?php echo $permalink;?>">Read More</a></p>
