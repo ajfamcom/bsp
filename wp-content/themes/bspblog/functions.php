@@ -737,7 +737,7 @@ function extract_pdf_metadata_on_attachment_upload($attachment_id) {
 add_action('add_attachment', 'extract_pdf_metadata_on_attachment_upload');
 */
 function get_pdf_metadata($pdf_url) {
-    $file_path = get_attached_file($pdf_url); // Get the absolute file path from the URL
+    $file_path = $pdf_url;//get_attached_file($pdf_url); // Get the absolute file path from the URL
 
     if (!$file_path) {
         return $file_path; // File not found or invalid URL
