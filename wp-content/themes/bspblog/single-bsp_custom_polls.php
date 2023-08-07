@@ -41,7 +41,7 @@ if ($metadata) {
 						$metaData=get_pdf_metadata_custom($post_id);
 						/*$metaData = get_pdf_prop($download_attachment['url']);*/
 						if ($metaData) {							
-							print($metaData);							
+							print_r($metaData);							
 						} else {
 							echo "No metadata found for the PDF.";
 						}
