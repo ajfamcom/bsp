@@ -665,7 +665,12 @@ add_shortcode( 'custom_contact_form', 'custom_contact_form' );
     }
     
     
+function include_fpdi_pdf_parser() {
+    $fpdi_pdf_parser_path = get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
+    require_once $fpdi_pdf_parser_path;
+}
 
+add_action('after_setup_theme', 'include_fpdi_pdf_parser');
 
 
 
