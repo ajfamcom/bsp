@@ -684,11 +684,11 @@ function get_pdf_metadata_custom($postid) {
         return $text;
 }
 
-// Replace 'your_custom_post_type' with the slug of your custom post type
+
 add_action('save_post_bsp_custom_polls', 'save_pdf_meta');
 
 function save_pdf_meta($post_id) {
-    // Check if it's an autosave, revision, or the post is being trashed
+    
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
         return;
     }
@@ -697,7 +697,7 @@ function save_pdf_meta($post_id) {
         return;
     }
 
-    // Your custom code goes here
+   
     $metadata=get_pdf_metadata_custom($post_id);
     if($metadata)
     {
