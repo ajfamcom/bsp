@@ -103,6 +103,13 @@ get_header();
 			'post_type' => 'bsp_custom_polls',
 			'posts_per_page' => 2, // Adjust the number of posts per page as per your requirement
 			'paged' => $paged,
+			'meta_query'     => array(
+				array(
+					'key'     => 'is_featured_poll',
+					'value'   => 'No', 
+					'compare' => '='
+				),				
+			),
 		);
 		
 		$query = new WP_Query($args);
