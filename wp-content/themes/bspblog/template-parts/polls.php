@@ -99,20 +99,13 @@ get_header();
 	<div class="row">
 		<?php
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-		/*$args = array(
+		$args = array(
 			'post_type' => 'polls',
 			'posts_per_page' => 2, // Adjust the number of posts per page as per your requirement
 			'paged' => $paged,
-		);*/
-		$query = query_posts(
-			array(
-				'post_type'=>'polls',
-				'posts_per_page'=>2,
-				'orderby'=>'date',
-				'paged'=>$paged
-			)
 		);
-		//$query = new WP_Query($args);
+		
+		$query = new WP_Query($args);
 
 		if ($query->have_posts()) :
 			while ($query->have_posts()) :
