@@ -122,7 +122,7 @@ get_header();
 							'compare' => 'LIKE', // You can use other comparison operators like '>', '<', 'IN', etc.
 						),
 					),
-					array(
+					/*array(
 						'relation' => 'AND', // Second nested relation is AND
 						array(
 							'key'     => 'is_featured_poll',
@@ -134,7 +134,7 @@ get_header();
 							'value'   => $search_text, // Replace with the value you want to search for
 							'compare' => 'LIKE', // You can use other comparison operators like '>', '<', 'IN', etc.
 						),
-					),
+					),*/
 				),
 			);
 		}
