@@ -57,6 +57,11 @@ if ($metadata) {
 							</div>
 							
 						</div>
+						<div>
+						<?php 
+						$meta=get_pdf_metadata(esc_url($download_attachment['url']));
+						print_r($meta);
+						?></div>
 						<div class="tags">
 								<?php
 									$tags = get_the_terms(get_the_ID(), 'post_tag');
