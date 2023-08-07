@@ -38,13 +38,9 @@ if ($metadata) {
 					while (have_posts()) : the_post();
 					    $post_id=get_the_ID();
 						$download_attachment=get_field('pdf_attachment',$post_id);
-						$metaData=get_pdf_metadata_custom($post_id);
-						/*$metaData = get_pdf_prop($download_attachment['url']);*/
-						if ($metaData) {							
-							print_r($metaData);							
-						} else {
-							echo "No metadata found for the PDF.";
-						}
+						//$metaData=get_pdf_metadata_custom($post_id);
+						 $pdfkey=get_post_meta( $post_id, 'custom_pdf_keywords' );
+						 print_r($pdfkey);
 					?>
 				<div class="single-poll col-12">
 						<div class="single-poll-content">
@@ -54,10 +50,7 @@ if ($metadata) {
 							<div class="single-poll-info">
 								<h1 class="poll-title"><?php the_title();?></h1>						
 								<?php the_content(); ?>	
-								<?php if($metadata){ ?>
-									<p><?php print_r($metadata); ?></p>
-								<?php } ?>	
-						
+														
 								<?php if($download_attachment):?>
 								<p><a href="<?php echo esc_url($download_attachment['url']); ?>" target="_blank" rel="nofollow">Download PDF</a></p>
 								<?php endif; ?>

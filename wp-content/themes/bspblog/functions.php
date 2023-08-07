@@ -664,147 +664,11 @@ add_shortcode( 'custom_contact_form', 'custom_contact_form' );
         return $ip_address;
     }
     
-    
-/*function include_fpdi_pdf_parser() {
-    $fpdi_pdf_parser_path = get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
-    require_once $fpdi_pdf_parser_path;
-}
-
-add_action('after_setup_theme', 'include_fpdi_pdf_parser');*/
-
-
-/*function get_pdf_metadata($file_path) {
-    require_once get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
-
-    $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
-    $metaData = $streamReader->getMetaData();
-
-    return $metaData;
-}*/
-/*
-function get_pdf_metadata($post_id) {
-    require_once get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
-
-    // Get the attachment ID from the featured image of the post
-    $attachment_id = get_post_thumbnail_id($post_id);
-
-    // Get the attachment file path
-    $file_path = get_attached_file($attachment_id);
-
-    $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
-    $metaData = $streamReader->getMetaData();
-
-    return $metaData;
-}
-*/
-function get_pdf_metadata_by_post($post_id) {
-    $fpdi_pdf_parser_path = get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
-    require_once $fpdi_pdf_parser_path;
-    $file = get_field('pdf_attachment', $post_id);
-    $metaData='';
-    
-    if ($file && is_array($file)) {        
-        $attachment_id = $file['ID'];      
-        $file_path = get_attached_file($attachment_id);       
-    }
-       
-        if ($file_path) {
-           
-            $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
-            $pdfParser = new \setasign\Fpdi\PdfParser\PdfParser($streamReader);
-            $metaData = $pdfParser->getMetaData();
-           
-        }
-
-
-        return $fpdi_pdf_parser_path;
-}
-/*
-
-function extract_pdf_metadata_on_attachment_upload($attachment_id) {
-    $attachment = get_post($attachment_id);
-
-    // Check if the attachment is a PDF file
-    if ($attachment->post_mime_type === 'application/pdf') {
-        $file_path = get_attached_file($attachment_id);
-        $metadata = get_pdf_metadata($file_path);
-
-        // Save metadata to custom fields
-        if ($metadata) {
-            // Replace 'custom_field_key' with the key of the custom field where you want to store the metadata
-            update_post_meta($attachment_id, 'custom_pdf_meta', $metadata);
-        }
-    }
-}
-
-add_action('add_attachment', 'extract_pdf_metadata_on_attachment_upload');
-*/
-
-function get_pdf_metadata($pdf_url) {
-    echo $file_path = get_attached_file($pdf_url); die();// Get the absolute file path from the URLdie()
-
-    if (!$file_path) {
-        return $file_path; // File not found or invalid URL
-    }
-
-    $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
-    $pdfParser = new \setasign\Fpdi\PdfParser\PdfParser($streamReader);
-    $metaData = $pdfParser->getMetaData();
-
-    return $file_path;
-}
-
-/*
-function get_pdf_prop($file)
-{
-    $f = fopen($file,'rb');
-    if(!$f)
-        return false;
-
-    //Read the last 16KB
-    fseek($f, -16384, SEEK_END);
-    $s = fread($f, 16384);
-
-    //Extract cross-reference table and trailer
-    if(!preg_match("/xref[\r\n]+(.*)trailer(.*)startxref/s", $s, $a))
-        return false;
-    $xref = $a[1];
-    $trailer = $a[2];
-
-    //Extract Info object number
-    if(!preg_match('/Info ([0-9]+) /', $trailer, $a))
-        return false;
-    $object_no = $a[1];
-
-    //Extract Info object offset
-    $lines = preg_split("/[\r\n]+/", $xref);
-    $line = $lines[1 + $object_no];
-    $offset = (int)$line;
-    if($offset == 0)
-        return false;
-
-    //Read Info object
-    fseek($f, $offset, SEEK_SET);
-    $s = fread($f, 1024);
-    fclose($f);
-
-    //Extract properties
-    if(!preg_match('/<<(.*)>>/Us', $s, $a))
-        return false;
-    $n = preg_match_all('|/([a-z]+) ?\((.*)\)|Ui', $a[1], $a);
-    $prop = array();
-    for($i=0; $i<$n; $i++)
-        $prop[$a[1][$i]] = $a[2][$i];
-    return $prop;
-}*/
-
-
-
 function get_pdf_metadata_custom($postid) {
     $fpdi_pdf_parser_path = get_template_directory() . '/pdfparser-master/alt_autoload.php-dist';
     require_once $fpdi_pdf_parser_path;
     $file = get_field('pdf_attachment', $postid);
-    $file_path='/var/www/html/bsp/wp-content/uploads/2023/08/Univision-Arizona-Crosstab-October-2022.pdf';//$file['url'];
+    $file_path='/var/www/html/bsp'.wp_make_link_relative($file['url']);//'/var/www/html/bsp/wp-content/uploads/2023/08/Univision-Arizona-Crosstab-October-2022.pdf';//
     $metaData='';
     
    /* if ($file && is_array($file)) {        
@@ -818,6 +682,52 @@ function get_pdf_metadata_custom($postid) {
 
 
         return $text;
+}
+
+
+add_action('save_post_bsp_custom_polls', 'save_pdf_meta');
+
+function save_pdf_meta($post_id) {
+    
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+        return;
+    }
+
+   
+    $metadata=get_pdf_metadata_custom($post_id);
+    if($metadata)
+    {
+        $pdf_keywords=$metadata['Keywords'];
+        $pdf_title=$metadata['Title'];
+        
+        update_post_meta($post_id, 'custom_pdf_keywords', $pdf_keywords);  
+        update_post_meta($post_id, 'custom_pdf_title', $pdf_title); 
+              
+    }
+    wp_reset_postdata();
+
+}
+
+
+add_filter('the_content', 'limit_custom_post_content');
+
+function limit_custom_post_content($content) {
+   
+    if (get_post_type() === 'bsp_custom_polls') {
+        
+        $word_limit = 50;
+        $words = explode(' ', $content);
+        if (count($words) > $word_limit) {
+            $content = implode(' ', array_slice($words, 0, $word_limit));
+            $content .= '...'; 
+        }
+    }
+
+    return $content;
 }
 
 
