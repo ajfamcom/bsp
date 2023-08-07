@@ -137,7 +137,7 @@ get_header();
 					<div class="news-image"><?php echo $image_link; ?></div>
 					<div class="news-info">
 						<h4 class="news-details"><span class="news-title"><?php the_title(); ?></span></h4>
-						<p class="news-other-details"><span class="news-date">date</span></p>
+						<p class="news-other-details"><span class="news-date"><?php echo get_the_date('M j, Y');?></span></p>
 						<p class="news-content"><?php the_content(); ?></p>
 						<p><a href="<?php echo $permalink; ?>">Read More</a></p>
 					</div>
