@@ -1,6 +1,6 @@
 <?php
 /* Template Name:Custom Polls Template  */
-
+ini_set('display_errors', 1); 
 $attachment_id = get_the_ID(); 
 $metadata = get_post_meta($attachment_id, 'custom_pdf_meta', true);
 
