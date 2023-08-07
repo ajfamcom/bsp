@@ -586,7 +586,7 @@ function custom_polls_post_type() {
         'supports' => array( 'title', 'editor', 'thumbnail','comments' ),
         'taxonomies' => array('post_tag'),
     );
-    register_post_type( 'bsp_polls', $args );
+    register_post_type( 'polls', $args );
 }
 
     add_action('init','custom_polls_post_type');
