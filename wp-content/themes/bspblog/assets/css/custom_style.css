@@ -24,7 +24,9 @@ h1 {
 h3 {
     font-size: 28px;
 }
-
+p:last-child {
+    margin: 0;
+}
 /*======= header-top-bar ========*/
 .site-header {
     position: sticky !important;
