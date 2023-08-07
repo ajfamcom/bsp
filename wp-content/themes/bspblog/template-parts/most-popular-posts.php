@@ -103,7 +103,7 @@ $args = array(
     'post_type' => 'posts',
     'posts_per_page' => 3,
     'orderby' => 'date',
-    'order' => 'ASC',    
+    'order' => 'DESC',    
     'meta_query' => array(
         array(
             'key' => 'is_featured_poll', 
