@@ -49,6 +49,7 @@ get_header();
 
 	<div class="highlight-post">
 		<?php
+		
 		 $fargs = array(
 			'post_type'      => 'bsp_custom_polls',
 			'posts_per_page' => 1,
@@ -100,18 +101,60 @@ get_header();
 	<div class="row">
 		<?php
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-		$args = array(
-			'post_type' => 'bsp_custom_polls',
-			'posts_per_page' => 2, // Adjust the number of posts per page as per your requirement
-			'paged' => $paged,
-			'meta_query'     => array(
-				array(
-					'key'     => 'is_featured_poll',
-					'value'   => 'No', 
-					'compare' => '='
-				),				
-			),
-		);
+		if(isset($search_text))
+		{
+			$args = array(
+				'post_type'      => 'bsp_custom_polls',
+				'posts_per_page' => 2, // Adjust the number of posts per page as per your requirement
+				'paged'          => $paged,
+				'meta_query'     => array(
+					'relation' => 'OR', // Outer relation is OR
+					array(
+						'relation' => 'AND', // First nested relation is AND
+						array(
+							'key'     => 'is_featured_poll',
+							'value'   => 'No',
+							'compare' => '='
+						),
+						array(
+							'key'     => 'custom_pdf_keywords', // Replace with the first meta key you want to query
+							'value'   => $search_text, // Replace with the value you want to search for
+							'compare' => 'LIKE', // You can use other comparison operators like '>', '<', 'IN', etc.
+						),
+					),
+					array(
+						'relation' => 'AND', // Second nested relation is AND
+						array(
+							'key'     => 'is_featured_poll',
+							'value'   => 'No',
+							'compare' => '='
+						),
+						array(
+							'key'     => 'custom_pdf_title', // Replace with the second meta key you want to query
+							'value'   => $search_text, // Replace with the value you want to search for
+							'compare' => 'LIKE', // You can use other comparison operators like '>', '<', 'IN', etc.
+						),
+					),
+				),
+			);
+		}
+		else {
+			$args = array(
+				'post_type' => 'bsp_custom_polls',
+				'posts_per_page' => 2, // Adjust the number of posts per page as per your requirement
+				'paged' => $paged,
+				'meta_query'     => array(
+					array(
+						'key'     => 'is_featured_poll',
+						'value'   => 'No', 
+						'compare' => '='
+					),				
+				),
+			);
+		}
+		
+		
+		
 		
 		$query = new WP_Query($args);
 
