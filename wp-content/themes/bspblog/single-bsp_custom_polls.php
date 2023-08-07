@@ -41,6 +41,7 @@ if ($metadata) {
 						$attachment_id = $download_attachment['ID'];      
                         $file_path = get_attached_file($attachment_id); 
 						require_once get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
+						$streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
 						$pdfParser = new \setasign\Fpdi\PdfParser\PdfParser($streamReader);
 						$metaData = $pdfParser->getMetaData();
 						if ($metadata) {
