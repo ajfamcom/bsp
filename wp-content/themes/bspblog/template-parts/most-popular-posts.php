@@ -119,11 +119,59 @@ $args = array(
     
 );
 
-$query = new WP_Query($args);
 
-if ($query->have_posts()) :
-    while ($query->have_posts()) :
-        $query->the_post();
+
+
+$args_post_type1 = array(
+    'post_type' => 'posts',
+    'posts_per_page' => 3,
+    'orderby' => 'date',
+    'order' => 'DESC',    
+    'meta_query' => array(
+        array(
+            'key' => 'is_featured_poll', 
+            'value'   => 'No', 
+            'compare' => '='
+        ),
+        array(
+            'key' => 'is_sticky_poll', 
+            'value'   => 'No',
+            'compare' => '='
+        ),
+    ),
+    
+);
+
+$args_post_type2 = array(
+    'post_type'      => 'post', 
+    'posts_per_page' => 3, 
+    'orderby' => 'date',
+    'order' => 'DESC', 
+);
+
+// Query posts for post_type1
+$query_post_type1 = new WP_Query($args_post_type1);
+
+// Query posts for post_type2
+$query_post_type2 = new WP_Query($args_post_type2);
+
+// Merge the two query objects
+$merged_query = new WP_Query();
+$merged_query->posts = array_merge($query_post_type1->posts, $query_post_type2->posts);
+$merged_query->post_count = count($merged_query->posts);
+
+// Sort the merged query by date (optional)
+usort($merged_query->posts, function ($a, $b) {
+    return strcmp($b->post_date, $a->post_date);
+});
+
+
+
+
+if ($merged_query->have_posts()) :
+    while ($merged_query->have_posts()):
+        $merged_query->the_post();
+        
         $post_id = get_the_ID();
         $post_date = get_the_date( 'M j, Y', $post_id );
         ?>
