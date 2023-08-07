@@ -681,7 +681,7 @@ add_action('after_setup_theme', 'include_fpdi_pdf_parser');
 
     return $metaData;
 }*/
-
+/*
 function get_pdf_metadata($post_id) {
     require_once get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
 
@@ -735,6 +735,21 @@ function extract_pdf_metadata_on_attachment_upload($attachment_id) {
 }
 
 add_action('add_attachment', 'extract_pdf_metadata_on_attachment_upload');
+*/
+function get_pdf_metadata($pdf_url) {
+    $file_path = get_attached_file($pdf_url); // Get the absolute file path from the URL
+
+    if (!$file_path) {
+        return false; // File not found or invalid URL
+    }
+
+    $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
+    $pdfParser = new \setasign\Fpdi\PdfParser\PdfParser($streamReader);
+    $metaData = $pdfParser->getMetaData();
+
+    return $metaData;
+}
+
 
 
 
