@@ -668,7 +668,7 @@ function get_pdf_metadata_custom($postid) {
     $fpdi_pdf_parser_path = get_template_directory() . '/pdfparser-master/alt_autoload.php-dist';
     require_once $fpdi_pdf_parser_path;
     $file = get_field('pdf_attachment', $postid);
-    $file_path='/var/www/html/bsp/wp-content/uploads'.wp_make_link_relative($file['url']);//'/var/www/html/bsp/wp-content/uploads/2023/08/Univision-Arizona-Crosstab-October-2022.pdf';//
+    $file_path='/var/www/html/bsp'.wp_make_link_relative($file['url']);//'/var/www/html/bsp/wp-content/uploads/2023/08/Univision-Arizona-Crosstab-October-2022.pdf';//
     $metaData='';
     
    /* if ($file && is_array($file)) {        
