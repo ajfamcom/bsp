@@ -438,6 +438,11 @@ button.search-submit:hover {
     flex-basis: 37%;
     border-radius: 6px;
     overflow: hidden;
+    max-height: 146px;
+}
+.static-post-img img {
+    height: 170px;
+    object-fit: cover;
 }
 .static-post-discription {
     flex-basis: 57%;
