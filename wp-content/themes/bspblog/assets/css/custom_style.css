@@ -908,4 +908,35 @@ ul.contact-social-links li a:hover i {
     background: var(--orange);
     color: #fff;
 }
+.news-image {
+    width: 100%;
+    max-height: 300px;
+    min-height: 300px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 4%;
+}
+.news-image img {
+    object-fit: cover;
+}
+.news-block .news-info p {
+    margin: 0;
+}
+.news-block .news-info span.news-date {
+    color: var(--orange);
+    margin: 1% 0;
+    display: inline-block;
+}
+.news-block .news-info p a {
+    font-weight: bold;
+    color: var(--blue);
+    display: flex;
+    margin-top: 3%;
+    align-items: center;
+    gap: 6px;
+}
+.news-block .news-info p a::after {
+    content: '\2192';
+    font-size: 20px;
+}
 /*------ /polls-page --------*/
