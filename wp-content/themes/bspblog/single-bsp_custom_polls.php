@@ -57,8 +57,23 @@ if ($metadata) {
 						</div>
 						<div>
 						<?php 
-						$meta=get_pdf_metadata($download_attachment['url']);
-						print_r($meta);
+						//$pdf_file_path = 'path/to/your/pdf/file.pdf';
+						$metadata = get_pdf_metadata($post_id);
+						
+						if ($metadata) {
+							// Process and display the metadata as needed
+							$title = $metadata->get('Title');
+							$author = $metadata->get('Author');
+							$keywords = $metadata->get('Keywords');
+							// ... Add more metadata properties as required
+						
+							echo "Title: $title<br>";
+							echo "Author: $author<br>";
+							echo "Keywords: $keywords<br>";
+							// ... Output more metadata properties as needed
+						} else {
+							echo "No metadata found in the PDF.";
+						}
 						?></div>
 						<div class="tags">
 								<?php
