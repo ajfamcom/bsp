@@ -673,4 +673,33 @@ function include_fpdi_pdf_parser() {
 add_action('after_setup_theme', 'include_fpdi_pdf_parser');
 
 
+function get_pdf_metadata($file_path) {
+    require_once get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
+
+    $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
+    $metaData = $streamReader->getMetaData();
+
+    return $metaData;
+}
+
+function extract_pdf_metadata_on_attachment_upload($attachment_id) {
+    $attachment = get_post($attachment_id);
+
+    // Check if the attachment is a PDF file
+    if ($attachment->post_mime_type === 'application/pdf') {
+        $file_path = get_attached_file($attachment_id);
+        $metadata = get_pdf_metadata($file_path);
+
+        // Save metadata to custom fields
+        if ($metadata) {
+            // Replace 'custom_field_key' with the key of the custom field where you want to store the metadata
+            update_post_meta($attachment_id, 'custom_pdf_meta', $metadata);
+        }
+    }
+}
+
+add_action('add_attachment', 'extract_pdf_metadata_on_attachment_upload');
+
+
+
 

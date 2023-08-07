@@ -3,17 +3,17 @@
 $page_id = get_custom_page_id('team_members', 'our-team');
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
-if (have_posts()) :
-	while (have_posts()) : the_post();
-		$post_id = get_the_ID();
-		$fullname = get_field('full_name', $post_id);
-		$education = get_field('education', $post_id);
-		$designation = get_field('designation', $post_id);
-		$image = get_field('profile_image', $post_id);
-		$contact_email = get_field('contact_email', $post_id);
-		$contact_phone = get_field('contact_phone', $post_id);
-	endwhile;
-endif;
+$attachment_id = get_the_ID(); // Assuming you are in the custom post type template
+$metadata = get_post_meta($attachment_id, 'custom_field_key', true);
+
+if ($metadata) {
+    // Process and display the metadata
+    // For example, if the 'Keywords' metadata exists, you can access it like:
+    $keywords = $metadata->get('Keywords');
+    if ($keywords) {
+        echo 'Keywords: ' . $keywords;
+    }
+}
 ?>
 <?php get_header(); ?>
 
@@ -59,7 +59,6 @@ endif;
 						</div>
 						<div class="tags">
 								<?php
-									// Assuming you are in the loop for your custom post type
 									$tags = get_the_terms(get_the_ID(), 'post_tag');
 									if ($tags && !is_wp_error($tags)) {
 										echo '<ul class="poll-tags">';
