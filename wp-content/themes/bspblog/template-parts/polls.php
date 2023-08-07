@@ -48,7 +48,6 @@ get_header();
 	</div>
 
 	<div class="highlight-post">
-	<div class="row">
 		<?php
 		 $fargs = array(
 			'post_type'      => 'bsp_custom_polls',
@@ -82,10 +81,10 @@ get_header();
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
 				} 
 		?>
-				<div class="news-block col-md-6">
+				<div class="news-block">
 					<div class="news-image"><?php echo $image_link;?></div>
 				</div>
-				<div class="news-block col-md-6">
+				<div class="news-block-content">
 					<div class="news-info">
 						<h4 class="news-details"><span class="news-title"><?php the_title(); ?></span></h4>
 						<p class="news-other-details"><span class="news-date">date</span></p>
@@ -98,7 +97,6 @@ get_header();
 			wp_reset_postdata();
 		endif;
 		?>
-	</div>
 	</div>
 
 	<div class="row">
