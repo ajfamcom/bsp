@@ -591,6 +591,30 @@ function custom_polls_post_type() {
 
     add_action('init','custom_polls_post_type');
 
+    function custom_bsp_polls_post_type() {
+        $labels = array(
+        'name' => __('Polls', 'polls'),
+        'singular_name' => __('Polls ', 'polls'),
+        'add_new' => __('New Poll ', 'polls'),
+        'add_new_item' => __('Add New Poll ', 'polls'),
+        'edit_item' => __('Edit Poll ', 'polls'),
+        'new_item' => __('New Poll ', 'polls'),
+        'view_item' => __('View Poll ', 'polls'),
+        'search_item' => __('Search Polls ', 'polls'),
+        'not_found' => __('No Poll Found', 'polls'),
+        'not_found_in_trash' => __('No Poll found in trash', 'polls')
+        );
+        $args = array(
+            'public' => true,
+            'labels'  => $labels,
+            'supports' => array( 'title', 'editor', 'thumbnail','comments' ),
+            'taxonomies' => array('post_tag'),
+        );
+        register_post_type( 'bsp_custom_polls', $args );
+    }
+    
+        add_action('init','custom_bsp_polls_post_type');
+
     function custom_comment_form_fields($fields) {
         
         /*$fields['custom_field'] = '<div class="mb-3"><label for="custom_field" class="form-label">Custom Field</label> <span class="required">*</span>
