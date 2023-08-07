@@ -124,7 +124,7 @@ if ($query->have_posts()) {
 
 $args_post_type1 = array(
     'post_type' => 'bsp_custom_polls',
-    'posts_per_page' => 3,
+    'posts_per_page' => 1,
     'orderby' => 'date',
     'order' => 'DESC',    
     'meta_query' => array(
@@ -144,7 +144,7 @@ $args_post_type1 = array(
 
 $args_post_type2 = array(
     'post_type'      => 'post', 
-    'posts_per_page' => 3, 
+    'posts_per_page' => 2, 
     'orderby' => 'date',
     'order' => 'DESC', 
 );
