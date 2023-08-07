@@ -39,8 +39,8 @@ if ($metadata) {
 					    $post_id=get_the_ID();
 						$download_attachment=get_field('pdf_attachment',$post_id);
 						//$metaData=get_pdf_metadata_custom($post_id);
-						echo $pdfkey=get_post_meta( $post_id, 'custom_pdf_keywords' );
-						
+						 $pdfkey=get_post_meta( $post_id, 'custom_pdf_keywords' );
+						 print_r($pdfkey);
 					?>
 				<div class="single-poll col-12">
 						<div class="single-poll-content">
