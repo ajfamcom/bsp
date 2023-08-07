@@ -1,9 +1,7 @@
 <?php
 /* Template Name:Custom Polls Template  */
-$page_id = get_custom_page_id('team_members', 'our-team');
-$full_banner = get_field('full_banner', $page_id);
-$image_over_banner = get_field('image_over_banner', $page_id);
-$attachment_id = get_the_ID(); // Assuming you are in the custom post type template
+
+$attachment_id = get_the_ID(); 
 $metadata = get_post_meta($attachment_id, 'custom_pdf_meta', true);
 
 if ($metadata) {
