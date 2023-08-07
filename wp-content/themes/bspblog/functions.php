@@ -740,7 +740,7 @@ function get_pdf_metadata($pdf_url) {
     $file_path = get_attached_file($pdf_url); // Get the absolute file path from the URL
 
     if (!$file_path) {
-        return false; // File not found or invalid URL
+        return $file_path; // File not found or invalid URL
     }
 
     $streamReader = \setasign\Fpdi\PdfParser\StreamReader::createByFile($file_path);
