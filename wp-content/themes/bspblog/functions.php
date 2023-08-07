@@ -724,7 +724,7 @@ function get_pdf_metadata_by_post($post_id) {
         }
     }
 
-    return $file_path; // Return an empty array if no PDF attachment found or invalid attachment ID
+    return $attachments; // Return an empty array if no PDF attachment found or invalid attachment ID
 }
 
 
