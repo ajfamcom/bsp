@@ -38,8 +38,11 @@ if ($metadata) {
 					while (have_posts()) : the_post();
 					    $post_id=get_the_ID();
 						$download_attachment=get_field('pdf_attachment',$post_id);
-						$metadata = get_pdf_metadata_by_post($download_attachment['url']);
-						print_r($metadata);
+						$attachment_id = $download_attachment['ID'];      
+                        $file_path = get_attached_file($attachment_id); 
+						require_once get_template_directory() . '/fpdi-pdf-parser/src/autoload.php';
+						$pdfParser = new \setasign\Fpdi\PdfParser\PdfParser($streamReader);
+						$metaData = $pdfParser->getMetaData();
 						if ($metadata) {
 							
 							echo "Title: " . $metadata->get('Title') . "<br>";
