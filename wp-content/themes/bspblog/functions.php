@@ -701,7 +701,7 @@ function get_pdf_metadata_by_post($post_id) {
 
     $file = get_field('pdf_attachment', $post_id);
     $metaData='';
-    
+    print_r($file);die();
     if ($file && is_array($file)) {        
         $attachment_id = $file['ID'];      
         $file_path = get_attached_file($attachment_id);       
