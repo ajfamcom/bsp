@@ -306,6 +306,21 @@
         position: relative;
         margin: 5% 0;
     }
+    /*------ polls-page -----*/
+    .news-block {
+        margin: 4% 0;
+    }
+    .highlight-post {
+        flex-wrap: wrap;
+    }
+    .highlight-post .news-block {
+        flex-basis: 100%;
+    }
+    .highlight-post .news-block-content {
+        flex-basis: 100%;
+        padding: 20px;
+    }
+    /*----- /polls-page -----*/
 }
 
 /*================================= /media-queries ==================================*/
