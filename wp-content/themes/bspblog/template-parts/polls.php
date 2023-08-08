@@ -148,8 +148,15 @@ get_header();
 				FROM {$wpdb->prefix}posts
 				LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
 				WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
-				AND {$wpdb->prefix}postmeta.meta_key = 'is_featured_poll'
-				AND {$wpdb->prefix}postmeta.meta_value = 'No'
+				AND (
+					({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '%" . $search_text . "%')
+					OR {$wpdb->prefix}posts.post_title LIKE '%" . $search_text . "%'
+					OR {$wpdb->prefix}posts.post_content LIKE '%" . $search_text . "%'
+				)
+				AND {$wpdb->prefix}posts.post_date >= '" . $modified_from_date . "' AND {$wpdb->prefix}posts.post_date <= '" . $modified_to_date . "'
+				ORDER BY {$wpdb->prefix}posts.post_date DESC
+				LIMIT %d
+				OFFSET %d
 			";
 
 			$total_count = $wpdb->get_var($count_query);
