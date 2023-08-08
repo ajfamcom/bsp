@@ -206,10 +206,9 @@ get_header();
 
 		if ($results) :
 			foreach($results as $row) :
-				print_r($row);
-				//$query->the_post();
+				
+				
 				$post_id = $row->ID;
-
 				$permalink = get_permalink($post_id);
 				 if (has_post_thumbnail($post_id)) {
 
