@@ -35,21 +35,21 @@ get_header();
 	<div class="row">
 		<div class="container mt-5">
 			<form class="post-filter-form row g-2" method="POST">
-				<div class="col-md-3">
+				<div class="post-fields">
 					<!-- Search Input -->
 					<input type="text" class="form-control" name="search_text" placeholder="Enter your search query" aria-label="Search" required>
 				</div>
-				<div class="col-md-3">
+				<div class="post-fields">
 					<!-- Search Input -->
 					<input type="text" class="form-control" name="from_date" placeholder="From date" aria-label="Search" required>
 				</div>
-				<div class="col-md-3">
+				<div class="post-fields">
 					<!-- Search Input -->
 					<input type="text" class="form-control" name="to_date" placeholder="To date" aria-label="Search" required>
 				</div>
-				<div class="col-md-3">
+				<div class="post-fields">
 					<!-- Search Button -->
-					<button type="submit" class="btn btn-primary w-100">Search</button>
+					<button type="submit" class="btn btn-primary">Search</button>
 				</div>
 			</form>
 		</div>

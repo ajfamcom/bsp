@@ -939,4 +939,9 @@ ul.contact-social-links li a:hover i {
     content: '\2192';
     font-size: 18px;
 }
+.post-filter-form input {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 /*------ /polls-page --------*/
