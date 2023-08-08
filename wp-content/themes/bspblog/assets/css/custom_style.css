@@ -973,4 +973,11 @@ ul.contact-social-links li a:hover i {
     letter-spacing: 2px;
     font-size: 16px;
 }
+.post-fields .btn-default {
+    height: 50px;
+    border-radius: 4px;
+    width: 100%;
+    letter-spacing: 2px;
+    font-size: 16px;
+}
 /*------ /polls-page --------*/
