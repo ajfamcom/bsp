@@ -743,5 +743,11 @@ function trim_content_custom($content){
     return $content;
 }
 
+function enqueue_datepicker() {
+    wp_enqueue_script('jquery-ui-datepicker');
+    wp_enqueue_style('jquery-ui-style', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+}
+add_action('wp_enqueue_scripts', 'enqueue_datepicker');
+
 
 

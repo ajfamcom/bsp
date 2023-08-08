@@ -41,11 +41,11 @@ get_header();
 				</div>
 				<div class="post-fields">
 					<!-- Search Input -->
-					<input type="text" class="form-control" name="from_date" placeholder="From date" aria-label="Search" required value="<?php echo $from_date; ?>">
+					<input type="text" class="form-control datepicker" name="from_date" placeholder="From date" aria-label="Search" required value="<?php echo $from_date; ?>">
 				</div>
 				<div class="post-fields">
 					<!-- Search Input -->
-					<input type="text" class="form-control" name="to_date" placeholder="To date" aria-label="Search" required value="<?php echo $to_date; ?>">
+					<input type="text" class="form-control datepicker" name="to_date" placeholder="To date" aria-label="Search" required value="<?php echo $to_date; ?>">
 				</div>
 				<div class="post-fields">
 					<!-- Search Button -->
