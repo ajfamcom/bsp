@@ -108,61 +108,51 @@ get_header();
 
 	<div class="row">
 		<?php
-		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+		
 		if(isset($search_text) && isset($from_date) && isset($to_date))
 		{
+			
+
 			global $wpdb;
 
-				$query = "SELECT * FROM {$wpdb->prefix}posts
-						INNER JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-						WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
-						AND {$wpdb->prefix}postmeta.meta_key = 'is_featured_poll'
-						AND {$wpdb->prefix}postmeta.meta_value = 'No'
-						LIMIT 2";
+			$posts_per_page = 2;
+			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+			$offset = ($current_page - 1) * $posts_per_page;
 
-				
+			$query = "
+				SELECT {$wpdb->prefix}posts.*
+				FROM {$wpdb->prefix}posts
+				LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
+				WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
+				AND {$wpdb->prefix}postmeta.meta_key = 'is_featured_poll'
+				AND {$wpdb->prefix}postmeta.meta_value = 'No'
+				ORDER BY {$wpdb->prefix}posts.post_date DESC
+				LIMIT %d
+				OFFSET %d
+			";
+
+			$query = $wpdb->prepare($query, $posts_per_page, $offset);
+
+			$results = $wpdb->get_results($query);
+
+			// Query to count total posts matching the condition
+			$count_query = "
+				SELECT COUNT({$wpdb->prefix}posts.ID) AS total_count
+				FROM {$wpdb->prefix}posts
+				LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
+				WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
+				AND {$wpdb->prefix}postmeta.meta_key = 'is_featured_poll'
+				AND {$wpdb->prefix}postmeta.meta_value = 'No'
+			";
+
+			$total_count = $wpdb->get_var($count_query);
+
+			$max_num_pages = ceil($total_count / $posts_per_page);		
 			
-			/*$args = array(
-				'post_type'      => 'bsp_custom_polls',
-				'posts_per_page' => 2, // Adjust the number of posts per page as per your requirement
-				'paged'          => $paged,
-				'meta_query'     => array(
-					'relation' => 'OR', // Outer relation is OR
-					array(
-						'relation' => 'AND', // First nested relation is AND
-						array(
-							'key'     => 'is_featured_poll',
-							'value'   => 'No',
-							'compare' => '='
-						),
-						array(
-							'key'     => 'custom_pdf_keywords', // Replace with the first meta key you want to query
-							'value'   => $search_text, // Replace with the value you want to search for
-							'compare' => 'LIKE', // You can use other comparison operators like '>', '<', 'IN', etc.
-						),
-					),
-					array(
-						'key' => 'created_at', // Replace with your meta key (or 'post_date' for default post date)
-						'value' => array($from_date, $to_date), // Replace with your date range
-						'compare' => 'BETWEEN',
-						'type' => 'DATE'
-					)
-				),
-			);*/
+		
 		}
 		else {
-			/* $args = array(
-				'post_type' => 'bsp_custom_polls',
-				'posts_per_page' => 2, // Adjust the number of posts per page as per your requirement
-				'paged' => $paged,
-				'meta_query'     => array(
-					array(
-						'key'     => 'is_featured_poll',
-						'value'   => 'No', 
-						'compare' => '='
-					),				
-				),
-			); */
+			
 			                   global $wpdb;
 
 								$posts_per_page = 2;
@@ -197,7 +187,7 @@ get_header();
 
 								$total_count = $wpdb->get_var($count_query);
 
-								echo 'halo'.$max_num_pages = ceil($total_count / $posts_per_page);
+								$max_num_pages = ceil($total_count / $posts_per_page);
 		}
 		
 		$results = $wpdb->get_results($query);		
