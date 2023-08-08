@@ -372,7 +372,7 @@ function custom_posts_search($search, $query) {
 function remove_ast_container_class() {
     ?>
     <script>
-        jQuery(document).ready(function($) {
+        $(document).ready(function($) {
             // Replace 'site-primary-header-wrap' with the ID or class of the parent element of the div
             $('.site-primary-header-wrap').removeClass('ast-container');
 			$('.site-primary-header-wrap').addClass('container');
