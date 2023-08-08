@@ -232,7 +232,7 @@ get_header();
 						<h4 class="news-details"><span class="news-title"><?php $row->post_title; ?></span></h4>
 						<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
 						<p class="news-content"><?php echo trim_content_custom($row->post_content); ?></p>
-						<p><a href="<?php //echo $permalink; ?>">Read More</a></p>
+						<p><a href="<?php echo $permalink; ?>">Read More</a></p>
 					</div>
 				</div>
 		<?php
