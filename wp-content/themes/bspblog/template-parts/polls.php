@@ -4,6 +4,8 @@ $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
 $search_text=isset($_POST['search_text'])?$_POST['search_text']:'';
+$from_date=isset($_POST['from_date'])?$_POST['from_date']:'';
+$to_date=isset($_POST['to_date'])?$_POST['to_date']:'';
 ?>
 <?php 
 
@@ -107,7 +109,7 @@ get_header();
 	<div class="row">
 		<?php
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-		if(isset($search_text))
+		if(isset($search_text) && isset($from_date) && isset($to_date))
 		{
 			$args = array(
 				'post_type'      => 'bsp_custom_polls',
@@ -128,19 +130,12 @@ get_header();
 							'compare' => 'LIKE', // You can use other comparison operators like '>', '<', 'IN', etc.
 						),
 					),
-					/*array(
-						'relation' => 'AND', // Second nested relation is AND
-						array(
-							'key'     => 'is_featured_poll',
-							'value'   => 'No',
-							'compare' => '='
-						),
-						array(
-							'key'     => 'custom_pdf_title', // Replace with the second meta key you want to query
-							'value'   => $search_text, // Replace with the value you want to search for
-							'compare' => 'LIKE', // You can use other comparison operators like '>', '<', 'IN', etc.
-						),
-					),*/
+					array(
+						'key' => 'created_at', // Replace with your meta key (or 'post_date' for default post date)
+						'value' => array($from_date, $to_date), // Replace with your date range
+						'compare' => 'BETWEEN',
+						'type' => 'DATE'
+					)
 				),
 			);
 		}
