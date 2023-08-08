@@ -498,6 +498,7 @@ footer {
     top: 25px;
     color: var(--orange);
     font-size: 18px;
+    width: auto;
 }
 .inner-bnr .breadcrumbs i {
     font-size: 13px;
