@@ -241,7 +241,7 @@ get_header();
 				<div class="pagination">
 					<?php
 					echo paginate_links(array(
-						'total' => $max_num_pages,
+						'total' => $total_count,
 						'current' => $paged,
 						'prev_text' => '&laquo;',
 						'next_text' => '&raquo;',
