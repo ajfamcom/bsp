@@ -730,5 +730,18 @@ function limit_custom_post_content($content) {
     return $content;
 }
 
+function trim_content_custom($content){
+    
+        
+        $word_limit = 50;
+        $words = explode(' ', $content);
+        if (count($words) > $word_limit) {
+            $content = implode(' ', array_slice($words, 0, $word_limit));
+            $content .= '...'; 
+        }
+
+    return $content;
+}
+
 
 
