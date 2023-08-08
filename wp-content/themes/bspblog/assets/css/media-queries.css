@@ -307,7 +307,7 @@
         margin: 5% 0;
     }
     /*------ polls-page -----*/
-    .news-block {
+    .news-block.col-md-4 {
         margin: 4% 0;
     }
     .highlight-post {
