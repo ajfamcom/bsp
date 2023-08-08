@@ -205,7 +205,7 @@ get_header();
 								$max_num_pages = ceil($total_count / $posts_per_page);
 		}
 		
-		$results = $wpdb->get_results($query);		
+		//$results = $wpdb->get_results($query);		
 		
 		//$query = new WP_Query($args);
 
