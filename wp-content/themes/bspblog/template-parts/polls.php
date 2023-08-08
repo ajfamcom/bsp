@@ -233,7 +233,7 @@ get_header();
 					</div>
 				</div>
 		<?php
-			foreach;
+			endforeach;
 			wp_reset_postdata();
 			
 		?>
