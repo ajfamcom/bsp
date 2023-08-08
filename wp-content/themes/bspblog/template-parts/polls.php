@@ -186,9 +186,9 @@ $query = "
 
 			$total_count = $wpdb->get_var($count_query);
 
-			//$max_num_pages = ceil($total_count / $posts_per_page);		
+			$max_num_pages = ceil($total_count / $posts_per_page);		
 			// Calculate total pages
-			$total_pages = ceil($total_count / $posts_per_page);
+			/* $total_pages = ceil($total_count / $posts_per_page);
 				
 			// Calculate previous and next page numbers
 			$prev_page = max(1, $current_page - 1);
@@ -206,7 +206,7 @@ $query = "
 			}
 			
 			$pagination_links .= '<a href="' . add_query_arg('paged', $next_page) . '">Next</a>';
-			$pagination_links .= '</div>';
+			$pagination_links .= '</div>'; */
 		
 		}
 		else {
@@ -296,17 +296,7 @@ $query = "
 					));
 					?>
 				</div>
-				<?php 
-               	if(isset($search_text) && isset($from_date) && isset($to_date) && !empty($search_text) && !empty($from_date) && !empty($to_date))
-				   {
-					//if($total_count>2){
-						echo $pagination_links;
-					//}
-					
-				   	}
 				
-				
-				?>
 				
 				
 			</div>
