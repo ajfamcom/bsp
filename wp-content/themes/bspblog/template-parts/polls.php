@@ -122,21 +122,22 @@ get_header();
 			$offset = ($current_page - 1) * $posts_per_page;		
 
 			$query = "
-			SELECT {$wpdb->prefix}posts.*
-			FROM {$wpdb->prefix}posts
-			LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-			WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
-			AND (
-				OR ({$wpdb->prefix}postmeta.meta_key='custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '%'".$search_text."'%')
-				OR ({$wpdb->prefix}posts.post_title LIKE '%'".$search_text."'%')
-				OR ({$wpdb->prefix}posts.post_content LIKE '%'".$search_text."'%')
-			)
-			AND {$wpdb->prefix}posts.post_date >= '".$modified_from_date."' AND {$wpdb->prefix}posts.post_date <= '".$modified_to_date."'
-			ORDER BY {$wpdb->prefix}posts.post_date DESC
-			LIMIT %d
-			OFFSET %d
-		";
-		echo $query;
+    SELECT {$wpdb->prefix}posts.*
+    FROM {$wpdb->prefix}posts
+    LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
+    WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
+    AND (
+        ({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '%" . $search_text . "%')
+        OR {$wpdb->prefix}posts.post_title LIKE '%" . $search_text . "%'
+        OR {$wpdb->prefix}posts.post_content LIKE '%" . $search_text . "%'
+    )
+    AND {$wpdb->prefix}posts.post_date >= '" . $modified_from_date . "' AND {$wpdb->prefix}posts.post_date <= '" . $modified_to_date . "'
+    ORDER BY {$wpdb->prefix}posts.post_date DESC
+    LIMIT %d
+    OFFSET %d
+";
+
+		
 
 			$query = $wpdb->prepare($query, $posts_per_page, $offset);
 
@@ -147,8 +148,15 @@ get_header();
 				FROM {$wpdb->prefix}posts
 				LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
 				WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
-				AND {$wpdb->prefix}postmeta.meta_key = 'is_featured_poll'
-				AND {$wpdb->prefix}postmeta.meta_value = 'No'
+				AND (
+					({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '%" . $search_text . "%')
+					OR {$wpdb->prefix}posts.post_title LIKE '%" . $search_text . "%'
+					OR {$wpdb->prefix}posts.post_content LIKE '%" . $search_text . "%'
+				)
+				AND {$wpdb->prefix}posts.post_date >= '" . $modified_from_date . "' AND {$wpdb->prefix}posts.post_date <= '" . $modified_to_date . "'
+				ORDER BY {$wpdb->prefix}posts.post_date DESC
+				LIMIT %d
+				OFFSET %d
 			";
 
 			$total_count = $wpdb->get_var($count_query);
@@ -224,7 +232,7 @@ get_header();
 						<h4 class="news-details"><span class="news-title"><?php $row->post_title; ?></span></h4>
 						<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
 						<p class="news-content"><?php echo trim_content_custom($row->post_content); ?></p>
-						<p><a href="<?php //echo $permalink; ?>">Read More</a></p>
+						<p><a href="<?php echo $permalink; ?>">Read More</a></p>
 					</div>
 				</div>
 		<?php
