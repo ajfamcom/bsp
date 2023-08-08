@@ -3,9 +3,9 @@
 $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
-$search_text=isset($_POST['search_text'])?$_POST['search_text']:'';
-$from_date=isset($_POST['from_date'])?$_POST['from_date']:'';
-$to_date=isset($_POST['to_date'])?$_POST['to_date']:'';
+echo $search_text=isset($_POST['search_text'])?$_POST['search_text']:'';
+echo $from_date=isset($_POST['from_date'])?$_POST['from_date']:'';
+echo $to_date=isset($_POST['to_date'])?$_POST['to_date']:'';
 ?>
 <?php 
 
@@ -109,27 +109,14 @@ get_header();
 	<div class="row">
 		<?php
 		
-		if(isset($search_text) && isset($from_date) && isset($to_date))
-		{
-			
+		if(isset($search_text) && isset($from_date) && isset($to_date) && !empty($search_text) && !empty($from_date) && !empty($to_date))
+		{		
 
 			global $wpdb;
 
 			$posts_per_page = 2;
 			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-			$offset = ($current_page - 1) * $posts_per_page;
-
-			/* $query = "
-				SELECT {$wpdb->prefix}posts.*
-				FROM {$wpdb->prefix}posts
-				LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-				WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
-				AND {$wpdb->prefix}postmeta.meta_key = 'is_featured_poll'
-				AND {$wpdb->prefix}postmeta.meta_value = 'No'
-				ORDER BY {$wpdb->prefix}posts.post_date DESC
-				LIMIT %d
-				OFFSET %d
-			"; */
+			$offset = ($current_page - 1) * $posts_per_page;		
 
 			$query = "
 			SELECT {$wpdb->prefix}posts.*
@@ -149,8 +136,7 @@ get_header();
 			$query = $wpdb->prepare($query, $posts_per_page, $offset);
 
 			$results = $wpdb->get_results($query);
-
-			// Query to count total posts matching the condition
+	
 			$count_query = "
 				SELECT COUNT({$wpdb->prefix}posts.ID) AS total_count
 				FROM {$wpdb->prefix}posts
