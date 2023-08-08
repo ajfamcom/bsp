@@ -113,6 +113,9 @@ get_header();
 		{		
 
 			global $wpdb;
+			
+			$modified_from_date=date('Y-m-d H:i:s',strtotime($from_date));
+			$modified_to_date=date('Y-m-d H:i:s',strtotime($to_date));
 
 			$posts_per_page = 2;
 			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -124,15 +127,17 @@ get_header();
 			LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
 			WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
 			AND (
-				OR ({$wpdb->prefix}posts_meta.meta_key='custom_pdf_keywords' AND {$wpdb->prefix}posts_meta.value LIKE '%'".$search_text."'%')
+				OR ({$wpdb->prefix}postmeta.meta_key='custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '%'".$search_text."'%')
 				OR ({$wpdb->prefix}posts.post_title LIKE '%'".$search_text."'%')
 				OR ({$wpdb->prefix}posts.post_content LIKE '%'".$search_text."'%')
 			)
-			AND {$wpdb->prefix}posts.post_date >= '".$from_date."' AND {$wpdb->prefix}posts.post_date <= '".$to_date."'
+			AND {$wpdb->prefix}posts.post_date >= '".$modified_from_date."' AND {$wpdb->prefix}posts.post_date <= '".$modified_to_date."'
 			ORDER BY {$wpdb->prefix}posts.post_date DESC
 			LIMIT %d
 			OFFSET %d
 		";
+		echo $query;
+
 			$query = $wpdb->prepare($query, $posts_per_page, $offset);
 
 			$results = $wpdb->get_results($query);
