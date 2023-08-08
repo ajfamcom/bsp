@@ -186,8 +186,27 @@ $query = "
 
 			$total_count = $wpdb->get_var($count_query);
 
-			$max_num_pages = ceil($total_count / $posts_per_page);		
+			//$max_num_pages = ceil($total_count / $posts_per_page);		
+			// Calculate total pages
+			$total_pages = ceil($total_count / $posts_per_page);
+				
+			// Calculate previous and next page numbers
+			$prev_page = max(1, $current_page - 1);
+			$next_page = min($total_pages, $current_page + 1);
+			// Manually create pagination links
+			$pagination_links = '<div class="pagination">';
+			$pagination_links .= '<a href="' . add_query_arg('paged', $prev_page) . '">Previous</a>';
 			
+			for ($i = 1; $i <= $total_pages; $i++) {
+				if ($i === $current_page) {
+					$pagination_links .= '<span class="current">' . $i . '</span>';
+				} else {
+					$pagination_links .= '<a href="' . add_query_arg('paged', $i) . '">' . $i . '</a>';
+				}
+			}
+			
+			$pagination_links .= '<a href="' . add_query_arg('paged', $next_page) . '">Next</a>';
+			$pagination_links .= '</div>';
 		
 		}
 		else {
@@ -277,6 +296,16 @@ $query = "
 					));
 					?>
 				</div>
+				<?php 
+               	if(isset($search_text) && isset($from_date) && isset($to_date) && !empty($search_text) && !empty($from_date) && !empty($to_date))
+				   {
+					echo $pagination_links;
+				   	}
+				
+				
+				?>
+				
+				
 			</div>
 		<?php
 		else :
