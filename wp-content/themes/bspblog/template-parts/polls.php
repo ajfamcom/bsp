@@ -299,9 +299,9 @@ $query = "
 				<?php 
                	if(isset($search_text) && isset($from_date) && isset($to_date) && !empty($search_text) && !empty($from_date) && !empty($to_date))
 				   {
-					if($total_count>2){
+					//if($total_count>2){
 						echo $pagination_links;
-					}
+					//}
 					
 				   	}
 				
