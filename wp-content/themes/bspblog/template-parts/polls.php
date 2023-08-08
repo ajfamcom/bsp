@@ -197,7 +197,7 @@ get_header();
 
 								$total_count = $wpdb->get_var($count_query);
 
-								$max_num_pages = ceil($total_count / $posts_per_page);
+								echo 'halo'.$max_num_pages = ceil($total_count / $posts_per_page);
 		}
 		
 		$results = $wpdb->get_results($query);		
