@@ -111,7 +111,18 @@ get_header();
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 		if(isset($search_text) && isset($from_date) && isset($to_date))
 		{
-			$args = array(
+			global $wpdb;
+
+				$query = "SELECT * FROM {$wpdb->prefix}posts
+						INNER JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
+						WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
+						AND {$wpdb->prefix}postmeta.meta_key = 'is_featured_poll'
+						AND {$wpdb->prefix}postmeta.meta_value = 'No'
+						LIMIT 2";
+
+				
+			
+			/*$args = array(
 				'post_type'      => 'bsp_custom_polls',
 				'posts_per_page' => 2, // Adjust the number of posts per page as per your requirement
 				'paged'          => $paged,
@@ -137,10 +148,10 @@ get_header();
 						'type' => 'DATE'
 					)
 				),
-			);
+			);*/
 		}
 		else {
-			$args = array(
+			/* $args = array(
 				'post_type' => 'bsp_custom_polls',
 				'posts_per_page' => 2, // Adjust the number of posts per page as per your requirement
 				'paged' => $paged,
@@ -151,21 +162,56 @@ get_header();
 						'compare' => '='
 					),				
 				),
-			);
+			); */
+			                   global $wpdb;
+
+								$posts_per_page = 2;
+								$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+								$offset = ($current_page - 1) * $posts_per_page;
+
+								$query = "
+									SELECT {$wpdb->prefix}posts.*
+									FROM {$wpdb->prefix}posts
+									LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
+									WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
+									AND {$wpdb->prefix}postmeta.meta_key = 'is_featured_poll'
+									AND {$wpdb->prefix}postmeta.meta_value = 'No'
+									ORDER BY {$wpdb->prefix}posts.post_date DESC
+									LIMIT %d
+									OFFSET %d
+								";
+
+								$query = $wpdb->prepare($query, $posts_per_page, $offset);
+
+								$results = $wpdb->get_results($query);
+
+								// Query to count total posts matching the condition
+								$count_query = "
+									SELECT COUNT({$wpdb->prefix}posts.ID) AS total_count
+									FROM {$wpdb->prefix}posts
+									LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
+									WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
+									AND {$wpdb->prefix}postmeta.meta_key = 'is_featured_poll'
+									AND {$wpdb->prefix}postmeta.meta_value = 'No'
+								";
+
+								$total_count = $wpdb->get_var($count_query);
+
+								$max_num_pages = ceil($total_count / $posts_per_page);
 		}
 		
+		$results = $wpdb->get_results($query);		
 		
-		
-		
-		$query = new WP_Query($args);
+		//$query = new WP_Query($args);
 
-		if ($query->have_posts()) :
-			while ($query->have_posts()) :
-				$query->the_post();
-				$post_id = get_the_ID();
+		if ($results) :
+			foreach($results as $row) :
+				print_r($row);
+				//$query->the_post();
+				//$post_id = get_the_ID();
 
-				$permalink = get_permalink($post_id);
-				if (has_post_thumbnail($post_id)) {
+				//$permalink = get_permalink($post_id);
+				/* if (has_post_thumbnail($post_id)) {
 
 					$thumbnail_id = get_post_thumbnail_id($post_id);
 					$image_url = wp_get_attachment_url($thumbnail_id);
@@ -175,15 +221,15 @@ get_header();
 					$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
 				} else {
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
-				}
+				} */
 		?>
 				<div class="news-block col-md-4">
-					<div class="news-image"><?php echo $image_link; ?></div>
+					<div class="news-image"><?php //echo $image_link; ?></div>
 					<div class="news-info">
-						<h4 class="news-details"><span class="news-title"><?php the_title(); ?></span></h4>
-						<p class="news-other-details"><span class="news-date"><?php echo get_the_date('M j, Y');?></span></p>
-						<p class="news-content"><?php the_content(); ?></p>
-						<p><a href="<?php echo $permalink; ?>">Read More</a></p>
+						<h4 class="news-details"><span class="news-title"><?php //the_title(); ?></span></h4>
+						<p class="news-other-details"><span class="news-date"><?php //echo get_the_date('M j, Y');?></span></p>
+						<p class="news-content"><?php //the_content(); ?></p>
+						<p><a href="<?php //echo $permalink; ?>">Read More</a></p>
 					</div>
 				</div>
 		<?php
@@ -196,7 +242,7 @@ get_header();
 				<div class="pagination">
 					<?php
 					echo paginate_links(array(
-						'total' => $query->max_num_pages,
+						'total' => $max_num_pages,
 						'current' => $paged,
 						'prev_text' => '&laquo;',
 						'next_text' => '&raquo;',
