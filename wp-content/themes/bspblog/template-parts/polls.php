@@ -119,7 +119,7 @@ get_header();
 			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 			$offset = ($current_page - 1) * $posts_per_page;
 
-			$query = "
+			/* $query = "
 				SELECT {$wpdb->prefix}posts.*
 				FROM {$wpdb->prefix}posts
 				LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
@@ -129,8 +129,23 @@ get_header();
 				ORDER BY {$wpdb->prefix}posts.post_date DESC
 				LIMIT %d
 				OFFSET %d
-			";
+			"; */
 
+			$query = "
+			SELECT {$wpdb->prefix}posts.*
+			FROM {$wpdb->prefix}posts
+			LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
+			WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
+			AND (
+				({$wpdb->prefix}postmeta.meta_key = 'is_featured_poll' AND {$wpdb->prefix}postmeta.meta_value = 'No')
+				OR ({$wpdb->prefix}posts.post_title LIKE '%'".$search_text."'%')
+				OR ({$wpdb->prefix}posts.post_content LIKE '%'".$search_text."'%')
+			)
+			AND {$wpdb->prefix}posts.post_date >= '".$from_date."' AND {$wpdb->prefix}posts.post_date <= '".$to_date."'
+			ORDER BY {$wpdb->prefix}posts.post_date DESC
+			LIMIT %d
+			OFFSET %d
+		";
 			$query = $wpdb->prepare($query, $posts_per_page, $offset);
 
 			$results = $wpdb->get_results($query);
@@ -190,7 +205,7 @@ get_header();
 								$max_num_pages = ceil($total_count / $posts_per_page);
 		}
 		
-		$results = $wpdb->get_results($query);		
+		//$results = $wpdb->get_results($query);		
 		
 		//$query = new WP_Query($args);
 
