@@ -966,5 +966,8 @@ ul.contact-social-links li a:hover i {
 .post-fields .btn.btn-primary {
     height: 50px;
     border-radius: 4px;
+    width: 100%;
+    letter-spacing: 2px;
+    font-size: 16px;
 }
 /*------ /polls-page --------*/
