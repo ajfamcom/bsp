@@ -124,7 +124,7 @@ get_header();
 			$modified_from_date=date('Y-m-d H:i:s',strtotime($from_date));
 			$modified_to_date=date('Y-m-d H:i:s',strtotime($to_date));
 
-			$posts_per_page = 4;
+			$posts_per_page = 2;
 			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 			$offset = ($current_page - 1) * $posts_per_page;		
 
@@ -299,7 +299,10 @@ $query = "
 				<?php 
                	if(isset($search_text) && isset($from_date) && isset($to_date) && !empty($search_text) && !empty($from_date) && !empty($to_date))
 				   {
-					echo $pagination_links;
+					if($total_count>2){
+						echo $pagination_links;
+					}
+					
 				   	}
 				
 				
