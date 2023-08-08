@@ -73,5 +73,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 		}
 	})
 </script>
+<script>
+	jQuery(document).ready(function($) {
+    $('.datepicker').datepicker({
+        dateFormat: 'dd-mm-yyyy' // Set the desired date format
+    });
+});
+</script>
 	</body>
 </html>
