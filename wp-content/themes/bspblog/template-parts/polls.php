@@ -208,10 +208,10 @@ get_header();
 			foreach($results as $row) :
 				print_r($row);
 				//$query->the_post();
-				//$post_id = get_the_ID();
+				$post_id = $row->ID;
 
-				//$permalink = get_permalink($post_id);
-				/* if (has_post_thumbnail($post_id)) {
+				$permalink = get_permalink($post_id);
+				 if (has_post_thumbnail($post_id)) {
 
 					$thumbnail_id = get_post_thumbnail_id($post_id);
 					$image_url = wp_get_attachment_url($thumbnail_id);
@@ -221,14 +221,14 @@ get_header();
 					$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
 				} else {
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
-				} */
+				} 
 		?>
 				<div class="news-block col-md-4">
-					<div class="news-image"><?php //echo $image_link; ?></div>
+					<div class="news-image"><?php echo $image_link; ?></div>
 					<div class="news-info">
-						<h4 class="news-details"><span class="news-title"><?php //the_title(); ?></span></h4>
-						<p class="news-other-details"><span class="news-date"><?php //echo get_the_date('M j, Y');?></span></p>
-						<p class="news-content"><?php //the_content(); ?></p>
+						<h4 class="news-details"><span class="news-title"><?php $row->post_title; ?></span></h4>
+						<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
+						<p class="news-content"><?php $row->post_content; ?></p>
 						<p><a href="<?php //echo $permalink; ?>">Read More</a></p>
 					</div>
 				</div>
