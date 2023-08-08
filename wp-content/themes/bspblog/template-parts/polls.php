@@ -136,6 +136,7 @@ get_header();
 			LIMIT %d
 			OFFSET %d
 		";
+		
 			$query = $wpdb->prepare($query, $posts_per_page, $offset);
 
 			$results = $wpdb->get_results($query);
