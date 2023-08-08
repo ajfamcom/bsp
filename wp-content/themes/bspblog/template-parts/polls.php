@@ -148,7 +148,7 @@ $query = "
     SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
     FROM {$wpdb->prefix}posts
     LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' AND {$wpdb->prefix}posts.post_type = 'post')
     AND (
         ({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '%" . $search_text . "%')
         OR {$wpdb->prefix}posts.post_title LIKE '%" . $search_text . "%'
@@ -171,7 +171,7 @@ $query = "
 				SELECT COUNT({$wpdb->prefix}posts.ID) AS total_count
 				FROM {$wpdb->prefix}posts
     LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' AND {$wpdb->prefix}posts.post_type = 'post')
     AND (
         ({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '%" . $search_text . "%')
         OR {$wpdb->prefix}posts.post_title LIKE '%" . $search_text . "%'
