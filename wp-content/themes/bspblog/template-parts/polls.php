@@ -124,7 +124,7 @@ get_header();
 			LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
 			WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
 			AND (
-				({$wpdb->prefix}postmeta.meta_key = 'is_featured_poll' AND {$wpdb->prefix}postmeta.meta_value = 'No')
+				OR ({$wpdb->prefix}posts_meta.meta_key='custom_pdf_keywords' AND {$wpdb->prefix}posts_meta.value LIKE '%'".$search_text."'%')
 				OR ({$wpdb->prefix}posts.post_title LIKE '%'".$search_text."'%')
 				OR ({$wpdb->prefix}posts.post_content LIKE '%'".$search_text."'%')
 			)
