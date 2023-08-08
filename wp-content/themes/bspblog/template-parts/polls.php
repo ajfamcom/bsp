@@ -33,7 +33,7 @@ get_header();
 
 <div class="container py-5 my-md-5">
 	<div class="row">
-		<div class="container mt-5">
+		<div class="container mt-md-5">
 			<form class="post-filter-form" method="POST">
 				<div class="post-fields">
 					<!-- Search Input -->
