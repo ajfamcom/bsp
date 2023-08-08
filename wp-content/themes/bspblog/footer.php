@@ -81,6 +81,13 @@ if ( ! defined( 'ABSPATH' ) ) {
             $('.site-primary-header-wrap').removeClass('ast-container');
 			$('.site-primary-header-wrap').addClass('container');
         });
+		jQuery(document).ready(function($) {
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd', // Set the desired date format
+        autoclose: true // Close the datepicker when a date is selected
+    });
+});
+
 	</script>
 	</body>
 </html>
