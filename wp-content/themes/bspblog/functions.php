@@ -369,7 +369,7 @@ function custom_posts_search($search, $query) {
     
 }
 
-function remove_ast_container_class() {
+/* function remove_ast_container_class() {
     ?>
     <script>
         $(document).ready(function($) {
@@ -380,7 +380,7 @@ function remove_ast_container_class() {
     </script>
     <?php
 }
-add_action('wp_footer', 'remove_ast_container_class');
+add_action('wp_footer', 'remove_ast_container_class'); */
 
 /*function replace_readmore_with_post_date( $content ) {
     global $post;

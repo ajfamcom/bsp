@@ -73,5 +73,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 		}
 	})
 </script>
+<script>
+	$(document).ready(function($) {
+            // Replace 'site-primary-header-wrap' with the ID or class of the parent element of the div
+            $('.site-primary-header-wrap').removeClass('ast-container');
+			$('.site-primary-header-wrap').addClass('container');
+        });
+	</script>
 	</body>
 </html>
