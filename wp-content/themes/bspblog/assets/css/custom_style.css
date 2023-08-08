@@ -956,13 +956,15 @@ ul.contact-social-links li a:hover i {
     gap: 15px;
 }
 .post-fields:nth-child(1) {
-    flex-basis: 48%;
+    flex-basis: 40%;
 }
 .post-fields {
     flex-basis: 20%;
 }
 .post-fields:last-child {
-    flex-basis: 12%;
+    flex-basis: 20%;
+    display: flex;
+    gap: 8px;
 }
 .post-fields .btn.btn-primary {
     height: 50px;

@@ -35,6 +35,15 @@
         font-size: 22px;
     }
 }
+@media screen and (max-width: 1130px) and (min-width:769px) {
+    .inner-bnr .bnr-simg {
+        position: relative;
+    }
+    .row.page-banner {
+        height: 100%;
+        align-items: center;
+    }
+}
 @media screen and (max-width: 991px) and (min-width:769px) { 
     .bnr-title {
         font-size: 58px !important;
