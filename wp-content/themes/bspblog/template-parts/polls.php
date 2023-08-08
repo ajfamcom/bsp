@@ -124,7 +124,7 @@ get_header();
 			$modified_from_date=date('Y-m-d H:i:s',strtotime($from_date));
 			$modified_to_date=date('Y-m-d H:i:s',strtotime($to_date));
 
-			$posts_per_page = 2;
+			$posts_per_page = 4;
 			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 			$offset = ($current_page - 1) * $posts_per_page;		
 
