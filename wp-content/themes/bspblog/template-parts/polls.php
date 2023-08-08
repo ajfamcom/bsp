@@ -35,15 +35,15 @@ get_header();
 			<form class="row g-2" method="POST">
 				<div class="col-md-3">
 					<!-- Search Input -->
-					<input type="text" class="form-control" name="search_text" placeholder="Enter your search query" aria-label="Search">
+					<input type="text" class="form-control" name="search_text" placeholder="Enter your search query" aria-label="Search" required>
 				</div>
 				<div class="col-md-3">
 					<!-- Search Input -->
-					<input type="text" class="form-control" name="from_date" placeholder="From date" aria-label="Search">
+					<input type="text" class="form-control" name="from_date" placeholder="From date" aria-label="Search" required>
 				</div>
 				<div class="col-md-3">
 					<!-- Search Input -->
-					<input type="text" class="form-control" name="to_date" placeholder="To date" aria-label="Search">
+					<input type="text" class="form-control" name="to_date" placeholder="To date" aria-label="Search" required>
 				</div>
 				<div class="col-md-3">
 					<!-- Search Button -->
