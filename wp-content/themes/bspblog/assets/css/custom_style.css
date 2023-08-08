@@ -948,4 +948,23 @@ ul.contact-social-links li a:hover i {
     -ms-border-radius: 4px !important;
     -o-border-radius: 4px !important;
 }
+.post-filter-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+.post-fields:nth-child(1) {
+    flex-basis: 48%;
+}
+.post-fields {
+    flex-basis: 20%;
+}
+.post-fields:last-child {
+    flex-basis: 12%;
+}
+.post-fields .btn.btn-primary {
+    height: 50px;
+    border-radius: 4px;
+}
 /*------ /polls-page --------*/
