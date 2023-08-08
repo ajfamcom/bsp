@@ -139,6 +139,7 @@ get_header();
         OR {$wpdb->prefix}posts.post_content LIKE '%" . $search_text . "%'
     )
     AND {$wpdb->prefix}posts.post_date >= '" . $modified_from_date . "' AND {$wpdb->prefix}posts.post_date <= '" . $modified_to_date . "'
+	GROUP BY {$wpdb->prefix}posts.ID
     ORDER BY {$wpdb->prefix}posts.post_date DESC
     LIMIT %d
     OFFSET %d
