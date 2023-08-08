@@ -50,7 +50,7 @@ get_header();
 				<div class="post-fields">
 					<!-- Search Button -->
 					<button type="submit" class="btn btn-primary">Search</button>
-					<button type="button" class="btn btn-primary" onclick="<?php echo site_url('polls');?>">Reset</button>
+					<button type="button" class="btn btn-primary resetfrm" onclick="window.location.href = '<?php echo site_url('polls');?>'">Reset</button>
 				</div>
 			</form>
 		</div>
