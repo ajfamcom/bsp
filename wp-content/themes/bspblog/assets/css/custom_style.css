@@ -940,8 +940,12 @@ ul.contact-social-links li a:hover i {
     font-size: 18px;
 }
 .post-filter-form input {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    background: #fff !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    -webkit-border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    -ms-border-radius: 4px !important;
+    -o-border-radius: 4px !important;
 }
 /*------ /polls-page --------*/

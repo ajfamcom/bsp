@@ -34,7 +34,7 @@ get_header();
 <div class="container py-5 my-md-5">
 	<div class="row">
 		<div class="container mt-5">
-			<form class="post-filter-form row g-2" method="POST">
+			<form class="post-filter-form" method="POST">
 				<div class="post-fields">
 					<!-- Search Input -->
 					<input type="text" class="form-control" name="search_text" placeholder="Enter your search query" aria-label="Search" required>
