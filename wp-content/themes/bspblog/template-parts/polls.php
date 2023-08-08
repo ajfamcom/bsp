@@ -128,7 +128,7 @@ get_header();
 			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 			$offset = ($current_page - 1) * $posts_per_page;		
 
-			$query = "
+			/* $query = "
     SELECT {$wpdb->prefix}posts.*
     FROM {$wpdb->prefix}posts
     LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
@@ -140,6 +140,22 @@ get_header();
     )
     AND {$wpdb->prefix}posts.post_date >= '" . $modified_from_date . "' AND {$wpdb->prefix}posts.post_date <= '" . $modified_to_date . "'
 	GROUP BY {$wpdb->prefix}posts.ID
+    ORDER BY {$wpdb->prefix}posts.post_date DESC
+    LIMIT %d
+    OFFSET %d
+"; */
+$query = "
+    SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+    FROM {$wpdb->prefix}posts
+    LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
+    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+    AND (
+        ({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '%" . $search_text . "%')
+        OR {$wpdb->prefix}posts.post_title LIKE '%" . $search_text . "%'
+        OR {$wpdb->prefix}posts.post_content LIKE '%" . $search_text . "%'
+    )
+    AND {$wpdb->prefix}posts.post_date >= '" . $modified_from_date . "' AND {$wpdb->prefix}posts.post_date <= '" . $modified_to_date . "'
+    GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
     ORDER BY {$wpdb->prefix}posts.post_date DESC
     LIMIT %d
     OFFSET %d
@@ -155,14 +171,14 @@ get_header();
 				SELECT COUNT({$wpdb->prefix}posts.ID) AS total_count
 				FROM {$wpdb->prefix}posts
     LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' || {$wpdb->prefix}posts.post_type = 'post')
+    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
     AND (
         ({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '%" . $search_text . "%')
         OR {$wpdb->prefix}posts.post_title LIKE '%" . $search_text . "%'
         OR {$wpdb->prefix}posts.post_content LIKE '%" . $search_text . "%'
     )
     AND {$wpdb->prefix}posts.post_date >= '" . $modified_from_date . "' AND {$wpdb->prefix}posts.post_date <= '" . $modified_to_date . "'
-	GROUP BY {$wpdb->prefix}posts.ID
+    GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
     ORDER BY {$wpdb->prefix}posts.post_date DESC
     LIMIT %d
     OFFSET %d
