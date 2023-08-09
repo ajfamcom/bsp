@@ -194,15 +194,17 @@ get_header();
 								$results = $wpdb->get_results($query);
 
 								// Query to count total posts matching the condition
-								$count_query = "
-									SELECT COUNT({$wpdb->prefix}posts.ID) AS total_count
+								$querycount = "
+									SELECT {$wpdb->prefix}posts.*
 									FROM {$wpdb->prefix}posts
-									LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)									
+									LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
 									WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
 									GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-									";
+									ORDER BY {$wpdb->prefix}posts.post_date DESC
+									
+								";
 
-								$total_count = $wpdb->get_var($count_query);
+								$total_count = count($wpdb->get_results($querycount));
 								$max_num_pages = ceil($total_count / $posts_per_page);
 		}
 		
