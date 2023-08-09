@@ -45,7 +45,8 @@
 				                            ?>					
 											</div>
 											<div class="single-poll-info">
-												<h1 class="poll-title"><?php the_title();?></h1>						
+												<h1 class="poll-title"><?php the_title();?></h1>
+												<p>WLRN 91.3 FM | By Tim Padget,Published November 15,2022 at 6:33 AM EST</p>						
 												<?php the_content(); ?>	
 											</div>
 									
