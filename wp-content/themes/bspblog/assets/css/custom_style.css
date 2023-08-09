@@ -1000,6 +1000,9 @@ ul.contact-social-links li a:hover i {
     padding: 5px 10px !important;
 }
 /*--/Date-picker---*/
+.news-block.col-md-4 {
+    margin-bottom: 3%;
+}
 /*------ /polls-page --------*/
 
 /*-------- post-discription-page --------*/

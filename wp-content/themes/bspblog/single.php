@@ -14,10 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header(); ?>
 
-<div class="single-inner-bnr">
+<div class="blog-detail-bnr pt-5">
 	<div class="container">
 		<div class="row">
-			<div class="col-12">
+		<div class="col-md-10 col-sm-10 col-12 offset-md-1 offset-sm-1">
 				<div class="row page-banner">
 					<?php echo get_breadcrumbs(); ?>
 					<div class="page-title">
@@ -56,7 +56,25 @@ get_header(); ?>
 											 echo $image_link;
 				                            ?>					
 											</div>
-											<div class="single-poll-info">
+									
+								     </div>
+                                    </div>
+										
+		                    </div>
+
+			        </div>
+                                  <?php endwhile; ?>
+		
+
+	</div>
+
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-sm-10 col-12 offset-md-1 offset-sm-1">
+			<div class="single-poll-content">
+			<div class="single-poll-info">
 												<h1 class="poll-title"><?php the_title();?></h1>
 												<p>WLRN 91.3 FM | By Tim Padget,Published November 15,2022 at 6:33 AM EST</p>						
 												<?php the_content(); ?>	
@@ -67,14 +85,13 @@ get_header(); ?>
 									<div class="share-social-icons">
 										<h3>Share this:</h3>
 									    <?php dynamic_sidebar( 'sidebar-1' ); ?>
-									</div>		
-		                    </div>
-
-			        </div>
-                                  <?php endwhile; ?>
-		
-
+									</div>	
+			</div>
+		</div>
 	</div>
+
+
+
 	<div class="col-md-12 py-5">
 		
 		<section class="splide" aria-labelledby="carousel-heading" id="slider-related-posts">
