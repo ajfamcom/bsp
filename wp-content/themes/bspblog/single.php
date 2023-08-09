@@ -21,7 +21,7 @@ get_header(); ?>
 <?php endif ?>
 
 	<div id="primary" <?php astra_primary_class(); ?>>
-        <?php echo "testing123":?>
+        <?php echo "testing123";?>
 		<?php astra_primary_content_top(); ?>
 
 		<?php astra_content_loop(); ?>
