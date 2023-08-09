@@ -151,6 +151,28 @@ get_header();
 		$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date, $modified_to_date, $posts_per_page, $offset);
 		
 		$results = $wpdb->get_results($query);
+		/*** */
+		$queryforcount = "
+		SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+		FROM {$wpdb->prefix}posts
+		LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
+		WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+		AND (
+			({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
+			OR {$wpdb->prefix}posts.post_title LIKE %s
+			OR {$wpdb->prefix}posts.post_content LIKE %s
+		)
+		AND {$wpdb->prefix}posts.post_date >= %s AND {$wpdb->prefix}posts.post_date <= %s
+		GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+		ORDER BY {$wpdb->prefix}posts.post_date DESC
+		LIMIT %d
+		OFFSET %d
+	";
+	
+	$queryforcount = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date, $modified_to_date, $posts_per_page, $offset);
+	
+	$resultsforcount = $wpdb->get_results($queryforcount);
+		/** */
 		
 		$count_query = "
 			SELECT COUNT({$wpdb->prefix}posts.ID) AS total_count
@@ -170,8 +192,7 @@ get_header();
 		";
 		
 		$count_query = $wpdb->prepare($count_query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date, $modified_to_date,'1000','0');
-		echo $query;
-		echo $count_query;
+		echo count($resultsforcount).'yyy';
 		$total_count = $wpdb->get_var($count_query);
 		echo 'dddd'.$total_count.'xxx';
 		echo 'eee'.$posts_per_page.'xxx';
