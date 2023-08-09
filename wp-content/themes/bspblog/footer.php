@@ -91,5 +91,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 });
 
 	</script>
+	<script>
+  new Splide( '.splide' ).mount();
+</script>
 	</body>
 </html>
