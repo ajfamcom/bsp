@@ -3,9 +3,9 @@
 $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
- $search_text=isset($_POST['search_text'])?$_POST['search_text']:'';
- $from_date=isset($_POST['from_date'])?$_POST['from_date']:'';
- $to_date=isset($_POST['to_date'])?$_POST['to_date']:'';
+ $search_text=isset($_REQUEST['search_text'])?$_REQUEST['search_text']:'';
+ $from_date=isset($_REQUEST['from_date'])?$_REQUEST['from_date']:'';
+ $to_date=isset($_REQUEST['to_date'])?$_REQUEST['to_date']:'';
 ?>
 <?php 
 
@@ -34,7 +34,7 @@ get_header();
 <div class="container py-5 my-md-5">
 	<div class="row">
 		<div class="container mt-md-5">
-			<form class="post-filter-form" method="POST">
+			<form class="post-filter-form">
 				<div class="post-fields">
 					<!-- Search Input -->
 					<input type="text" class="form-control" name="search_text" placeholder="Enter your search query" aria-label="Search" required value="<?php echo $search_text;?>">
