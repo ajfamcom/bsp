@@ -95,7 +95,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  
 
   $(document).ready(function() {
-	//new Splide( '.splide' ).mount();
+	new Splide( '.splide' ).mount();
 });
 </script>
 	</body>
