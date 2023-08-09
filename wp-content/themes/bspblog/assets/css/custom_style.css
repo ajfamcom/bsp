@@ -1003,4 +1003,13 @@ ul.contact-social-links li a:hover i {
 /*------ /polls-page --------*/
 
 /*-------- post-discription-page --------*/
+.-single-poll-image .news-image {
+    width: 100%;
+    max-height: 420px;
+    min-height: 420px;
+    border-radius: 10px;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: top;
+}
 /*------- /post-discription-page --------*/
