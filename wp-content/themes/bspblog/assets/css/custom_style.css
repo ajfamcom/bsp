@@ -1011,5 +1011,6 @@ ul.contact-social-links li a:hover i {
     overflow: hidden;
     object-fit: cover;
     object-position: top;
+    margin: 0px;
 }
 /*------- /post-discription-page --------*/
