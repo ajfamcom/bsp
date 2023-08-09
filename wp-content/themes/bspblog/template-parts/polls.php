@@ -199,7 +199,7 @@ get_header();
 									SELECT COUNT({$wpdb->prefix}posts.ID) AS total_count
 									FROM {$wpdb->prefix}posts
 									LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-									WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
+									WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
 									AND {$wpdb->prefix}postmeta.meta_key = 'is_featured_poll'
 									AND {$wpdb->prefix}postmeta.meta_value = 'No'
 								";
