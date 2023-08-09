@@ -69,9 +69,39 @@
         <h2 id="carousel-heading">Related Posts</h2>
 			<div class="splide__track">
 					<ul class="splide__list"> 
-						<li class="splide__slide">Slide 01</li>
-						<li class="splide__slide">Slide 02</li>
-						<li class="splide__slide">Slide 03</li>
+						<li class="splide__slide">
+						<div class="news-block col-md-4">
+								<div class="news-image">image<?php //echo $image_link; ?></div>
+								<div class="news-info">
+									<h4 class="news-details"><span class="news-title">abcd<?php //echo $row->post_title; ?></span></h4>
+									<p class="news-other-details"><span class="news-date">date<?php //echo date('M j, Y',strtotime($row->post_date));?></span></p>
+									<p class="news-content">content<?php //echo trim_content_custom($row->post_content); ?></p>
+									<p><a href="<?php //echo $permalink; ?>">Read More</a></p>
+								</div>
+				        </div>
+						</li>
+						<li class="splide__slide">
+						<div class="news-block col-md-4">
+								<div class="news-image">image<?php //echo $image_link; ?></div>
+								<div class="news-info">
+									<h4 class="news-details"><span class="news-title">abcd<?php //echo $row->post_title; ?></span></h4>
+									<p class="news-other-details"><span class="news-date">date<?php //echo date('M j, Y',strtotime($row->post_date));?></span></p>
+									<p class="news-content">content<?php //echo trim_content_custom($row->post_content); ?></p>
+									<p><a href="<?php //echo $permalink; ?>">Read More</a></p>
+								</div>
+				        </div>
+						</li>
+						<li class="splide__slide">
+						<div class="news-block col-md-4">
+								<div class="news-image">image<?php //echo $image_link; ?></div>
+								<div class="news-info">
+									<h4 class="news-details"><span class="news-title">abcd<?php //echo $row->post_title; ?></span></h4>
+									<p class="news-other-details"><span class="news-date">date<?php //echo date('M j, Y',strtotime($row->post_date));?></span></p>
+									<p class="news-content">content<?php //echo trim_content_custom($row->post_content); ?></p>
+									<p><a href="<?php //echo $permalink; ?>">Read More</a></p>
+								</div>
+				        </div>
+						</li>
 					</ul>
 			</div>
         </section>
