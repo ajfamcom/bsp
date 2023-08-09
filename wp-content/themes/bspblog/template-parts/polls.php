@@ -170,6 +170,7 @@ get_header();
 		";
 		
 		$count_query = $wpdb->prepare($count_query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date, $modified_to_date,'1000','0');
+		echo $query;
 		echo $count_query;
 		$total_count = $wpdb->get_var($count_query);
 		echo 'dddd'.$total_count.'xxx';
