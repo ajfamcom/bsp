@@ -981,6 +981,9 @@ ul.contact-social-links li a:hover i {
     font-size: 16px;
 }
 /*---Date-picker---*/
+.datepicker.datepicker-dropdown.dropdown-menu.datepicker-orient-left.datepicker-orient-top {
+    top: 323px !important;
+}
 .datepicker table tr td.active.active {
     background: var(--blue) !important;
 }
