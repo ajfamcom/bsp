@@ -67,14 +67,14 @@
 											</div>
 									
 								     </div>
-                                    </div>
-									<div class="share-social-icons">
+									 <div class="share-social-icons">
 										<h3>Share this:</h3>
 									    <?php dynamic_sidebar( 'sidebar-1' ); ?>
 									</div>	
+                                    </div>
+									
 			</div>
 		</div>
-	</div>
 
 
 	<div class="col-md-12 py-5">
