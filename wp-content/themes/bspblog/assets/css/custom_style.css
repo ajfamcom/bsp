@@ -988,16 +988,16 @@ ul.contact-social-links li a:hover i {
     background: var(--orange) !important;
 }
 .datepicker table {
-    border: none;
+    border: none !important;
 }
 .datepicker table tr td.day.focused, .datepicker table tr td.day:hover {
-    background: var(--blue);
-    cursor: pointer;
-    color: #fff;
+    background: var(--blue) !important;
+    cursor: pointer !important;
+    color: #fff !important;
 }
 .datepicker td, .datepicker th {
-    font-size: 14px;
-    padding: 5px 10px;
+    font-size: 14px !important;
+    padding: 5px 10px !important;
 }
 /*--/Date-picker---*/
 /*------ /polls-page --------*/
