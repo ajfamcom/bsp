@@ -228,7 +228,7 @@ get_header();
 				<div class="news-block col-md-4">
 					<div class="news-image"><?php echo $image_link; ?></div>
 					<div class="news-info">
-						<h4 class="news-details"><span class="news-title"><?php $row->post_title; ?></span></h4>
+						<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
 						<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
 						<p class="news-content"><?php echo trim_content_custom($row->post_content); ?></p>
 						<p><a href="<?php echo $permalink; ?>">Read More</a></p>
