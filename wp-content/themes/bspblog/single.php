@@ -36,10 +36,7 @@ get_header(); ?>
 					<?php 
 					while (have_posts()) : the_post();
 					    $post_id=get_the_ID();
-						$download_attachment=get_field('pdf_attachment',$post_id);
-						//$metaData=get_pdf_metadata_custom($post_id);
-						 $pdfkey=get_post_meta( $post_id, 'custom_pdf_keywords' );
-						 print_r($pdfkey);
+						
 					?>
 				<div class="single-poll col-12">
 						<div class="single-poll-content">
@@ -48,33 +45,13 @@ get_header(); ?>
 							</div>
 							<div class="single-poll-info">
 								<h1 class="poll-title"><?php the_title();?></h1>						
-								<?php the_content(); ?>	
-														
-								<?php if($download_attachment):?>
-								<p><a href="<?php echo esc_url($download_attachment['url']); ?>" target="_blank" rel="nofollow">Download PDF</a></p>
-								<?php endif; ?>
+								<?php the_content(); ?>														
+								
 							</div>
 							
 						</div>
 						<div>
-						<?php 
-						//$pdf_file_path = 'path/to/your/pdf/file.pdf';
-						
-						/*if ($metadata) {
-							// Process and display the metadata as needed
-							$title = $metadata->get('Title');
-							$author = $metadata->get('Author');
-							$keywords = $metadata->get('Keywords');
-							// ... Add more metadata properties as required
-						
-							echo "Title: $title<br>";
-							echo "Author: $author<br>";
-							echo "Keywords: $keywords<br>";
-							// ... Output more metadata properties as needed
-						} else {
-							echo "No metadata found in the PDF.";
-						}*/
-						?></div>
+						</div>
 						<div class="tags">
 								<?php
 									$tags = get_the_terms(get_the_ID(), 'post_tag');

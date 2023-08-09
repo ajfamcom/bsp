@@ -1,17 +1,5 @@
 <?php
 /* Template Name:Custom Polls Template  */
-ini_set('display_errors', 1); 
-/* $attachment_id = get_the_ID(); 
-$metadata = get_post_meta($attachment_id, 'custom_pdf_meta', true);
-
-if ($metadata) {
-    // Process and display the metadata
-    // For example, if the 'Keywords' metadata exists, you can access it like:
-    $keywords = $metadata->get('Keywords');
-    if ($keywords) {
-        echo 'Keywords: ' . $keywords;
-    }
-} */
 ?>
 <?php get_header(); ?>
 
