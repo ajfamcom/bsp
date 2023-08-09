@@ -297,12 +297,24 @@ get_header();
 			<div class="col-md-12">
 				<div class="pagination">
 					<?php
-					echo paginate_links(array(
+					/* echo paginate_links(array(
+						'total' => $max_num_pages,
+						'current' => $current_page,
+						'prev_text' => '&laquo;',
+						'next_text' => '&raquo;',
+					)); */
+
+					
+					$pagination_links = paginate_links(array(
 						'total' => $max_num_pages,
 						'current' => $current_page,
 						'prev_text' => '&laquo;',
 						'next_text' => '&raquo;',
 					));
+
+
+					echo $pagination_links;
+
 					?>
 				</div>
 				
