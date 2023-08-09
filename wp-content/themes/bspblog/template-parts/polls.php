@@ -132,6 +132,7 @@ get_header();
 			FROM {$wpdb->prefix}posts
 			LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
 			WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+			AND {$wpdb->prefix}posts.post_status='publish'
 			AND (
 				({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
 				OR {$wpdb->prefix}posts.post_title LIKE %s
@@ -153,6 +154,7 @@ get_header();
 		FROM {$wpdb->prefix}posts
 		LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
 		WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+		AND {$wpdb->prefix}posts.post_status='publish'
 		AND (
 			({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
 			OR {$wpdb->prefix}posts.post_title LIKE %s
