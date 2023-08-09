@@ -303,7 +303,8 @@ get_header();
 						'prev_text' => '&laquo;',
 						'next_text' => '&raquo;',
 					)); */
-
+                   echo 'bbb'.$current_page.'xxx';
+				   echo 'aaaa'.$max_num_pages.'xxx';
 					
 					$pagination_links = paginate_links(array(
 						'total' => $max_num_pages,
