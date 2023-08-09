@@ -84,7 +84,7 @@ get_header(); ?>
 						<?php 
                            $fargs = array(
 							'post_type'      => 'bsp_custom_polls',
-							'posts_per_page' => 3,
+							'posts_per_page' => -1,
 							'meta_query'     => array(
 								array(
 									'key'     => 'is_featured_poll',
