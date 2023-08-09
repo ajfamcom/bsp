@@ -165,8 +165,7 @@ get_header();
 		AND {$wpdb->prefix}posts.post_date >= %s AND {$wpdb->prefix}posts.post_date <= %s
 		GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
 		ORDER BY {$wpdb->prefix}posts.post_date DESC
-		LIMIT %d
-		OFFSET %d
+		
 	";
 	
 	$queryforcount = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date, $modified_to_date, $posts_per_page, $offset);
@@ -194,8 +193,7 @@ get_header();
 		$count_query = $wpdb->prepare($count_query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date, $modified_to_date,'1000','0');
 		echo count($resultsforcount).'yyy';
 		$total_count = $wpdb->get_var($count_query);
-		echo 'dddd'.$total_count.'xxx';
-		echo 'eee'.$posts_per_page.'xxx';
+		
 		$max_num_pages = ceil($total_count / $posts_per_page);
 			
 /* $query = "
