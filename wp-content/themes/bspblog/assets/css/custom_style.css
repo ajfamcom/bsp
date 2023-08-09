@@ -985,13 +985,13 @@ ul.contact-social-links li a:hover i {
     top: 278px !important;
 }
 .datepicker table tr td.active.active {
-    background: var(--orange) !important;
+    background: var(--blue) !important;
 }
 .datepicker table {
     border: none !important;
 }
 .datepicker table tr td.day.focused, .datepicker table tr td.day:hover {
-    background: var(--blue) !important;
+    background: var(--orange) !important;
     cursor: pointer !important;
     color: #fff !important;
 }
