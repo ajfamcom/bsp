@@ -171,7 +171,7 @@ get_header();
 	$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date, $modified_to_date);
 	
 	
-	    $resultsforcount = $wpdb->get_var($queryforcount);//$wpdb->get_results($queryforcount);		
+	    $resultsforcount = $wpdb->get_results($queryforcount);		
 		$total_count = $resultsforcount;		
 		$max_num_pages = ceil($total_count / $posts_per_page);
 			
