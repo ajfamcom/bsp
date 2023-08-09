@@ -170,74 +170,12 @@ get_header();
 	
 	$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date, $modified_to_date);
 	
-	$resultsforcount = $wpdb->get_results($queryforcount);
-		/** */
-		
-		$count_query = "
-			SELECT COUNT({$wpdb->prefix}posts.ID) AS total_count
-			FROM {$wpdb->prefix}posts
-			LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-			WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-			AND (
-				({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
-				OR {$wpdb->prefix}posts.post_title LIKE %s
-				OR {$wpdb->prefix}posts.post_content LIKE %s
-			)
-			AND {$wpdb->prefix}posts.post_date >= %s AND {$wpdb->prefix}posts.post_date <= %s
-			GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-			ORDER BY {$wpdb->prefix}posts.post_date DESC
-			LIMIT %d
-			OFFSET %d
-		";
-		
-		$count_query = $wpdb->prepare($count_query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date, $modified_to_date,'1000','0');
-		echo count($resultsforcount).'yyy';
-		$total_count = $wpdb->get_var($count_query);
-		
+	
+	    $resultsforcount = $wpdb->get_var($queryforcount);//$wpdb->get_results($queryforcount);		
+		$total_count = $resultsforcount;		
 		$max_num_pages = ceil($total_count / $posts_per_page);
 			
-/* $query = "
-    SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-    FROM {$wpdb->prefix}posts
-    LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-    AND (
-        ({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '%" . $search_text . "%')
-        OR {$wpdb->prefix}posts.post_title LIKE '%" . $search_text . "%'
-        OR {$wpdb->prefix}posts.post_content LIKE '%" . $search_text . "%'
-    )
-    AND {$wpdb->prefix}posts.post_date >= '" . $modified_from_date . "' AND {$wpdb->prefix}posts.post_date <= '" . $modified_to_date . "'
-    GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-    ORDER BY {$wpdb->prefix}posts.post_date DESC
-    LIMIT %d
-    OFFSET %d
-";
 
-		
-
-			$query = $wpdb->prepare($query, $posts_per_page, $offset);
-
-			$results = $wpdb->get_results($query);
-	
-			$count_query = "
-				SELECT COUNT({$wpdb->prefix}posts.ID) AS total_count
-				FROM {$wpdb->prefix}posts
-    LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-    AND (
-        ({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '%" . $search_text . "%')
-        OR {$wpdb->prefix}posts.post_title LIKE '%" . $search_text . "%'
-        OR {$wpdb->prefix}posts.post_content LIKE '%" . $search_text . "%'
-    )
-    AND {$wpdb->prefix}posts.post_date >= '" . $modified_from_date . "' AND {$wpdb->prefix}posts.post_date <= '" . $modified_to_date . "'
-    GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-    ORDER BY {$wpdb->prefix}posts.post_date DESC
-    
-			";
-
-			$total_count = $wpdb->get_var($count_query);
-
-			$max_num_pages = ceil($total_count / $posts_per_page);	 */	
 			
 		
 		}
