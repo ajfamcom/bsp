@@ -88,20 +88,7 @@ if ($metadata) {
 									}
 									?>
 						</div>
-						<div class="comments-section">
-									<?php if (comments_open() || get_comments_number()) : ?>
-										<h2><?php comments_number('No Comments', '1 Comment', '% Comments'); ?></h2>
-										<?php
-										if (comments_open()) {																
-																					
-											comment_form();
-											
-										} else {
-											echo '<p>Comments are closed.</p>';
-										}
-										?>
-									<?php endif; ?>
-                        </div>
+						
 
 			    </div>
                     <?php endwhile; ?>
