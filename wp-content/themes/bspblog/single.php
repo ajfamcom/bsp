@@ -21,7 +21,7 @@ get_header(); ?>
 				<div class="row page-banner">
 					<?php echo get_breadcrumbs(); ?>
 					<div class="page-title">
-						<h3><?php echo get_the_title(); ?></h3>
+						<h2><?php echo get_the_title(); ?></h2>
 					</div>
 				</div>
 			</div>
@@ -31,7 +31,7 @@ get_header(); ?>
 
 <div class="container">
 
-	<div class="col-md-12 py-5">
+	<div class="col-md-12 pt-2 pb-5">
 		            <div class="row">
 								<?php 
 								while (have_posts()) : the_post();
