@@ -103,7 +103,7 @@
 								} 
 						?>
 					<li class="splide__slide">
-						<div class="news-block col-md-4">
+						<div class="col-md-4">
 								<div class="news-image"><?php echo $image_link; ?></div>
 								<div class="news-info">
 									<h4 class="news-details"><span class="news-title"><?php the_title(); ?></span></h4>
