@@ -1026,4 +1026,7 @@ ul.contact-social-links li a:hover i {
     color: var(--blue);
     margin: 0 10px;
 }
+section#slider-related-posts h2 {
+    text-align: center;
+}
 /*------- /post-discription-page --------*/
