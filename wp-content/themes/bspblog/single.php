@@ -81,7 +81,7 @@ get_header(); ?>
 											</div>
 									
 								     </div>
-									 <div class="share-social-icons">
+									 <div class="share-social-icons my-5">
 										<h3>Share this:</h3>
 									    <?php dynamic_sidebar( 'sidebar-1' ); ?>
 									</div>
