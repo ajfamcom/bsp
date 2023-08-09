@@ -77,7 +77,7 @@ get_header(); ?>
 	<div class="col-md-12 py-5">
 		
 		<section class="splide" aria-labelledby="carousel-heading">
-        <h2 id="carousel-heading">>Related Posts</h2>
+        <h2 id="carousel-heading">Related Posts</h2>
 			<div class="splide__track">
 					<ul class="splide__list">
 						<li class="splide__slide">Slide 01</li>
