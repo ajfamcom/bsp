@@ -1,6 +1,5 @@
-<?php
-/* Template Name:Custom Polls Template  */
-?>
+<?php /* Template Name:Custom Polls Template  */ ?>
+
 <?php get_header(); ?>
 
 <div class="single-inner-bnr">

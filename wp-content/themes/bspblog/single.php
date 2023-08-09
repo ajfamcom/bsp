@@ -36,12 +36,25 @@ get_header(); ?>
 								<?php 
 								while (have_posts()) : the_post();
 									$post_id=get_the_ID();
-									
+									$permalink = get_permalink($post_id);
+											if (has_post_thumbnail($post_id)) {
+
+												$thumbnail_id = get_post_thumbnail_id($post_id);
+												$image_url = wp_get_attachment_url($thumbnail_id);
+												$theme_directory_uri = get_template_directory_uri();
+												$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
+
+												$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
+											} else {
+												$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
+											}
 								?>
 				            <div class="single-poll col-12">
 								    <div class="single-poll-content">
 											<div class="-single-poll-image">
-											<img src="<?php echo $image['url']; ?>" />					
+											<?php
+											 echo $image_link;
+				                            ?>					
 											</div>
 											<div class="single-poll-info">
 												<h1 class="poll-title"><?php the_title();?></h1>						
@@ -51,7 +64,8 @@ get_header(); ?>
 								     </div>
                                     </div>
 									<div class="share-social-icons">
-									<?php dynamic_sidebar( 'sidebar-1' ); ?>
+										<h3>Share this:</h3>
+									    <?php dynamic_sidebar( 'sidebar-1' ); ?>
 									</div>		
 		                    </div>
 
