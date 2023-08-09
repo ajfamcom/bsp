@@ -180,8 +180,7 @@ $query = "
     AND {$wpdb->prefix}posts.post_date >= '" . $modified_from_date . "' AND {$wpdb->prefix}posts.post_date <= '" . $modified_to_date . "'
     GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
     ORDER BY {$wpdb->prefix}posts.post_date DESC
-    LIMIT %d
-    OFFSET %d
+    
 			";
 
 			$total_count = $wpdb->get_var($count_query);
