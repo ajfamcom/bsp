@@ -980,4 +980,24 @@ ul.contact-social-links li a:hover i {
     letter-spacing: 2px;
     font-size: 16px;
 }
+/*---Date-picker---*/
+.datepicker.datepicker-dropdown.dropdown-menu.datepicker-orient-left.datepicker-orient-top {
+    top: 278px !important;
+}
+.datepicker table tr td.active.active {
+    background: var(--orange) !important;
+}
+.datepicker table {
+    border: none;
+}
+.datepicker table tr td.day.focused, .datepicker table tr td.day:hover {
+    background: var(--blue);
+    cursor: pointer;
+    color: #fff;
+}
+.datepicker td, .datepicker th {
+    font-size: 14px;
+    padding: 5px 10px;
+}
+/*--/Date-picker---*/
 /*------ /polls-page --------*/
