@@ -183,6 +183,7 @@ get_header();
 									FROM {$wpdb->prefix}posts
 									LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
 									WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+									GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
 									ORDER BY {$wpdb->prefix}posts.post_date DESC
 									LIMIT %d
 									OFFSET %d
@@ -196,8 +197,9 @@ get_header();
 								$count_query = "
 									SELECT COUNT({$wpdb->prefix}posts.ID) AS total_count
 									FROM {$wpdb->prefix}posts
-									LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
+									LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)									
 									WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+									GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
 									";
 
 								$total_count = $wpdb->get_var($count_query);
