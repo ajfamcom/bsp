@@ -175,7 +175,7 @@ var splide = new Splide( '#slider-related-posts', {
   breakpoints: {
     1366: {
       perPage: 3,
-    }
+    },
     640: {
       perPage: 2,
       padding: '3rem',
