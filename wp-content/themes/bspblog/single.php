@@ -108,7 +108,7 @@ get_header(); ?>
 <?php 
 while (have_posts()) : the_post();
 $post_id = get_the_ID();
-$search_text=get_pdf_metadata_custom($post_id);	
+$search_text=get_pdf_metadata_custom($post_id,'post');	
 print_r($search_text);
 endwhile;
 ?>

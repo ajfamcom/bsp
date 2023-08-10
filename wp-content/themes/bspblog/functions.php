@@ -664,10 +664,16 @@ add_shortcode( 'custom_contact_form', 'custom_contact_form' );
         return $ip_address;
     }
     
-function get_pdf_metadata_custom($postid) {
+function get_pdf_metadata_custom($postid,$type='polls') {
     $fpdi_pdf_parser_path = get_template_directory() . '/pdfparser-master/alt_autoload.php-dist';
     require_once $fpdi_pdf_parser_path;
-    $file = get_field('pdf_attachment', $postid);
+    if($type=='polls'){
+        $file = get_field('pdf_attachment', $postid);
+    }
+    else{
+        $file = get_field('post_pdf_attachment', $postid);
+    }
+    
     $file_path='/var/www/html/bsp'.wp_make_link_relative($file['url']);//'/var/www/html/bsp/wp-content/uploads/2023/08/Univision-Arizona-Crosstab-October-2022.pdf';//
     $metaData='';
     
