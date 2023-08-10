@@ -136,13 +136,13 @@ $query = "
     AND {$wpdb->prefix}posts.post_status='publish'
     AND (
         
-		OR {$wpdb->prefix}posts.post_title LIKE %s                       
+		 {$wpdb->prefix}posts.post_title LIKE %s                       
     )            
     GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
     ORDER BY {$wpdb->prefix}posts.post_date DESC
 ";
-
-$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%');
+$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%');
+//$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%');
 echo $query;
 $results = $wpdb->get_results($query);
 		
