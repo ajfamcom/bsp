@@ -136,6 +136,7 @@ endwhile;
 		$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%');
 		
 		$results = $wpdb->get_results($query);
+		count($results).'xxx';
 		if ($results) :
 			foreach($results as $row) :
 
