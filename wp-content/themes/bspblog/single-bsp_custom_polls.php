@@ -107,7 +107,7 @@ endwhile;
             <ul class="splide__list">
                 <?php // global $wpdb;
 
-echo $search_text = $search['Keywords'];
+echo $search_text = 'Midterm';$search['Keywords'];
 
 
 $break_search_text = array(); // Initialize the array
@@ -145,7 +145,7 @@ AND wp_postmeta.meta_value LIKE '%{$search_text}%'
 GROUP BY wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
 ORDER BY wp_posts.post_date DESC;
 "; */
-/* global $wpdb;
+ global $wpdb;
 
 $search_text = '%' . $wpdb->esc_like($search_text) . '%'; // Escape and add wildcards
 
@@ -163,12 +163,12 @@ $query = "
     ORDER BY {$wpdb->prefix}posts.post_date DESC;
 ";
 
-$results = $wpdb->get_results($query); */
+$results = $wpdb->get_results($query); 
 // Define the search keywords
-$search_keywords = array('Midterm', 'Arizona', 'Statewide');
+//$search_keywords = array('Midterm', 'Arizona', 'Statewide');
 
 // Construct the WP_Query arguments
-$args = array(
+/* $args = array(
     'post_type' => 'bsp_custom_polls',  // Replace with your custom post type if needed
     'post_status' => 'publish',
     'meta_query' => array(
@@ -179,15 +179,14 @@ $args = array(
             'compare' => 'LIKE',
         ),
     ),
-);
+); */
 
-// Create a new WP_Query instance
-$query = new WP_Query($args);
+
 		
-if ($query->have_posts()) :
-    while ($query->have_posts()) :
-		$query->the_post();
-		$post_id = get_the_ID();
+		if ($results) :
+			foreach($results as $row) :
+
+				$post_id = $row->ID;
 				$permalink = get_permalink($post_id);
 				 if (has_post_thumbnail($post_id)) {
 
@@ -205,15 +204,15 @@ if ($query->have_posts()) :
                        <div class="news-block col-md-4">
 								<div class="news-image"><?php echo $image_link;?></div>
 								<div class="news-info">
-									<h4 class="news-details"><span class="news-title"><?php the_title(); ?></span></h4>
-									<p class="news-other-details"><span class="news-date"><?php echo get_the_date('M j, Y');?></span></p>
-									<p class="news-content"><?php the_content();?></p>
-									<p><a href="<?php echo $permalink;?>">Read More</a></p>
+									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
+									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
+									<p class="news-content"><?php echo trim_content_custom($row->post_content); ?></p>
+									<p><a href="<?php echo $permalink; ?>">Read More</a></p>
 								</div>
 						</div>
                     </li>
 					<?php
-				endwhile;
+				endforeach;
 			endif;
 			wp_reset_postdata();
                  ?>
