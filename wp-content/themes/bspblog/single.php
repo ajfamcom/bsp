@@ -117,7 +117,7 @@ endwhile;
             <ul class="splide__list">
                 <?php global $wpdb;
 
-$search_text = $search['Keywords'];
+$search_text = 'Latinos';//$search['Keywords'];
 $break_search_text = array(); // Initialize the array
 
 if (strpos($search_text, ' ') !== false) {
