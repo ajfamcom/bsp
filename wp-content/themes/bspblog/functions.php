@@ -757,6 +757,11 @@ function save_pdf_meta($post_id) {
 
     
     update_post_meta($post_id, $custom_field_key, $custom_field_value);
+
+    if (isset($_POST['custom_pdf_keywords'])) {
+        $custom_pdf_keywords = wp_kses_post($_POST['custom_pdf_keywords']);
+        update_post_meta($post_id, 'custom_pdf_keywords', $custom_pdf_keywords);
+    }
 }
 
 
