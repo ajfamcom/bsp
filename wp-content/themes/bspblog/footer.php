@@ -173,6 +173,9 @@ var splide = new Splide( '#slider-related-posts', {
   gap: '20px',
   pagination: false,
   breakpoints: {
+    1366: {
+      perPage: 3,
+    }
     640: {
       perPage: 2,
       padding: '3rem',
