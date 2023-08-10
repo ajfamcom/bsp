@@ -156,7 +156,7 @@ $query = "
     WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
     AND {$wpdb->prefix}posts.post_status = 'publish'
     AND (
-		{$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '$search_text'
+		{$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '$break_search_text[1]'
 		OR {$wpdb->prefix}posts.post_title LIKE '$search_text'
 	)
     GROUP BY {$wpdb->prefix}posts.ID
