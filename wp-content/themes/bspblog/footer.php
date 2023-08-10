@@ -95,7 +95,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  
 
  $( document ).ready(function() {
-
+/*
 var elems = $('#slider-related-posts');
 
 if( elems.length ) {  
@@ -158,8 +158,8 @@ var splide = new Splide( '#slider-related-posts', {
 splide.mount();
 
 }
-
-
+*/
+new Splide( '.splide' ).mount();
 });
 </script>
 	</body>
