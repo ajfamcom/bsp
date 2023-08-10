@@ -105,8 +105,8 @@ get_header(); ?>
 
 
 <div class="col-md-12 py-5">
-
-	<section class="splide" aria-labelledby="carousel-heading" id="slider-related-posts">
+<!-- splide id="slider-related-posts"-->
+	<section class="" aria-labelledby="carousel-heading" >
 		<h2 id="carousel-heading text-center">Related Posts</h2>
 		<!-- splide__track -->
 		<div class="">
