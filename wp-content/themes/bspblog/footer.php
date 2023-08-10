@@ -166,6 +166,32 @@ var splide = new Splide( '#slider-related-posts', {
   perPage: 4,
   perMove: 1,
   autoplay: true,
+  drag   : 'free',
+  focus  : 'left',
+  gap: '20px',
+  pagination: false,
+  breakpoints: {
+    1366: {
+      perPage: 4,
+    },
+
+    640: {
+
+      perPage: 3,
+
+      padding: { left: '0rem', right: '2rem', },
+
+      type     : 'loop',
+
+      arrows: false,
+
+      pagination: true,
+
+      focus    : 'right',
+
+    },
+
+  }
 } );
 
 splide.mount();
