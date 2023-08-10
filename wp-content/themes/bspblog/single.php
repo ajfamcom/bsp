@@ -113,7 +113,7 @@ endwhile;
 ?>
 <h2 class="text-center mb-4">Related Posts</h2>
 
-<section class="splide pb-5 mb-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
+<section class="splide pb-md-5 mb-md-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
         <div class="splide__track">
             <ul class="splide__list">
                 <?php global $wpdb;

@@ -345,6 +345,14 @@
         flex-basis: 100%;
     }
     /*----- /polls-page -----*/
+    .-single-poll-image .news-image {
+        max-height: 280px;
+        min-height: 280px;
+    }
+    .share-social-icons .social-links a {
+        font-size: 28px;
+        margin: 3px;
+    }
 }
 
 /*================================= /media-queries ==================================*/
