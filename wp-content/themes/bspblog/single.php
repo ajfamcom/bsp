@@ -135,7 +135,7 @@ endwhile;
 		";
 		
 		$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%');
-		
+		echo $query;
 		$results = $wpdb->get_results($query);
 		
 		if ($results) :
