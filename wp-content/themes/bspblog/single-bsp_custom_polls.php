@@ -113,7 +113,7 @@ $break_search_text = explode(',', $search['dc:subject']);
 
 $search_text = '%' . $wpdb->esc_like($search_text) . '%'; // Escape and add wildcards
 $moredata ='';
-/* if($break_search_text){
+ if($break_search_text){
 	$moredata .="AND (
 		wp_postmeta.meta_key = 'custom_pdf_keywords'
 		AND (";
@@ -125,11 +125,10 @@ $moredata ='';
 			
 	$moredata .=")
 	)";
-} */
+} 
 
 
-$query = "
-    SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
+$query = "SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
     FROM {$wpdb->prefix}posts
     INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id
     WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
