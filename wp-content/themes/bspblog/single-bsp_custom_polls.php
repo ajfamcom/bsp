@@ -132,7 +132,7 @@ $query = "SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_pos
     FROM {$wpdb->prefix}posts
     INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id
     WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
-    AND {$wpdb->prefix}posts.post_status = 'publish'";
+    AND {$wpdb->prefix}posts.post_status = 'publish' ";
   $query .=$moredata;  
 	
  $query .=" GROUP BY {$wpdb->prefix}posts.ID
