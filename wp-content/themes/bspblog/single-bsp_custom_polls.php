@@ -96,7 +96,7 @@
 while (have_posts()) : the_post();
 $post_id = get_the_ID();
 $search=get_pdf_metadata_custom($post_id);
-	
+print_r($search);	
 endwhile;
 ?>
 <h3>Related Posts</h3>
@@ -157,7 +157,8 @@ $query = "
     WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
     AND {$wpdb->prefix}posts.post_status = 'publish'
     AND (
-		{$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '$search_text'
+		{$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '$break_search_text[1]'
+		OR {$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '$break_search_text[2]'
 		OR {$wpdb->prefix}posts.post_title LIKE '$search_text'
 	)
 	
