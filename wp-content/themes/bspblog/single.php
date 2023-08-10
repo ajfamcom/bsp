@@ -107,8 +107,9 @@ get_header(); ?>
 <div class="col-md-12 py-5">
 <?php 
 while (have_posts()) : the_post();
-echo $post_id = get_the_ID();
-$search_text=get_pdf_metadata_custom(get_the_ID());	
+$post_id = get_the_ID();
+$search_text=get_pdf_metadata_custom($post_id);	
+print_r($search_text);
 endwhile;
 ?>
 <section class="splide pb-5 mb-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
