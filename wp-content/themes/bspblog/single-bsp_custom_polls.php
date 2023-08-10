@@ -145,7 +145,7 @@ AND wp_postmeta.meta_value IN (" . implode(',', $break_search_text) . ")
 GROUP BY wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
 ORDER BY wp_posts.post_date DESC;
 ";
-
+echo $query;
 $results = $wpdb->get_results($query);
 		
 		if ($results) :
