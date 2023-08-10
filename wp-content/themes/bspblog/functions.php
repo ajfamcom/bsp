@@ -828,16 +828,20 @@ function render_custom_meta_field($post) {
     $custom_pdf_keywords = get_post_meta($post->ID, 'custom_pdf_keywords', true);
     ?>
     <label for="custom_pdf_keywords">Custom PDF Keywords:</label>
-    <input type="text" id="custom_pdf_keywords" name="custom_pdf_keywords" value="<?php echo esc_attr($custom_pdf_keywords); ?>">
+    <textarea id="custom_pdf_keywords" name="custom_pdf_keywords" rows="5"><?php echo esc_textarea($custom_pdf_keywords); ?></textarea>
     <?php
 }
 
+
+// Save the custom meta field data
 // Save the custom meta field data
 function save_custom_meta_field($post_id) {
     if (isset($_POST['custom_pdf_keywords'])) {
-        update_post_meta($post_id, 'custom_pdf_keywords', sanitize_text_field($_POST['custom_pdf_keywords']));
+        $custom_pdf_keywords = wp_kses_post($_POST['custom_pdf_keywords']);
+        update_post_meta($post_id, 'custom_pdf_keywords', $custom_pdf_keywords);
     }
 }
 add_action('save_post', 'save_custom_meta_field');
+
 
 
