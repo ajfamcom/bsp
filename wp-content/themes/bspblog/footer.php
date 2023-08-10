@@ -114,7 +114,7 @@ var splide = new Splide( '#slider-related-posts', {
 
   rewind: true,
 
-  perPage : 5,
+  perPage : 3,
 
   perMove : 1,
 
