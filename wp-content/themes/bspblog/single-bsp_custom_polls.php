@@ -96,7 +96,7 @@
 while (have_posts()) : the_post();
 $post_id = get_the_ID();
 $search=get_pdf_metadata_custom($post_id);
-print_r($search['dc:subject']);	
+
 endwhile;
 ?>
 <h3>Related Posts</h3>
@@ -107,7 +107,7 @@ endwhile;
             <ul class="splide__list">
                 <?php // global $wpdb;
 
-$search_text = $search['Keywords'];
+/* $search_text = $search['Keywords'];
 
 
 $break_search_text = array(); // Initialize the array
@@ -117,8 +117,8 @@ if (strpos($search_text, ' ') !== false) {
 } else {
     $break_search_text[] = $search_text;
 }
-print_r($break_search_text);
-//({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value IN (" . implode(',', $break_search_text) . "))
+print_r($break_search_text); */
+//({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value IN (" . implode(',', $search['dc:subject']) . "))
 //OR ({$wpdb->prefix}postmeta.meta_key = 'related_post_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
 //OR ({$wpdb->prefix}postmeta.meta_key = 'related_polls_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s) 
 /* $query = "
@@ -157,8 +157,7 @@ $query = "
     WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
     AND {$wpdb->prefix}posts.post_status = 'publish'
     AND (
-		{$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '$break_search_text[1]'
-		OR {$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '$break_search_text[2]'
+		{$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value IN (" . implode(',', $search['dc:subject']) . ")		
 		OR {$wpdb->prefix}posts.post_title LIKE '$search_text'
 	)
 	
