@@ -157,8 +157,13 @@ $query = "
     WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
     AND {$wpdb->prefix}posts.post_status = 'publish'
     AND (
-		{$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value IN (" . implode(',', $search['dc:subject']) . ")		
-		OR {$wpdb->prefix}posts.post_title LIKE '$search_text'
+		wp_postmeta.meta_key = 'custom_pdf_keywords'
+		AND (
+			wp_postmeta.meta_value LIKE '%Arizona%'
+			OR wp_postmeta.meta_value LIKE '%2022%'
+			OR wp_postmeta.meta_value LIKE '%midterm%'
+			OR wp_postmeta.meta_value LIKE '%statewide%'
+		)
 	)
 	
     GROUP BY {$wpdb->prefix}posts.ID
