@@ -730,12 +730,15 @@ function save_pdf_meta($post_id) {
 
     
     $post_type = get_post_type($post_id);
-
+    $custom_field_value = '';
     
     $custom_field_key = 'custom_pdf_keywords'; 
-
+    if (isset($_POST['custom_pdf_keywords'])) {
+        $custom_field_value = wp_kses_post($_POST['custom_pdf_keywords']);
+       
+    }
     
-    $custom_field_value = '';
+   
 
     if ($post_type === 'bsp_custom_polls') {
         $metadata=get_pdf_metadata_custom($post_id,'polls');
@@ -743,7 +746,7 @@ function save_pdf_meta($post_id) {
     {
         $pdf_keywords=implode(',',$metadata['dc:subject']);
         //$pdf_keywords=$metadata['Keywords'];
-        $custom_field_value = $pdf_keywords;
+        $custom_field_value .= $pdf_keywords;
     }
     } elseif ($post_type === 'post') {
         $metadata=get_pdf_metadata_custom($post_id,'post');
@@ -751,17 +754,14 @@ function save_pdf_meta($post_id) {
     {
         $pdf_keywords=implode(',',$metadata['dc:subject']);
         //$pdf_keywords=$metadata['Keywords'];
-        $custom_field_value = $pdf_keywords;
+        $custom_field_value .= $pdf_keywords;
     }
     }
 
     
     update_post_meta($post_id, $custom_field_key, $custom_field_value);
 
-    if (isset($_POST['custom_pdf_keywords'])) {
-        $custom_pdf_keywords = wp_kses_post($_POST['custom_pdf_keywords']);
-        update_post_meta($post_id, 'custom_pdf_keywords', $custom_pdf_keywords);
-    }
+    
 }
 
 
