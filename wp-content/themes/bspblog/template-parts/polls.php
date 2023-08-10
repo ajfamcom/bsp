@@ -172,6 +172,60 @@ get_header();
 		$total_count = $resultsforcount;		
 		$max_num_pages = ceil($total_count / $posts_per_page);
 		}
+		else if(isset($search_text) && !empty($search_text) && empty($from_date) && empty($to_date))
+		{		
+
+			global $wpdb;
+			
+			//$modified_from_date=date('Y-m-d H:i:s',strtotime($from_date));
+			//$modified_to_date=date('Y-m-d H:i:s',strtotime($to_date));
+			$posts_per_page = 6;
+			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+			$offset = ($current_page - 1) * $posts_per_page;
+			
+			$query = "
+			SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
+			FROM {$wpdb->prefix}posts
+			LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
+			WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+			AND {$wpdb->prefix}posts.post_status='publish'
+			AND (
+				({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
+				OR {$wpdb->prefix}posts.post_title LIKE %s
+				OR {$wpdb->prefix}posts.post_content LIKE %s
+			)			
+			GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+			ORDER BY {$wpdb->prefix}posts.post_date DESC
+			LIMIT %d
+			OFFSET %d
+		";
+		
+		$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%',  $posts_per_page, $offset);
+		
+		$results = $wpdb->get_results($query);
+		/***count query */
+		$queryforcount = "
+		SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
+		FROM {$wpdb->prefix}posts
+		LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
+		WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+		AND {$wpdb->prefix}posts.post_status='publish'
+		AND (
+			({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
+			OR {$wpdb->prefix}posts.post_title LIKE %s
+			OR {$wpdb->prefix}posts.post_content LIKE %s
+		)		
+		GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+		ORDER BY {$wpdb->prefix}posts.post_date DESC
+		
+	";
+	
+	$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%');
+	/***count query */
+	    $resultsforcount = count($wpdb->get_results($queryforcount));		
+		$total_count = $resultsforcount;		
+		$max_num_pages = ceil($total_count / $posts_per_page);
+		}
 		else if(isset($search_text) && !empty($search_text) && !empty($from_date) && empty($to_date))
 		{		
 
