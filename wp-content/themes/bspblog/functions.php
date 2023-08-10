@@ -694,7 +694,7 @@ function get_pdf_metadata_custom($postid,$type='polls') {
 add_action('save_post_bsp_custom_polls', 'save_pdf_meta');
 
 function save_pdf_meta($post_id) {
-    
+    echo $post_id;die();
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
         return;
     }
