@@ -77,9 +77,9 @@ get_header(); ?>
 			<div class="col-md-10 col-sm-10 col-12 offset-md-1 offset-sm-1">
 			<div class="single-poll-content">
 			<div class="single-poll-info">
-												<h1 class="poll-title"><?php $post_title; ?></h1>
+												<h1 class="poll-title"><?php echo $post_title; ?></h1>
 												<p>WLRN 91.3 FM | By Tim Padget,Published November 15,2022 at 6:33 AM EST</p>						
-												<?php $post_content ?>	
+												<?php echo $post_content ?>	
 											</div>
 									
 								     </div>
