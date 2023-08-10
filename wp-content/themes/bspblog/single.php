@@ -49,8 +49,7 @@ get_header(); ?>
 				} else {
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
 				}
-				$post_title = the_title();
-				$post_content = the_content();
+				
 			?>
 				<div class="single-poll col-12">
 					<div class="single-poll-content">
@@ -76,18 +75,24 @@ get_header(); ?>
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-sm-10 col-12 offset-md-1 offset-sm-1">
-			<div class="single-poll-content">
-				<div class="single-poll-info">
-					<h1 class="poll-title"><?php echo $post_title; ?></h1>
-					<p>WLRN 91.3 FM | By Tim Padget,Published November 15,2022 at 6:33 AM EST</p>
-					<?php echo $post_content ?>
-				</div>
+		<?php 
+		while (have_posts()) : the_post();
+				$post_id = get_the_ID();
+				$permalink = get_permalink($post_id);
+				?>
+				<div class="single-poll-content">
+						<div class="single-poll-info">
+							<h1 class="poll-title"><?php the_title(); ?></h1>
+							<p>WLRN 91.3 FM | By Tim Padget,Published November 15,2022 at 6:33 AM EST</p>
+							<?php the_content(); ?>
+						</div>
 
-			</div>
-			<div class="share-social-icons my-5">
-				<h3>Share this:</h3>
-				<?php dynamic_sidebar('sidebar-1'); ?>
-			</div>
+				</div>
+				<div class="share-social-icons my-5">
+					<h3>Share this:</h3>
+					<?php dynamic_sidebar('sidebar-1'); ?>
+				</div>
+		<?php endwhile; ?>
 		</div>
 
 	</div>
