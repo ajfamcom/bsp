@@ -106,12 +106,12 @@ get_header(); ?>
 
 <div class="col-md-12 py-5">
 
-	<section class="splide" aria-labelledby="carousel-heading" id="slider-related-posts">
-		<h2 id="carousel-heading text-center">Related Posts</h2>		
-		<div class="splide__track row">						  
-						  <ul class="splide__list">
-							<li class="splide__slide">
-							<div class="news-block col-md-4">
+<section class="splide pb-5 mb-5 width_90" id="slider-related-posts" aria-label="relatd-psts slider">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <?php //while code here  ?>
+                    <li class="splide__slide">
+                       <div class="news-block col-md-4">
 								<div class="news-image"><img src="https://bsp.thefamcomlab.com/wp-content/uploads/2023/07/imagefive.jpg"></div>
 								<div class="news-info">
 									<h4 class="news-details"><span class="news-title">Title here</span></h4>
@@ -119,10 +119,10 @@ get_header(); ?>
 									<p class="news-content">Content here Content here Content hereContent hereContent hereContent here</p>
 									<p><a href="https://www.google.com">Read More</a></p>
 								</div>
-							</div>
-							  </li>
-							  <li class="splide__slide">
-							<div class="news-block col-md-4">
+						</div>
+                    </li>
+					<li class="splide__slide">
+                       <div class="news-block col-md-4">
 								<div class="news-image"><img src="https://bsp.thefamcomlab.com/wp-content/uploads/2023/07/imagefive.jpg"></div>
 								<div class="news-info">
 									<h4 class="news-details"><span class="news-title">Title here</span></h4>
@@ -130,11 +130,10 @@ get_header(); ?>
 									<p class="news-content">Content here Content here Content hereContent hereContent hereContent here</p>
 									<p><a href="https://www.google.com">Read More</a></p>
 								</div>
-							</div>
-							  </li>
-						
-							  <li class="splide__slide">
-							<div class="news-block col-md-4">
+						</div>
+                    </li>
+					<li class="splide__slide">
+                       <div class="news-block col-md-4">
 								<div class="news-image"><img src="https://bsp.thefamcomlab.com/wp-content/uploads/2023/07/imagefive.jpg"></div>
 								<div class="news-info">
 									<h4 class="news-details"><span class="news-title">Title here</span></h4>
@@ -142,13 +141,14 @@ get_header(); ?>
 									<p class="news-content">Content here Content here Content hereContent hereContent hereContent here</p>
 									<p><a href="https://www.google.com">Read More</a></p>
 								</div>
-							</div>
-							  </li>
-							  </ul>
-					    
-			
-		</div>
-	</section>
+						</div>
+                    </li>
+				<?php //endwhile; ?>
+                <?php //wp_reset_query(); ?>
+            </ul>
+        </div>
+    </section>
+<style>.splide__arrow--next{    right: 5em;}</style>
 </div>
 </div>
 <?php
