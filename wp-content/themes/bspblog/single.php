@@ -111,7 +111,8 @@ get_header(); ?>
             <ul class="splide__list">
                 <?php global $wpdb;
 			//OR ({$wpdb->prefix}postmeta.meta_key = 'custom_post_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)	
-			$search_text=get_pdf_metadata_custom(get_the_ID());			
+			$search_text=get_pdf_metadata_custom(get_the_ID());	
+			print_r($search_text);		
 			$query = "
 			SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
 			FROM {$wpdb->prefix}posts
@@ -120,7 +121,7 @@ get_header(); ?>
 			AND {$wpdb->prefix}posts.post_status='publish'
 			AND (
 				({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
-				OR ({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)							
+											
 			)			
 			GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
 			ORDER BY {$wpdb->prefix}posts.post_date DESC
