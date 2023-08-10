@@ -156,7 +156,7 @@ AND (
         OR wp_postmeta.meta_value LIKE '%statewide%'
     )
 )
-GROUP BY wp_posts.ID
+GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
 ORDER BY wp_posts.post_date DESC;
 ";
 $results = $wpdb->get_results($query);
