@@ -66,12 +66,7 @@ get_header(); ?>
 
 	</div>
 <?php endwhile; ?>
-
-
 </div>
-
-
-
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-sm-10 col-12 offset-md-1 offset-sm-1">
@@ -79,12 +74,21 @@ get_header(); ?>
 		while (have_posts()) : the_post();
 				$post_id = get_the_ID();
 				$permalink = get_permalink($post_id);
+				$download=get_field('post_pdf_attachment',$post_id);
+				$post_date = get_the_date('F j, Y \a\t g:i A e', $post_id);
+				$author_name = get_the_author_meta('display_name', get_post_field('post_author', $post_id));
+
 				?>
 				<div class="single-poll-content">
 						<div class="single-poll-info">
 							<h1 class="poll-title"><?php the_title(); ?></h1>
-							<p>WLRN 91.3 FM | By Tim Padget,Published November 15,2022 at 6:33 AM EST</p>
+							<p>WLRN 91.3 FM | By <?php echo $author_name;?>,Published <?php echo $post_date; ?></p>
 							<?php the_content(); ?>
+							<p>
+                              <?php if($download) { ?>
+                                <a href="<?php echo $download['url'];?>">Download Pdf Attachment</a>
+							<?php  } ?>
+							</p>
 						</div>
 
 				</div>
