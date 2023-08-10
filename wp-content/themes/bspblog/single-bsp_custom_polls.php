@@ -105,7 +105,7 @@ endwhile;
 <section class="splide pb-5 mb-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
         <div class="splide__track">
             <ul class="splide__list">
-                <?php global $wpdb;
+                <?php // global $wpdb;
 
 echo $search_text = $search['Keywords'];
 
@@ -135,18 +135,34 @@ if (strpos($search_text, ' ') !== false) {
     GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
     ORDER BY {$wpdb->prefix}posts.post_date DESC
 "; */
-$query = "SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
+/* $query = "SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
 FROM wp_posts
 INNER JOIN wp_postmeta ON wp_posts.ID = wp_postmeta.post_id
 WHERE wp_posts.post_type = 'post'
 AND wp_posts.post_status = 'publish'
 AND wp_postmeta.meta_key = 'custom_pdf_keywords' 
-AND wp_postmeta.meta_value IN (" . implode(',', $break_search_text) . ") 
+AND wp_postmeta.meta_value LIKE '%{$search_text}%' 
 GROUP BY wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
 ORDER BY wp_posts.post_date DESC;
+"; */
+global $wpdb;
+
+$search_text = '%' . $wpdb->esc_like($search_text) . '%'; // Escape and add wildcards
+
+$query = "
+    SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
+    FROM {$wpdb->prefix}posts
+    INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id
+    WHERE {$wpdb->prefix}posts.post_type = 'post'
+    AND {$wpdb->prefix}posts.post_status = 'publish'
+    AND {$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords'
+    AND {$wpdb->prefix}postmeta.meta_value LIKE '$search_text'
+    GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+    ORDER BY {$wpdb->prefix}posts.post_date DESC;
 ";
-echo $query;
+
 $results = $wpdb->get_results($query);
+
 		
 		if ($results) :
 			foreach($results as $row) :
