@@ -741,16 +741,16 @@ function save_pdf_meta($post_id) {
         $metadata=get_pdf_metadata_custom($post_id,'polls');
         if($metadata)
     {
-        //$pdf_keywords=implode(',',$metadata['dc:subject']);
-        $pdf_keywords=$metadata['Keywords'];
+        $pdf_keywords=implode(',',$metadata['dc:subject']);
+        //$pdf_keywords=$metadata['Keywords'];
         $custom_field_value = $pdf_keywords;
     }
     } elseif ($post_type === 'post') {
         $metadata=get_pdf_metadata_custom($post_id,'post');
         if($metadata)
     {
-       // $pdf_keywords=implode(',',$metadata['dc:subject']);
-        $pdf_keywords=$metadata['Keywords'];
+        $pdf_keywords=implode(',',$metadata['dc:subject']);
+        //$pdf_keywords=$metadata['Keywords'];
         $custom_field_value = $pdf_keywords;
     }
     }
