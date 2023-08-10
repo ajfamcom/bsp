@@ -667,6 +667,7 @@ add_shortcode( 'custom_contact_form', 'custom_contact_form' );
 function get_pdf_metadata_custom($postid,$type='polls') {
     $fpdi_pdf_parser_path = get_template_directory() . '/pdfparser-master/alt_autoload.php-dist';
     require_once $fpdi_pdf_parser_path;
+    echo $postid;die();
     if($type=='polls'){
         $file = get_field('pdf_attachment', $postid);
     }
@@ -705,7 +706,7 @@ function save_pdf_meta($post_id) {
     
    
     $metadata=get_pdf_metadata_custom($post_id,'polls');
-    echo $post_id;die();
+    
     if($metadata)
     {
         $pdf_keywords=$metadata['Keywords'];
