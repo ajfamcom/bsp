@@ -698,11 +698,11 @@ function save_pdf_meta($post_id) {
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
         return;
     }
-    echo $post_id;die();
+    
     if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
         return;
     }
-
+    echo $post_id;die();
    
     $metadata=get_pdf_metadata_custom($post_id,'polls');
     if($metadata)
