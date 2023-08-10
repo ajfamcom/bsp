@@ -113,7 +113,7 @@ $break_search_text = explode(',', $search['dc:subject']);
 
 $search_text = '%' . $wpdb->esc_like($search_text) . '%'; // Escape and add wildcards
 $moredata ='';
- if($break_search_text){
+ /* if($break_search_text){
 	$moredata .="AND (
 		wp_postmeta.meta_key = 'custom_pdf_keywords'
 		AND (";
@@ -125,7 +125,7 @@ $moredata ='';
 			
 	$moredata .=")
 	)";
-} 
+}  */
 
 
 $query = "SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
@@ -133,29 +133,16 @@ $query = "SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_pos
     INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id
     WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
     AND {$wpdb->prefix}posts.post_status = 'publish' ";
-  $query .=$moredata;  
+	if($moredata){
+		$query .= $moredata;  
+	}  
 	
  $query .=" GROUP BY {$wpdb->prefix}posts.ID
     ORDER BY {$wpdb->prefix}posts.post_date DESC;
 ";
 echo $query;
 $results = $wpdb->get_results($query); 
-// Define the search keywords
-//$search_keywords = array('Midterm', 'Arizona', 'Statewide');
 
-// Construct the WP_Query arguments
-/* $args = array(
-    'post_type' => 'bsp_custom_polls',  // Replace with your custom post type if needed
-    'post_status' => 'publish',
-    'meta_query' => array(
-        'relation' => 'OR',  // Search for any keyword
-        array(
-            'key' => 'custom_pdf_keywords',  // Replace with your actual meta key
-            'value' => $search_keywords,
-            'compare' => 'LIKE',
-        ),
-    ),
-); */
 
 
 		
