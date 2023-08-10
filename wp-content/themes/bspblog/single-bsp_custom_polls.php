@@ -107,7 +107,7 @@ endwhile;
             <ul class="splide__list">
                 <?php // global $wpdb;
 
-$search_text = 'Midterm';//s$search['Keywords'];
+$search_text = $search['Keywords'];
 
 
 $break_search_text = array(); // Initialize the array
