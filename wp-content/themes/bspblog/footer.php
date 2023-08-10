@@ -185,7 +185,7 @@ var splide = new Splide( '#slider-related-posts', {
 
 splide.mount();
 
-new Splide( '#slider-related-posts' ).mount();
+
 });
 </script>
 	</body>
