@@ -111,7 +111,10 @@ get_header(); ?>
             <ul class="splide__list">
                 <?php global $wpdb;
 			//OR ({$wpdb->prefix}postmeta.meta_key = 'custom_post_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)	
+			while (have_posts()) : the_post();
+				$post_id = get_the_ID();
 			$search_text=get_pdf_metadata_custom(get_the_ID());	
+			endwhile;
 			print_r($search_text);		
 			$query = "
 			SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
