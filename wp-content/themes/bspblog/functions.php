@@ -835,13 +835,13 @@ function render_custom_meta_field($post) {
 
 // Save the custom meta field data
 // Save the custom meta field data
-function save_custom_meta_field($post_id) {
+/* function save_custom_meta_field($post_id) {
     if (isset($_POST['custom_pdf_keywords'])) {
         $custom_pdf_keywords = wp_kses_post($_POST['custom_pdf_keywords']);
         update_post_meta($post_id, 'custom_pdf_keywords', $custom_pdf_keywords);
     }
 }
-add_action('save_post', 'save_custom_meta_field');
+add_action('save_post', 'save_custom_meta_field'); */
 
 
 
