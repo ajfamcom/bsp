@@ -164,7 +164,7 @@ splide.mount();
 
 var splide = new Splide( '#slider-related-posts', {
   type   : 'loop',
-  padding: { left: '0rem', right: '5rem', },
+  padding: { left: '1rem', right: '7rem', },
   perPage: 4,
   perMove: 1,
   autoplay: true,
@@ -175,9 +175,11 @@ var splide = new Splide( '#slider-related-posts', {
   breakpoints: {
     640: {
       perPage: 2,
+      padding: '3rem',
     },
     480: {
       perPage: 1,
+      padding: '2rem',
     },
 
   }
