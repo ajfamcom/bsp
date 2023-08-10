@@ -239,7 +239,7 @@ $results = $wpdb->get_results($query);
             </ul>
         </div>
     </section>
-<style>.splide__arrow--next{    right: 5em;}</style>
+<!-- <style>.splide__arrow--next{    right: 5em;}</style> -->
 </div>
 </div>
 <?php
