@@ -172,7 +172,6 @@ var splide = new Splide( '#slider-related-posts', {
   focus  : 'left',
   gap: '20px',
   pagination: false,
-  omitEnd: true,
   breakpoints: {
     640: {
       perPage: 2,
