@@ -81,6 +81,7 @@
 										<h3>Share this:</h3>
 									    <?php dynamic_sidebar( 'sidebar-1' ); ?>
 									</div>	
+									
             </div>
 									
 		</div>
