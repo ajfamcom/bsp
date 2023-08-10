@@ -738,7 +738,8 @@ function save_pdf_meta($post_id) {
        
     }
     $breakcode=explode(',',$custom_field_value);
-   
+
+    $custom_field_value .=',';
 
     if ($post_type === 'bsp_custom_polls') {
         $metadata=get_pdf_metadata_custom($post_id,'polls');
