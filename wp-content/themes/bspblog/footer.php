@@ -101,18 +101,17 @@ if( elems.length ) {
 var splide = new Splide( '#slider-related-posts', {
   type     : 'loop',
   // padding: { left: '15.3%', right: '2rem' },
-  height   : '10rem',
   focus    : 'left',
   // trimSpace: false,
   rewind: true,
-  perPage : 3,
+  perPage : 4,
   perMove : 1,
   padding: '3rem',
   autoWidth: true,
   pagination: false,
   breakpoints: {
     1366: {
-      perPage: 6,
+      perPage: 4,
       padding: { left: '8%', right: '2rem' },
 
     },
