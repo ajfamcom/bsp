@@ -669,12 +669,13 @@ function get_pdf_metadata_custom($postid,$type='polls') {
     require_once $fpdi_pdf_parser_path;
     
     if($type=='polls'){
+        echo $postid;
         $file = get_field('pdf_attachment', $postid);
     }
     else{
         $file = get_field('post_pdf_attachment', $postid);
     }
-    echo $postid;
+   
     print_r($file);
     die();
     $file_path='/var/www/html/bsp'.wp_make_link_relative($file['url']);//'/var/www/html/bsp/wp-content/uploads/2023/08/Univision-Arizona-Crosstab-October-2022.pdf';//
