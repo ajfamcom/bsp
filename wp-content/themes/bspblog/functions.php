@@ -704,7 +704,7 @@ function save_pdf_meta($post_id) {
     }
 
    
-    $metadata=get_pdf_metadata_custom($post_id);
+    $metadata=get_pdf_metadata_custom($post_id,'polls');
     if($metadata)
     {
         $pdf_keywords=$metadata['Keywords'];
