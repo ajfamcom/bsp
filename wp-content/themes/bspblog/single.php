@@ -166,7 +166,7 @@ $results = $wpdb->get_results($query);
 				}
 		?>
                     <li class="splide__slide">
-                       <div class="news-block col-md-4">
+                       <div class="news-block">
 								<div class="news-image"><?php echo $image_link;?></div>
 								<div class="news-info">
 									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
@@ -177,7 +177,7 @@ $results = $wpdb->get_results($query);
 						</div>
                     </li>
 					<li class="splide__slide">
-                       <div class="news-block col-md-4">
+                       <div class="news-block">
 								<div class="news-image"><?php echo $image_link;?></div>
 								<div class="news-info">
 									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
@@ -188,7 +188,7 @@ $results = $wpdb->get_results($query);
 						</div>
                     </li>
 					<li class="splide__slide">
-                       <div class="news-block col-md-4">
+                       <div class="news-block">
 								<div class="news-image"><?php echo $image_link;?></div>
 								<div class="news-info">
 									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
@@ -199,7 +199,7 @@ $results = $wpdb->get_results($query);
 						</div>
                     </li>
 					<li class="splide__slide">
-                       <div class="news-block col-md-4">
+                       <div class="news-block">
 								<div class="news-image"><?php echo $image_link;?></div>
 								<div class="news-info">
 									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
@@ -210,7 +210,7 @@ $results = $wpdb->get_results($query);
 						</div>
                     </li>
 					<li class="splide__slide">
-                       <div class="news-block col-md-4">
+                       <div class="news-block">
 								<div class="news-image"><?php echo $image_link;?></div>
 								<div class="news-info">
 									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
@@ -221,7 +221,7 @@ $results = $wpdb->get_results($query);
 						</div>
                     </li>
 					<li class="splide__slide">
-                       <div class="news-block col-md-4">
+                       <div class="news-block">
 								<div class="news-image"><?php echo $image_link;?></div>
 								<div class="news-info">
 									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>

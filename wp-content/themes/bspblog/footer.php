@@ -164,6 +164,8 @@ var splide = new Splide( '#slider-related-posts', {
   type   : 'loop',
   padding: '5rem',
   perPage: 4,
+  perMove: 1,
+  autoplay: true,
 } );
 
 splide.mount();
