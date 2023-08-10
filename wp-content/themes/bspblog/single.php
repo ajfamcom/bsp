@@ -106,7 +106,7 @@ get_header(); ?>
 
 <div class="col-md-12 py-5">
 
-<section class="splide pb-5 mb-5 width_90" id="slider-related-posts" aria-label="relatd-psts slider">
+<section class="splide pb-5 mb-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
         <div class="splide__track">
             <ul class="splide__list">
                 <?php //while code here  ?>
