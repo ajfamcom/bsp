@@ -107,6 +107,7 @@ endwhile;
                 <?php global $wpdb;
 
 $search_text = $search['Keywords'];
+print_r($search_text);
 
 $break_search_text = array(); // Initialize the array
 
