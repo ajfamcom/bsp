@@ -110,13 +110,8 @@ get_header(); ?>
         <div class="splide__track">
             <ul class="splide__list">
                 <?php global $wpdb;
-			
-			$modified_from_date=date('Y-m-d H:i:s',strtotime($from_date));
-			$modified_to_date=date('Y-m-d H:i:s',strtotime($to_date));
-			$posts_per_page = 6;
-			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-			$offset = ($current_page - 1) * $posts_per_page;
-			
+			//OR ({$wpdb->prefix}postmeta.meta_key = 'custom_post_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)	
+			$search_text=get_pdf_metadata_custom(get_the_ID());			
 			$query = "
 			SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
 			FROM {$wpdb->prefix}posts
@@ -125,17 +120,14 @@ get_header(); ?>
 			AND {$wpdb->prefix}posts.post_status='publish'
 			AND (
 				({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
-				OR {$wpdb->prefix}posts.post_title LIKE %s
-				OR {$wpdb->prefix}posts.post_content LIKE %s
-			)
-			AND {$wpdb->prefix}posts.post_date >= %s AND {$wpdb->prefix}posts.post_date <= %s
+				OR ({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)							
+			)			
 			GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
 			ORDER BY {$wpdb->prefix}posts.post_date DESC
-			LIMIT %d
-			OFFSET %d
+			
 		";
 		
-		$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date, $modified_to_date, $posts_per_page, $offset);
+		$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%');
 		
 		$results = $wpdb->get_results($query);
 		if ($results) :
