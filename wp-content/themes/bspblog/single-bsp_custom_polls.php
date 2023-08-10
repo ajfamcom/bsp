@@ -107,7 +107,7 @@ endwhile;
             <ul class="splide__list">
                 <?php // global $wpdb;
 
-$search_text = 'Midterm';//s$search['Keywords'];
+$search_text = $search['Keywords'];
 
 
 $break_search_text = array(); // Initialize the array
@@ -117,6 +117,7 @@ if (strpos($search_text, ' ') !== false) {
 } else {
     $break_search_text[] = $search_text;
 }
+print_r($break_search_text);
 //({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value IN (" . implode(',', $break_search_text) . "))
 //OR ({$wpdb->prefix}postmeta.meta_key = 'related_post_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
 //OR ({$wpdb->prefix}postmeta.meta_key = 'related_polls_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s) 
