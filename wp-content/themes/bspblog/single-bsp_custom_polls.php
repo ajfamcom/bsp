@@ -68,7 +68,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-sm-10 col-12 offset-md-1 offset-sm-1">
-			<div class="single-poll-content">
+				
+			                         <div class="single-poll-content">
 											<div class="single-poll-info">
 												<h1 class="poll-title"><?php the_title();?></h1>
 												<p>WLRN 91.3 FM | By Tim Padget,Published November 15,2022 at 6:33 AM EST</p>						
@@ -80,10 +81,10 @@
 										<h3>Share this:</h3>
 									    <?php dynamic_sidebar( 'sidebar-1' ); ?>
 									</div>	
-                                    </div>
+            </div>
 									
-			</div>
 		</div>
+	</div>
 
 
 	<div class="col-md-12 py-5">
