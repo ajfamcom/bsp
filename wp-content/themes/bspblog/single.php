@@ -108,11 +108,12 @@ get_header(); ?>
 
 	<section class="splide" aria-labelledby="carousel-heading" id="slider-related-posts">
 		<h2 id="carousel-heading text-center">Related Posts</h2>
-		<div class="splide__track">
-			<ul class="">
+		<!-- splide__track -->
+		<div class="">
+		
 				<!-- splide__list -->
 			    <!-- splide__slide -->
-						<li class="">
+						
 							<div class="news-block col-md-4">
 								<div class="news-image"><img src="https://bsp.thefamcomlab.com/wp-content/uploads/2023/07/imagefive.jpg"></div>
 								<div class="news-info">
@@ -122,8 +123,7 @@ get_header(); ?>
 									<p><a href="https://www.google.com">Read More</a></p>
 								</div>
 							</div>
-						</li>
-						<li class="">
+						
 							<div class="news-block col-md-4">
 								<div class="news-image"><img src="https://bsp.thefamcomlab.com/wp-content/uploads/2023/07/imagefive.jpg"></div>
 								<div class="news-info">
@@ -133,8 +133,7 @@ get_header(); ?>
 									<p><a href="https://www.google.com">Read More</a></p>
 								</div>
 							</div>
-						</li>
-						<li class="">
+						
 							<div class="news-block col-md-4">
 								<div class="news-image"><img src="https://bsp.thefamcomlab.com/wp-content/uploads/2023/07/imagefive.jpg"></div>
 								<div class="news-info">
@@ -144,8 +143,8 @@ get_header(); ?>
 									<p><a href="https://www.google.com">Read More</a></p>
 								</div>
 							</div>
-						</li>
-			</ul>
+						
+			
 		</div>
 	</section>
 </div>
