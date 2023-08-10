@@ -136,7 +136,7 @@ var splide = new Splide( '#slider-related-posts', {
 
     640: {
 
-      perPage: 3,
+      perPage: 2,
 
       padding: { left: '0rem', right: '2rem', },
 
