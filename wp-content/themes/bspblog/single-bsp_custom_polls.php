@@ -96,7 +96,7 @@
 while (have_posts()) : the_post();
 $post_id = get_the_ID();
 $search=get_pdf_metadata_custom($post_id);
-print_r($search);	
+print_r($search['dc:subject']);	
 endwhile;
 ?>
 <h3>Related Posts</h3>
