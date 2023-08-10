@@ -95,70 +95,43 @@ if ( ! defined( 'ABSPATH' ) ) {
  
 
  $( document ).ready(function() {
-/*
+
 var elems = $('#slider-related-posts');
-
 if( elems.length ) {  
-
 var splide = new Splide( '#slider-related-posts', {
-
   type     : 'loop',
-
   // padding: { left: '15.3%', right: '2rem' },
-
   height   : '10rem',
-
   focus    : 'left',
-
   // trimSpace: false,
-
   rewind: true,
-
   perPage : 3,
-
   perMove : 1,
-
   padding: '3rem',
-
   autoWidth: true,
-
   pagination: false,
-
   breakpoints: {
-
     1366: {
-
       perPage: 6,
-
       padding: { left: '8%', right: '2rem' },
 
     },
 
     640: {
-
       perPage: 2,
-
       padding: { left: '0rem', right: '2rem', },
-
       type     : 'loop',
-
       arrows: false,
-
       pagination: true,
-
       focus    : 'right',
-
     },
-
   }
-
 } );
-
 
 splide.mount();
 
 }
-*/
+
 new Splide( '.splide' ).mount();
 });
 </script>

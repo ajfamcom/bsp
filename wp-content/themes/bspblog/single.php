@@ -111,7 +111,7 @@ $post_id = get_the_ID();
 $search=get_pdf_metadata_custom($post_id,'post');	
 endwhile;
 ?>
-<h3>Related Posts</h3>
+<h2 class="text-center mb-4">Related Posts</h2>
 <section class="splide pb-5 mb-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
         <div class="splide__track">
             <ul class="splide__list">
