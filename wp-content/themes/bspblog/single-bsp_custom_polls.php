@@ -155,12 +155,14 @@ $query = "
     INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id
     WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
     AND {$wpdb->prefix}posts.post_status = 'publish'
-    AND {$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords'
-    AND {$wpdb->prefix}postmeta.meta_value LIKE '%$search_text%'
+    AND (
+		{$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '$search_text'
+		OR {$wpdb->prefix}posts.post_title LIKE '$search_text'
+	)
     GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
     ORDER BY {$wpdb->prefix}posts.post_date DESC;
 ";
-echo $query;
+
 $results = $wpdb->get_results($query);
 
 		
