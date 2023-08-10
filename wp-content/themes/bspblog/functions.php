@@ -694,7 +694,7 @@ function get_pdf_metadata_custom($postid,$type='polls') {
 }
 
 
-add_action('save_post_bsp_custom_polls', 'save_pdf_meta');
+//add_action('save_post_bsp_custom_polls', 'save_pdf_meta');
 
 /* function save_pdf_meta($post_id) {
     
@@ -760,7 +760,7 @@ function save_pdf_meta($post_id) {
 }
 
 
-add_action('save_post', 'save_custom_field_for_post_types');
+add_action('save_post', 'save_pdf_meta');
 
 
 /********** */
