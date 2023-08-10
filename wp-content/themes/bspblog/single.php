@@ -148,9 +148,9 @@ endwhile;
 					$theme_directory_uri = get_template_directory_uri();
 					$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
 
-					$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
+					//$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
 				} else {
-					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
+					//$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
 				}
 		?>
                     <li class="splide__slide">
