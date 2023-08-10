@@ -134,17 +134,12 @@ $query = "
     FROM {$wpdb->prefix}posts
     LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
     WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-    AND {$wpdb->prefix}posts.post_status='publish'
-    AND (
-       
-	     
-		 {$wpdb->prefix}posts.post_title LIKE %s                       
-    )            
+    AND {$wpdb->prefix}posts.post_status='publish'    
     GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
     ORDER BY {$wpdb->prefix}posts.post_date DESC
 ";
-$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%');
-//$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%');
+//$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%');
+
 
 $results = $wpdb->get_results($query);
 		
@@ -176,61 +171,7 @@ $results = $wpdb->get_results($query);
 								</div>
 						</div>
                     </li>
-					<li class="splide__slide">
-                       <div class="news-block">
-								<div class="news-image"><?php echo $image_link;?></div>
-								<div class="news-info">
-									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
-									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
-									<p class="news-content"><?php echo trim_content_custom($row->post_content); ?></p>
-									<p><a href="<?php echo $permalink; ?>">Read More</a></p>
-								</div>
-						</div>
-                    </li>
-					<li class="splide__slide">
-                       <div class="news-block">
-								<div class="news-image"><?php echo $image_link;?></div>
-								<div class="news-info">
-									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
-									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
-									<p class="news-content"><?php echo trim_content_custom($row->post_content); ?></p>
-									<p><a href="<?php echo $permalink; ?>">Read More</a></p>
-								</div>
-						</div>
-                    </li>
-					<li class="splide__slide">
-                       <div class="news-block">
-								<div class="news-image"><?php echo $image_link;?></div>
-								<div class="news-info">
-									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
-									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
-									<p class="news-content"><?php echo trim_content_custom($row->post_content); ?></p>
-									<p><a href="<?php echo $permalink; ?>">Read More</a></p>
-								</div>
-						</div>
-                    </li>
-					<li class="splide__slide">
-                       <div class="news-block">
-								<div class="news-image"><?php echo $image_link;?></div>
-								<div class="news-info">
-									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
-									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
-									<p class="news-content"><?php echo trim_content_custom($row->post_content); ?></p>
-									<p><a href="<?php echo $permalink; ?>">Read More</a></p>
-								</div>
-						</div>
-                    </li>
-					<li class="splide__slide">
-                       <div class="news-block">
-								<div class="news-image"><?php echo $image_link;?></div>
-								<div class="news-info">
-									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
-									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
-									<p class="news-content"><?php echo trim_content_custom($row->post_content); ?></p>
-									<p><a href="<?php echo $permalink; ?>">Read More</a></p>
-								</div>
-						</div>
-                    </li>
+					
 					<?php
 				endforeach;
 			endif;
