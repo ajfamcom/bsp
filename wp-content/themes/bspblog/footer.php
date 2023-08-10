@@ -164,8 +164,8 @@ splide.mount();
 
 var splide = new Splide( '#slider-related-posts', {
   type   : 'loop',
-  padding: { left: '0rem', right: '3rem', },
-  perPage: 3,
+  padding: { left: '0rem', right: '5rem', },
+  perPage: 4,
   perMove: 1,
   autoplay: true,
   drag   : 'free',
