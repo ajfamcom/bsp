@@ -95,7 +95,7 @@
 <?php 
 while (have_posts()) : the_post();
 $post_id = get_the_ID();
-$search=get_pdf_metadata_custom($post_id,'post');
+$search=get_pdf_metadata_custom($post_id);
 print_r($search);	
 endwhile;
 ?>
