@@ -162,14 +162,13 @@ splide.mount();
 
 var splide = new Splide( '#slider-related-posts', {
   type   : 'loop',
-  padding: '5rem',
+  padding: { left: '0rem', right: '3rem', },
   perPage: 4,
   perMove: 1,
   autoplay: true,
   drag   : 'free',
   focus  : 'left',
   gap: '20px',
-  pagination: false,
   breakpoints: {
     1366: {
       perPage: 4,
