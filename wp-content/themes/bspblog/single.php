@@ -113,7 +113,7 @@ get_header(); ?>
 		
 				<!-- splide__list -->
 			    <!-- splide__slide -->
-						
+						  <div class="row">
 							<div class="news-block col-md-4">
 								<div class="news-image"><img src="https://bsp.thefamcomlab.com/wp-content/uploads/2023/07/imagefive.jpg"></div>
 								<div class="news-info">
@@ -143,7 +143,7 @@ get_header(); ?>
 									<p><a href="https://www.google.com">Read More</a></p>
 								</div>
 							</div>
-						
+					     </div>
 			
 		</div>
 	</section>
