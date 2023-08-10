@@ -118,7 +118,14 @@ endwhile;
                 <?php global $wpdb;
 			//OR ({$wpdb->prefix}postmeta.meta_key = 'custom_post_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)	
 			
-			$search_text=$search['Keywords'];		
+			$search_text=$search['Keywords'];
+			if (strpos($search_text, ' ') !== false) {
+               $break_$search_text=explode(' ',$search_text);
+			}
+			else{
+				$break_$search_text=array();
+               array_push($break_$search_text,$search_text);
+			}		
 			$query = "
 			SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
 			FROM {$wpdb->prefix}posts
@@ -126,15 +133,16 @@ endwhile;
 			WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
 			AND {$wpdb->prefix}posts.post_status='publish'
 			AND (
-				({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
-											
+				({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value IN {$break_$search_text})
+				OR ({$wpdb->prefix}postmeta.meta_key = 'related_post_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
+				OR ({$wpdb->prefix}postmeta.meta_key = 'related_polls_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)						
 			)			
 			GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
 			ORDER BY {$wpdb->prefix}posts.post_date DESC
 			
 		";
 		
-		$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%');
+		$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%' ,'%' . $wpdb->esc_like($search_text) . '%');
 		echo $query;
 		$results = $wpdb->get_results($query);
 		
