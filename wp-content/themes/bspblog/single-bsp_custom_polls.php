@@ -96,7 +96,7 @@
 while (have_posts()) : the_post();
 $post_id = get_the_ID();
 $search=get_pdf_metadata_custom($post_id);
-print_r($search);	
+	
 endwhile;
 ?>
 <h3>Related Posts</h3>
@@ -107,7 +107,7 @@ endwhile;
             <ul class="splide__list">
                 <?php global $wpdb;
 
-$search_text = $search['Keywords'];
+echo $search_text = $search['Keywords'];
 
 
 $break_search_text = array(); // Initialize the array
