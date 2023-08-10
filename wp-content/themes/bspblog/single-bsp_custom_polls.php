@@ -113,7 +113,7 @@ $break_search_text = explode(',', $search['dc:subject']);
 
 $search_text = '%' . $wpdb->esc_like($search_text) . '%'; // Escape and add wildcards
 $moredata ='';
-if($break_search_text){
+/* if($break_search_text){
 	$moredata .="AND (
 		wp_postmeta.meta_key = 'custom_pdf_keywords'
 		AND (";
@@ -125,7 +125,7 @@ if($break_search_text){
 			
 	$moredata .=")
 	)";
-}
+} */
 
 
 $query = "
