@@ -806,5 +806,42 @@ function trim_content_custom($content){
 add_action('wp_enqueue_scripts', 'enqueue_datepicker'); */
 
 
+// Add custom meta field to posts
+function add_custom_meta_field() {
+    $post_types = array('post', 'bsp_custom_polls'); // Add your post types here
+    foreach ($post_types as $post_type) {
+        add_meta_box(
+            'custom_pdf_keywords', // Meta box ID
+            'Custom PDF Keywords', // Title of the meta box
+            'render_custom_meta_field', // Callback function to render the field
+            $post_type, // Post type
+            'normal', // Context (placement)
+            'default' // Priority
+        );
+    }
+}
+add_action('add_meta_boxes', 'add_custom_meta_field');
+
+
+// Callback function to render the custom meta field
+function render_custom_meta_field($post) {
+    $custom_pdf_keywords = get_post_meta($post->ID, 'custom_pdf_keywords', true);
+    ?>
+    
+    <textarea id="custom_pdf_keywords" name="custom_pdf_keywords" rows="8" cols="35"><?php echo esc_textarea($custom_pdf_keywords); ?></textarea>
+    <?php
+}
+
+
+// Save the custom meta field data
+// Save the custom meta field data
+function save_custom_meta_field($post_id) {
+    if (isset($_POST['custom_pdf_keywords'])) {
+        $custom_pdf_keywords = wp_kses_post($_POST['custom_pdf_keywords']);
+        update_post_meta($post_id, 'custom_pdf_keywords', $custom_pdf_keywords);
+    }
+}
+add_action('save_post', 'save_custom_meta_field');
+
 
 
