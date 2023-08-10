@@ -169,12 +169,12 @@ $search_keywords = array('Midterm', 'Arizona', 'Statewide');
 
 // Construct the WP_Query arguments
 $args = array(
-    'post_type' => 'post',  // Replace with your custom post type if needed
+    'post_type' => 'bsp_custom_polls',  // Replace with your custom post type if needed
     'post_status' => 'publish',
     'meta_query' => array(
         'relation' => 'OR',  // Search for any keyword
         array(
-            'key' => 'keymatch',  // Replace with your actual meta key
+            'key' => 'custom_pdf_keywords',  // Replace with your actual meta key
             'value' => $search_keywords,
             'compare' => 'LIKE',
         ),
