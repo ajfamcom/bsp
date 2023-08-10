@@ -107,7 +107,7 @@ endwhile;
             <ul class="splide__list">
                 <?php // global $wpdb;
 
-echo $search_text = $search['Keywords'];
+$search_text = $search['Keywords'];
 
 
 $break_search_text = array(); // Initialize the array
@@ -159,9 +159,10 @@ $query = "
 		{$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE '$search_text'
 		OR {$wpdb->prefix}posts.post_title LIKE '$search_text'
 	)
-   
+    GROUP BY {$wpdb->prefix}posts.ID
     ORDER BY {$wpdb->prefix}posts.post_date DESC;
 ";
+echo $query;
 
 $results = $wpdb->get_results($query); 
 // Define the search keywords
