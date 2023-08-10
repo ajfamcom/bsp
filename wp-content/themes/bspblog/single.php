@@ -133,7 +133,7 @@ $query = "
     SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
     FROM {$wpdb->prefix}posts
     LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls')
     AND {$wpdb->prefix}posts.post_status='publish'    
     GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
     ORDER BY {$wpdb->prefix}posts.post_date DESC
