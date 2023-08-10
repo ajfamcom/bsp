@@ -139,7 +139,7 @@ $query = "
  $query .=" GROUP BY {$wpdb->prefix}posts.ID
     ORDER BY {$wpdb->prefix}posts.post_date DESC;
 ";
-
+echo $query;
 $results = $wpdb->get_results($query); 
 // Define the search keywords
 //$search_keywords = array('Midterm', 'Arizona', 'Statewide');
