@@ -36,6 +36,8 @@
 											} else {
 												$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
 											}
+
+											$download=get_field('pdf_attachment',$post_id);
 								?>
 				            <div class="single-poll col-12">
 								    <div class="single-poll-content">
@@ -45,6 +47,13 @@
 				                            ?>					
 											</div>
 									
+											<div class="single-poll-info">
+												<h1 class="poll-title"><?php the_title();?></h1>
+												<p>WLRN 91.3 FM | By Tim Padget,Published November 15,2022 at 6:33 AM EST</p>						
+												<?php the_content(); ?>	
+												<p><?php if($download) { ?><a href="<?php echo $download['url'];?>" target="_blank">Download Article</a><?php } ?></p>
+											</div>
+									 
 								     </div>
                                     </div>	
 		                    </div>
