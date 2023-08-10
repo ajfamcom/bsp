@@ -109,9 +109,10 @@ get_header(); ?>
 	<section class="splide" aria-labelledby="carousel-heading" id="slider-related-posts">
 		<h2 id="carousel-heading text-center">Related Posts</h2>
 		<div class="splide__track">
-			<ul class="splide__list">
-				
-						<li class="splide__slide">
+			<ul class="">
+				<!-- splide__list -->
+			    <!-- splide__slide -->
+						<li class="">
 							<div class="news-block col-md-4">
 								<div class="news-image"><img src="https://bsp.thefamcomlab.com/wp-content/uploads/2023/07/imagefive.jpg"></div>
 								<div class="news-info">
@@ -122,7 +123,7 @@ get_header(); ?>
 								</div>
 							</div>
 						</li>
-						<li class="splide__slide">
+						<li class="">
 							<div class="news-block col-md-4">
 								<div class="news-image"><img src="https://bsp.thefamcomlab.com/wp-content/uploads/2023/07/imagefive.jpg"></div>
 								<div class="news-info">
@@ -133,7 +134,7 @@ get_header(); ?>
 								</div>
 							</div>
 						</li>
-						<li class="splide__slide">
+						<li class="">
 							<div class="news-block col-md-4">
 								<div class="news-image"><img src="https://bsp.thefamcomlab.com/wp-content/uploads/2023/07/imagefive.jpg"></div>
 								<div class="news-info">
