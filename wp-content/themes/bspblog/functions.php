@@ -827,8 +827,8 @@ add_action('add_meta_boxes', 'add_custom_meta_field');
 function render_custom_meta_field($post) {
     $custom_pdf_keywords = get_post_meta($post->ID, 'custom_pdf_keywords', true);
     ?>
-    <label for="custom_pdf_keywords">Custom PDF Keywords:</label>
-    <textarea id="custom_pdf_keywords" name="custom_pdf_keywords" rows="5"><?php echo esc_textarea($custom_pdf_keywords); ?></textarea>
+    
+    <textarea id="custom_pdf_keywords" name="custom_pdf_keywords" rows="25"><?php echo esc_textarea($custom_pdf_keywords); ?></textarea>
     <?php
 }
 
