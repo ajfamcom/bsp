@@ -108,8 +108,7 @@ get_header(); ?>
 <?php 
 while (have_posts()) : the_post();
 $post_id = get_the_ID();
-$search_text=get_pdf_metadata_custom($post_id,'post');	
-print_r($search_text);
+$search=get_pdf_metadata_custom($post_id,'post');	
 endwhile;
 ?>
 <section class="splide pb-5 mb-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
@@ -118,7 +117,7 @@ endwhile;
                 <?php global $wpdb;
 			//OR ({$wpdb->prefix}postmeta.meta_key = 'custom_post_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)	
 			
-			print_r($search_text);		
+			$search_text=$search['Keywords'];		
 			$query = "
 			SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
 			FROM {$wpdb->prefix}posts
