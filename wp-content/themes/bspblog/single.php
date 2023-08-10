@@ -108,8 +108,7 @@ get_header(); ?>
 
 	<section class="splide" aria-labelledby="carousel-heading" id="slider-related-posts">
 		<h2 id="carousel-heading text-center">Related Posts</h2>		
-		<div class="splide__track row">
-						  
+		<div class="splide__track row">						  
 						  <ul class="splide__list">
 							<li class="splide__slide">
 							<div class="news-block col-md-4">
