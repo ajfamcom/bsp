@@ -107,7 +107,7 @@ endwhile;
             <ul class="splide__list">
                 <?php 
 
-$break_search_text = explode(',', $search['dc:subject']);
+//$break_search_text = explode(',', $search['dc:subject']);
 
  global $wpdb;
 
@@ -128,7 +128,7 @@ $moredata ='';
 }  */
 
 
-$query = "SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
+/* $query = "SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
     FROM {$wpdb->prefix}posts
     INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id
     WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
@@ -140,10 +140,26 @@ $query = "SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_pos
  $query .=" GROUP BY {$wpdb->prefix}posts.ID
     ORDER BY {$wpdb->prefix}posts.post_date DESC";
 echo $query;
-$results = $wpdb->get_results($query); 
+$results = $wpdb->get_results($query);  */
 
-
-
+$query="SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
+FROM wp_posts
+INNER JOIN wp_postmeta ON wp_posts.ID = wp_postmeta.post_id
+WHERE wp_posts.post_type = 'post'
+AND wp_posts.post_status = 'publish'
+AND (
+    wp_postmeta.meta_key = 'custom_pdf_keywords'
+    AND (
+        wp_postmeta.meta_value LIKE '%Arizona%'
+        OR wp_postmeta.meta_value LIKE '%2022%'
+        OR wp_postmeta.meta_value LIKE '%midterm%'
+        OR wp_postmeta.meta_value LIKE '%statewide%'
+    )
+)
+GROUP BY wp_posts.ID
+ORDER BY wp_posts.post_date DESC;
+";
+$results = $wpdb->get_results($query);
 		
 		if ($results) :
 			foreach($results as $row) :
