@@ -134,7 +134,7 @@ $query = "SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_pos
     WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
     AND {$wpdb->prefix}posts.post_status = 'publish' 
 	GROUP BY {$wpdb->prefix}posts.ID
-    ORDER BY {$wpdb->prefix}posts.post_date DESC;
+    ORDER BY {$wpdb->prefix}posts.post_date DESC
 ";
 echo $query;
 $results = $wpdb->get_results($query); 
