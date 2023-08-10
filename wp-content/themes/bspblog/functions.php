@@ -665,6 +665,7 @@ add_shortcode( 'custom_contact_form', 'custom_contact_form' );
     }
     
 function get_pdf_metadata_custom($postid,$type='polls') {
+    $text='';
     $fpdi_pdf_parser_path = get_template_directory() . '/pdfparser-master/alt_autoload.php-dist';
     require_once $fpdi_pdf_parser_path;
     
@@ -676,18 +677,17 @@ function get_pdf_metadata_custom($postid,$type='polls') {
         $file = get_field('post_pdf_attachment', $postid);
     }
    
+    if($file){
+        $file_path='/var/www/html/bsp'.wp_make_link_relative($file['url']);//'/var/www/html/bsp/wp-content/uploads/2023/08/Univision-Arizona-Crosstab-October-2022.pdf';//
+        $metaData='';
+        
+      
+           
+        $parser = new \Smalot\PdfParser\Parser();
+        $pdf    = $parser->parseFile($file_path);
+        $text   = $pdf->getDetails();
+    }
     
-    $file_path='/var/www/html/bsp'.wp_make_link_relative($file['url']);//'/var/www/html/bsp/wp-content/uploads/2023/08/Univision-Arizona-Crosstab-October-2022.pdf';//
-    $metaData='';
-    
-   /* if ($file && is_array($file)) {        
-        $attachment_id = $file['ID'];      
-        $file_path = get_attached_file($attachment_id);       
-    }*/
-       
-    $parser = new \Smalot\PdfParser\Parser();
-    $pdf    = $parser->parseFile($file_path);
-    $text   = $pdf->getDetails();
 
 
         return $text;
@@ -696,7 +696,7 @@ function get_pdf_metadata_custom($postid,$type='polls') {
 
 add_action('save_post_bsp_custom_polls', 'save_pdf_meta');
 
-function save_pdf_meta($post_id) {
+/* function save_pdf_meta($post_id) {
     
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
         return;
@@ -720,7 +720,53 @@ function save_pdf_meta($post_id) {
     }
     wp_reset_postdata();
 
+} */
+
+/****new code**** */
+function save_pdf_meta($post_id) {
+   
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (!current_user_can('edit_post', $post_id)) return;
+
+    
+    $post_type = get_post_type($post_id);
+
+    
+    $custom_field_key = 'custom_pdf_keywords'; 
+
+    
+    $custom_field_value = '';
+
+    if ($post_type === 'bsp_custom_polls') {
+        $metadata=get_pdf_metadata_custom($post_id,'polls');
+        if($metadata)
+    {
+        $pdf_keywords=$metadata['Keywords'];
+        
+        $custom_field_value = $pdf_keywords;
+    }
+    } elseif ($post_type === 'post') {
+        $metadata=get_pdf_metadata_custom($post_id,'post');
+        if($metadata)
+    {
+        $pdf_keywords=$metadata['Keywords'];
+        
+        $custom_field_value = $pdf_keywords;
+    }
+    }
+
+    
+    update_post_meta($post_id, $custom_field_key, $custom_field_value);
 }
+
+
+add_action('save_post', 'save_custom_field_for_post_types');
+
+
+/********** */
+
+
+
 
 
 add_filter('the_content', 'limit_custom_post_content');
