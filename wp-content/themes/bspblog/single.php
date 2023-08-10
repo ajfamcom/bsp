@@ -109,42 +109,68 @@ get_header(); ?>
 <section class="splide pb-5 mb-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
         <div class="splide__track">
             <ul class="splide__list">
-                <?php //while code here  ?>
+                <?php global $wpdb;
+			
+			$modified_from_date=date('Y-m-d H:i:s',strtotime($from_date));
+			$modified_to_date=date('Y-m-d H:i:s',strtotime($to_date));
+			$posts_per_page = 6;
+			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+			$offset = ($current_page - 1) * $posts_per_page;
+			
+			$query = "
+			SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
+			FROM {$wpdb->prefix}posts
+			LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
+			WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+			AND {$wpdb->prefix}posts.post_status='publish'
+			AND (
+				({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
+				OR {$wpdb->prefix}posts.post_title LIKE %s
+				OR {$wpdb->prefix}posts.post_content LIKE %s
+			)
+			AND {$wpdb->prefix}posts.post_date >= %s AND {$wpdb->prefix}posts.post_date <= %s
+			GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+			ORDER BY {$wpdb->prefix}posts.post_date DESC
+			LIMIT %d
+			OFFSET %d
+		";
+		
+		$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date, $modified_to_date, $posts_per_page, $offset);
+		
+		$results = $wpdb->get_results($query);
+		if ($results) :
+			foreach($results as $row) :
+
+				$post_id = $row->ID;
+				$permalink = get_permalink($post_id);
+				 if (has_post_thumbnail($post_id)) {
+
+					$thumbnail_id = get_post_thumbnail_id($post_id);
+					$image_url = wp_get_attachment_url($thumbnail_id);
+					$theme_directory_uri = get_template_directory_uri();
+					$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
+
+					$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
+				} else {
+					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
+				}
+		?>
                     <li class="splide__slide">
                        <div class="news-block col-md-4">
-								<div class="news-image"><img src="https://bsp.thefamcomlab.com/wp-content/uploads/2023/07/imagefive.jpg"></div>
+								<div class="news-image"><?php echo $image_link;?></div>
 								<div class="news-info">
-									<h4 class="news-details"><span class="news-title">Title here</span></h4>
-									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y'); ?></span></p>
-									<p class="news-content">Content here Content here Content hereContent hereContent hereContent here</p>
-									<p><a href="https://www.google.com">Read More</a></p>
+									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
+									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
+									<p class="news-content"><?php echo trim_content_custom($row->post_content); ?></p>
+									<p><a href="<?php echo $permalink; ?>">Read More</a></p>
 								</div>
 						</div>
                     </li>
-					<li class="splide__slide">
-                       <div class="news-block col-md-4">
-								<div class="news-image"><img src="https://bsp.thefamcomlab.com/wp-content/uploads/2023/07/imagefive.jpg"></div>
-								<div class="news-info">
-									<h4 class="news-details"><span class="news-title">Title here</span></h4>
-									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y'); ?></span></p>
-									<p class="news-content">Content here Content here Content hereContent hereContent hereContent here</p>
-									<p><a href="https://www.google.com">Read More</a></p>
-								</div>
-						</div>
-                    </li>
-					<li class="splide__slide">
-                       <div class="news-block col-md-4">
-								<div class="news-image"><img src="https://bsp.thefamcomlab.com/wp-content/uploads/2023/07/imagefive.jpg"></div>
-								<div class="news-info">
-									<h4 class="news-details"><span class="news-title">Title here</span></h4>
-									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y'); ?></span></p>
-									<p class="news-content">Content here Content here Content hereContent hereContent hereContent here</p>
-									<p><a href="https://www.google.com">Read More</a></p>
-								</div>
-						</div>
-                    </li>
-				<?php //endwhile; ?>
-                <?php //wp_reset_query(); ?>
+					<?php
+				endforeach;
+			endif;
+			wp_reset_postdata();
+                 ?>
             </ul>
         </div>
     </section>
