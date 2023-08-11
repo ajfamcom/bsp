@@ -112,7 +112,7 @@ endwhile;
  global $wpdb;
 
 //$search_text = '%' . $wpdb->esc_like($search_text) . '%'; // Escape and add wildcards
-$moredata ='';
+//$moredata ='';
  /* if($break_search_text){
 	$moredata .="AND (
 		wp_postmeta.meta_key = 'custom_pdf_keywords'
@@ -176,7 +176,7 @@ $query = "
     SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
     FROM {$wpdb->prefix}posts
     INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id
-    WHERE {$wpdb->prefix}posts.post_type = 'post'
+    WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
     AND {$wpdb->prefix}posts.post_status = 'publish' ";
 
 $query .= " AND (
