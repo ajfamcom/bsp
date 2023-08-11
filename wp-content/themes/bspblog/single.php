@@ -14,7 +14,28 @@ if (!defined('ABSPATH')) {
 }
 
 get_header(); ?>
+<?php 
+while (have_posts()) : the_post();
+$post_id = get_the_ID();
+$permalink = get_permalink($post_id);
+$download=get_field('post_pdf_attachment',$post_id);
+$post_date = get_the_date('F j, Y \a\t g:i A e', $post_id);
+$author_name = get_the_author_meta('display_name', get_post_field('post_author', $post_id));
+$permalink = get_permalink($post_id);
+				if (has_post_thumbnail($post_id)) {
 
+					$thumbnail_id = get_post_thumbnail_id($post_id);
+					$image_url = wp_get_attachment_url($thumbnail_id);
+					$theme_directory_uri = get_template_directory_uri();
+					$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
+
+					$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
+				} else {
+					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
+				}
+				$search=get_pdf_metadata_custom($post_id,'post');
+endwhile;
+?>
 <div class="blog-detail-bnr pt-5">
 	<div class="container">
 		<div class="row">
@@ -23,6 +44,7 @@ get_header(); ?>
 					<?php echo get_breadcrumbs(); ?>
 					<div class="page-title">
 						<h2><?php echo get_the_title(); ?></h2>
+						<p>WLRN 91.3 FM | By <?php echo $author_name;?> , Published <?php echo $post_date; ?></p>
 					</div>
 				</div>
 			</div>
@@ -35,9 +57,9 @@ get_header(); ?>
 	<div class="col-md-12 pt-2 pb-5">
 		<div class="row">
 			<?php
-			while (have_posts()) : the_post();
-				$post_id = get_the_ID();
-				$permalink = get_permalink($post_id);
+			//while (have_posts()) : the_post();
+				//$post_id = get_the_ID();
+				/* $permalink = get_permalink($post_id);
 				if (has_post_thumbnail($post_id)) {
 
 					$thumbnail_id = get_post_thumbnail_id($post_id);
@@ -48,7 +70,7 @@ get_header(); ?>
 					$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
 				} else {
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
-				}
+				} */
 				
 			?>
 				<div class="single-poll col-12">
@@ -65,24 +87,24 @@ get_header(); ?>
 		</div>
 
 	</div>
-<?php endwhile; ?>
+<?php //endwhile; ?>
 </div>
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-sm-10 col-12 offset-md-1 offset-sm-1">
 		<?php 
-		while (have_posts()) : the_post();
+		/* while (have_posts()) : the_post();
 				$post_id = get_the_ID();
 				$permalink = get_permalink($post_id);
 				$download=get_field('post_pdf_attachment',$post_id);
 				$post_date = get_the_date('F j, Y \a\t g:i A e', $post_id);
-				$author_name = get_the_author_meta('display_name', get_post_field('post_author', $post_id));
+				$author_name = get_the_author_meta('display_name', get_post_field('post_author', $post_id)); */
 
 				?>
 				<div class="single-poll-content">
 						<div class="single-poll-info">
-							<h1 class="poll-title"><?php the_title(); ?></h1>
-							<p>WLRN 91.3 FM | By <?php echo $author_name;?> , Published <?php echo $post_date; ?></p>
+							<h1 class="poll-title"><?php //the_title(); ?></h1>
+							
 							<?php the_content(); ?>
 							<p>
                               <?php if($download) { ?>
@@ -96,7 +118,7 @@ get_header(); ?>
 					<h3>Share this:</h3>
 					<?php dynamic_sidebar('sidebar-1'); ?>
 				</div>
-		<?php endwhile; ?>
+		<?php //endwhile; ?>
 		</div>
 
 	</div>
@@ -106,10 +128,10 @@ get_header(); ?>
 
 <div class="col-md-12 py-5">
 <?php 
-while (have_posts()) : the_post();
+/* while (have_posts()) : the_post();
 $post_id = get_the_ID();
 $search=get_pdf_metadata_custom($post_id,'post');
-endwhile;
+endwhile; */
 ?>
 <h2 class="text-center mb-4">Related Posts</h2>
 
