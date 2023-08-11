@@ -6,7 +6,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
  $search_text=isset($_REQUEST['search_text'])?$_REQUEST['search_text']:'';
  $from_date=isset($_REQUEST['from_date'])?$_REQUEST['from_date']:'';
  $to_date=isset($_REQUEST['to_date'])?$_REQUEST['to_date']:'';
- if (is_search() && !empty($query->query_vars['s'])) {		
+ if ($search_text) {		
       
 	$search_term = trim($search_text);
 	$visitor_ip =get_visitor_ip_address();
@@ -14,7 +14,8 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 	global $wpdb;
 	$insert_data=array(
 	   'keyword'=>$search_term,
-	   'visitor_ip'=>$visitor_ip
+	   'visitor_ip'=>$visitor_ip,
+	   'search_page'=>'polls_page'
 	);
    $wpdb->insert($tablename,$insert_data);		  
    
