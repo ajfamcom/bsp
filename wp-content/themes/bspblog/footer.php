@@ -195,7 +195,7 @@ splide.mount();
 </script>
 
 <?php
-$current_url = esc_url(add_query_arg($_SERVER['QUERY_STRING'], '', wp_unslash($_SERVER['REQUEST_URI']))); // Get the current URL
+$current_url = $_SERVER['REQUEST_URI']; // Get the current URL
 ?>
 <script>
      $(document).ready(function () {
