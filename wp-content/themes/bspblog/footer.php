@@ -162,6 +162,10 @@ splide.mount();
 }
 */
 
+var elems = $('#slider-related-posts');
+
+if( elems.length ) {  
+
 var splide = new Splide( '#slider-related-posts', {
   type   : 'loop',
   padding: { left: '1rem', right: '7rem', },
@@ -189,6 +193,8 @@ var splide = new Splide( '#slider-related-posts', {
 } );
 
 splide.mount();
+
+ }
 
 
 });
