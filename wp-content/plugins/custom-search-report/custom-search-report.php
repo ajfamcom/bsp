@@ -28,7 +28,7 @@ function custom_data_display_menu() {
 add_action('admin_menu', 'custom_data_display_menu');
 
 function custom_data_display_page() {
-    
+    global $wpdb;
     $data = $wpdb->get_results("SELECT * FROM wp_searchdata");
    
     echo '<div class="wrap">';
