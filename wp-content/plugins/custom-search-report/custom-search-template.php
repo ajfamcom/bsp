@@ -5,13 +5,18 @@ Template Name: Custom Search Data Template
 global $wpdb;
 
 // Pagination variables
-$current_page = max(1, get_query_var('paged'));
-$items_per_page = 10; // Number of items per page
+$current_page = max(1, $_GET['paged']);
+$items_per_page = 20; // Number of items per page
 $offset = ($current_page - 1) * $items_per_page;
 
 // Search keyword
 $search_keyword = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : '';
+$current_admin_url = admin_url('admin.php');
+$current_admin_url = add_query_arg(array('page' => 'search-report-display'), $current_admin_url);
 
+if (!empty($search_keyword)) {
+    $current_admin_url = add_query_arg(array('s' => urlencode($search_keyword)), $current_admin_url);
+}
 // Query to fetch data with pagination
 $query = "SELECT * FROM wp_searchdata";
 
@@ -25,24 +30,38 @@ $fetchdata = $wpdb->get_results($query);
 
 // Count total number of rows without pagination
 $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata");
-
+if (!empty($search_keyword)) {
+  $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata WHERE keyword LIKE '%$search_keyword%'");
+}
 // Calculate total number of pages for pagination
 $total_pages = ceil($total_items / $items_per_page);
 ?>
 <style>
-    table, th, td {
+    /* table, th, td {
   border: 1px solid black;
+} */
+.custom-search-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.custom-search-table th,
+.custom-search-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
 }
 </style>
 <div class="container mt-5">
   <h2>Search Data</h2>
 
-  <form method="get" action="">
+  <form method="get" action="<?php echo esc_url($current_admin_url); ?>">
+    <input type="hidden" name="page" value="search-report-display">
     <input type="text" name="s" id="searchInput" class="form-control mb-3" placeholder="Search by Keyword" value="<?php echo esc_attr($search_keyword); ?>">
     <button type="submit" class="btn btn-primary">Search</button>
-  </form>
+</form>
 
-  <table class="table">
+  <table class="custom-search-table">
     <thead>
       <tr>
         <th>Keyword</th>
@@ -77,7 +96,11 @@ $total_pages = ceil($total_items / $items_per_page);
           'total' => $total_pages,
       ));
       echo '</div>';
-  }
+  } 
+  
+
+
+
   ?>
   
   
