@@ -29,14 +29,16 @@ add_action('admin_menu', 'custom_data_display_menu');
 
 function custom_data_display_page() {
     
-    $data = $wpdb->get_results("SELECT * FROM your_custom_table");
+    $data = $wpdb->get_results("SELECT * FROM wp_searchdata");
    
     echo '<div class="wrap">';
     echo '<h2>Custom Data Display</h2>';   
     
     if (!empty($data)) {
         foreach ($data as $item) {            
-            echo '<p>' . $item->column_name . '</p>';
+            echo '<p>Keyword:' . $item->keyword . '</p>';
+			echo '<p>Visitor IP:' . $item->visitor_ip . '</p>';
+			echo '<p>Search DateTime:' . date('d m Y,H:i:s',strtotime($item->created_at)) . '</p>';
         }
     } else {
         echo '<p>No data found.</p>';
