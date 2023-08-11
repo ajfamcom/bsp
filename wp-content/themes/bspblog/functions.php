@@ -861,8 +861,12 @@ function render_custom_meta_field($post) {
 
 // Override the custom logo output
 function custom_override_custom_logo($html) {
-    // Replace 'your_custom_image_url' with your actual custom image URL
-    $custom_logo_image = '<img src="'.get_bloginfo("assets/images/banner-img.jpg").'" alt="' . get_bloginfo('name') . '">';
+    $theme_directory = get_template_directory_uri();
+
+    
+    $custom_image_url = esc_url($theme_directory . '/assets/images/your_custom_image.jpg'); 
+
+    $custom_logo_image = '<img src="'.$custom_image_url.'" alt="' . get_bloginfo('name') . '">';
 
     // Return the custom logo image
     return $custom_logo_image;
