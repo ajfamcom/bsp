@@ -32,7 +32,7 @@ get_header(); // Include the header
 			}
 			?>
                 <li>
-                    <h3><a href="<?php echo  $permalink; ?>"><?php the_title(); ?></a></h3>
+                    <h3><a href="<?php echo  $permalink; ?>" target="_blank"><?php the_title(); ?></a></h3>
                     <?php the_excerpt(); ?>
                 </li>
             <?php endwhile; ?>
