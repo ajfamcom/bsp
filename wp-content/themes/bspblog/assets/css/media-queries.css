@@ -387,6 +387,9 @@
     .contact-form {
         padding: 20px;
     }
+    .search.search-results ul.list-unstyled li {
+        margin: 4% 0;
+    }
 }
 
 /*================================= /media-queries ==================================*/

@@ -2,7 +2,7 @@
 get_header(); // Include the header
 ?>
 
-<div class="container mt-5">
+<div class="container my-5 pb-md-3">
     <h2>Search Results for: <?php echo get_search_query(); ?></h2>
 
     <?php if (have_posts()) : ?>
