@@ -11,7 +11,7 @@ $offset = ($current_page - 1) * $items_per_page;
 
 // Search keyword
 $search_keyword = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : '';
-$current_admin_url = admin_url('admin.php').'?page=search-report-display';
+$current_admin_url = admin_url('admin.php').'?page=search-report-display'.'&s='.$search_keyword;
 
 if (!empty($search_keyword)) {
     $current_admin_url = $current_admin_url.'&s='.$search_keyword;//add_query_arg(array('s' => urlencode($search_keyword)), $current_admin_url);
