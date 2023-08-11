@@ -111,8 +111,8 @@ endwhile;
 
  global $wpdb;
 
-$search_term = $search['dc:subject'];
-$breakcode = explode(',', $search_term);
+//$search_term = $search['dc:subject'];
+$breakcode = $search['dc:subject'];//explode(',', $search_term);
 
 if ($breakcode) {
     $addData = "";
