@@ -78,15 +78,15 @@ endwhile;
 				</div>
 				
 				<div class="share-and-dwn-btn">
-		<div class="download-pdf-file my-md-5">
+		<div class="download-pdf-file">
 		<h3>Download the Poll</h3>
                               <?php if($download) { ?>
-                                <a class="btn btn-primary pdf-download" href="<?php echo $download['url'];?>" download>Download Attached PDF <i class="fa-solid fa-file-arrow-down"></i></a>
+                                <a class="pdf-download" href="<?php echo $download['url'];?>" download>Download Attached PDF <i class="fa-solid fa-file-arrow-down"></i></a>
 							<?php  } ?>
 							</div>
 		
 		
-		<div class="share-social-icons my-5">
+		<div class="share-social-icons">
 					<h3>Share this:</h3>
 					<?php dynamic_sidebar('sidebar-1'); ?>
 				</div>

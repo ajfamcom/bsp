@@ -1039,6 +1039,17 @@ ul.contact-social-links li a:hover i {
     gap: 30px;
     margin: 3% 0;
 }
+.pdf-download {
+    margin-top: 2%;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pdf-download i {
+    background: var(--blue);
+    padding: 12px 16px;
+}
 .share-social-icons .social-links a {
     font-size: 42px;
     color: var(--blue);
