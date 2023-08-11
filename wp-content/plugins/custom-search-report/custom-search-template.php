@@ -27,13 +27,13 @@ $data = $wpdb->get_results("SELECT * FROM wp_searchdata");
     </thead>
     <tbody id="">
     <?php
-    print_r($data);
+    
      if (!empty($data)) {
         foreach ($data as $item) {            
-            echo '<tr><td>Keyword:</td><td>' . $item->keyword . '</td></tr>';
-			echo '<tr><td>Visitor IP:</td><td>' . $item->visitor_ip . '</td></tr>';
-			echo '<tr><td>Search DateTime:</td><td>' . $item->created_at . '</td></tr>';
-			echo '<tr><td>Search From:</td><td>' . $item->search_page . '</td></tr>';
+      echo '<tr><td>Keyword:</td><td>' .$item->keyword . '</td></tr>';
+			echo '<tr><td>Visitor IP:</td><td>' .$item->visitor_ip . '</td></tr>';
+			echo '<tr><td>Search DateTime:</td><td>' .$item->created_at . '</td></tr>';
+			echo '<tr><td>Search From:</td><td>' .$item->search_page . '</td></tr>';
         }
     } else {
         echo '<tr><td>No data found.</td></tr>';
