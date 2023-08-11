@@ -91,7 +91,7 @@ endwhile;
 		
 		</div>
 
-		<div class="col-md-6 col-sm-6 col-12">
+		<div class="share-and-dwn-btn">
 		<div class="download-pdf-file my-md-5">
 
 			<h3>Download the Poll</h3>
@@ -99,8 +99,7 @@ endwhile;
                                 <a href="<?php echo $download['url'];?>">Download <i class="fa-solid fa-file-arrow-down"></i></a>
 							<?php  } ?>
 							</div>
-		</div>
-		<div class="col-md-6 col-sm-6 col-12">
+		
 		<div class="share-social-icons my-md-5">
 					<h3>Share this:</h3>
 					<?php dynamic_sidebar('sidebar-1'); ?>
