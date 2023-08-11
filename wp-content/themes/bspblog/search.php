@@ -14,30 +14,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header(); ?>
 
-<?php if ( astra_page_layout() == 'left-sidebar' ) : ?>
+<div class="container mt-5">
+    <h2>Search Results for: <?php echo get_search_query(); ?></h2>
 
-	<?php get_sidebar(); ?>
+    <?php if (have_posts()) : ?>
+        <ul class="list-unstyled">
+            <?php while (have_posts()) : the_post(); ?>
+                <li>
+                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                    <p><?php the_excerpt(); ?></p>
+                </li>
+            <?php endwhile; ?>
+        </ul>
+    <?php else : ?>
+        <p>No results found.</p>
+    <?php endif; ?>
+</div>
 
-<?php endif ?>
+<?php
+get_footer(); // Include the footer
+?>
 
-	<div id="primary" <?php astra_primary_class(); ?>>
-
-		<?php astra_primary_content_top(); ?>
-
-		<?php astra_archive_header(); ?>
-
-		<?php astra_content_loop(); ?>		
-
-		<?php astra_pagination(); ?>
-
-		<?php astra_primary_content_bottom(); ?>
-
-	</div><!-- #primary -->
-
-<?php if ( astra_page_layout() == 'right-sidebar' ) : ?>
-
-	<?php get_sidebar(); ?>
-
-<?php endif ?>
-
-<?php get_footer(); ?>
