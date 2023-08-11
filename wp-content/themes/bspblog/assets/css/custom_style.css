@@ -1018,7 +1018,7 @@ ul.contact-social-links li a:hover i {
 }
 .share-social-icons {
     background: rgba(5,63,105,0.07);
-    padding: 25px 15px;
+    padding: 35px 15px;
     text-align: center;
     border-radius: 8px;
     border: 1px solid var(--blue);
@@ -1104,7 +1104,7 @@ ul.contact-social-links li a:hover i {
     -o-transition: all ease-in-out 0.3s;
 }
 .share-social-icons .social-links a {
-    font-size: 42px;
+    font-size: 36px;
     color: var(--blue);
     margin: 0 10px;
 }

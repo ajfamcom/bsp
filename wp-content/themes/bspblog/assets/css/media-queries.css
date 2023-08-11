@@ -390,6 +390,10 @@
     .search.search-results ul.list-unstyled li {
         margin: 4% 0;
     }
+    .share-and-dwn-btn {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
 }
 
 /*================================= /media-queries ==================================*/
