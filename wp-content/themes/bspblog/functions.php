@@ -745,9 +745,14 @@ function save_pdf_meta($post_id) {
         $metadata=get_pdf_metadata_custom($post_id,'polls');
         if($metadata)
     {
-        $pdf_keywords=implode(',',$metadata['dc:subject']);
-        //$pdf_keywords=$metadata['Keywords'];
-        foreach($metadata['dc:subject'] as $val){
+        //$pdf_keywords=implode(',',$metadata['dc:subject']);
+        
+        $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);
+
+        // Remove empty lines and trim whitespace from each keyword
+         $keywordsArray = array_map('trim', array_filter($keywordsArray));
+         
+        foreach($keywordsArray as $val){
             if(!in_array($val,$breakcode)){
                 $custom_field_value .=$val.',';
             }
@@ -758,9 +763,14 @@ function save_pdf_meta($post_id) {
         $metadata=get_pdf_metadata_custom($post_id,'post');
         if($metadata)
     {
-        $pdf_keywords=implode(',',$metadata['dc:subject']);
-        //$pdf_keywords=$metadata['Keywords'];
-        foreach($metadata['dc:subject'] as $val){
+        //$pdf_keywords=implode(',',$metadata['dc:subject']);
+        
+        $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);
+
+        // Remove empty lines and trim whitespace from each keyword
+         $keywordsArray = array_map('trim', array_filter($keywordsArray));
+         
+        foreach($keywordsArray as $val){
             if(!in_array($val,$breakcode)){
                 $custom_field_value .=$val.',';
             }
