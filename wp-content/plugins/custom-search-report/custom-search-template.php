@@ -11,7 +11,11 @@ $offset = ($current_page - 1) * $items_per_page;
 
 // Search keyword
 $search_keyword = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : '';
+$current_admin_url = admin_url('admin.php');
 
+if (!empty($search_keyword)) {
+    $current_admin_url = add_query_arg(array('s' => urlencode($search_keyword)), $current_admin_url);
+}
 // Query to fetch data with pagination
 $query = "SELECT * FROM wp_searchdata";
 
@@ -37,7 +41,7 @@ $total_pages = ceil($total_items / $items_per_page);
 <div class="container mt-5">
   <h2>Search Data</h2>
 
-  <form method="get" action="">
+  <form method="get" action="<?php echo esc_url($current_admin_url); ?>">
     <input type="text" name="s" id="searchInput" class="form-control mb-3" placeholder="Search by Keyword" value="<?php echo esc_attr($search_keyword); ?>">
     <button type="submit" class="btn btn-primary">Search</button>
   </form>
