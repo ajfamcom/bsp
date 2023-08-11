@@ -142,7 +142,7 @@ $moredata ='';
 echo $query;
 $results = $wpdb->get_results($query);  */
 
-$query="SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
+/* $query="SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
 FROM wp_posts
 INNER JOIN wp_postmeta ON wp_posts.ID = wp_postmeta.post_id
 WHERE wp_posts.post_type = 'post'
@@ -159,8 +159,41 @@ AND (
 GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
 ORDER BY wp_posts.post_date DESC;
 ";
-$results = $wpdb->get_results($query);
-		
+$results = $wpdb->get_results($query); */
+$search_term = "Spanish,Midterm,Statewide";
+
+$breakcode = explode(',', $search_term);
+
+if ($breakcode) {
+    $addData = "";
+    foreach ($breakcode as $val) {
+        $addData .= "OR wp_postmeta.meta_value LIKE '%$val%'"; 
+    }
+}
+
+
+$query = "
+    SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
+    FROM {$wpdb->prefix}posts
+    INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id
+    WHERE {$wpdb->prefix}posts.post_type = 'post'
+    AND {$wpdb->prefix}posts.post_status = 'publish' ";
+
+$query .= " AND (
+    wp_postmeta.meta_key = 'custom_pdf_keywords'
+    AND (
+        wp_postmeta.meta_value LIKE '%test%' ";
+
+    $query .= $addData;
+
+ $query .= ")
+)";
+
+$query .= " GROUP BY {$wpdb->prefix}posts.ID
+    ORDER BY {$wpdb->prefix}posts.post_date DESC";
+
+$results = $wpdb->get_results($query);	
+
 		if ($results) :
 			foreach($results as $row) :
 
