@@ -350,7 +350,7 @@ if (is_search() && !empty($query->query_vars['s'])) {
     $wpdb->insert($tablename, $insert_data);
 
     $search = '';
-    $search .= " AND ({$wpdb->posts}.post_type='post' || {$wpdb->posts}.post_type='bsp_custom_polls' || {$wpdb->posts}.post_type='news_analysis' || {$wpdb->posts}.post_type='team_members' || {$wpdb->posts}.post_type='manage_services') ";	
+    $search .= " AND ({$wpdb->posts}.post_type='post' || {$wpdb->posts}.post_type='bsp_custom_polls' || {$wpdb->posts}.post_type='news_analysis' || {$wpdb->posts}.post_type='team_members') ";	
     $search .= " AND ({$wpdb->posts}.post_content LIKE '%$search_term%' || {$wpdb->posts}.post_title LIKE '%$search_term%' || {$wpdb->posts}.post_excerpt LIKE '%$search_term%')";
 
     return $search;   
