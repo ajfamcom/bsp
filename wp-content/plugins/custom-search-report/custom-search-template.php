@@ -68,7 +68,7 @@ $total_pages = ceil($total_items / $items_per_page);
   </table>
 
     <?php
-  if ($total_pages > 1) {
+ /*  if ($total_pages > 1) {
       echo '<div class="pagination">';
       echo paginate_links(array(
           'base' => admin_url('admin.php?page=search-report-display') . '%_%',
@@ -77,7 +77,31 @@ $total_pages = ceil($total_items / $items_per_page);
           'total' => $total_pages,
       ));
       echo '</div>';
-  }
+  } */
+  
+if ($total_pages > 1) {
+    echo '<div class="pagination">';
+    
+    echo '<span class="pagination-links">';
+    for ($i = 1; $i <= $total_pages; $i++) {
+        $page_url = add_query_arg(array('paged' => $i));
+        
+        if ($search_keyword) {
+            $page_url = add_query_arg(array('s' => urlencode($search_keyword)), $page_url);
+        }
+
+        if ($current_page === $i) {
+            echo '<span class="current">' . $i . '</span>';
+        } else {
+            echo '<a href="' . esc_url($page_url) . '">' . $i . '</a>';
+        }
+    }
+    echo '</span>';
+
+    echo '</div>';
+}
+
+
   ?>
   
   
