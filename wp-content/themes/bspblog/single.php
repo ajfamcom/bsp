@@ -108,7 +108,7 @@ get_header(); ?>
 <?php 
 while (have_posts()) : the_post();
 $post_id = get_the_ID();
-$search=get_pdf_metadata_custom($post_id,'post');	
+$search=get_pdf_metadata_custom($post_id,'post');
 endwhile;
 ?>
 <h2 class="text-center mb-4">Related Posts</h2>
@@ -116,7 +116,9 @@ endwhile;
 <section class="splide pb-md-5 mb-md-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
         <div class="splide__track">
             <ul class="splide__list">
-                <?php global $wpdb;
+                <?php 
+				print_r($search);
+global $wpdb;
 
 $search_text = 'Hispanic';//$search['Keywords'];
 $break_search_text = array(); // Initialize the array
