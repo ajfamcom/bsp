@@ -1107,7 +1107,7 @@ ul.contact-social-links li a:hover i {
 .share-social-icons .social-links a {
     font-size: 36px;
     color: var(--blue);
-    margin: 0 10px;
+    margin: 0 5px;
 }
 .share-social-icons .social-links a:hover {
     color: var(--orange);
