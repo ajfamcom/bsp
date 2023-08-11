@@ -193,7 +193,7 @@ $query .= " GROUP BY {$wpdb->prefix}posts.ID,{$wpdb->prefix}posts.post_title,{$w
     ORDER BY {$wpdb->prefix}posts.post_date DESC";
 
 $results = $wpdb->get_results($query);
-
+echo 'haloo';
 print_r($results);
 
 
