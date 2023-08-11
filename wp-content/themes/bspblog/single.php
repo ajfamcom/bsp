@@ -34,7 +34,10 @@ $permalink = get_permalink($post_id);
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
 				}
 				$search=get_pdf_metadata_custom($post_id,'post');
+
 endwhile;
+echo 'heelo'; 
+				print_r($search);
 ?>
 <div class="blog-detail-bnr pt-5">
 	<div class="container">
@@ -110,8 +113,7 @@ endwhile;
         <div class="splide__track">
             <ul class="splide__list">
                 <?php
-				echo 'heelo'; 
-				print_r($search);
+				
 global $wpdb;
 
 $search_text = 'Hispanic';//$search['Keywords'];
