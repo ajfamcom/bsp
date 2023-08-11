@@ -403,8 +403,8 @@ function get_breadcrumbs() {
     if (is_category() || is_single()) {
         $category = get_the_category();
         if ($category) {
-            $breadcrumbs .= '<span class="separator"> <i class="fa-solid fa-angles-right"></i> </span>';
-            $breadcrumbs .= '<a href="' . get_category_link($category[0]->term_id) . '">' . $category[0]->name . '</a>';
+            $breadcrumbs .= '';//'<span class="separator"> <i class="fa-solid fa-angles-right"></i> </span>';
+            $breadcrumbs .= '';//'<a href="' . get_category_link($category[0]->term_id) . '">' . $category[0]->name . '</a>';
         }
     } elseif (is_page()) {
         $post = get_post();
