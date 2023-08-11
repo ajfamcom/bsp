@@ -30,7 +30,9 @@ $fetchdata = $wpdb->get_results($query);
 
 // Count total number of rows without pagination
 $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata");
-
+if (!empty($search_keyword)) {
+  $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata WHERE keyword LIKE '%$search_keyword%'");
+}
 // Calculate total number of pages for pagination
 $total_pages = ceil($total_items / $items_per_page);
 ?>
