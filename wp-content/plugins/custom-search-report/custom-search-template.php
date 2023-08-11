@@ -72,6 +72,27 @@ $total_pages = ceil($total_items / $items_per_page);
     border-radius: 4px;
     cursor: pointer;
 }
+.custom-search-pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.custom-search-pagination a,
+.custom-search-pagination span {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 0 2px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    color: #333;
+    text-decoration: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.custom-search-pagination a:hover {
+    background-color: #ddd;
+}
 </style>
 <div class="container mt-5">
   <h2>Search Data</h2>
@@ -109,7 +130,7 @@ $total_pages = ceil($total_items / $items_per_page);
 
     <?php
   if ($total_pages > 1) {
-      echo '<div class="pagination">';
+      echo '<div class="custom-search-pagination">';
       echo paginate_links(array(
           'base' => admin_url('admin.php?page=search-report-display') . '%_%',
           'format' => '&paged=%#%',
