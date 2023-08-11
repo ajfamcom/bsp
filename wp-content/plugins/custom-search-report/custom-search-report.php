@@ -32,18 +32,20 @@ function search_report_data_display_page() {
     $data = $wpdb->get_results("SELECT * FROM wp_searchdata");
    ?>
     <div class="wrap">
-    <h2>Custom Data Display</h2>  
+    <h2>Custom Data Display</h2> 
+	<table> 
     <?php
      if (!empty($data)) {
         foreach ($data as $item) {            
-            echo '<p>Keyword:' . $item->keyword . '</p>';
-			echo '<p>Visitor IP:' . $item->visitor_ip . '</p>';
-			echo '<p>Search DateTime:' . $item->created_at . '</p>';
+            echo '<tr><td>Keyword:</td><td>' . $item->keyword . '</td></tr>';
+			echo '<tr><td>Visitor IP:</td><td>' . $item->visitor_ip . '</td></tr>';
+			echo '<tr><td>Search DateTime:</td><td>' . $item->created_at . '</td></tr>';
         }
     } else {
-        echo '<p>No data found.</p>';
+        echo '<tr><td>No data found.</td></tr>';
     } 
    ?>
+   </table>
 </div>
 <?php 
 }
