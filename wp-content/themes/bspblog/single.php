@@ -113,7 +113,9 @@ endwhile;
             <ul class="splide__list">
                 <?php
 global $wpdb;
-$breakcode = $search['dc:subject'];
+$keywordsArray = preg_split("/\r\n|\n|\r/", $search['Keywords']);      
+$breakcode = array_map('trim', array_filter($keywordsArray));
+//$breakcode = $search['Keywords'];
 
 if ($breakcode) {
     $addData = "";
