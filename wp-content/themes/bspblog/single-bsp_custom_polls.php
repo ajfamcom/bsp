@@ -99,7 +99,7 @@ endwhile;
 $keywordsArray = preg_split("/\r\n|\n|\r/", $search['Keywords']);      
 $breakcode = array_map('trim', array_filter($keywordsArray));
 //$breakcode = $search['dc:subject'];
-print_r($breakcode);
+
 ?>
 <section class="splide pb-md-5 mb-md-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
         <div class="splide__track">
