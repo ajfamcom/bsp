@@ -1,18 +1,6 @@
 <?php
-/**
- * The template for displaying search results pages.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
- *
- * @package Astra
- * @since 1.0.0
- */
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
-
-get_header(); ?>
+get_header(); // Include the header
+?>
 
 <div class="container mt-5">
     <h2>Search Results for: <?php echo get_search_query(); ?></h2>
@@ -26,6 +14,22 @@ get_header(); ?>
                 </li>
             <?php endwhile; ?>
         </ul>
+
+        <?php
+        global $wp_query;
+
+        // Pagination
+        $total_pages = $wp_query->max_num_pages;
+        if ($total_pages > 1) {
+            echo '<nav aria-label="Search results pagination">';
+            echo paginate_links(array(
+                'total' => $total_pages,
+                'prev_text' => __('&laquo; Previous'),
+                'next_text' => __('Next &raquo;'),
+            ));
+            echo '</nav>';
+        }
+        ?>
     <?php else : ?>
         <p>No results found.</p>
     <?php endif; ?>
@@ -34,4 +38,3 @@ get_header(); ?>
 <?php
 get_footer(); // Include the footer
 ?>
-
