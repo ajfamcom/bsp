@@ -51,14 +51,35 @@ $total_pages = ceil($total_items / $items_per_page);
     padding: 8px;
     text-align: center;
 }
+.custom-search-form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.custom-search-input {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.custom-search-button {
+    background-color: #0073e6;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
 </style>
 <div class="container mt-5">
   <h2>Search Data</h2>
 
   <form method="get" action="<?php echo esc_url($current_admin_url); ?>">
     <input type="hidden" name="page" value="search-report-display">
-    <input type="text" name="s" id="searchInput" class="form-control mb-3" placeholder="Search by Keyword" value="<?php echo esc_attr($search_keyword); ?>">
-    <button type="submit" class="btn btn-primary">Search</button>
+    <input type="text" name="s" id="searchInput" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php echo esc_attr($search_keyword); ?>">
+    <button type="submit" class="custom-search-button btn btn-primary">Search</button>
 </form>
 
   <table class="custom-search-table">
