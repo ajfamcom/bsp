@@ -6,7 +6,7 @@ global $wpdb;
 
 // Pagination variables
 $current_page = max(1, $_GET['paged']);
-$items_per_page = 20; // Number of items per page
+$items_per_page = 10; // Number of items per page
 $offset = ($current_page - 1) * $items_per_page;
 
 // Search keyword
@@ -51,14 +51,56 @@ $total_pages = ceil($total_items / $items_per_page);
     padding: 8px;
     text-align: center;
 }
+.custom-search-form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.custom-search-input {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.custom-search-button {
+    background-color: #0073e6;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.custom-search-pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.custom-search-pagination a,
+.custom-search-pagination span {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 0 2px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    color: #333;
+    text-decoration: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.custom-search-pagination a:hover {
+    background-color: #ddd;
+}
 </style>
 <div class="container mt-5">
   <h2>Search Data</h2>
 
   <form method="get" action="<?php echo esc_url($current_admin_url); ?>">
     <input type="hidden" name="page" value="search-report-display">
-    <input type="text" name="s" id="searchInput" class="form-control mb-3" placeholder="Search by Keyword" value="<?php echo esc_attr($search_keyword); ?>">
-    <button type="submit" class="btn btn-primary">Search</button>
+    <input type="text" name="s" id="searchInput" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php echo esc_attr($search_keyword); ?>">
+    <button type="submit" class="custom-search-button btn btn-primary">Search</button>
 </form>
 
   <table class="custom-search-table">
@@ -77,7 +119,7 @@ $total_pages = ceil($total_items / $items_per_page);
             echo '<tr><td>' . $item->keyword . '</td>';
             echo '<td>' . $item->visitor_ip . '</td>';
             echo '<td>' . $item->created_at . '</td>';
-            echo '<td>' . $item->search_page . '</td></tr>';
+            echo '<td>' . ucwords(str_replace('_',' ',$item->search_page)) . '</td></tr>';
         }
     } else {
         echo '<tr><td colspan="4">No data found.</td></tr>';
@@ -88,7 +130,7 @@ $total_pages = ceil($total_items / $items_per_page);
 
     <?php
   if ($total_pages > 1) {
-      echo '<div class="pagination">';
+      echo '<div class="custom-search-pagination">';
       echo paginate_links(array(
           'base' => admin_url('admin.php?page=search-report-display') . '%_%',
           'format' => '&paged=%#%',
