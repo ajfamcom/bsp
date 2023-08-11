@@ -359,6 +359,7 @@ button.search-submit:hover {
 .sidebar-img img {
     object-fit: cover;
     height: 100%;
+    width: 100%;
 }
 .side-fpost {
     display: flex;
