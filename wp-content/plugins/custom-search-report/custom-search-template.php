@@ -3,7 +3,7 @@
 Template Name: Custom Search Data Template
 */
 global $wpdb;
-$data = $wpdb->get_results("SELECT * FROM wp_searchdata");
+$fetchdata = $wpdb->get_results("SELECT * FROM wp_searchdata");
 ?>
 <style>
     table, th, td {
@@ -11,7 +11,7 @@ $data = $wpdb->get_results("SELECT * FROM wp_searchdata");
 }
 </style>    
 <div class="container mt-5">
-  <h2>Search Data from wp_searchdata Table</h2>
+  <h2>Search Data</h2>
 
   <input type="text" id="searchInput" class="form-control mb-3" placeholder="Search by Keyword">
 
@@ -28,12 +28,12 @@ $data = $wpdb->get_results("SELECT * FROM wp_searchdata");
     <tbody id="">
     <?php
     
-     if (!empty($data)) {
-        foreach ($data as $item) {            
-      echo '<tr><td>Keyword:</td><td>' .$item->keyword . '</td></tr>';
-			echo '<tr><td>Visitor IP:</td><td>' .$item->visitor_ip . '</td></tr>';
-			echo '<tr><td>Search DateTime:</td><td>' .$item->created_at . '</td></tr>';
-			echo '<tr><td>Search From:</td><td>' .$item->search_page . '</td></tr>';
+     if (!empty($fetchdata)) {
+        foreach ($fetchdata as $item) {            
+      echo '<tr><td>' .$item->keyword . '</td>';
+			echo '<td>' .$item->visitor_ip . '</td>';
+			echo '<td>' .$item->created_at . '</td>';
+			echo '<td>' .$item->search_page . '</td></tr>';
         }
     } else {
         echo '<tr><td>No data found.</td></tr>';
