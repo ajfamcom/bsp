@@ -8,8 +8,31 @@ get_header(); // Include the header
     <?php if (have_posts()) : ?>
         <ul class="list-unstyled">
             <?php while (have_posts()) : the_post(); ?>
+			<?php 
+			$post_id = get_the_ID();
+			$post_type = get_post_type($post_id);
+			
+			if($post_type=='manage_services')
+			{
+				$permalink=site_url('services');
+			}
+			elseif($post_type=='news_analysis')
+			{
+				$link_data = get_field('external_link', $post_id);
+				$link='javascript:void(0)';
+				$target="";
+				if($link_data){
+					$link= $link_data;
+					$target='_blank';
+				}
+				$permalink=$link;
+			}
+			else{
+				$permalink = get_permalink($post_id);
+			}
+			?>
                 <li>
-                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                    <h3><a href="<?php echo  $permalink; ?>" target="_blank"><?php the_title(); ?></a></h3>
                     <?php the_excerpt(); ?>
                 </li>
             <?php endwhile; ?>
