@@ -3,7 +3,7 @@
 Template Name: Custom Search Data Template
 */
 global $wpdb;
-$data = $wpdb->get_results("SELECT * FROM wp_searchdata limit 0,5");
+$fetchdata = $wpdb->get_results("SELECT * FROM wp_searchdata limit 0,5");
 ?>
 <style>
     table, th, td {
@@ -28,8 +28,8 @@ $data = $wpdb->get_results("SELECT * FROM wp_searchdata limit 0,5");
     <tbody id="">
     <?php
     
-     if (!empty($data)) {
-        foreach ($data as $item) {            
+     if (!empty($fetchdata)) {
+        foreach ($fetchdata as $item) {            
       echo '<tr><td>Keyword:</td><td>' .$item->keyword . '</td></tr>';
 			echo '<tr><td>Visitor IP:</td><td>' .$item->visitor_ip . '</td></tr>';
 			echo '<tr><td>Search DateTime:</td><td>' .$item->created_at . '</td></tr>';
