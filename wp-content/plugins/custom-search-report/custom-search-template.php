@@ -33,5 +33,5 @@ $your_data_array = $wpdb->get_results("SELECT * FROM wp_searchdata");
 </div>
 
 <?php
-//get_footer(); // Include the footer
+get_footer(); // Include the footer
 ?>
