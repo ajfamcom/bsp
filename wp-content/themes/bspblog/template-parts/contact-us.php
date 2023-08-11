@@ -25,7 +25,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 </div>
 
 <div class="container py-5 my-md-5">
-	<div class="row py-md-5 my-md-5">
+	<div class="row py-xl-5 my-xl-5">
 		<div class="col-md-4 col-sm-4 col-12">
 			<h2>Start working with our team today</h2>
 			<p>Interested in polling or message testing research? Focus groups or qualitative interviews? Modeling and data analytics? Contact us today to discuss the possibilities...</p>

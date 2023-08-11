@@ -24,7 +24,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 </div>
 
 <div class="container py-5 my-md-5">
-	<div class="row align-items-center py-md-5 my-md-5">
+	<div class="row align-items-center py-xl-5 my-xl-5">
 		<div class="col-md-6 col-sm-6 col-12">
 		<?php
 $args = array(
