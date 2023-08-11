@@ -1,4 +1,32 @@
 /*================================== media-queries ==================================*/
+
+/*============== safari-browser ================*/
+@media not all and (min-resolution:.001dpcm)
+{ @supports (-webkit-appearance:none) and (stroke-color:transparent) {
+    .services-post {
+        margin: 10px 0;
+    }
+    .static-post-discription {
+        margin-left: 4%;
+    }
+    .side-fpost-discription {
+        margin-left: 4%;
+    }
+    .sidebar-img {
+        margin-right: 4%;
+    }
+    .single-team-mem-content .-single-member-image {
+        margin-bottom: 20px;
+    }
+    .post-fields {
+        margin: 5px 0;
+    }
+    .post-fields button {
+        margin: 0 3px;
+    }
+}}
+/*============= /safari-browser ================*/
+
 @media screen and (max-width: 1199px) and (min-width:992px) {
     .bnr-title {
         font-size: 62px !important;
@@ -352,6 +380,9 @@
     .share-social-icons .social-links a {
         font-size: 28px;
         margin: 3px;
+    }
+    .contact-form {
+        padding: 20px;
     }
 }
 
