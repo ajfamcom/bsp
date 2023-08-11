@@ -42,7 +42,7 @@ $total_pages = ceil($total_items / $items_per_page);
 <div class="container mt-5">
   <h2>Search Data</h2>
 
-  <form method="get" action="<?php echo esc_url($current_admin_url_mod_final); ?>">
+  <form method="get" action="https://bsp.thefamcomlab.com/wp-admin/admin.php?page=search-report-display">
     <input type="text" name="s" id="searchInput" class="form-control mb-3" placeholder="Search by Keyword" value="<?php echo esc_attr($search_keyword); ?>">
     <button type="submit" class="btn btn-primary">Search</button>
   </form>
