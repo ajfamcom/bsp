@@ -43,7 +43,7 @@ if ($query->have_posts()) {
     the_post_thumbnail(); 
     }
     else{
-        echo '<img src="'.$noimage.'">';
+        echo '<img src="'.$noimage.'" class="attachment-post-thumbnail size-post-thumbnail wp-post-image">';
     }
     ?>
     </div>
