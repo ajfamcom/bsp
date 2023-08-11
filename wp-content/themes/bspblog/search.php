@@ -8,6 +8,11 @@ get_header(); // Include the header
     <?php if (have_posts()) : ?>
         <ul class="list-unstyled">
             <?php while (have_posts()) : the_post(); ?>
+			<?php 
+			$post_id = get_the_ID();
+			$post_type = get_post_type($post_id);
+			echo $post_type;
+			?>
                 <li>
                     <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                     <?php the_excerpt(); ?>
