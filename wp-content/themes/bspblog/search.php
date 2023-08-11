@@ -24,8 +24,8 @@ get_header(); // Include the header
             echo '<div class="pagination">';
             echo paginate_links(array(
                 'total' => $total_pages,
-                'prev_text' => __('&laquo; Previous'),
-                'next_text' => __('Next &raquo;'),
+                'prev_text' => __('&laquo;'),
+                'next_text' => __('&raquo;'),
             ));
             echo '</div>';
         }
