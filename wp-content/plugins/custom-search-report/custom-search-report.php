@@ -30,10 +30,10 @@ add_action('admin_menu', 'custom_data_display_menu');
 function search_report_data_display_page() {
      global $wpdb;
     $data = $wpdb->get_results("SELECT * FROM wp_searchdata");
-   
-    echo '<div class="wrap">';
-    echo '<h2>Custom Data Display</h2>';   
-    
+   ?>
+    <div class="wrap">
+    <h2>Custom Data Display</h2>  
+    <?php
      if (!empty($data)) {
         foreach ($data as $item) {            
             echo '<p>Keyword:' . $item->keyword . '</p>';
@@ -43,7 +43,8 @@ function search_report_data_display_page() {
     } else {
         echo '<p>No data found.</p>';
     } 
-    echo 'hello';
-    echo '</div>';
+   ?>
+</div>
+<?php 
 }
 
