@@ -3,7 +3,7 @@
 Template Name: Custom Search Data Template
 */
 global $wpdb;
-$fetchdata = $wpdb->get_results("SELECT * FROM wp_searchdata limit 0,5");
+$fetchdata = $wpdb->get_results("SELECT * FROM wp_searchdata");
 ?>
 <style>
     table, th, td {
