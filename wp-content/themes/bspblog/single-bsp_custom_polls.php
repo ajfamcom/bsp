@@ -81,7 +81,7 @@ endwhile;
 		<div class="download-pdf-file my-md-5">
 		<h3>Download the Poll</h3>
                               <?php if($download) { ?>
-                                <a class="btn btn-primary pdf-download" href="<?php echo $download['url'];?>">Download Attached PDF <i class="fa-solid fa-file-arrow-down"></i></a>
+                                <a class="btn btn-primary pdf-download" href="<?php echo $download['url'];?>" download>Download Attached PDF <i class="fa-solid fa-file-arrow-down"></i></a>
 							<?php  } ?>
 							</div>
 		
