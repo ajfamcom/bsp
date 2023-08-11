@@ -345,6 +345,7 @@ if (is_search() && !empty($query->query_vars['s'])) {
     $insert_data = array(
         'keyword' => $search_term,
         'visitor_ip' => $visitor_ip,
+        'search_page'=>'top_header'
     );
     $wpdb->insert($tablename, $insert_data);
 
