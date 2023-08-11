@@ -104,7 +104,7 @@ global $wpdb;
 $keywordsArray = preg_split("/\r\n|\n|\r/", $search['Keywords']);      
 $breakcode = array_map('trim', array_filter($keywordsArray));
 //$breakcode = $search['dc:subject'];
-
+print_r($breakcode);
 if ($breakcode) {
     $addData = "";
     foreach ($breakcode as $val) {
