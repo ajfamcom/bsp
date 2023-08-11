@@ -33,12 +33,16 @@ if ($query->have_posts()) {
             $link= $link_data;
             $target='_blank';
         }
+        $noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
         ?>
 <div class="news-single-block">
     <div class="sidebar-img">
 	<?php
     if (has_post_thumbnail()) {
     the_post_thumbnail(); 
+    }
+    else{
+        echo '<img src="'.$noimage.'">';
     }
     ?>
     </div>
