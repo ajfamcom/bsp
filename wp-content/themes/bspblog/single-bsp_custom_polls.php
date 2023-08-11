@@ -6,7 +6,7 @@
 while (have_posts()) : the_post();
 $post_id = get_the_ID();
 $permalink = get_permalink($post_id);
-$download=get_field('post_pdf_attachment',$post_id);
+$download=get_field('pdf_attachment',$post_id);
 $post_date = get_the_date('F j, Y \a\t g:i A e', $post_id);
 $author_name = get_the_author_meta('display_name', get_post_field('post_author', $post_id));
 $permalink = get_permalink($post_id);
