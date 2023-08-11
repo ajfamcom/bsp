@@ -1048,3 +1048,25 @@ section#slider-related-posts h2 {
     -o-border-radius: 4px !important;
 }
 /*------- /post-discription-page --------*/
+
+/*---------- search-result-page ----------*/
+.search.search-results h2 {
+    font-size: 20px;
+    margin-bottom: 3%;
+}
+.search.search-results ul.list-unstyled {
+    margin: 0;
+}
+.search.search-results ul.list-unstyled li {
+    background: #f2f2f2;
+    padding: 30px 20px;
+    border-radius: 6px;
+    margin: 2% 0;
+}
+.search.search-results ul.list-unstyled li h3 {
+    margin-bottom: 0.7%;
+}
+.search.search-results ul.list-unstyled li p {
+    margin: 0;
+}
+/*--------- /search-result-page ----------*/
