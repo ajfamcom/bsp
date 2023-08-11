@@ -72,19 +72,27 @@ endwhile;
 						
 							
 							<?php the_content(); ?>
-							<p>
-                              <?php if($download) { ?>
-                                <a href="<?php echo $download['url'];?>">Download Pdf Attachment</a>
-							<?php  } ?>
-							</p>
+							
 						</div>
 
 				</div>
-				<div class="share-social-icons my-5">
+				
+		
+		</div>
+
+		<div class="col-md-6 col-sm-6 col-12">
+		<div class="download-pdf-file my-md-5">
+		<h3>Download the Poll</h3>
+                              <?php if($download) { ?>
+                                <a href="<?php echo $download['url'];?>">Download <i class="fa-solid fa-file-arrow-down"></i></a>
+							<?php  } ?>
+							</div>
+		</div>
+		<div class="col-md-6 col-sm-6 col-12">
+		<div class="share-social-icons my-5">
 					<h3>Share this:</h3>
 					<?php dynamic_sidebar('sidebar-1'); ?>
 				</div>
-		
 		</div>
 
 	</div>
