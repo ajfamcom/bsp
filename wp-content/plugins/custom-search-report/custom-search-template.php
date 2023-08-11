@@ -3,7 +3,7 @@
 Template Name: Custom Search Data Template
 */
 global $wpdb;
-$data = $wpdb->get_results("SELECT * FROM wp_searchdata");
+$data = $wpdb->get_results("SELECT * FROM wp_searchdata limit 0,5");
 ?>
 <style>
     table, th, td {
@@ -11,7 +11,7 @@ $data = $wpdb->get_results("SELECT * FROM wp_searchdata");
 }
 </style>    
 <div class="container mt-5">
-  <h2>Search Data from wp_searchdata Table</h2>
+  <h2>Search Data</h2>
 
   <input type="text" id="searchInput" class="form-control mb-3" placeholder="Search by Keyword">
 
