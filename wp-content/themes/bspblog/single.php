@@ -36,8 +36,7 @@ $permalink = get_permalink($post_id);
 				$search=get_pdf_metadata_custom($post_id,'post');
 
 endwhile;
-echo 'heelo'; 
-				print_r($search);
+
 ?>
 <div class="blog-detail-bnr pt-5">
 	<div class="container">
@@ -113,8 +112,16 @@ echo 'heelo';
         <div class="splide__track">
             <ul class="splide__list">
                 <?php
-				
 global $wpdb;
+$breakcode = $search['dc:subject'];
+
+if ($breakcode) {
+    $addData = "";
+    foreach ($breakcode as $val) {
+        $addData .= "OR wp_postmeta.meta_value LIKE '%$val%'"; 
+    }
+}				
+
 
 $search_text = 'Hispanic';//$search['Keywords'];
 $break_search_text = array(); // Initialize the array
