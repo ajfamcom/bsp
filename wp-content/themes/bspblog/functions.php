@@ -864,7 +864,7 @@ function custom_override_custom_logo($html) {
     $theme_directory = get_template_directory_uri();
 
     
-    $custom_image_url = esc_url($theme_directory . '/assets/images/logo.svg'); 
+    $custom_image_url = esc_url($theme_directory . '/assets/images/logo-final.svg'); 
 
     $custom_logo_image = '<img src="'.$custom_image_url.'" alt="' . get_bloginfo('name') . '" width="151px" height="77px">';
 
