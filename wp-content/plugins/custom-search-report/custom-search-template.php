@@ -37,8 +37,19 @@ if (!empty($search_keyword)) {
 $total_pages = ceil($total_items / $items_per_page);
 ?>
 <style>
-    table, th, td {
+    /* table, th, td {
   border: 1px solid black;
+} */
+.custom-search-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.custom-search-table th,
+.custom-search-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
 }
 </style>
 <div class="container mt-5">
@@ -50,7 +61,7 @@ $total_pages = ceil($total_items / $items_per_page);
     <button type="submit" class="btn btn-primary">Search</button>
 </form>
 
-  <table class="table">
+  <table class="custom-search-table">
     <thead>
       <tr>
         <th>Keyword</th>
