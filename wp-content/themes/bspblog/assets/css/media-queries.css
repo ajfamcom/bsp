@@ -78,6 +78,9 @@
         font-size: 24px;
         margin: 0 2px;
     }
+    .track-div h4 {
+        word-wrap: break-word;
+    }
 }
 @media screen and (max-width: 1024px) and (min-width:769px) {
     .featured-post-img {
@@ -116,6 +119,9 @@
     }
     .contact-form {
         padding: 30px;
+    }
+    .track-div h4 {
+        word-wrap: break-word;
     }
 }
 @media screen and (max-width: 991px) and (min-width:769px) { 
