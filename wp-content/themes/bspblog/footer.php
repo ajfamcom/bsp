@@ -195,12 +195,12 @@ splide.mount();
 </script>
 
 <?php
-$current_url = $_SERVER['REQUEST_URI']; // Get the current URL
+$full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 ?>
 <script>
      $(document).ready(function () {
         $('.copy-link-button').click(function () {
-            var urlToCopy = '<?php echo $current_url;?>';//$(this).data('url');
+            var urlToCopy = '<?php echo $full_url;?>';
             copyToClipboard(urlToCopy);
         });
 
