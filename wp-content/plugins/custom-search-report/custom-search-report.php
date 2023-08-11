@@ -53,12 +53,5 @@ function search_report_data_display_page() {
 </div>
 <?php 
 }*/
-function enqueue_custom_template_scripts() {
-    if (is_page_template('custom-search-data-template.php')) {
-        wp_enqueue_script('jquery');
-        wp_enqueue_script('bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js', array('jquery'), null, true);
-        wp_enqueue_script('custom-template-script', get_template_directory_uri() . '/custom-template-script.js', array('jquery'), null, true);
-    }
-}
-add_action('wp_enqueue_scripts', 'enqueue_custom_template_scripts');
+
 
