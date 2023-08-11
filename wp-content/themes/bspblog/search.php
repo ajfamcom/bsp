@@ -21,13 +21,13 @@ get_header(); // Include the header
         // Pagination
         $total_pages = $wp_query->max_num_pages;
         if ($total_pages > 1) {
-            echo '<nav aria-label="Search results pagination">';
+            echo '<div class="pagination">';
             echo paginate_links(array(
                 'total' => $total_pages,
                 'prev_text' => __('&laquo; Previous'),
                 'next_text' => __('Next &raquo;'),
             ));
-            echo '</nav>';
+            echo '</div>';
         }
         ?>
     <?php else : ?>
