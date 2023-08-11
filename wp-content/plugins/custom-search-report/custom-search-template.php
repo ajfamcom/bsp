@@ -80,7 +80,7 @@ $total_pages = ceil($total_items / $items_per_page);
   }
   ?>
   
-  ?>
+  
 </div>
 
 
