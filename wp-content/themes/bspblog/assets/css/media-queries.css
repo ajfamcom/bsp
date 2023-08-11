@@ -78,6 +78,8 @@
         font-size: 24px;
         margin: 0 2px;
     }
+}
+@media screen and (max-width: 1024px) and (min-width:769px) {
     .featured-post-img {
         height: 300px;
     }
@@ -94,6 +96,34 @@
     }
     .services-post h2 {
         width: 85%;
+    }
+    .member-image-square {
+        height: 230px;
+    }
+    .member-image-square img {
+        height: 100%;
+    }
+    .news-image {
+        max-height: 200px;
+        min-height: 200px;
+    }
+    .highlight-post .news-block-content {
+        padding: 30px;
+    }
+    .-single-poll-image .news-image {
+        max-height: 270px;
+        min-height: 270px;
+    }
+    .contact-form {
+        padding: 30px;
+    }
+    .py-md-5 {
+        padding-top: 0rem!important;
+        padding-bottom: 0rem!important;
+    }
+    .my-md-5 {
+        margin-top: 2rem!important;
+        margin-bottom: 2rem!important;
     }
 }
 @media screen and (max-width: 991px) and (min-width:769px) { 
