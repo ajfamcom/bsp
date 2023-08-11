@@ -17,7 +17,7 @@ get_header(); ?>
 <?php 
 while (have_posts()) : the_post();
 $post_id = get_the_ID();
-echo $post_type = get_post_type($post_id);
+$post_type = get_post_type($post_id);
 $permalink = get_permalink($post_id);
 $download=get_field('post_pdf_attachment',$post_id);
 $post_date = get_the_date('F j, Y \a\t g:i A e', $post_id);
@@ -112,7 +112,7 @@ endwhile;
 </div>
 
 
-
+<?php if($post_type=='post') { ?>
 <div class="col-md-12 py-5">
 
 <h2 class="text-center mb-4">Related Posts</h2>
@@ -198,6 +198,7 @@ $results = $wpdb->get_results($query);
     </section>
 
 </div>
+<?php } ?>
 </div>
 <?php
 get_footer();
