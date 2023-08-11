@@ -859,15 +859,16 @@ function render_custom_meta_field($post) {
 }
 
 
-// Save the custom meta field data
-// Save the custom meta field data
-/* function save_custom_meta_field($post_id) {
-    if (isset($_POST['custom_pdf_keywords'])) {
-        $custom_pdf_keywords = wp_kses_post($_POST['custom_pdf_keywords']);
-        update_post_meta($post_id, 'custom_pdf_keywords', $custom_pdf_keywords);
-    }
+// Override the custom logo output
+function custom_override_custom_logo($html) {
+    // Replace 'your_custom_image_url' with your actual custom image URL
+    $custom_logo_image = '<img src="'.get_bloginfo("assets/images/banner-img.jpg").'" alt="' . get_bloginfo('name') . '">';
+
+    // Return the custom logo image
+    return $custom_logo_image;
 }
-add_action('save_post', 'save_custom_meta_field'); */
+add_filter('get_custom_logo', 'custom_override_custom_logo');
+
 
 
 
