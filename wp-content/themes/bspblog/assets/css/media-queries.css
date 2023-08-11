@@ -157,7 +157,7 @@
     }
 
     .bnr-title {
-        font-size: 36px !important;
+        font-size: 34px !important;
         line-height: 1.2em;
     }
 
@@ -268,12 +268,12 @@
 
     /*----- about-page -----*/
     .inner-bnr {
-        max-height: 150px;
-        min-height: 150px;
+        max-height: 200px;
+        min-height: 200px;
         display: flex;
         align-items: center;
         position: relative;
-        padding-top: 50px;
+        padding-top: 30px;
     }
 
     .inner-bnr .page-title h3 {
