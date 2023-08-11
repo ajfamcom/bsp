@@ -338,36 +338,27 @@ add_filter('posts_search', 'custom_posts_search', 10, 2);
 function custom_posts_search($search, $query) {
     global $wpdb;
 
-    
-    if (is_search() && !empty($query->query_vars['s'])) {		
-      
-         $search_term = trim($query->query_vars['s']);
-         $visitor_ip =get_visitor_ip_address();
-         $tablename='wp_searchdata';
-         $insert_data=array(
-            'keyword'=>$search_term,
-            'visitor_ip'=>$visitor_ip,
+if (is_search() && !empty($query->query_vars['s'])) {		
+    $search_term = trim($query->query_vars['s']);
+    $visitor_ip = get_visitor_ip_address();
+    $tablename = $wpdb->prefix . 'searchdata'; // Include the table prefix
+    $insert_data = array(
+        'keyword' => $search_term,
+        'visitor_ip' => $visitor_ip,
+    );
+    $wpdb->insert($tablename, $insert_data);
 
-         );
-        $wpdb->insert($tablename,$insert_data);
+    $search = '';
+    $search .= " AND ({$wpdb->posts}.post_type='post' || {$wpdb->posts}.post_type='polls' || {$wpdb->posts}.post_type='news_analysis' || {$wpdb->posts}.post_type='team_members' || {$wpdb->posts}.post_type='manage_services') ";	
+    $search .= " AND ({$wpdb->posts}.post_content LIKE '%$search_term%' || {$wpdb->posts}.post_title LIKE '%$search_term%' || {$wpdb->posts}.post_excerpt LIKE '%$search_term%')";
 
-		//$search='';
-		//AND ({$wpdb->posts}.post_content LIKE "%'.$search_term.'%" || {$wpdb->posts}.post_title LIKE "%'.$search_term.'%" || {$wpdb->posts}.post_excerpt LIKE "%'.$search_term.'%")
-			
-			$search .= " AND ({$wpdb->posts}.post_type='post' || {$wpdb->posts}.post_type='polls' || {$wpdb->posts}.post_type='news_analysis' || {$wpdb->posts}.post_type='team_members' || {$wpdb->posts}.post_type='manage_services') ";	
+    return $search;   
+}
+else if (is_search() && empty($query->query_vars['s'])) {	
+    $search = " AND 0 = 1";
+    return $search;
+}
 
-           
-		
-		return $search;   
-		
-    }
-
-	else if (is_search()  && empty($query->query_vars['s'])) {	
-		global $wpdb;
-        $search = " AND 0 = 1";
-		return $search;
-    }
-	
     
 }
 
