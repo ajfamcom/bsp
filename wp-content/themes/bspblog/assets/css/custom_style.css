@@ -1109,6 +1109,9 @@ ul.contact-social-links li a:hover i {
     color: var(--blue);
     margin: 0 10px;
 }
+.share-social-icons .social-links a:hover {
+    color: var(--orange);
+}
 section#slider-related-posts h2 {
     text-align: center;
 }
