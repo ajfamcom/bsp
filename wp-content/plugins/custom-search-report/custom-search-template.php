@@ -3,7 +3,7 @@
 Template Name: Custom Search Data Template
 */
 global $wpdb;
-$your_data_array = $wpdb->get_results("SELECT * FROM wp_searchdata");
+$data = $wpdb->get_results("SELECT * FROM wp_searchdata");
 ?>
 <div class="container mt-5">
   <h2>Search Data from wp_searchdata Table</h2>
