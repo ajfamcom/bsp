@@ -160,7 +160,7 @@ GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefi
 ORDER BY wp_posts.post_date DESC;
 ";
 $results = $wpdb->get_results($query); */
-$search_term = "Spanish,Midterm,Statewide";
+$search_term = "Spanish,Ola,Abc";
 
 $breakcode = explode(',', $search_term);
 
