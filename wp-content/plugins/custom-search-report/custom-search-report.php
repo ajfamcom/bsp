@@ -27,14 +27,14 @@ function custom_data_display_menu() {
 }
 add_action('admin_menu', 'custom_data_display_menu');
 
-function custom_data_display_page() {
-    global $wpdb;
+function search_report_data_display_page() {
+     global $wpdb;
     $data = $wpdb->get_results("SELECT * FROM wp_searchdata");
    
     echo '<div class="wrap">';
     echo '<h2>Custom Data Display</h2>';   
     
-    if (!empty($data)) {
+     if (!empty($data)) {
         foreach ($data as $item) {            
             echo '<p>Keyword:' . $item->keyword . '</p>';
 			echo '<p>Visitor IP:' . $item->visitor_ip . '</p>';
@@ -42,8 +42,8 @@ function custom_data_display_page() {
         }
     } else {
         echo '<p>No data found.</p>';
-    }
-
+    } 
+    echo 'hello';
     echo '</div>';
 }
 
