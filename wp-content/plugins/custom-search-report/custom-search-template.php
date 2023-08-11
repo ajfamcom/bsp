@@ -67,17 +67,19 @@ $total_pages = ceil($total_items / $items_per_page);
     </tbody>
   </table>
 
-  <?php
+    <?php
   if ($total_pages > 1) {
       echo '<div class="pagination">';
       echo paginate_links(array(
-          'base' => get_permalink() . '%#%' . (empty($search_keyword) ? '' : '&s=' . urlencode($search_keyword)),
-          'format' => '?paged=%#%',
+          'base' => admin_url('admin.php?page=search-report-display') . '%_%',
+          'format' => '&paged=%#%',
           'current' => $current_page,
           'total' => $total_pages,
       ));
       echo '</div>';
   }
+  ?>
+  
   ?>
 </div>
 
