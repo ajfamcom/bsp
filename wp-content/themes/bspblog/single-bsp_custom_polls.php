@@ -2,29 +2,14 @@
 
 <?php get_header(); ?>
 
-<div class="blog-detail-bnr pt-5">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 col-sm-10 col-12 offset-md-1 offset-sm-1">
-				<div class="row page-banner">
-					<?php echo get_breadcrumbs(); ?>
-					<div class="page-title">
-						<h2><?php echo get_the_title(); ?></h2>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="container">
-
-	<div class="col-md-12 pt-2 pb-5">
-		<div class="row">
-			<?php
-			while (have_posts()) : the_post();
-				$post_id = get_the_ID();
-				$permalink = get_permalink($post_id);
+<?php 
+while (have_posts()) : the_post();
+$post_id = get_the_ID();
+$permalink = get_permalink($post_id);
+$download=get_field('post_pdf_attachment',$post_id);
+$post_date = get_the_date('F j, Y \a\t g:i A e', $post_id);
+$author_name = get_the_author_meta('display_name', get_post_field('post_author', $post_id));
+$permalink = get_permalink($post_id);
 				if (has_post_thumbnail($post_id)) {
 
 					$thumbnail_id = get_post_thumbnail_id($post_id);
@@ -36,8 +21,32 @@
 				} else {
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
 				}
-				
-			?>
+				$search=get_pdf_metadata_custom($post_id,'post');
+
+endwhile;
+
+?>
+<div class="blog-detail-bnr pt-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-sm-10 col-12 offset-md-1 offset-sm-1">
+				<div class="row page-banner">
+					<?php echo get_breadcrumbs(); ?>
+					<div class="page-title">
+						<h2><?php echo get_the_title(); ?></h2>
+						<p>WLRN 91.3 FM | By <?php echo $author_name;?> , Published <?php echo $post_date; ?></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+
+	<div class="col-md-12 pt-2 pb-5">
+		<div class="row">
+		
 				<div class="single-poll col-12">
 					<div class="single-poll-content">
 						<div class="-single-poll-image">
@@ -52,24 +61,16 @@
 		</div>
 
 	</div>
-<?php endwhile; ?>
+
 </div>
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-sm-10 col-12 offset-md-1 offset-sm-1">
-		<?php 
-		while (have_posts()) : the_post();
-				$post_id = get_the_ID();
-				$permalink = get_permalink($post_id);
-				$download=get_field('pdf_attachment',$post_id);
-				$post_date = get_the_date('F j, Y \a\t g:i A e', $post_id);
-				$author_name = get_the_author_meta('display_name', get_post_field('post_author', $post_id));
-
-				?>
+		
 				<div class="single-poll-content">
 						<div class="single-poll-info">
-							<h1 class="poll-title"><?php the_title(); ?></h1>
-							<p>WLRN 91.3 FM | By <?php echo $author_name;?> , Published <?php echo $post_date; ?></p>
+						
+							
 							<?php the_content(); ?>
 							<p>
                               <?php if($download) { ?>
@@ -83,7 +84,7 @@
 					<h3>Share this:</h3>
 					<?php dynamic_sidebar('sidebar-1'); ?>
 				</div>
-		<?php endwhile; ?>
+		
 		</div>
 
 	</div>
@@ -92,24 +93,14 @@
 
 
 <div class="col-md-12 py-5">
-<?php 
-while (have_posts()) : the_post();
-$post_id = get_the_ID();
-$search=get_pdf_metadata_custom($post_id);
 
-endwhile;
-?>
-<h3>Related Posts</h3>
+<h2 class="text-center mb-4">Related Posts</h2>
 
-
-<section class="splide pb-5 mb-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
+<section class="splide pb-md-5 mb-md-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
         <div class="splide__track">
             <ul class="splide__list">
-                <?php 
-
-
-
- global $wpdb;
+                <?php
+global $wpdb;
 $breakcode = $search['dc:subject'];
 
 if ($breakcode) {
@@ -117,8 +108,11 @@ if ($breakcode) {
     foreach ($breakcode as $val) {
         $addData .= "OR wp_postmeta.meta_value LIKE '%$val%'"; 
     }
-}
+}				
 
+
+$search_text = 'Hispanic';//$search['Keywords'];
+$break_search_text = array(); // Initialize the array
 
 $query = "
     SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
@@ -141,9 +135,7 @@ $query .= " GROUP BY {$wpdb->prefix}posts.ID,{$wpdb->prefix}posts.post_title,{$w
     ORDER BY {$wpdb->prefix}posts.post_date DESC";
 
 $results = $wpdb->get_results($query);
-
-
-
+		
 		if ($results) :
 			foreach($results as $row) :
 
@@ -162,7 +154,7 @@ $results = $wpdb->get_results($query);
 				}
 		?>
                     <li class="splide__slide">
-                       <div class="news-block col-md-4">
+                       <div class="news-block">
 								<div class="news-image"><?php echo $image_link;?></div>
 								<div class="news-info">
 									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
@@ -172,6 +164,7 @@ $results = $wpdb->get_results($query);
 								</div>
 						</div>
                     </li>
+					
 					<?php
 				endforeach;
 			endif;
@@ -180,7 +173,7 @@ $results = $wpdb->get_results($query);
             </ul>
         </div>
     </section>
-<style>.splide__arrow--next{    right: 5em;}</style>
+
 </div>
 </div>
 <?php
