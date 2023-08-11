@@ -212,7 +212,7 @@ $current_url = esc_url(add_query_arg($_SERVER['QUERY_STRING'], '', wp_unslash($_
             document.execCommand('copy');
             textArea.remove();
 
-            alert('Link copied to clipboard: ' + text);
+            alert('Link copied to clipboard: ');
         }
     });
 </script>
