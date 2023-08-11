@@ -5,7 +5,7 @@ Template Name: Custom Search Data Template
 global $wpdb;
 
 // Pagination variables
-$current_page = max(1, get_query_var('paged'));
+$current_page = max(1, $_GET['paged']);
 $items_per_page = 2; // Number of items per page
 $offset = ($current_page - 1) * $items_per_page;
 
