@@ -194,6 +194,7 @@ $query .= " GROUP BY {$wpdb->prefix}posts.ID,{$wpdb->prefix}posts.post_title,{$w
 
 $results = $wpdb->get_results($query);
 
+print_r($results);
 
 
 		if ($results) :
