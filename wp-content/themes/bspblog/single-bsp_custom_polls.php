@@ -77,14 +77,11 @@ endwhile;
 
 				</div>
 				
-		
-		</div>
-
-		<div class="share-and-dwn-btn">
+				<div class="share-and-dwn-btn">
 		<div class="download-pdf-file my-md-5">
 		<h3>Download the Poll</h3>
                               <?php if($download) { ?>
-                                <a href="<?php echo $download['url'];?>">Download <i class="fa-solid fa-file-arrow-down"></i></a>
+                                <a class="btn btn-primary pdf-download" href="<?php echo $download['url'];?>">Download Attached PDF <i class="fa-solid fa-file-arrow-down"></i></a>
 							<?php  } ?>
 							</div>
 		
@@ -94,6 +91,7 @@ endwhile;
 					<?php dynamic_sidebar('sidebar-1'); ?>
 				</div>
 				</div>
+		</div>
 
 	</div>
 </div>
