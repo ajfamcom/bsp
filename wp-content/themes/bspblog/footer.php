@@ -200,7 +200,7 @@ $current_url = esc_url(add_query_arg($_SERVER['QUERY_STRING'], '', wp_unslash($_
 <script>
      $(document).ready(function () {
         $('.copy-link-button').click(function () {
-            var urlToCopy = $(this).data('url');
+            var urlToCopy = '<?php echo $current_url;?>';//$(this).data('url');
             copyToClipboard(urlToCopy);
         });
 
@@ -212,7 +212,7 @@ $current_url = esc_url(add_query_arg($_SERVER['QUERY_STRING'], '', wp_unslash($_
             document.execCommand('copy');
             textArea.remove();
 
-            alert('Link copied to clipboard: ');
+            alert('Link copied to clipboard: '+text);
         }
     }); 
 </script>
