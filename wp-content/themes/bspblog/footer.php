@@ -193,5 +193,28 @@ splide.mount();
 
 });
 </script>
+
+<?php
+$current_url = esc_url(add_query_arg($_SERVER['QUERY_STRING'], '', wp_unslash($_SERVER['REQUEST_URI']))); // Get the current URL
+?>
+<script>
+    $(document).ready(function () {
+        $('.copy-link-button').click(function () {
+            var urlToCopy = $(this).data('url');
+            copyToClipboard(urlToCopy);
+        });
+
+        function copyToClipboard(text) {
+            var textArea = $('<textarea>');
+            textArea.val(text);
+            $('body').append(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            textArea.remove();
+
+            alert('Link copied to clipboard: ' + text);
+        }
+    });
+</script>
 	</body>
 </html>
