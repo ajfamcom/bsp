@@ -6,7 +6,7 @@ global $wpdb;
 $data = $wpdb->get_results("SELECT * FROM wp_searchdata");
 ?>
 <style>
-    table, th {
+    table, th, td {
   border: 1px solid black;
 }
 </style>    
