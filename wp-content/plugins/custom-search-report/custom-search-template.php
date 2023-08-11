@@ -27,6 +27,7 @@ $data = $wpdb->get_results("SELECT * FROM wp_searchdata");
     </thead>
     <tbody id="">
     <?php
+    print_r($data);
      if (!empty($data)) {
         foreach ($data as $item) {            
             echo '<tr><td>Keyword:</td><td>' . $item->keyword . '</td></tr>';
