@@ -31,7 +31,7 @@ endwhile;
 		<div class="row">
 			<div class="col-md-10 col-sm-10 col-12 offset-md-1 offset-sm-1">
 				<div class="row page-banner">
-					<?php echo get_breadcrumbs(); ?>
+					<?php //echo get_breadcrumbs(); ?>
 					<div class="page-title">
 						<h2><?php echo get_the_title(); ?></h2>
 						<p>WLRN 91.3 FM | By <?php echo $author_name;?> , Published <?php echo $post_date; ?></p>
