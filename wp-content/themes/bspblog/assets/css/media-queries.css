@@ -117,14 +117,6 @@
     .contact-form {
         padding: 30px;
     }
-    .py-md-5 {
-        padding-top: 0rem!important;
-        padding-bottom: 0rem!important;
-    }
-    .my-md-5 {
-        margin-top: 2rem!important;
-        margin-bottom: 2rem!important;
-    }
 }
 @media screen and (max-width: 991px) and (min-width:769px) { 
     .bnr-title {
