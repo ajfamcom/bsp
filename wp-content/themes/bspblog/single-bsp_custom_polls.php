@@ -107,12 +107,10 @@ endwhile;
             <ul class="splide__list">
                 <?php 
 
-//$break_search_text = explode(',', $search['dc:subject']);
+
 
  global $wpdb;
-
-//$search_term = $search['dc:subject'];
-$breakcode = $search['dc:subject'];//explode(',', $search_term);
+$breakcode = $search['dc:subject'];
 
 if ($breakcode) {
     $addData = "";
@@ -126,7 +124,7 @@ $query = "
     SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
     FROM {$wpdb->prefix}posts
     INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id
-    WHERE {$wpdb->prefix}posts.post_type = 'bsp_custom_polls'
+    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
     AND {$wpdb->prefix}posts.post_status = 'publish' ";
 
 $query .= " AND (
