@@ -189,10 +189,12 @@ $query .= " AND (
  $query .= ")
 )";
 
-$query .= " GROUP BY {$wpdb->prefix}posts.ID
+$query .= " GROUP BY {$wpdb->prefix}posts.ID,{$wpdb->prefix}posts.post_title,{$wpdb->prefix}posts.post_content,{$wpdb->prefix}posts.post_date
     ORDER BY {$wpdb->prefix}posts.post_date DESC";
 
-$results = $wpdb->get_results($query);	
+$results = $wpdb->get_results($query);
+
+
 
 		if ($results) :
 			foreach($results as $row) :
