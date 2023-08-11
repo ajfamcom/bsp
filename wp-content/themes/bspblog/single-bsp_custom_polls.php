@@ -21,7 +21,7 @@ $permalink = get_permalink($post_id);
 				} else {
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
 				}
-				$search=get_pdf_metadata_custom($post_id,'post');
+				$search=get_pdf_metadata_custom($post_id);
 
 endwhile;
 
