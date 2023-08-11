@@ -119,7 +119,7 @@ $total_pages = ceil($total_items / $items_per_page);
             echo '<tr><td>' . $item->keyword . '</td>';
             echo '<td>' . $item->visitor_ip . '</td>';
             echo '<td>' . $item->created_at . '</td>';
-            echo '<td>' . $item->search_page . '</td></tr>';
+            echo '<td>' . ucwords(str_replace('_',' ',$item->search_page)) . '</td></tr>';
         }
     } else {
         echo '<tr><td colspan="4">No data found.</td></tr>';
