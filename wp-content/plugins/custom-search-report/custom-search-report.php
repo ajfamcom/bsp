@@ -38,7 +38,7 @@ function custom_data_display_page() {
         foreach ($data as $item) {            
             echo '<p>Keyword:' . $item->keyword . '</p>';
 			echo '<p>Visitor IP:' . $item->visitor_ip . '</p>';
-			echo '<p>Search DateTime:' . date('d m Y,H:i:s',strtotime($item->created_at)) . '</p>';
+			echo '<p>Search DateTime:' . $item->created_at . '</p>';
         }
     } else {
         echo '<p>No data found.</p>';
