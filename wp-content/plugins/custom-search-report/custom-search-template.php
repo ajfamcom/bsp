@@ -6,7 +6,7 @@ global $wpdb;
 
 // Pagination variables
 $current_page = max(1, $_GET['paged']);
-$items_per_page = 2; // Number of items per page
+$items_per_page = 20; // Number of items per page
 $offset = ($current_page - 1) * $items_per_page;
 
 // Search keyword
