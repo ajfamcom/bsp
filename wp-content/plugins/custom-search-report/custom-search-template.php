@@ -5,12 +5,17 @@ Template Name: Custom Search Data Template
 global $wpdb;
 $data = $wpdb->get_results("SELECT * FROM wp_searchdata");
 ?>
+<style>
+    table, th {
+  border: 1px solid black;
+}
+</style>    
 <div class="container mt-5">
   <h2>Search Data from wp_searchdata Table</h2>
 
   <input type="text" id="searchInput" class="form-control mb-3" placeholder="Search by Keyword">
 
-  <table class="table">
+  <table class="table" style="">
     <thead>
       <tr>
        
