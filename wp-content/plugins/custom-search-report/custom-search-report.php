@@ -40,6 +40,7 @@ function search_report_data_display_page() {
             echo '<tr><td>Keyword:</td><td>' . $item->keyword . '</td></tr>';
 			echo '<tr><td>Visitor IP:</td><td>' . $item->visitor_ip . '</td></tr>';
 			echo '<tr><td>Search DateTime:</td><td>' . $item->created_at . '</td></tr>';
+			echo '<tr><td>Search From:</td><td>From Top Header Search</td></tr>';
         }
     } else {
         echo '<tr><td>No data found.</td></tr>';
