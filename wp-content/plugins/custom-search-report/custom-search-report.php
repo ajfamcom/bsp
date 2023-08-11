@@ -27,7 +27,10 @@ function custom_data_display_menu() {
 }
 add_action('admin_menu', 'custom_data_display_menu');
 
-function search_report_data_display_page() {
+function search_report_data_display_page() {	
+	include(plugin_dir_path(__FILE__) . 'custom-search-template.php');
+}
+/*function search_report_data_display_page() {
      global $wpdb;
     $data = $wpdb->get_results("SELECT * FROM wp_searchdata");
    ?>
@@ -49,5 +52,13 @@ function search_report_data_display_page() {
    </table>
 </div>
 <?php 
+}*/
+function enqueue_custom_template_scripts() {
+    if (is_page_template('custom-search-data-template.php')) {
+        wp_enqueue_script('jquery');
+        wp_enqueue_script('bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js', array('jquery'), null, true);
+        wp_enqueue_script('custom-template-script', get_template_directory_uri() . '/custom-template-script.js', array('jquery'), null, true);
+    }
 }
+add_action('wp_enqueue_scripts', 'enqueue_custom_template_scripts');
 
