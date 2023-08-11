@@ -116,57 +116,32 @@ endwhile;
 <section class="splide pb-md-5 mb-md-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
         <div class="splide__track">
             <ul class="splide__list">
-                <?php 
+                <?php global $wpdb;
 
-global $wpdb;
-$breakcode = $search['dc:subject'];
+$search_text = 'Hispanic';//$search['Keywords'];
+$break_search_text = array(); // Initialize the array
 
-if ($breakcode) {
-    $addData = "";
-    foreach ($breakcode as $val) {
-        $addData .= "OR wp_postmeta.meta_value LIKE '%$val%'"; 
-    }
+if (strpos($search_text, ' ') !== false) {
+    $break_search_text = explode(' ', $search_text);
+} else {
+    $break_search_text[] = $search_text;
 }
-
-
+//({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value IN (" . implode(',', $break_search_text) . "))
+//OR ({$wpdb->prefix}postmeta.meta_key = 'related_post_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
+//OR ({$wpdb->prefix}postmeta.meta_key = 'related_polls_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s) 
 $query = "
-    SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
+    SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
     FROM {$wpdb->prefix}posts
-    INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id
+    LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
     WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-    AND {$wpdb->prefix}posts.post_status = 'publish' ";
+    AND {$wpdb->prefix}posts.post_status='publish'    
+    GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+    ORDER BY {$wpdb->prefix}posts.post_date DESC
+";
+//$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%');
 
-$query .= " AND (
-    wp_postmeta.meta_key = 'custom_pdf_keywords'
-    AND (
-        wp_postmeta.meta_value LIKE '%xxx%' ";
-
-    $query .= $addData;
-
- $query .= ")
-)";
-
-$query .= " GROUP BY {$wpdb->prefix}posts.ID,{$wpdb->prefix}posts.post_title,{$wpdb->prefix}posts.post_content,{$wpdb->prefix}posts.post_date
-    ORDER BY {$wpdb->prefix}posts.post_date DESC";
 
 $results = $wpdb->get_results($query);
-
-		if ($results) :
-			foreach($results as $row) :
-
-				$post_id = $row->ID;
-				$permalink = get_permalink($post_id);
-				 if (has_post_thumbnail($post_id)) {
-
-					$thumbnail_id = get_post_thumbnail_id($post_id);
-					$image_url = wp_get_attachment_url($thumbnail_id);
-					$theme_directory_uri = get_template_directory_uri();
-					$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
-
-					$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
-				} else {
-					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
-				}
 		
 		if ($results) :
 			foreach($results as $row) :
