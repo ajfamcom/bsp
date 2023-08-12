@@ -102,7 +102,8 @@ $total_pages = ceil($total_items / $items_per_page);
     <input type="text" name="s" id="searchInput" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php echo esc_attr($search_keyword); ?>">
     <button type="submit" class="custom-search-button btn btn-primary">Search</button>
     <button type="button" class="custom-search-button btn btn-primary" onclick="location.href='<?php echo admin_url('admin.php').'?page=search-report-display';?>'">Reset</button>
-    <button type="button" class="custom-search-button btn btn-primary">Download CSV</button>
+    <button type="button" class="custom-search-button btn btn-primary btndownload">Download CSV</button>
+
    
 </form>
 
@@ -150,6 +151,23 @@ $total_pages = ceil($total_items / $items_per_page);
   
   
 </div>
+<script>
+jQuery(document).ready(function($) {
+    $('.btndownload').on('click', function() {
+        $.ajax({
+            type: 'POST',
+            url: ajaxurl, // This is automatically defined by WordPress
+            data: {
+                action: 'custom_csv_download'
+            },
+            success: function() {
+                // The AJAX call was successful
+            }
+        });
+    });
+});
+</script>
+
 
 
 

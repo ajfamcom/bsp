@@ -61,7 +61,7 @@ function generate_csv_data($data) {
     return $csv;
 }
 
-function search_report_download_csv() {
+/* function search_report_download_csv() {
     global $wpdb;
 
     $query = "SELECT * FROM wp_searchdata";
@@ -79,6 +79,38 @@ function search_report_download_csv() {
     echo generate_csv_data($data);
 
     exit;
+} */
+
+function custom_csv_download_ajax() {
+    if (isset($_POST['action']) && $_POST['action'] === 'custom_csv_download') {
+        global $wpdb;
+
+        // Fetch your data from the database or any source
+        $data = $wpdb->get_results("SELECT * FROM wp_searchdata");
+
+        // Set headers for CSV download
+       /*  header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="data.csv"'); */
+
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="search_data.csv"');
+
+    echo generate_csv_data($data);
+
+       /*  // Output CSV data
+        $output = fopen('php://output', 'w');
+        fputcsv($output, array($item->keyword, $item->visitor_ip, $item->created_at)); // Replace with your column headers
+
+        foreach ($data as $row) {
+            fputcsv($output, (array)$row); // Assuming $row is an object
+        }
+
+        fclose($output); */
+
+        exit;
+    }
 }
 
-//add_action('admin_init', 'search_report_download_csv');
+add_action('wp_ajax_custom_csv_download', 'custom_csv_download_ajax');
+add_action('wp_ajax_nopriv_custom_csv_download', 'custom_csv_download_ajax');
+
