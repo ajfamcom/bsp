@@ -92,27 +92,21 @@ function custom_csv_download_ajax() {
        //  header('Content-Type: text/csv');
        // header('Content-Disposition: attachment; filename="data.csv"'); 
 
-        /* $output = fopen('php://output', 'w');
+         $output = fopen('php://output', 'w');
         fputcsv($output, array('Keyword', 'Visitor Ip', 'Created At','Search Page')); // Replace with your column headers
 
         foreach ($data as $row) {
             fputcsv($output, (array)$row); // Assuming $row is an object
         }
 
-        fclose($output); */
-        $filename = 'myfile.csv';
+        fclose($output); 
+        //$filename = 'myfile.csv';
 
 
-        $fp = fopen($filename, 'w');
-        fputcsv($fp, array('Keyword', 'Visitor Ip', 'Created At','Search Page')); // Replace with your column headers
-
-        foreach ($data as $row) {
-            fputcsv($fp, (array)$row); // Assuming $row is an object
-        }
-        fclose($fp);
+       
         
         header('Content-type: text/csv');
-        header('Content-disposition:attachment; filename="'.$filename.'"');
+        header('Content-disposition:attachment; filename="data.csv"');
         readfile($filename);
         die();
     }
