@@ -152,22 +152,28 @@ $total_pages = ceil($total_items / $items_per_page);
   
 </div>
 <script>
-jQuery(document).ready(function($) {
-    $('.btndownload').on('click', function() {
-        $.ajax({
-            type: 'POST',
-            url: ajaxurl, // This is automatically defined by WordPress
-            data: {
-                action: 'custom_csv_download'
-            },
-            success: function() {
-                // The AJAX call was successful
-                alert('file downloaded');
-            }
+    jQuery(document).ready(function($) {
+        $('.btndownload').on('click', function() {
+            $.ajax({
+                type: 'POST',
+                url: ajaxurl,
+                data: {
+                    action: 'custom_csv_download'
+                },
+                success: function(response) {
+                    // Create a hidden anchor element to trigger the download
+                    var link = document.createElement('a');
+                    link.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(response);
+                    link.target = '_blank';
+                    link.download = 'data.csv';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            });
         });
     });
-});
-</script>
+    </script>
 
 
 
