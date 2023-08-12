@@ -103,7 +103,7 @@ $total_pages = ceil($total_items / $items_per_page);
     <button type="submit" class="custom-search-button btn btn-primary">Search</button>
     <button type="button" class="custom-search-button btn btn-primary" onclick="location.href='<?php echo admin_url('admin.php').'?page=search-report-display';?>'">Reset</button>
     <button type="button" class="custom-search-button btn btn-primary" onclick="window.location.href='<?php echo admin_url('admin.php') . '?page=search-report-download-csv'; ?>'">Download CSV</button>
-    <!-- <a href="#." onclick="window.location.href='<?php echo admin_url('admin.php') . '?page=search-report-download-csv'; ?>'" class="btn btn-success">Download CSV</a> -->
+   
 </form>
 
   <table class="custom-search-table">

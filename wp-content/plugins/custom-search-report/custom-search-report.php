@@ -81,4 +81,4 @@ function search_report_download_csv() {
     exit;
 }
 
-//add_action('admin_init', 'search_report_download_csv');
+add_action('admin_init', 'search_report_download_csv');
