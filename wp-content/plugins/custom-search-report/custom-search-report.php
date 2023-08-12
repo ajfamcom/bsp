@@ -53,5 +53,32 @@ function search_report_data_display_page() {
 </div>
 <?php 
 }*/
+function generate_csv_data($data) {
+    $csv = '';
+    foreach ($data as $item) {
+        $csv .= '"' . $item->keyword . '","' . $item->visitor_ip . '","' . $item->created_at . '","' . ucwords(str_replace('_', ' ', $item->search_page)) . '"' . PHP_EOL;
+    }
+    return $csv;
+}
 
+function search_report_download_csv() {
+    global $wpdb;
 
+    $query = "SELECT * FROM wp_searchdata";
+
+    if (!empty($_GET['s'])) {
+        $search_keyword = sanitize_text_field($_GET['s']);
+        $query .= " WHERE keyword LIKE '%$search_keyword%'";
+    }
+
+    $data = $wpdb->get_results($query);
+
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="search_data.csv"');
+
+    echo generate_csv_data($data);
+
+    exit;
+}
+
+add_action('admin_init', 'search_report_download_csv');
