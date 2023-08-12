@@ -88,25 +88,32 @@ function custom_csv_download_ajax() {
         // Fetch your data from the database or any source
         $data = $wpdb->get_results("SELECT keyword,visitor_ip,created_at,search_page FROM wp_searchdata");
 
-        // Set headers for CSV download
-         header('Content-Type: text/csv');
-        header('Content-Disposition: attachment; filename="data.csv"'); 
+        
+       //  header('Content-Type: text/csv');
+       // header('Content-Disposition: attachment; filename="data.csv"'); 
 
-  /*   header('Content-Type: text/csv');
-    header('Content-Disposition: attachment; filename="search_data.csv"');
-
-    echo generate_csv_data($data); */
-
-         // Output CSV data
-        $output = fopen('php://output', 'w');
+        /* $output = fopen('php://output', 'w');
         fputcsv($output, array('Keyword', 'Visitor Ip', 'Created At','Search Page')); // Replace with your column headers
 
         foreach ($data as $row) {
             fputcsv($output, (array)$row); // Assuming $row is an object
         }
 
-        fclose($output); 
+        fclose($output); */
+        $filename = 'myfile.csv';
 
+
+        $fp = fopen($filename, 'w');
+        fputcsv($fp, array('Keyword', 'Visitor Ip', 'Created At','Search Page')); // Replace with your column headers
+
+        foreach ($data as $row) {
+            fputcsv($fp, (array)$row); // Assuming $row is an object
+        }
+        fclose($fp);
+        
+        header('Content-type: text/csv');
+        header('Content-disposition:attachment; filename="'.$filename.'"');
+        readfile($filename);
         die();
     }
 }
