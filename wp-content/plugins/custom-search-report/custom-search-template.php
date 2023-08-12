@@ -162,6 +162,7 @@ jQuery(document).ready(function($) {
             },
             success: function() {
                 // The AJAX call was successful
+                alert('file downloaded');
             }
         });
     });
