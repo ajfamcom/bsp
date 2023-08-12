@@ -107,7 +107,7 @@ function custom_csv_download_ajax() {
 
         fclose($output); */
 
-        exit;
+        die();
     }
 }
 
