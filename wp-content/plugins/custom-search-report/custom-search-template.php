@@ -158,7 +158,7 @@ $total_pages = ceil($total_items / $items_per_page);
                 type: 'POST',
                 url: ajaxurl,
                 data: {
-                    action: 'custom_csv_download'
+                    action: 'custom_csv_download','search_text':'<?php echo $search_keyword ; ?>'
                 },
                 success: function(response) {
                     // Create a hidden anchor element to trigger the download

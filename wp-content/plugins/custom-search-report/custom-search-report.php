@@ -84,9 +84,14 @@ function generate_csv_data($data) {
 function custom_csv_download_ajax() {
     if (isset($_POST['action']) && $_POST['action'] === 'custom_csv_download') {
         global $wpdb;
-
-        $data = $wpdb->get_results("SELECT keyword, visitor_ip, created_at, search_page FROM wp_searchdata");
-
+        $search=$_POST['search_text'];
+        $query="SELECT keyword, visitor_ip, created_at, search_page FROM wp_searchdata";
+        if (!empty($search)) {
+            $search_keyword = sanitize_text_field($search);
+            $query .= " WHERE keyword LIKE '%$search%'";
+        }
+        $data = $wpdb->get_results($query);
+        
         // Set headers for CSV download
         header('Content-Type: text/csv');
         header('Content-Disposition: attachment; filename="data.csv"');
