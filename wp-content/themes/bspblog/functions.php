@@ -890,7 +890,7 @@ function custom_excerpt_more($more) {
 				$permalink = get_permalink($post_id);
 			}
             //if($post_type=='manage_services' && $post_type=='news_analysis') {
-                return ' <a class="read-more" href="' . $permalink . '">Read More</a>';
+                return ' <p><a class="read-more" href="' . $permalink . '">Read More</a></p>';
             //}            
     
 }
