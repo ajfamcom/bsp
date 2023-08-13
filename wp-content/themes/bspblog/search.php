@@ -37,7 +37,7 @@ get_header(); // Include the header
                     if ($post_type === 'post' || $post_type ==='bsp_custom_polls' ) {        
                         the_excerpt();
                     } else {                               
-                       echo '<p>' . get_the_excerpt() . ' <a href="' . $permalink . '">Read more.'&raquo;'.</a></p>';
+                       echo '<p>' . get_the_excerpt() . ' <a href="' . $permalink . '">Read more</a></p>';
                     }
                 
                     ?>
