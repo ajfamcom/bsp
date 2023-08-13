@@ -33,7 +33,14 @@ get_header(); // Include the header
 			?>
                 <li>
                     <h3><a href="<?php echo  $permalink; ?>" target="_blank"><?php the_title(); ?></a></h3>
-                    <?php the_excerpt(); ?>
+                    <?php //the_excerpt(); 
+                    if (get_post_type() === 'post' || get_post_type() ==='bsp_custom_polls' ) {        
+                        the_excerpt();
+                    } else {                               
+                        echo '<p>' . get_the_excerpt() . ' <a href="' . $permalink . '">Read more</a></p>';
+                    }
+                
+                    ?>
                 </li>
             <?php endwhile; ?>
         </ul>
