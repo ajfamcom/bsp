@@ -867,6 +867,36 @@ function custom_override_custom_logo($html) {
 }
 add_filter('get_custom_logo', 'custom_override_custom_logo');
 
+function custom_excerpt_more($more) {
+    $post_id = get_the_ID();
+			$post_type = get_post_type($post_id);
+			
+			if($post_type=='manage_services')
+			{
+				$permalink=site_url('services');
+			}
+			elseif($post_type=='news_analysis')
+			{
+				$link_data = get_field('external_link', $post_id);
+				$link='javascript:void(0)';
+				$target="";
+				if($link_data){
+					$link= $link_data;
+					$target='_blank';
+				}
+				$permalink=$link;
+			}
+			else{
+				$permalink = get_permalink($post_id);
+			}
+            if($post_type=='manage_services' && $post_type=='news_analysis') {
+                return ' <a class="read-more" href="' . get_permalink() . '">Continue reading</a>';
+            }            
+    
+}
+add_filter('excerpt_more', 'custom_excerpt_more');
+
+
 
 
 
