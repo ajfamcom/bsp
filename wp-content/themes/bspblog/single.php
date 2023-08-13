@@ -90,16 +90,14 @@ endwhile;
 				</div>
 				
 				<div class="share-and-dwn-btn">
-		<div class="download-pdf-file">
-
-			<h3>Download the Poll</h3>
-                              <?php if($download) { ?>
+				<?php if($download) { ?>
+		    <div class="download-pdf-file">
+			<h3>Download the Poll</h3>                              
                                 <div class="text-center">
 								<a class="pdf-download" href="<?php echo $download['url'];?>" download><span>Download Attached PDF</span> <i class="fa-solid fa-file-arrow-down"></i></a>
-								</div>
-							<?php  } ?>
-							</div>
-		
+								</div>							
+			</div>
+			<?php  } ?>
 		<div class="share-social-icons">
 					<h3>Share this:</h3>
 					<?php dynamic_sidebar('sidebar-1'); ?>
