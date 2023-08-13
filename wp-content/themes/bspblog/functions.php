@@ -889,9 +889,9 @@ function custom_excerpt_more($more) {
 			else{
 				$permalink = get_permalink($post_id);
 			}
-            if($post_type=='manage_services' && $post_type=='news_analysis') {
-                return ' <a class="read-more" href="' . get_permalink() . '">Continue reading</a>';
-            }            
+            //if($post_type=='manage_services' && $post_type=='news_analysis') {
+                return ' <a class="read-more" href="' . $permalink . '">Read More</a>';
+            //}            
     
 }
 add_filter('excerpt_more', 'custom_excerpt_more');
