@@ -70,7 +70,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     var ht=$(window).height();
      var wd=$(window).width();
      alert(window.innerWidth);
-		if (window.innerWidth <= 768) {
+		if (window.innerWidth <= 785) {
 		$('.desktop-contact').css('display','none');
 		$('.desktop-subscribe').css('display','none');
 		$("#menu-primary li").slice(-2).hide();
