@@ -77,6 +77,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 		$('.desktop-subscribe').css('display','block');
 		$("#menu-primary li").slice(-2).show();
 		}
+    var isiPad = window.innerWidth <= 768 && window.innerHeight >= 768;
+    if (isiPad) {
+            $('.desktop-contact').css('display', 'none');
+            $('.desktop-subscribe').css('display', 'none');
+            $("#menu-primary li").slice(-2).hide();
+        } else {
+            $('.desktop-contact').css('display', 'block');
+            $('.desktop-subscribe').css('display', 'block');
+            $("#menu-primary li").slice(-2).show();
+        }
 	})
 </script>
 <script>
