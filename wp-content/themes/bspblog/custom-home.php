@@ -39,14 +39,14 @@ $args = array(
 <div class="container pb-5 mb-5">
 <div class="most-popular-block pb-md-4">
 	<div class="row gx-md-5">
-	<div class="col-md-9">		
+	<div class="col-lg-9 col-md-12">		
 		<div class="row">
 			<?php	
 			get_template_part( 'template-parts/most-popular-posts' );
 			?>
 			</div>
     </div>
-    <div class="col-md-3">
+    <div class="col-lg-3 col-md-12">
 	<div class="row">
 		<?php	
 			get_template_part( 'template-parts/news-and-analysis' );
