@@ -67,7 +67,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <script>
 	$(document).ready(function(){
-		if (window.innerWidth < 769) {
+		if (window.innerWidth < 768) {
 		$('.desktop-contact').css('display','none');
 		$('.desktop-subscribe').css('display','none');
 		$("#menu-primary li").slice(-2).hide();
