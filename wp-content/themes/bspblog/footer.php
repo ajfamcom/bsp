@@ -69,8 +69,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$(document).ready(function(){
     var ht=$(window).height();
      var wd=$(window).width();
-     alert(wd);
-		if (window.innerWidth <= 768) {
+    // alert(wd);
+		if (wd <= 768) {
 		$('.desktop-contact').css('display','none');
 		$('.desktop-subscribe').css('display','none');
 		$("#menu-primary li").slice(-2).hide();
