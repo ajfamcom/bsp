@@ -67,6 +67,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <script>
 	$(document).ready(function(){
+    var ht=$(window).height();
+     var wd=$(window).width();
+     alert(wd);
 		if (window.innerWidth <= 768) {
 		$('.desktop-contact').css('display','none');
 		$('.desktop-subscribe').css('display','none');
