@@ -814,8 +814,7 @@ function save_pdf_meta($post_id) {
                 $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names'));                 
                 $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
                 wp_set_post_tags($post_id, $combined_tags, false);
-            }
-            else{
+            } else{
                 $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names'));
                 wp_set_post_tags($post_id, $existing_tags, false);
             }
@@ -830,8 +829,7 @@ function save_pdf_meta($post_id) {
         $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names'));                 
         $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
         wp_set_post_tags($post_id, $combined_tags, false);
-    }
-    else{
+    } else{
         $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names'));
         wp_set_post_tags($post_id, $existing_tags, false);
     }
@@ -839,8 +837,8 @@ function save_pdf_meta($post_id) {
     }
 
     
-    update_post_meta($post_id, $custom_field_key, $custom_field_value);
-
+    //update_post_meta($post_id, $custom_field_key, $custom_field_value);
+    echo "<script>window.location.reload();</script>";
     
 }
 
