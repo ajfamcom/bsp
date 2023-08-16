@@ -729,12 +729,14 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
             $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
             $keywordsArray = array_map('trim', array_filter($keywordsArray));
         }
-        echo '<pre>';print_r($keywordsArray);die();
+       
         
-         
-        foreach($keywordsArray as $val){            
+         if($keywordsArray){
+           foreach($keywordsArray as $val){            
                 $custom_field_value .= $custom_field_value.',';            
+          }
         }
+        
 
     }
 
