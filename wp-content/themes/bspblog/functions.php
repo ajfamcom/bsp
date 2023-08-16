@@ -721,7 +721,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         } 
          elseif (strpos($metadata['Keywords'], ' ') !== false) {
             
-            $keywordsArray = explode(" ", $metadata['Keywords']);
+            $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
             $keywordsArray = array_map('trim', array_filter($keywordsArray));
         } 
         else{
