@@ -82,14 +82,14 @@ endwhile;
 				
 				<div class="share-and-dwn-btn">
 				<?php 
-				print_r($multiple_pdf_attachment);
+				//print_r($multiple_pdf_attachment);
 				if($multiple_pdf_attachment) {
 					foreach($multiple_pdf_attachment as $val){ ?>
 		<div class="download-pdf-file">
 		<h3>Download the Poll</h3>
                               
 								<div class="text-center">
-                                <a class="pdf-download" href="<?php echo $val['url'];?>" download><span>Download Attached PDF</span> <i class="fa-solid fa-file-arrow-down"></i></a>
+                                <a class="pdf-download" href="<?php echo $val['poll_pdf_attachment']['url'];?>" download><span>Download Attached PDF</span> <i class="fa-solid fa-file-arrow-down"></i></a>
 								</div>
 							
 							</div>
