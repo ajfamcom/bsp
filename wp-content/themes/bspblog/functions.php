@@ -714,12 +714,12 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         $metadata   = $pdf->getDetails();
 
         //echo '<pre>';print_r($metadata);die();
-        if (strpos($metadata, ',') !== false) {
+        if (strpos($metadata['Keywords'], ',') !== false) {
             echo 'kaaaa';die();
             $keywordsArray = explode(",", $metadata['Keywords']);
             $keywordsArray = array_map('trim', array_filter($keywordsArray));
         } 
-         elseif (strpos($data, ' ') !== false) {
+         elseif (strpos($metadata['Keywords'], ' ') !== false) {
             echo 'haaa';die();
             $keywordsArray = explode(" ", $metadata['Keywords']);
             $keywordsArray = array_map('trim', array_filter($keywordsArray));
