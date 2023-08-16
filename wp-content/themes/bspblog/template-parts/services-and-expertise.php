@@ -13,7 +13,8 @@ if ($query->have_posts()) {
     while ($query->have_posts()) {
         $query->the_post();
         $post_id = get_the_ID();
-        
+        $theme_directory_uri = get_template_directory_uri();
+		$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
 ?>
     <div class="services-post">
     <h2><a href="<?php echo site_url('services/');?>"><?php the_title(); ?></a></h2>
@@ -21,6 +22,9 @@ if ($query->have_posts()) {
 	<?php
     if (has_post_thumbnail()) {
     the_post_thumbnail(); 
+    }
+    else{
+        echo '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="attachment-post-thumbnail size-post-thumbnail wp-post-image">';
     }
     ?>
     </div>       
