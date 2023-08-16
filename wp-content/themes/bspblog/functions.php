@@ -718,10 +718,11 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
             return "Comma-separated";
             $keywordsArray = explode(",", $metadata['Keywords']);
             $keywordsArray = array_map('trim', array_filter($keywordsArray));
-        } elseif (strpos($data, ' ') !== false) {
+        } 
+       /*  elseif (strpos($data, ' ') !== false) {
             $keywordsArray = explode(" ", $metadata['Keywords']);
             $keywordsArray = array_map('trim', array_filter($keywordsArray));
-        }
+        } */
         else{
             $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
             $keywordsArray = array_map('trim', array_filter($keywordsArray));
