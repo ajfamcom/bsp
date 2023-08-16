@@ -733,7 +733,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         
          if($keywordsArray){
            foreach($keywordsArray as $val){            
-                $custom_field_value .= $custom_field_value.',';            
+                $custom_field_value .= $val.',';            
           }
         }
        echo $custom_field_value;die(); 
