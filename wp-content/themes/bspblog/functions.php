@@ -713,10 +713,21 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         $pdf    = $parser->parseFile($file_path);
         $metadata   = $pdf->getDetails();
 
-        echo '<pre>';print_r($metadata);die();
+        //echo '<pre>';print_r($metadata);die();
+        if (strpos($metadata, ',') !== false) {
+            return "Comma-separated";
+            $keywordsArray = explode(",", $metadata['Keywords']);
+            $keywordsArray = array_map('trim', array_filter($keywordsArray));
+        } elseif (strpos($data, ' ') !== false) {
+            $keywordsArray = explode(" ", $metadata['Keywords']);
+            $keywordsArray = array_map('trim', array_filter($keywordsArray));
+        }
+        else{
+            $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
+            $keywordsArray = array_map('trim', array_filter($keywordsArray));
+        }
 
-        $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
-        $keywordsArray = array_map('trim', array_filter($keywordsArray));
+        
          
         foreach($keywordsArray as $val){            
                 $custom_field_value .= $custom_field_value.',';            
@@ -725,7 +736,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
     }
 
    }
-    
+    echo $custom_field_value;die();
 return $custom_field_value;
 }
 //add_action('save_post_bsp_custom_polls', 'save_pdf_meta');
