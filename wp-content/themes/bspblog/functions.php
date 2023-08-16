@@ -687,7 +687,43 @@ function get_pdf_metadata_custom($postid,$type='polls') {
         return $text;
 }
 
+function get_multiple_pdf_metadata_custom($postid,$type='polls') {
+    $text='';
+    $fpdi_pdf_parser_path = get_template_directory() . '/pdfparser-master/alt_autoload.php-dist';
+    require_once $fpdi_pdf_parser_path;
+    
+    if($type=='polls'){
+        
+        $file_array = get_field('multiple_pdf_attachments', $postid);
+    }
+    else{
+        $file = get_field('post_pdf_attachment', $postid);
+    }
+   if($file_array){
 
+    foreach($file_array as $arr){
+       $file= $arr['poll_pdf_attachment']['url'];
+       $file_path='/var/www/html/bsp'.wp_make_link_relative($file);//'/var/www/html/bsp/wp-content/uploads/2023/08/Univision-Arizona-Crosstab-October-2022.pdf';//
+        $metaData='';    
+      
+           
+        $parser = new \Smalot\PdfParser\Parser();
+        $pdf    = $parser->parseFile($file_path);
+        $metadata   = $pdf->getDetails();
+
+        $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
+        $keywordsArray = array_map('trim', array_filter($keywordsArray));
+         
+        foreach($keywordsArray as $val){            
+                $custom_field_value .= $custom_field_value.',';            
+        }
+
+    }
+
+   }
+    
+return $custom_field_value;
+}
 //add_action('save_post_bsp_custom_polls', 'save_pdf_meta');
 
 /* function save_pdf_meta($post_id) {
@@ -733,25 +769,21 @@ function save_pdf_meta($post_id) {
     }
     $breakcode=explode(',',$custom_field_value);
 
-    //$custom_field_value .=',';
-
+    
     if ($post_type === 'bsp_custom_polls') {
-        $metadata=get_pdf_metadata_custom($post_id,'polls');
+        $metadata=get_multiple_pdf_metadata_custom($post_id,'polls');
         if($metadata)
     {
-        //$pdf_keywords=implode(',',$metadata['dc:subject']);
-        
-        $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);
-
-        // Remove empty lines and trim whitespace from each keyword
+       
+         $keywordsArray = explode(",", $metadata);
          $keywordsArray = array_map('trim', array_filter($keywordsArray));
-         
+
         foreach($keywordsArray as $val){
             if(!in_array($val,$breakcode)){
                 $custom_field_value .=$val.',';
             }
         }
-       // $custom_field_value .= $pdf_keywords;
+      
     }
     } elseif ($post_type === 'post') {
         $metadata=get_pdf_metadata_custom($post_id,'post');
