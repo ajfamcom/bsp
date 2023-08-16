@@ -29,8 +29,8 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 		<?php
 $args = array(
     'post_type' => 'manage_services',
-    'posts_per_page' => -1,
-    'meta_key'       => 'page_data_sort_order', // New parameter for sorting
+    'posts_per_page' => 4,
+    'meta_key'       => 'services_sort_order', // New parameter for sorting
     'orderby'        => 'meta_value_num',    // Sort by numeric value of meta_key
     'order'          => 'ASC',              // Ascending order
 );
