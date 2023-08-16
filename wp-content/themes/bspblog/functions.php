@@ -699,12 +699,13 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
     else{
         $file = get_field('post_pdf_attachment', $postid);
     }
+    $custom_field_value='';
    if($file_array){
 
     foreach($file_array as $arr){
-       $file= $arr['poll_pdf_attachment']['url'];
-       $file_path='/var/www/html/bsp'.wp_make_link_relative($file);//'/var/www/html/bsp/wp-content/uploads/2023/08/Univision-Arizona-Crosstab-October-2022.pdf';//
-        $metaData='';    
+       //$file= $arr['poll_pdf_attachment']['url'];
+       $file_path='/var/www/html/bsp'.wp_make_link_relative($arr['poll_pdf_attachment']['url']);//'/var/www/html/bsp/wp-content/uploads/2023/08/Univision-Arizona-Crosstab-October-2022.pdf';//
+           
       
            
         $parser = new \Smalot\PdfParser\Parser();
@@ -772,19 +773,20 @@ function save_pdf_meta($post_id) {
     
     if ($post_type === 'bsp_custom_polls') {
         $metadata=get_multiple_pdf_metadata_custom($post_id,'polls');
-        if($metadata)
-    {
-       
-         $keywordsArray = explode(",", $metadata);
-         $keywordsArray = array_map('trim', array_filter($keywordsArray));
+                if($metadata)
+            {
+            
+                $keywordsArray = explode(",", $metadata);
+                $keywordsArray = array_map('trim', array_filter($keywordsArray));
 
-        foreach($keywordsArray as $val){
-            if(!in_array($val,$breakcode)){
-                $custom_field_value .=$val.',';
+                foreach($keywordsArray as $val){
+                    if(!in_array($val,$breakcode)){
+                        $custom_field_value .=$val.',';
+                    }
+                }
+            
             }
-        }
-      
-    }
+
     } elseif ($post_type === 'post') {
         $metadata=get_pdf_metadata_custom($post_id,'post');
         if($metadata)
