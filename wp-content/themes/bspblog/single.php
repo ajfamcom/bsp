@@ -99,7 +99,7 @@ endwhile;
 		    <div class="download-pdf-file">
 			<h3>Download the Poll</h3>                              
                                 <div class="text-center">
-								<a class="pdf-download" href="<?php echo $val['url'];?>" download><span>Download Attached PDF</span> <i class="fa-solid fa-file-arrow-down"></i></a>
+								<a class="pdf-download" href="<?php echo $val['post_pdf_attachment']['url'];?>" download><span>Download Attached PDF</span> <i class="fa-solid fa-file-arrow-down"></i></a>
 								</div>							
 			</div>
 			<?php  } } ?>
