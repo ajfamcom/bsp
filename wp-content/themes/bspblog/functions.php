@@ -838,7 +838,7 @@ function save_pdf_meta($post_id) {
 
     
     //update_post_meta($post_id, $custom_field_key, $custom_field_value);
-    echo "<script>window.location.reload();</script>";
+   
     
 }
 
