@@ -803,7 +803,8 @@ function save_pdf_meta($post_id) {
                         $custom_field_value .=$val.',';
                     }
                 }
-            
+                $tags_to_add=explode(',',$custom_field_value);
+                wp_set_post_tags($post_id, $tags_to_add, true);
             }
 
     } elseif ($post_type === 'post') {
