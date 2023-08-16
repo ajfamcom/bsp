@@ -881,7 +881,8 @@ add_action('wp_enqueue_scripts', 'enqueue_datepicker'); */
 
 // Add custom meta field to posts
 function add_custom_meta_field() {
-    $post_types = array('post', 'bsp_custom_polls'); // Add your post types here
+    //$post_types = array('post', 'bsp_custom_polls'); // Add your post types here
+    $post_types = array('post'); // Add your post types here
     foreach ($post_types as $post_type) {
         add_meta_box(
             'custom_pdf_keywords', // Meta box ID
