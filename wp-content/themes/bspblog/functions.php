@@ -695,6 +695,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
     if($type=='polls'){
         
         $file_array = get_field('multiple_pdf_attachments', $postid);
+        print_r($file_array);die();
     }
     else{
         $file = get_field('post_pdf_attachment', $postid);
