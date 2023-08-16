@@ -19,7 +19,7 @@ while (have_posts()) : the_post();
 $post_id = get_the_ID();
 $post_type = get_post_type($post_id);
 $permalink = get_permalink($post_id);
-$download=get_field('post_pdf_attachment',$post_id);
+//$download=get_field('multiple_pdf_attachment_for_post',$post_id);
 $post_date = get_the_date('F j, Y \a\t g:i A e', $post_id);
 $author_name = get_the_author_meta('display_name', get_post_field('post_author', $post_id));
 $permalink = get_permalink($post_id);
@@ -35,6 +35,9 @@ $permalink = get_permalink($post_id);
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
 				}
 				$search=get_pdf_metadata_custom($post_id,'post');
+
+				$multiple_pdf_attachment=get_field('multiple_pdf_attachment_for_post',$post_id);
+				//echo ($multiple_pdf_attachment)[0]['poll_pdf_attachment']['url'];
 
 endwhile;
 
@@ -90,14 +93,16 @@ endwhile;
 				</div>
 				
 				<div class="share-and-dwn-btn">
-				<?php if($download) { ?>
+				<?php if($multiple_pdf_attachment) {
+					foreach($multiple_pdf_attachment as $val){
+					?>
 		    <div class="download-pdf-file">
 			<h3>Download the Poll</h3>                              
                                 <div class="text-center">
-								<a class="pdf-download" href="<?php echo $download['url'];?>" download><span>Download Attached PDF</span> <i class="fa-solid fa-file-arrow-down"></i></a>
+								<a class="pdf-download" href="<?php echo $val['url'];?>" download><span>Download Attached PDF</span> <i class="fa-solid fa-file-arrow-down"></i></a>
 								</div>							
 			</div>
-			<?php  } ?>
+			<?php  } } ?>
 		<div class="share-social-icons">
 					<h3>Share this:</h3>
 					<?php dynamic_sidebar('sidebar-1'); ?>

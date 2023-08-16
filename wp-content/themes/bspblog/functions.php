@@ -698,7 +698,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         
     }
     else{
-        $file = get_field('post_pdf_attachment', $postid);
+        $file_array_post = get_field('multiple_pdf_attachment_for_post', $postid);
     }
     $custom_field_value='';
    if($file_array){
@@ -741,36 +741,50 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
     }
 
    }
+    /*****for post */
+    if($file_array_post){
+
+        foreach($file_array_post as $arr){
+           if(!empty($arr['post_pdf_attachment']['url'])){
+           $file_path='/var/www/html/bsp'.wp_make_link_relative($arr['post_pdf_attachment']['url']);//'/var/www/html/bsp/wp-content/uploads/2023/08/Univision-Arizona-Crosstab-October-2022.pdf';//
+         
+          
+               
+            $parser = new \Smalot\PdfParser\Parser();
+            $pdf    = $parser->parseFile($file_path);
+            $metadata   = $pdf->getDetails();
     
+            //echo '<pre>';print_r($metadata);die();
+            if (strpos($metadata['Keywords'], ',') !== false) {
+               
+                $keywordsArray = explode(",", $metadata['Keywords']);
+                $keywordsArray = array_map('trim', array_filter($keywordsArray));
+            } 
+             elseif (strpos($metadata['Keywords'], ' ') !== false) {
+                
+                $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
+                $keywordsArray = array_map('trim', array_filter($keywordsArray));
+            } 
+            else{
+              
+                $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
+                $keywordsArray = array_map('trim', array_filter($keywordsArray));
+            }
+           
+            
+             if($keywordsArray){
+               foreach($keywordsArray as $val){            
+                    $custom_field_value .= $val.',';            
+              }
+            }
+        }
+    
+        }
+    
+       }
 return $custom_field_value;
 }
-//add_action('save_post_bsp_custom_polls', 'save_pdf_meta');
 
-/* function save_pdf_meta($post_id) {
-    
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return;
-    }
-    
-    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
-        return;
-    }
-    
-   
-    $metadata=get_pdf_metadata_custom($post_id,'polls');
-    
-    if($metadata)
-    {
-        $pdf_keywords=$metadata['Keywords'];
-        $pdf_title=$metadata['Title'];
-        
-        update_post_meta($post_id, 'custom_pdf_keywords', $pdf_keywords);  
-        update_post_meta($post_id, 'custom_pdf_title', $pdf_title); 
-              
-    }
-    wp_reset_postdata();
-
-} */
 
 /****new code**** */
 function save_pdf_meta($post_id) {
@@ -780,14 +794,14 @@ function save_pdf_meta($post_id) {
 
     
     $post_type = get_post_type($post_id);
-    $custom_field_value = '';
+    //$custom_field_value = '';
     
-    $custom_field_key = 'custom_pdf_keywords'; 
+   /*  $custom_field_key = 'custom_pdf_keywords'; 
     if (isset($_POST['custom_pdf_keywords'])) {
         $custom_field_value = wp_kses_post($_POST['custom_pdf_keywords']);
        
     }
-    $breakcode=explode(',',$custom_field_value);
+    $breakcode=explode(',',$custom_field_value); */
 
     
     if ($post_type === 'bsp_custom_polls') {
@@ -807,23 +821,21 @@ function save_pdf_meta($post_id) {
             }
 
     } elseif ($post_type === 'post') {
-        $metadata=get_pdf_metadata_custom($post_id,'post');
+        $metadata=get_multiple_pdf_metadata_custom($post_id,'post');
         if($metadata)
     {
-        //$pdf_keywords=implode(',',$metadata['dc:subject']);
-        
-        $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);
-
-        // Remove empty lines and trim whitespace from each keyword
-         $keywordsArray = array_map('trim', array_filter($keywordsArray));
-         
-        foreach($keywordsArray as $val){
-            if(!in_array($val,$breakcode)){
-                $custom_field_value .=$val.',';
-            }
-        }
-       // $custom_field_value .= $pdf_keywords;
+    
+        $keywordsArray = explode(",", $metadata);
+        $keywordsArray = array_map('trim', array_filter($keywordsArray));
+        $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names'));                 
+        $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
+        wp_set_post_tags($post_id, $combined_tags, false);
     }
+    else{
+        $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names'));
+        wp_set_post_tags($post_id, $existing_tags, false);
+    }
+
     }
 
     
@@ -872,15 +884,11 @@ function trim_content_custom($content){
     return $content;
 }
 
-/* function enqueue_datepicker() {
-    wp_enqueue_script('jquery-ui-datepicker');
-    wp_enqueue_style('jquery-ui-style', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
-}
-add_action('wp_enqueue_scripts', 'enqueue_datepicker'); */
+
 
 
 // Add custom meta field to posts
-function add_custom_meta_field() {
+/* function add_custom_meta_field() {
     //$post_types = array('post', 'bsp_custom_polls'); // Add your post types here
     $post_types = array('post'); // Add your post types here
     foreach ($post_types as $post_type) {
@@ -894,17 +902,17 @@ function add_custom_meta_field() {
         );
     }
 }
-add_action('add_meta_boxes', 'add_custom_meta_field');
+add_action('add_meta_boxes', 'add_custom_meta_field'); */
 
 
 // Callback function to render the custom meta field
-function render_custom_meta_field($post) {
+/* function render_custom_meta_field($post) {
     $custom_pdf_keywords = get_post_meta($post->ID, 'custom_pdf_keywords', true);
     ?>
     
     <textarea id="custom_pdf_keywords" name="custom_pdf_keywords" rows="8" cols="35"><?php echo esc_textarea($custom_pdf_keywords); ?></textarea>
     <?php
-}
+} */
 
 
 // Override the custom logo output
