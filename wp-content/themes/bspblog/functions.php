@@ -741,7 +741,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
     }
 
    }
-   echo $custom_field_value;die();   
+    
 return $custom_field_value;
 }
 //add_action('save_post_bsp_custom_polls', 'save_pdf_meta');
