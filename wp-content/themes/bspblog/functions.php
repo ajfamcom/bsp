@@ -713,17 +713,19 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         $pdf    = $parser->parseFile($file_path);
         $metadata   = $pdf->getDetails();
 
-        echo '<pre>';print_r($metadata);die();
+        //echo '<pre>';print_r($metadata);die();
         if (strpos($metadata, ',') !== false) {
             
             $keywordsArray = explode(",", $metadata['Keywords']);
             $keywordsArray = array_map('trim', array_filter($keywordsArray));
         } 
          elseif (strpos($data, ' ') !== false) {
+            echo 'haaa';die();
             $keywordsArray = explode(" ", $metadata['Keywords']);
             $keywordsArray = array_map('trim', array_filter($keywordsArray));
         } 
         else{
+            echo 'jaa';die();
             $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
             $keywordsArray = array_map('trim', array_filter($keywordsArray));
         }
