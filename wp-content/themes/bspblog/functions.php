@@ -713,7 +713,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         $pdf    = $parser->parseFile($file_path);
         $metadata   = $pdf->getDetails();
 
-        //echo '<pre>';print_r($metadata);die();
+        echo '<pre>';print_r($metadata);die();
         if (strpos($metadata, ',') !== false) {
             
             $keywordsArray = explode(",", $metadata['Keywords']);
