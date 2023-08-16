@@ -42,7 +42,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 </div>
 
 <div class="container py-5 my-xl-5">
-	<div class="row py-md-5 my-xl-5">
+	<div class="row py-md-5">
 		<div class="col-md-5 col-sm-5 col-12">
 			<div class="image-group">
 				<img class="img-fluid" src="<?php echo $top_image_one['url']; ?>" alt="bodyimage">
