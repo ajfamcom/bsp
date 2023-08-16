@@ -797,14 +797,9 @@ function save_pdf_meta($post_id) {
             
                 $keywordsArray = explode(",", $metadata);
                 $keywordsArray = array_map('trim', array_filter($keywordsArray));
-
-                foreach($keywordsArray as $val){
-                    if(!in_array($val,$breakcode)){
-                        $custom_field_value .=$val.',';
-                    }
-                }
-                $tags_to_add=explode(',',$custom_field_value);
-                wp_set_post_tags($post_id, $tags_to_add, true);
+                $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names')); 
+                $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
+                wp_set_post_tags($post_id, $combined_tags, false);
             }
 
     } elseif ($post_type === 'post') {
