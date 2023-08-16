@@ -706,12 +706,14 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
     foreach($file_array as $arr){
        //$file= $arr['poll_pdf_attachment']['url'];
        $file_path='/var/www/html/bsp'.wp_make_link_relative($arr['poll_pdf_attachment']['url']);//'/var/www/html/bsp/wp-content/uploads/2023/08/Univision-Arizona-Crosstab-October-2022.pdf';//
-        echo  $file_path;die();  
+     
       
            
         $parser = new \Smalot\PdfParser\Parser();
         $pdf    = $parser->parseFile($file_path);
         $metadata   = $pdf->getDetails();
+
+        print_r($metadata);die();
 
         $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
         $keywordsArray = array_map('trim', array_filter($keywordsArray));
