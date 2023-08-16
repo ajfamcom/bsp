@@ -715,19 +715,19 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
 
         //echo '<pre>';print_r($metadata);die();
         if (strpos($metadata, ',') !== false) {
-            return "Comma-separated";
+            
             $keywordsArray = explode(",", $metadata['Keywords']);
             $keywordsArray = array_map('trim', array_filter($keywordsArray));
         } 
-       /*  elseif (strpos($data, ' ') !== false) {
+         elseif (strpos($data, ' ') !== false) {
             $keywordsArray = explode(" ", $metadata['Keywords']);
             $keywordsArray = array_map('trim', array_filter($keywordsArray));
-        } */
+        } 
         else{
             $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
             $keywordsArray = array_map('trim', array_filter($keywordsArray));
         }
-
+        echo '<pre>';print_r($keywordsArray);die();
         
          
         foreach($keywordsArray as $val){            
@@ -737,7 +737,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
     }
 
    }
-    echo $custom_field_value;die();
+    
 return $custom_field_value;
 }
 //add_action('save_post_bsp_custom_polls', 'save_pdf_meta');
