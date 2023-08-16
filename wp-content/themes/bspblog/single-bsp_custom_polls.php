@@ -24,7 +24,7 @@ $permalink = get_permalink($post_id);
 				$search=get_pdf_metadata_custom($post_id);
 
 				$multiple_pdf_attachment=get_field('multiple_pdf_attachments',$post_id);
-				echo '<pre>';print_r($multiple_pdf_attachment);
+				echo ($multiple_pdf_attachment)[0]['poll_pdf_attachment']['url'];
 
 endwhile;
 
