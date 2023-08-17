@@ -785,7 +785,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
     
        }
 
-   $attachments = get_attached_media('application/pdf', $postid);
+   $attachments = get_attached_media('application/pdf', '398');
    echo '<pre>';print_r($attachments);die();
    foreach ($attachments as $attachment) {
        $attachment_url = get_attached_file($attachment->ID);
