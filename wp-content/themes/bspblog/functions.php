@@ -1001,13 +1001,18 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 
 
 
-function delete_attachment_by_post_id($post_id) {
-    $attachments = get_attached_media('', $post_id);
+function delete_attachments_on_content_update($post_id) {
+    $post = get_post($post_id);
 
-    foreach ($attachments as $attachment) {
-        wp_delete_attachment($attachment->ID, true);
+    if ($post && $post->post_type === 'post') { // Adjust post type if needed
+        $attachments = get_attached_media('', $post_id);
+
+        foreach ($attachments as $attachment) {
+            wp_delete_attachment($attachment->ID, true);
+        }
     }
 }
 
-// Call the function for a specific post
-delete_attachment_by_post_id(397); // Replace 123 with the actual post ID
+
+
+add_action('edit_post', 'delete_attachments_on_content_update');
