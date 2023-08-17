@@ -3,8 +3,7 @@
 $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
-$top_header = get_field('top_header', $page_id);
-$top_header_title= get_field('top_header_title', $page_id);
+$top_header = get_field('image_over_banner', $page_id);
 ?>
 <?php get_header(); ?>
 <div class="inner-bnr services-bnr" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<?php echo $full_banner['url']; ?>')">
@@ -29,23 +28,19 @@ $top_header_title= get_field('top_header_title', $page_id);
 	<div class="row align-items-center py-xl-5">
 
 	<div class="col-12 text-center">
-	   <?php if($top_header):?>
-       <h2><?php echo $top_header_title;?></h2>
-       <?php endif; ?>
-		<?php
-		if($top_header_title) {        
-		?>		
-		<p><?php $top_header_title;?></p>
-       <?php } ?>
+<h1>Lorem Ipsum Dummy text</h1>
+<h2>Our Clients</h2>
+<p>Our clients include office holders or candidates who have run for president, Congress, governor, and state legislator, plus a variety of national, congressional, gubernatorial party committees. We also boast as clients a wide range of think tanks, universities, advocacy groups, citizen organization, and other non-profits.</p>
+	</div>
 
-<div class="col-md-6 col-sm-6 col-12">
-<?php
+		<div class="col-md-6 col-sm-6 col-12">
+		<?php
 $args = array(
     'post_type' => 'manage_services',
     'posts_per_page' => -1,
     'meta_key'       => 'page_data_sort_order', // New parameter for sorting
     'orderby'        => 'meta_value_num',    // Sort by numeric value of meta_key
-    'order'          => 'ASC',             // Ascending order	
+    'order'          => 'ASC',              // Ascending order
 );
 $query = new WP_Query( $args );
 if ($query->have_posts()) {
