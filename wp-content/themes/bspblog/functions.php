@@ -788,16 +788,17 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
        global $wpdb;
 
        $attachments = $wpdb->get_results(
-           $wpdb->prepare(
-               "SELECT ID, post_mime_type
-               FROM $wpdb->posts
-               WHERE post_parent = %d
-               AND post_type = 'attachment'
-               AND post_mime_type = %s",
-               $postid,
-               'application/pdf'
-           )
-       );
+        $wpdb->prepare(
+            "SELECT ID, post_mime_type
+            FROM $wpdb->posts
+            WHERE post_parent = %d
+            AND post_type = 'attachment'
+            AND post_mime_type = %s
+            AND post_status = 'publish'",
+            $post_id,
+            'application/pdf'
+        )
+    );
        
        foreach ($attachments as $attachment) {
         
@@ -829,7 +830,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
 
             if($keywordsArray){
            foreach($keywordsArray as $val){            
-               // $custom_field_value .= $val.',';            
+                $custom_field_value .= $val.',';            
           }
         }
        
