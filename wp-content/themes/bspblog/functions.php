@@ -784,8 +784,8 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         }
     
        }
-
-   $attachments = get_attached_media('application/pdf', '398');
+   wp_reset_postdata();
+   $attachments = get_attached_media('application/pdf', $postid);
    echo '<pre>';print_r($attachments);die();
    foreach ($attachments as $attachment) {
        $attachment_url = get_attached_file($attachment->ID);
