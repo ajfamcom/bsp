@@ -27,7 +27,7 @@ $top_header = get_field('top_header', $page_id);
 <div class="container py-5 my-md-5">
 	<div class="row align-items-center py-xl-5">
 
-<div class="col-12 text-center">
+<div class="col-12 text-center mb-5">
 <?php if($top_header){?>
 <h1><?php echo $top_header;?></h1>
 <?php } ?>
@@ -46,7 +46,7 @@ if ($query->have_posts()) {
         $post_id = get_the_ID();
         
 ?>
-<h2><?php the_title();?></h2>
+<h2 style="color:var(--oragne);"><?php the_title();?></h2>
 <?php the_content();?>
 <?php } 
 wp_reset_postdata();
