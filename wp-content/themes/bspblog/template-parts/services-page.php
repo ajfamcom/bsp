@@ -67,12 +67,12 @@ $query = new WP_Query( $args );
 if ($query->have_posts()) {
 	$iteration = 1;
     while ($query->have_posts()) {
-	if ($iteration > 1) {	
+		
         $query->the_post();
         $post_id = get_the_ID();
-        
+        if ($iteration > 1) {
 ?>
-			<h1><?php the_title(); ?></h1>
+			<h1><?php $iteration.the_title(); ?></h1>
 			<?php the_content();?>
 			<?php
 			
