@@ -100,7 +100,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         });
 		jQuery(document).ready(function($) {
     $('.datepicker').datepicker({
-        format: 'yyyy', // Set the desired date format
+        format: 'yyyy-mm-dd', // Set the desired date format
         autoclose: true // Close the datepicker when a date is selected
     });
 });
