@@ -782,6 +782,38 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         }
     
        }
+
+  $attachments = get_attached_media('application/pdf', $post_id);
+   
+   foreach ($attachments as $attachment) {
+       $attachment_url = get_attached_file($attachment->ID);
+      
+       $file_path=$attachment_url;
+       $parser = new \Smalot\PdfParser\Parser();
+       $pdf    = $parser->parseFile($file_path);
+       $metadata   = $pdf->getDetails();
+
+      
+       if (strpos($metadata['Keywords'], ',') !== false) {                        
+           $keywordsArray = explode(",", $metadata['Keywords']);
+           $keywordsArray = array_map('trim', array_filter($keywordsArray));
+       } 
+        elseif (strpos($metadata['Keywords'], ' ') !== false) {                         
+           $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
+           $keywordsArray = array_map('trim', array_filter($keywordsArray));
+       } 
+       else{                       
+           $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
+           $keywordsArray = array_map('trim', array_filter($keywordsArray));
+       }      
+
+            if($keywordsArray){
+           foreach($keywordsArray as $val){            
+                $custom_field_value .= $val.',';            
+          }
+        }
+       
+   }
 return $custom_field_value;
 }
 
@@ -794,7 +826,7 @@ function save_pdf_meta($post_id) {
 
     
     $post_type = get_post_type($post_id);
-    wp_remove_object_terms($post_id, 'post_tag',$post_type);
+    //wp_remove_object_terms($post_id, 'post_tag',$post_type);
 
     
     if ($post_type === 'bsp_custom_polls') {
@@ -833,7 +865,7 @@ function save_pdf_meta($post_id) {
 
     
    /**attachments */
-   $attachments = get_attached_media('application/pdf', $post_id);
+ /*   $attachments = get_attached_media('application/pdf', $post_id);
    
    foreach ($attachments as $attachment) {
        $attachment_url = get_attached_file($attachment->ID);
@@ -857,16 +889,13 @@ function save_pdf_meta($post_id) {
            $keywordsArray = array_map('trim', array_filter($keywordsArray));
        }      
 
-           if ($keywordsArray) {
-               $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names'));
-               $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
-               wp_set_post_tags($post_id, $combined_tags, false);
-           } else {
-               $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names'));
-               wp_set_post_tags($post_id, $existing_tags, false);
-           }
+            if($keywordsArray){
+           foreach($keywordsArray as $val){            
+                $custom_field_value .= $val.',';            
+          }
+        }
        
-   }
+   } */
 
    /***attachments */
    
@@ -914,36 +943,6 @@ function trim_content_custom($content){
 }
 
 
-
-
-// Add custom meta field to posts
-/* function add_custom_meta_field() {
-    //$post_types = array('post', 'bsp_custom_polls'); // Add your post types here
-    $post_types = array('post'); // Add your post types here
-    foreach ($post_types as $post_type) {
-        add_meta_box(
-            'custom_pdf_keywords', // Meta box ID
-            'Custom PDF Keywords', // Title of the meta box
-            'render_custom_meta_field', // Callback function to render the field
-            $post_type, // Post type
-            'normal', // Context (placement)
-            'default' // Priority
-        );
-    }
-}
-add_action('add_meta_boxes', 'add_custom_meta_field'); */
-
-
-// Callback function to render the custom meta field
-/* function render_custom_meta_field($post) {
-    $custom_pdf_keywords = get_post_meta($post->ID, 'custom_pdf_keywords', true);
-    ?>
-    
-    <textarea id="custom_pdf_keywords" name="custom_pdf_keywords" rows="8" cols="35"><?php echo esc_textarea($custom_pdf_keywords); ?></textarea>
-    <?php
-} */
-
-
 // Override the custom logo output
 function custom_override_custom_logo($html) {
     $theme_directory = get_template_directory_uri();
@@ -987,47 +986,5 @@ function custom_excerpt_more($more) {
 }
 add_filter('excerpt_more', 'custom_excerpt_more');
 
-/***For attachments in content */
-/* function extract_tags_from_pdf_attachments($post_id) {
-    $attachments = get_attached_media('application/pdf', $post_id);
-    
-    foreach ($attachments as $attachment) {
-        $attachment_url = get_attached_file($attachment->ID);die();
-
-        $file_path='/var/www/html/bsp'.wp_make_link_relative($attachment_url);
-        $parser = new \Smalot\PdfParser\Parser();
-        $pdf    = $parser->parseFile($file_path);
-        $metadata   = $pdf->getDetails();
-
-       
-        if (strpos($metadata['Keywords'], ',') !== false) {                        
-            $keywordsArray = explode(",", $metadata['Keywords']);
-            $keywordsArray = array_map('trim', array_filter($keywordsArray));
-        } 
-         elseif (strpos($metadata['Keywords'], ' ') !== false) {                         
-            $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
-            $keywordsArray = array_map('trim', array_filter($keywordsArray));
-        } 
-        else{                       
-            $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
-            $keywordsArray = array_map('trim', array_filter($keywordsArray));
-        }
-
-       
-
-            if ($keywordsArray) {
-                $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names'));
-                $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
-                wp_set_post_tags($post_id, $combined_tags, false);
-            } else {
-                $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names'));
-                wp_set_post_tags($post_id, $existing_tags, false);
-            }
-        
-    }
-}
-
-add_action('add_attachment', 'extract_tags_from_pdf_attachments');
-add_action('edit_attachment', 'extract_tags_from_pdf_attachments'); */
 
 
