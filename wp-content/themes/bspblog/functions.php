@@ -801,13 +801,8 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
            )
        );
        $post = get_post($postid);
-       $attachments_data = get_posts( array(
-        'post_type' => 'attachment',
-        'posts_per_page' => -1,
-        'post_parent' => $post->ID,
-        'exclude'     => 'image'
-        ));
-        echo '<pre>';print_r($attachments_data);die();
+       
+       
        if($post){
         //$attachment_urls = get_attached_media('application/pdf', $postid, 'urls');
        
@@ -1006,3 +1001,13 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 
 
 
+function delete_attachment_by_post_id($post_id) {
+    $attachments = get_attached_media('', $post_id);
+
+    foreach ($attachments as $attachment) {
+        wp_delete_attachment($attachment->ID, true);
+    }
+}
+
+// Call the function for a specific post
+delete_attachment_by_post_id(397); // Replace 123 with the actual post ID
