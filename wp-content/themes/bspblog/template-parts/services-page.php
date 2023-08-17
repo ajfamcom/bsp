@@ -61,11 +61,15 @@ $args = array(
     'meta_key'       => 'page_data_sort_order', 
     'orderby'        => 'meta_value_num',    
     'order'          => 'ASC',
-	'offset'         => 1             
+	         
 );
 $query = new WP_Query( $args );
 if ($query->have_posts()) {
+	$x=0;
     while ($query->have_posts()) {
+		if($x==0){
+			continue;
+		}
         $query->the_post();
         $post_id = get_the_ID();
         
@@ -73,6 +77,7 @@ if ($query->have_posts()) {
 			<h1><?php the_title(); ?></h1>
 			<?php the_content();?>
 			<?php
+			$x++;
     }
  wp_reset_postdata();    
 } 
