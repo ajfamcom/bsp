@@ -961,7 +961,7 @@ function extract_tags_from_pdf_attachments($post_id) {
     $attachments = get_attached_media('application/pdf', $post_id);
     
     foreach ($attachments as $attachment) {
-        $attachment_url = get_attached_file($attachment->ID);
+       echo $attachment_url = get_attached_file($attachment->ID);die();
 
         $file_path='/var/www/html/bsp'.wp_make_link_relative($attachment_url);
         $parser = new \Smalot\PdfParser\Parser();
