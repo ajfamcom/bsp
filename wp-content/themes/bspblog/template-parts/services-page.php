@@ -3,7 +3,7 @@
 $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
-$top_header = get_field('image_over_banner', $page_id);
+$top_header = get_field('top_header', $page_id);
 ?>
 <?php get_header(); ?>
 <div class="inner-bnr services-bnr" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<?php echo $full_banner['url']; ?>')">
@@ -29,7 +29,7 @@ $top_header = get_field('image_over_banner', $page_id);
 
 <div class="col-12 text-center">
 <?php if($top_header){?>
-<h1><?php print_r($top_header);?></h1>
+<h1><?php echo $top_header;?></h1>
 <?php } ?>
 <?php
 $args = array(
