@@ -65,9 +65,9 @@ $args = array(
 );
 $query = new WP_Query( $args );
 if ($query->have_posts()) {
-	$x=1;
+	$iteration = 0;
     while ($query->have_posts()) {
-		
+	if ($iteration > 0) {	
         $query->the_post();
         $post_id = get_the_ID();
         
@@ -77,6 +77,8 @@ if ($query->have_posts()) {
 			<?php
 			
     }
+	$iteration++; 
+}
  wp_reset_postdata();    
 } 
 ?>  			
