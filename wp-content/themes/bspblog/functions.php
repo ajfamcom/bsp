@@ -844,8 +844,8 @@ function save_pdf_meta($post_id) {
    
    foreach ($attachments as $attachment) {
        $attachment_url = get_attached_file($attachment->ID);
-       echo $attachment_url;die();
-       $file_path='/var/www/html/bsp'.wp_make_link_relative($attachment_url);
+      
+       $file_path=$attachment_url;//'/var/www/html/bsp'.wp_make_link_relative($attachment_url);
        $parser = new \Smalot\PdfParser\Parser();
        $pdf    = $parser->parseFile($file_path);
        $metadata   = $pdf->getDetails();
