@@ -845,7 +845,7 @@ function save_pdf_meta($post_id) {
    foreach ($attachments as $attachment) {
        $attachment_url = get_attached_file($attachment->ID);
       
-       $file_path=$attachment_url;//'/var/www/html/bsp'.wp_make_link_relative($attachment_url);
+       $file_path=$attachment_url;
        $parser = new \Smalot\PdfParser\Parser();
        $pdf    = $parser->parseFile($file_path);
        $metadata   = $pdf->getDetails();
@@ -862,9 +862,7 @@ function save_pdf_meta($post_id) {
        else{                       
            $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
            $keywordsArray = array_map('trim', array_filter($keywordsArray));
-       }
-
-      
+       }      
 
            if ($keywordsArray) {
                $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names'));
