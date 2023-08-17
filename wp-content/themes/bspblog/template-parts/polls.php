@@ -51,20 +51,20 @@ get_header();
 			<form class="post-filter-form">
 				<div class="post-fields">
 					<!-- Search Input -->
-					<input type="text" class="form-control" name="search_text" placeholder="Enter your search query" aria-label="Search" required value="<?php echo $search_text;?>">
+					<input type="text" class="form-control" name="search_text" placeholder="Enter your search query" aria-label="Search" required value="<?php echo $search_text;?>" autocomplete="off">
 				</div>
 				<div class="post-fields">
 					<!-- Search Input -->
 					<!-- <input type="text" class="form-control datepicker" name="from_date" placeholder="From date" aria-label="Search" required value="<?php //echo $from_date; ?>"> -->
 					<div class="input-group">
-					<input type="text" class="form-control datepicker" name="from_date" placeholder="From Date"  value="<?php echo $from_date; ?>">
+					<input type="text" class="form-control datepicker" name="from_date" placeholder="From Date"  value="<?php echo $from_date; ?>" autocomplete="off">
 				    </div>							
 				</div>
 				<div class="post-fields">
 					<!-- Search Input -->
 					<!-- <input type="text" class="form-control datepicker" name="to_date" placeholder="To date" aria-label="Search" required value="<?php //echo $to_date; ?>"> -->
 					<div class="input-group">
-					<input type="text" class="form-control datepicker" name="to_date" placeholder="To Date"  value="<?php echo $to_date; ?>">
+					<input type="text" class="form-control datepicker" name="to_date" placeholder="To Date"  value="<?php echo $to_date; ?>" autocomplete="off">
 				    </div>
 				</div>
 				<div class="post-fields">
