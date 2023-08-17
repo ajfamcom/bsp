@@ -40,7 +40,7 @@ public function display_home_top_section() {
                 <img width="500" src="'.$feat_image.'" decoding="async" loading="lazy" style="background:cover;">
                 <div class="container">
                     <div class="row">
-                    <div class="col-md-10 col-sm-10 col-12 offset-md-1 offset-sm-1">
+                    <div class="col-md-8 col-sm-8 col-12 offset-md-1 offset-sm-1">
                   <h1 class="bnr-title">'.the_title().'<span style="color:#fff;">'.$line1.'</span>'.'<span>'.$line2.'</span>'.'</h1>
                   <p class="bnr-snbtitle">'.$line3.'</p>
                   <a href="'.$link.'" class="btn btn-primary">CONTACT US</a>
