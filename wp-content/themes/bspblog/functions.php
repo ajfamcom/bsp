@@ -689,6 +689,7 @@ function get_pdf_metadata_custom($postid,$type='polls') {
 
 function get_multiple_pdf_metadata_custom($postid,$type='polls') {
     $text='';
+    wp_set_post_tags($postid, array(), false);
     $fpdi_pdf_parser_path = get_template_directory() . '/pdfparser-master/alt_autoload.php-dist';
     require_once $fpdi_pdf_parser_path;
     
@@ -783,7 +784,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
     
        }
 
-  $attachments = get_attached_media('application/pdf', $post_id);
+  $attachments = get_attached_media('application/pdf', $postid);
    
    foreach ($attachments as $attachment) {
        $attachment_url = get_attached_file($attachment->ID);
