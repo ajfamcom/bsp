@@ -6,7 +6,6 @@
 while (have_posts()) : the_post();
 $post_id = get_the_ID();
 $permalink = get_permalink($post_id);
-//$download=get_field('pdf_attachment',$post_id);
 $post_date = get_the_date('F j, Y \a\t g:i A e', $post_id);
 $author_name = get_the_author_meta('display_name', get_post_field('post_author', $post_id));
 $permalink = get_permalink($post_id);
@@ -27,7 +26,7 @@ $permalink = get_permalink($post_id);
 
 				$tag_names = array();
 				foreach ($tags as $tag) {
-					$tag_names[] = $tag->name; // Extract tag names
+					$tag_names[] = $tag->name; 
 				}
 
 				$multiple_pdf_attachment=get_field('multiple_pdf_attachments',$post_id);
@@ -89,7 +88,7 @@ endwhile;
 				
 				<div class="share-and-dwn-btn">
 				<?php 
-				//print_r($multiple_pdf_attachment);
+				
 				if(isset($multiple_pdf_attachment) && !empty($multiple_pdf_attachment)) {
 					foreach($multiple_pdf_attachment as $val){ ?>
 		<div class="download-pdf-file">
@@ -117,48 +116,12 @@ endwhile;
 <div class="col-md-12 py-5">
 
 <h2 class="text-center mb-4">Related Posts</h2>
-<?php 
-//$keywordsArray = preg_split("/\r\n|\n|\r/", $search['Keywords']);      
-//$breakcode = array_map('trim', array_filter($search));
 
-
-?>
 <section class="splide pb-md-5 mb-md-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
         <div class="splide__track">
             <ul class="splide__list">
                 <?php
-//global $wpdb;
 
-//if ($breakcode) {
-   // $addData = "";
-   /*  foreach ($breakcode as $val) {
-        $addData .= "OR wp_postmeta.meta_value LIKE '%$val%'"; 
-    } */
-//}				
-
-
-
-/* $break_search_text = array(); // Initialize the array
-
-$query = "
-    SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
-    FROM {$wpdb->prefix}posts
-    INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id
-    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-    AND {$wpdb->prefix}posts.post_status = 'publish' ";
-
-$query .= " AND (
-    wp_postmeta.meta_key = 'custom_pdf_keywords'
-    AND (
-        wp_postmeta.meta_value LIKE '%xxx%' ";
-
-    $query .= $addData;
-
- $query .= ")
-)";
-
-$query .= " GROUP BY {$wpdb->prefix}posts.ID,{$wpdb->prefix}posts.post_title,{$wpdb->prefix}posts.post_content,{$wpdb->prefix}posts.post_date
-    ORDER BY {$wpdb->prefix}posts.post_date DESC"; */
 	global $wpdb;
 
 	

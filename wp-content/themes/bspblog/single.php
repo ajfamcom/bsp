@@ -19,7 +19,7 @@ while (have_posts()) : the_post();
 $post_id = get_the_ID();
 $post_type = get_post_type($post_id);
 $permalink = get_permalink($post_id);
-//$download=get_field('multiple_pdf_attachment_for_post',$post_id);
+
 $post_date = get_the_date('F j, Y \a\t g:i A e', $post_id);
 $author_name = get_the_author_meta('display_name', get_post_field('post_author', $post_id));
 $permalink = get_permalink($post_id);
@@ -34,7 +34,12 @@ $permalink = get_permalink($post_id);
 				} else {
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
 				}
-				$search=get_pdf_metadata_custom($post_id,'post');
+				$tags = wp_get_post_tags($post_id);
+
+				$tag_names = array();
+				foreach ($tags as $tag) {
+					$tag_names[] = $tag->name; 
+				}
 
 				$multiple_pdf_attachment=get_field('multiple_pdf_attachment_for_post',$post_id);
 				//echo ($multiple_pdf_attachment)[0]['poll_pdf_attachment']['url'];
@@ -93,7 +98,7 @@ endwhile;
 				</div>
 				
 				<div class="share-and-dwn-btn">
-				<?php if($multiple_pdf_attachment) {
+				<?php if(isset($multiple_pdf_attachment) && !empty($multiple_pdf_attachment)) {
 					foreach($multiple_pdf_attachment as $val){ ?>
 		    <div class="download-pdf-file">
 			<h3>Download the Poll</h3>                              
@@ -122,57 +127,36 @@ endwhile;
 <section class="splide pb-md-5 mb-md-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
         <div class="splide__track">
             <ul class="splide__list">
-                <?php
-global $wpdb;
-$keywordsArray = preg_split("/\r\n|\n|\r/", $search['Keywords']);      
-$breakcode = array_map('trim', array_filter($keywordsArray));
-//$breakcode = $search['Keywords'];
+         <?php
+			global $wpdb;
+				
+			$tag_names_list = "'" . implode("','", $tag_names) . "'";
 
-if ($breakcode) {
-    $addData = "";
-    foreach ($breakcode as $val) {
-        $addData .= "OR wp_postmeta.meta_value LIKE '%$val%'"; 
-    }
-}				
+			$query = "
+				SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
+				FROM {$wpdb->prefix}posts AS wp_posts
+				LEFT JOIN {$wpdb->prefix}term_relationships AS tr ON wp_posts.ID = tr.object_id
+				LEFT JOIN {$wpdb->prefix}term_taxonomy AS tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+				LEFT JOIN {$wpdb->prefix}terms AS t ON tt.term_id = t.term_id
+				INNER JOIN {$wpdb->prefix}postmeta AS wp_postmeta ON wp_posts.ID = wp_postmeta.post_id
+				WHERE (wp_posts.post_type = 'bsp_custom_polls' OR wp_posts.post_type = 'post')
+				AND wp_posts.post_status = 'publish'		
+				AND (tt.taxonomy = 'post_tag' AND t.name IN ($tag_names_list))
+				GROUP BY wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
+				ORDER BY wp_posts.post_date DESC
+			";
 
-
-//$search_text = 'Hispanic';//$search['Keywords'];
-//$break_search_text = array(); // Initialize the array
-
-$query = "
-    SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
-    FROM {$wpdb->prefix}posts
-    INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id
-    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-    AND {$wpdb->prefix}posts.post_status = 'publish' ";
-
-$query .= " AND (
-    wp_postmeta.meta_key = 'custom_pdf_keywords'
-    AND (
-        wp_postmeta.meta_value LIKE '%xxx%' ";
-
-    $query .= $addData;
-
- $query .= ")
-)";
-
-$query .= " GROUP BY {$wpdb->prefix}posts.ID,{$wpdb->prefix}posts.post_title,{$wpdb->prefix}posts.post_content,{$wpdb->prefix}posts.post_date
-    ORDER BY {$wpdb->prefix}posts.post_date DESC";
-
-$results = $wpdb->get_results($query);
+			$results = $wpdb->get_results($query);
 		
 		if ($results) :
 			foreach($results as $row) :
-
 				$post_id = $row->ID;
 				$permalink = get_permalink($post_id);
 				 if (has_post_thumbnail($post_id)) {
-
 					$thumbnail_id = get_post_thumbnail_id($post_id);
 					$image_url = wp_get_attachment_url($thumbnail_id);
 					$theme_directory_uri = get_template_directory_uri();
 					$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
-
 					$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
 				} else {
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
