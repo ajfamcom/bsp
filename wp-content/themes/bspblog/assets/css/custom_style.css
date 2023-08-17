@@ -933,7 +933,7 @@ ul.contact-social-links li a:hover i {
     margin: 1% 0;
     display: inline-block;
 }
-.news-block .news-info p a {
+.news-block .news-info p:last-child a {
     font-weight: bold;
     color: var(--blue);
     display: flex;
@@ -941,7 +941,7 @@ ul.contact-social-links li a:hover i {
     align-items: center;
     gap: 6px;
 }
-.news-block .news-info p a::after {
+.news-block .news-info p:last-child a::after {
     content: '\2192';
     font-size: 18px;
 }
