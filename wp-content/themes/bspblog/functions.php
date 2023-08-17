@@ -1014,7 +1014,7 @@ function extract_tags_from_pdf_attachments($content, $post_id) {
     return $content; 
 }
 
-//add_filter('content_save_pre', 'extract_tags_from_pdf_attachments', 10, 2);
+add_filter('content_save_pre', 'extract_tags_from_pdf_attachments', 10, 2);
 
 
 
