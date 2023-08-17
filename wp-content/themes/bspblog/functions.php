@@ -827,7 +827,7 @@ function save_pdf_meta($post_id) {
 
     
     $post_type = get_post_type($post_id);
-    //wp_remove_object_terms($post_id, 'post_tag',$post_type);
+    
 
     
     if ($post_type === 'bsp_custom_polls') {
@@ -865,46 +865,13 @@ function save_pdf_meta($post_id) {
     }
 
     
-   /**attachments */
- /*   $attachments = get_attached_media('application/pdf', $post_id);
-   
-   foreach ($attachments as $attachment) {
-       $attachment_url = get_attached_file($attachment->ID);
-      
-       $file_path=$attachment_url;
-       $parser = new \Smalot\PdfParser\Parser();
-       $pdf    = $parser->parseFile($file_path);
-       $metadata   = $pdf->getDetails();
-
-      
-       if (strpos($metadata['Keywords'], ',') !== false) {                        
-           $keywordsArray = explode(",", $metadata['Keywords']);
-           $keywordsArray = array_map('trim', array_filter($keywordsArray));
-       } 
-        elseif (strpos($metadata['Keywords'], ' ') !== false) {                         
-           $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
-           $keywordsArray = array_map('trim', array_filter($keywordsArray));
-       } 
-       else{                       
-           $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
-           $keywordsArray = array_map('trim', array_filter($keywordsArray));
-       }      
-
-            if($keywordsArray){
-           foreach($keywordsArray as $val){            
-                $custom_field_value .= $val.',';            
-          }
-        }
-       
-   } */
-
-   /***attachments */
+ 
    
     
 }
 
 
-add_action('save_post', 'save_pdf_meta' , 20);
+//add_action('save_post', 'save_pdf_meta' , 20);
 
 
 /********** */
