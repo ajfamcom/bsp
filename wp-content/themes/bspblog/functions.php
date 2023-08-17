@@ -801,8 +801,15 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
            )
        );
        $post = get_post($postid);
+       $attachments_data = get_posts( array(
+        'post_type' => 'attachment',
+        'posts_per_page' => -1,
+        'post_parent' => $post->ID,
+        'exclude'     => 'image'
+        ));
+        print_r($attachments_data);
        if($post){
-       // $attachment_urls = get_attached_media('application/pdf', $postid, 'urls');
+        //$attachment_urls = get_attached_media('application/pdf', $postid, 'urls');
        
        foreach ($attachments as $attachment) {
         
