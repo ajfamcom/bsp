@@ -83,7 +83,7 @@ endwhile;
 				<div class="share-and-dwn-btn">
 				<?php 
 				//print_r($multiple_pdf_attachment);
-				if($multiple_pdf_attachment) {
+				if(isset($multiple_pdf_attachment) && !empty($multiple_pdf_attachment)) {
 					foreach($multiple_pdf_attachment as $val){ ?>
 		<div class="download-pdf-file">
 		<h3>Download the Poll</h3>
