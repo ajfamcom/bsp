@@ -23,7 +23,7 @@ $permalink = get_permalink($post_id);
 				}
 				$search=get_the_tags($post_id);//get_pdf_metadata_custom($post_id);
 
-				print_r($search);die();
+				echo '<pre>';print_r($search);die();
 
 				$multiple_pdf_attachment=get_field('multiple_pdf_attachments',$post_id);
 				//echo ($multiple_pdf_attachment)[0]['poll_pdf_attachment']['url'];
