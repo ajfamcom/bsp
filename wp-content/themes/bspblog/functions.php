@@ -841,7 +841,7 @@ function save_pdf_meta($post_id) {
     
    /**attachments */
    $attachments = get_attached_media('application/pdf', $post_id);
-    
+   print_r($attachments);die();
    foreach ($attachments as $attachment) {
        $attachment_url = get_attached_file($attachment->ID);
 
