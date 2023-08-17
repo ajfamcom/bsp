@@ -65,7 +65,7 @@ $args = array(
 );
 $query = new WP_Query( $args );
 if ($query->have_posts()) {
-	$iteration = 0;
+	echo $iteration = 0;
     while ($query->have_posts()) {
 	if ($iteration > 0) {	
         $query->the_post();
