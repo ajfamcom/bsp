@@ -794,7 +794,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
                WHERE post_parent = %d
                AND post_type = 'attachment'
                AND post_mime_type = %s
-               AND post_status = 'publish'               
+               AND post_status = 'inherit'               
                ",
                $postid,
                'application/pdf'
