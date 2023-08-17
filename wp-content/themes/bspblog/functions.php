@@ -919,15 +919,14 @@ function save_pdf_meta($post_id) {
             'application/pdf'
         )
     );
-    if($attachments)
-    {
+    
         foreach ($attachments as $attachment) {
      
             // Retrieve attachment metadata and perform actions
             $attachment_id = $attachment->ID;
             delete_tags_when_attachment_removed(($attachment_id));
         }
-    }
+    
     
  
    
