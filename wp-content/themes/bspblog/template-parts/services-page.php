@@ -46,7 +46,7 @@ if ($query->have_posts()) {
         $post_id = get_the_ID();
         
 ?>
-<h2 style="color:#f63d45;"><?php the_title();?></h2>
+<h2 style="color:#f63d45 !important;"><?php the_title();?></h2>
 <?php the_content();?>
 <?php } 
 wp_reset_postdata();
