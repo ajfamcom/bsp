@@ -60,7 +60,7 @@ $args = array(
     'posts_per_page' => -1,
     'meta_key'       => 'page_data_sort_order', 
     'orderby'        => 'meta_value_num',    
-    'order'          => 'ASC',
+    'order'          => 'DESC',
 	'offset'         => 1             
 );
 $query = new WP_Query( $args );
