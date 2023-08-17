@@ -793,7 +793,9 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
                FROM $wpdb->posts
                WHERE post_parent = %d
                AND post_type = 'attachment'
-               AND post_mime_type = %s",
+               AND post_mime_type = %s
+               AND post_status = 'publish'
+               ",
                $postid,
                'application/pdf'
            )
@@ -803,7 +805,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         
            // Retrieve attachment metadata and perform actions
            $attachment_id = $attachment->ID;
-           //delete_tags_when_attachment_removed(($attachment_id));
+           delete_tags_when_attachment_removed(($attachment_id));
            $attachment_url = wp_get_attachment_url($attachment_id);
            $file_path='/var/www/html/bsp'.wp_make_link_relative( $attachment_url);
                 $parser = new \Smalot\PdfParser\Parser();
