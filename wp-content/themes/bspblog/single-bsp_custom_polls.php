@@ -21,9 +21,14 @@ $permalink = get_permalink($post_id);
 				} else {
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
 				}
-				$search=get_the_tags($post_id);//get_pdf_metadata_custom($post_id);
+				
 
-				echo '<pre>';print_r($search);die();
+				$tags = wp_get_post_tags($post_id);
+
+				$tag_names = array();
+				foreach ($tags as $tag) {
+					$search[] = $tag->name; // Extract tag names
+				}
 
 				$multiple_pdf_attachment=get_field('multiple_pdf_attachments',$post_id);
 				//echo ($multiple_pdf_attachment)[0]['poll_pdf_attachment']['url'];
@@ -113,9 +118,9 @@ endwhile;
 
 <h2 class="text-center mb-4">Related Posts</h2>
 <?php 
-$keywordsArray = preg_split("/\r\n|\n|\r/", $search['Keywords']);      
-$breakcode = array_map('trim', array_filter($keywordsArray));
-//$breakcode = $search['dc:subject'];
+//$keywordsArray = preg_split("/\r\n|\n|\r/", $search['Keywords']);      
+$breakcode = array_map('trim', array_filter($search));
+
 
 ?>
 <section class="splide pb-md-5 mb-md-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
@@ -126,13 +131,13 @@ global $wpdb;
 
 if ($breakcode) {
     $addData = "";
-    foreach ($breakcode as $val) {
+   /*  foreach ($breakcode as $val) {
         $addData .= "OR wp_postmeta.meta_value LIKE '%$val%'"; 
-    }
+    } */
 }				
 
 
-$search_text = 'Hispanic';//$search['Keywords'];
+
 $break_search_text = array(); // Initialize the array
 
 $query = "
@@ -154,7 +159,7 @@ $query .= " AND (
 
 $query .= " GROUP BY {$wpdb->prefix}posts.ID,{$wpdb->prefix}posts.post_title,{$wpdb->prefix}posts.post_content,{$wpdb->prefix}posts.post_date
     ORDER BY {$wpdb->prefix}posts.post_date DESC";
-
+echo $query;die();
 $results = $wpdb->get_results($query);
 		
 		if ($results) :
