@@ -784,17 +784,34 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         }
     
        }
+   
+       global $wpdb;
 
-   $attachments = get_attached_media('application/pdf', $postid);
-   echo '<pre>';print_r($attachments);die();
-   foreach ($attachments as $attachment) {
-       $attachment_url = get_attached_file($attachment->ID);
-      
-       $file_path=$attachment_url;
-       $parser = new \Smalot\PdfParser\Parser();
-       $pdf    = $parser->parseFile($file_path);
-       $metadata   = $pdf->getDetails();
-      
+       $attachments = $wpdb->get_results(
+           $wpdb->prepare(
+               "SELECT ID, post_mime_type
+               FROM $wpdb->posts
+               WHERE post_parent = %d
+               AND post_type = 'attachment'
+               AND post_mime_type = %s
+               AND post_status = 'inherit'               
+               ",
+               $postid,
+               'application/pdf'
+           )
+       );
+       if($attachments){
+       foreach ($attachments as $attachment) {
+        
+           // Retrieve attachment metadata and perform actions
+           $attachment_id = $attachment->ID;
+           //delete_tags_when_attachment_removed(($attachment_id));
+           $attachment_url = wp_get_attachment_url($attachment_id);
+           $file_path='/var/www/html/bsp'.wp_make_link_relative( $attachment_url);
+                $parser = new \Smalot\PdfParser\Parser();
+                $pdf    = $parser->parseFile($file_path);
+                $metadata   = $pdf->getDetails();
+                
       
        if (strpos($metadata['Keywords'], ',') !== false) {
            
@@ -819,8 +836,30 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         }
        
    } 
+}
+   
 return $custom_field_value;
 }
+
+
+function delete_tags_when_attachment_removed($attachment_id) {
+    
+    $post_id = wp_get_post_parent_id($attachment_id);
+
+    if ($post_id) {
+        
+        $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names'));
+
+       
+        $attachment_tags = wp_get_post_tags($attachment_id, array('fields' => 'names'));
+        $updated_tags = array_diff($existing_tags, $attachment_tags);
+
+        
+        wp_set_post_tags($post_id, $updated_tags, false);
+    }
+}
+
+add_action('delete_attachment', 'delete_tags_when_attachment_removed');
 
 
 /****new code**** */
@@ -831,7 +870,7 @@ function save_pdf_meta($post_id) {
 
     
     $post_type = get_post_type($post_id);
-    
+    wp_set_post_tags($post_id, array(), false);
 
     
     if ($post_type === 'bsp_custom_polls') {
@@ -867,11 +906,7 @@ function save_pdf_meta($post_id) {
     }
 
     }
-
-    
  
-   
-    
 }
 
 
