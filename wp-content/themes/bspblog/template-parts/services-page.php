@@ -72,7 +72,7 @@ if ($query->have_posts()) {
         $post_id = get_the_ID();
         if ($iteration > 1) {
 ?>
-			<h1><?php $iteration.the_title(); ?></h1>
+			<h1><?php the_title(); ?></h1>
 			<?php the_content();?>
 			<?php
 			
