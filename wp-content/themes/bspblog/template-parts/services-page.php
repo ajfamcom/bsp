@@ -25,6 +25,13 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 
 <div class="container py-5 my-md-5">
 	<div class="row align-items-center py-xl-5">
+
+	<div class="col-12 text-center">
+<h1>Lorem Ipsum Dummy text</h1>
+<h2>Our Clients</h2>
+<p>Our clients include office holders or candidates who have run for president, Congress, governor, and state legislator, plus a variety of national, congressional, gubernatorial party committees. We also boast as clients a wide range of think tanks, universities, advocacy groups, citizen organization, and other non-profits.</p>
+	</div>
+
 		<div class="col-md-6 col-sm-6 col-12">
 		<?php
 $args = array(
@@ -41,7 +48,7 @@ if ($query->have_posts()) {
         $post_id = get_the_ID();
         
 ?>
-			<h2><?php the_title(); ?></h2>
+			<h1><?php the_title(); ?></h1>
 			<?php the_content();?>
 			<?php
     }
