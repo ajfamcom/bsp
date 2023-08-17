@@ -27,20 +27,39 @@ $top_header = get_field('image_over_banner', $page_id);
 <div class="container py-5 my-md-5">
 	<div class="row align-items-center py-xl-5">
 
-	<div class="col-12 text-center">
-<h1>Lorem Ipsum Dummy text</h1>
-<h2>Our Clients</h2>
-<p>Our clients include office holders or candidates who have run for president, Congress, governor, and state legislator, plus a variety of national, congressional, gubernatorial party committees. We also boast as clients a wide range of think tanks, universities, advocacy groups, citizen organization, and other non-profits.</p>
-	</div>
+<div class="col-12 text-center">
+<?php if($top_header){?>
+<h1><?php echo $top_header;?></h1>
+<?php } ?>
+<?php
+$args = array(
+    'post_type' => 'manage_services',
+    'posts_per_page' => 1,
+    'meta_key'       => 'page_data_sort_order', // New parameter for sorting
+    'orderby'        => 'meta_value_num',    // Sort by numeric value of meta_key
+    'order'          => 'ASC',              // Ascending order
+);
+$query = new WP_Query( $args );
+if ($query->have_posts()) {
+    while ($query->have_posts()) {
+        $query->the_post();
+        $post_id = get_the_ID();
+        
+?>
+<h2><?php the_title();?></h2>
+<?php the_content();?>
+<?php } }?>	
+</div>
 
 		<div class="col-md-6 col-sm-6 col-12">
 		<?php
 $args = array(
     'post_type' => 'manage_services',
     'posts_per_page' => -1,
-    'meta_key'       => 'page_data_sort_order', // New parameter for sorting
-    'orderby'        => 'meta_value_num',    // Sort by numeric value of meta_key
-    'order'          => 'ASC',              // Ascending order
+    'meta_key'       => 'page_data_sort_order', 
+    'orderby'        => 'meta_value_num',    
+    'order'          => 'ASC',
+	'offset'         => 1             
 );
 $query = new WP_Query( $args );
 if ($query->have_posts()) {
