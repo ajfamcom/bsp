@@ -786,7 +786,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
        }
 
    $attachments = get_attached_media('application/pdf', $postid);
-   
+   echo '<pre>';print_r($attachments);die();
    foreach ($attachments as $attachment) {
        $attachment_url = get_attached_file($attachment->ID);
       
@@ -794,7 +794,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
        $parser = new \Smalot\PdfParser\Parser();
        $pdf    = $parser->parseFile($file_path);
        $metadata   = $pdf->getDetails();
-       print_r($metadata);die();
+      
       
        if (strpos($metadata['Keywords'], ',') !== false) {
            
