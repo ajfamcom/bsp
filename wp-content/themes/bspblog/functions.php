@@ -802,14 +802,12 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
        foreach ($attachments as $attachment) {
            // Retrieve attachment metadata and perform actions
            $attachment_id = $attachment->ID;
-           echo $attachment_url = wp_get_attachment_url($attachment_id);die();
-      //$attachment_url = get_attached_file($attachment->ID);
-      
-       $file_path=$attachment_url;
-       $parser = new \Smalot\PdfParser\Parser();
-       $pdf    = $parser->parseFile($file_path);
-       $metadata   = $pdf->getDetails();
-      
+           $attachment_url = wp_get_attachment_url($attachment_id);
+           $file_path='/var/www/html/bsp'.wp_make_link_relative($arr['post_pdf_attachment']['url']);
+                $parser = new \Smalot\PdfParser\Parser();
+                $pdf    = $parser->parseFile($file_path);
+                $metadata   = $pdf->getDetails();
+                
       
        if (strpos($metadata['Keywords'], ',') !== false) {
            
