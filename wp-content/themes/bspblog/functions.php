@@ -690,6 +690,7 @@ function get_pdf_metadata_custom($postid,$type='polls') {
 function get_multiple_pdf_metadata_custom($postid,$type='polls') {
     $text='';
     //wp_set_post_tags($postid, array(), false);
+    $custom_field_value='';
     $fpdi_pdf_parser_path = get_template_directory() . '/pdfparser-master/alt_autoload.php-dist';
     require_once $fpdi_pdf_parser_path;
     
@@ -701,7 +702,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
     else{
         $file_array_post = get_field('multiple_pdf_attachment_for_post', $postid);
     }
-    $custom_field_value='';
+   
    if($file_array){
 
     foreach($file_array as $arr){
@@ -784,7 +785,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
     
        }
 
-/*   $attachments = get_attached_media('application/pdf', $postid);
+   $attachments = get_attached_media('application/pdf', $postid);
    
    foreach ($attachments as $attachment) {
        $attachment_url = get_attached_file($attachment->ID);
@@ -793,20 +794,23 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
        $parser = new \Smalot\PdfParser\Parser();
        $pdf    = $parser->parseFile($file_path);
        $metadata   = $pdf->getDetails();
-
+       print_r($metadata);die();
       
-       if (strpos($metadata['Keywords'], ',') !== false) {                        
-           $keywordsArray = explode(",", $metadata['Keywords']);
-           $keywordsArray = array_map('trim', array_filter($keywordsArray));
-       } 
-        elseif (strpos($metadata['Keywords'], ' ') !== false) {                         
-           $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
-           $keywordsArray = array_map('trim', array_filter($keywordsArray));
-       } 
-       else{                       
-           $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
-           $keywordsArray = array_map('trim', array_filter($keywordsArray));
-       }      
+       if (strpos($metadata['Keywords'], ',') !== false) {
+           
+        $keywordsArray = explode(",", $metadata['Keywords']);
+        $keywordsArray = array_map('trim', array_filter($keywordsArray));
+    } 
+     elseif (strpos($metadata['Keywords'], ' ') !== false) {
+        
+        $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
+        $keywordsArray = array_map('trim', array_filter($keywordsArray));
+    } 
+    else{
+      
+        $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
+        $keywordsArray = array_map('trim', array_filter($keywordsArray));
+    }      
 
             if($keywordsArray){
            foreach($keywordsArray as $val){            
@@ -814,7 +818,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
           }
         }
        
-   } */
+   } 
 return $custom_field_value;
 }
 
