@@ -27,7 +27,7 @@ $permalink = get_permalink($post_id);
 
 				$tag_names = array();
 				foreach ($tags as $tag) {
-					$search[] = $tag->name; // Extract tag names
+					$tag_names[] = $tag->name; // Extract tag names
 				}
 
 				$multiple_pdf_attachment=get_field('multiple_pdf_attachments',$post_id);
@@ -119,7 +119,7 @@ endwhile;
 <h2 class="text-center mb-4">Related Posts</h2>
 <?php 
 //$keywordsArray = preg_split("/\r\n|\n|\r/", $search['Keywords']);      
-$breakcode = array_map('trim', array_filter($search));
+//$breakcode = array_map('trim', array_filter($search));
 
 
 ?>
@@ -127,18 +127,18 @@ $breakcode = array_map('trim', array_filter($search));
         <div class="splide__track">
             <ul class="splide__list">
                 <?php
-global $wpdb;
+//global $wpdb;
 
-if ($breakcode) {
-    $addData = "";
+//if ($breakcode) {
+   // $addData = "";
    /*  foreach ($breakcode as $val) {
         $addData .= "OR wp_postmeta.meta_value LIKE '%$val%'"; 
     } */
-}				
+//}				
 
 
 
-$break_search_text = array(); // Initialize the array
+/* $break_search_text = array(); // Initialize the array
 
 $query = "
     SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
@@ -158,9 +158,29 @@ $query .= " AND (
 )";
 
 $query .= " GROUP BY {$wpdb->prefix}posts.ID,{$wpdb->prefix}posts.post_title,{$wpdb->prefix}posts.post_content,{$wpdb->prefix}posts.post_date
-    ORDER BY {$wpdb->prefix}posts.post_date DESC";
-echo $query;die();
-$results = $wpdb->get_results($query);
+    ORDER BY {$wpdb->prefix}posts.post_date DESC"; */
+	global $wpdb;
+
+	
+	
+	$tag_names_list = "'" . implode("','", $tag_names) . "'";
+	
+	$query = "
+		SELECT wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
+		FROM {$wpdb->prefix}posts AS wp_posts
+		LEFT JOIN {$wpdb->prefix}term_relationships AS tr ON wp_posts.ID = tr.object_id
+		LEFT JOIN {$wpdb->prefix}term_taxonomy AS tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+		LEFT JOIN {$wpdb->prefix}terms AS t ON tt.term_id = t.term_id
+		INNER JOIN {$wpdb->prefix}postmeta AS wp_postmeta ON wp_posts.ID = wp_postmeta.post_id
+		WHERE (wp_posts.post_type = 'bsp_custom_polls' OR wp_posts.post_type = 'post')
+		AND wp_posts.post_status = 'publish'		
+		AND (tt.taxonomy = 'post_tag' AND t.name IN ($tag_names_list))
+		GROUP BY wp_posts.ID, wp_posts.post_title, wp_posts.post_content, wp_posts.post_date
+		ORDER BY wp_posts.post_date DESC
+	";
+	
+	$results = $wpdb->get_results($query);
+
 		
 		if ($results) :
 			foreach($results as $row) :
