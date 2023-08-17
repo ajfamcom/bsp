@@ -800,12 +800,16 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
                'application/pdf'
            )
        );
-       if($attachments){
+       $post = get_post($postid);
+       if($post){
+        $attachment_urls = get_attached_media('application/pdf', $postid, 'urls');
+       echo '<pre>'; print_r($attachment_urls);die();
        foreach ($attachments as $attachment) {
         
            // Retrieve attachment metadata and perform actions
            $attachment_id = $attachment->ID;
-           //delete_tags_when_attachment_removed(($attachment_id));
+          
+
            $attachment_url = wp_get_attachment_url($attachment_id);
            $file_path='/var/www/html/bsp'.wp_make_link_relative( $attachment_url);
                 $parser = new \Smalot\PdfParser\Parser();
