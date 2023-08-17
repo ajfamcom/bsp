@@ -805,7 +805,7 @@ function post_content_has_pdf_attachments($post_id) {
                 $url_arr[]=$url; 
             }
         }
-        return $url_arr
+        return $url_arr;
     }
 
     return false; // No PDF attachment URLs in post content
