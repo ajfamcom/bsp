@@ -793,13 +793,14 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
                FROM $wpdb->posts
                WHERE post_parent = %d
                AND post_type = 'attachment'
-               AND post_mime_type = %s               
+               AND post_mime_type = %s
+               AND post_status = 'publish'               
                ",
                $postid,
                'application/pdf'
            )
        );
-       
+       if($attachments){
        foreach ($attachments as $attachment) {
         
            // Retrieve attachment metadata and perform actions
@@ -835,6 +836,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         }
        
    } 
+}
    
 return $custom_field_value;
 }
@@ -868,7 +870,7 @@ function save_pdf_meta($post_id) {
 
     
     $post_type = get_post_type($post_id);
-    
+    wp_set_post_tags($post_id, array(), false);
 
     
     if ($post_type === 'bsp_custom_polls') {
