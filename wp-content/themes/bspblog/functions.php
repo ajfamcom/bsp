@@ -832,7 +832,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         }
        
    } 
-echo $custom_field_value;die();   
+  
 return $custom_field_value;
 }
 
