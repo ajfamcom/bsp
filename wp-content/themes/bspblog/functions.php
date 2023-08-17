@@ -1001,7 +1001,7 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 
 
 
-function delete_attachments_on_content_update($post_id) {
+/* function delete_attachments_on_content_update($post_id) {
     $post = get_post($post_id);
 
     if ($post && $post->post_type === 'post') { // Adjust post type if needed
@@ -1015,4 +1015,4 @@ function delete_attachments_on_content_update($post_id) {
 
 
 
-add_action('edit_post', 'delete_attachments_on_content_update');
+add_action('edit_post', 'delete_attachments_on_content_update'); */
