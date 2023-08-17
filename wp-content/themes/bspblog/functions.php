@@ -833,9 +833,9 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         $existing_tags = wp_get_post_tags($postid, array('fields' => 'names'));        
         $attachment_tags = wp_get_post_tags($attachment_id, array('fields' => 'names'));
         $updated_tags = array_diff($existing_tags, $attachment_tags);        
-        $custom_field_value .=implode(',',$updated_tags);
+       echo $custom_field_value .=implode(',',$updated_tags);
    } 
-  
+   echo $custom_field_value;die();
 return $custom_field_value;
 }
 
