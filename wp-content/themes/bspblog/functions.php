@@ -830,7 +830,11 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
                 $custom_field_value .= $val.',';            
           }
         }
-       
+        $existing_tags = wp_get_post_tags($postid, array('fields' => 'names'));        
+        $attachment_tags = wp_get_post_tags($attachment_id, array('fields' => 'names'));
+        $updated_tags = array_diff($existing_tags, $attachment_tags);
+        echo '<pre>';print_r($updated_tags);die();
+        
    } 
   
 return $custom_field_value;
