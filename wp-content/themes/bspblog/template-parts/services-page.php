@@ -65,9 +65,9 @@ $args = array(
 );
 $query = new WP_Query( $args );
 if ($query->have_posts()) {
-	echo $iteration = 0;
+	$iteration = 1;
     while ($query->have_posts()) {
-	if ($iteration > 0) {	
+	if ($iteration > 1) {	
         $query->the_post();
         $post_id = get_the_ID();
         
