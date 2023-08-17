@@ -784,11 +784,26 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         }
     
        }
-   wp_reset_postdata();
-   $attachments = get_attached_media('application/pdf', $postid);
-   echo '<pre>';print_r($attachments);die();
-   foreach ($attachments as $attachment) {
-       $attachment_url = get_attached_file($attachment->ID);
+   
+       global $wpdb;
+
+       $attachments = $wpdb->get_results(
+           $wpdb->prepare(
+               "SELECT ID, post_mime_type
+               FROM $wpdb->posts
+               WHERE post_parent = %d
+               AND post_type = 'attachment'
+               AND post_mime_type = %s",
+               $postid,
+               'application/pdf'
+           )
+       );
+   
+       foreach ($attachments as $attachment) {
+           // Retrieve attachment metadata and perform actions
+           $attachment_id = $attachment->ID;
+           echo $attachment_url = wp_get_attachment_url($attachment_id);die();
+      //$attachment_url = get_attached_file($attachment->ID);
       
        $file_path=$attachment_url;
        $parser = new \Smalot\PdfParser\Parser();
