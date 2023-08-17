@@ -3,6 +3,7 @@
 $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
+$top_header = get_field('top_header', $page_id);
 ?>
 <?php get_header(); ?>
 <div class="inner-bnr services-bnr" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<?php echo $full_banner['url']; ?>')">
@@ -27,19 +28,39 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 	<div class="row align-items-center py-xl-5">
 
 	<div class="col-12 text-center">
-<h1>Lorem Ipsum Dummy text</h1>
-<h2>Our Clients</h2>
-<p>Our clients include office holders or candidates who have run for president, Congress, governor, and state legislator, plus a variety of national, congressional, gubernatorial party committees. We also boast as clients a wide range of think tanks, universities, advocacy groups, citizen organization, and other non-profits.</p>
-	</div>
+	   <?php if($top_header):?>
+       <h1><?php echo $top_header;?></h1>
+       <?php endif; ?>
+	   <?php
+$fargs = array(
+    'post_type' => 'manage_services',
+    'posts_per_page' => 1,
+    'meta_key'       => 'page_data_sort_order', // New parameter for sorting
+    'orderby'        => 'meta_value_num',    // Sort by numeric value of meta_key
+    'order'          => 'ASC',              // Ascending order
+);
+$fquery = new WP_Query( $fargs );
+if ($fquery->have_posts()) {
+    while ($fquery->have_posts()) {
+        $fquery->the_post();
+        $fpost_id = get_the_ID();
+        
+?>
+<h2><?php the_title(); ?></h2>
+<?php the_content();?>
+<?php  } 
+   }   ?>	
+</div>
 
-		<div class="col-md-6 col-sm-6 col-12">
-		<?php
+<div class="col-md-6 col-sm-6 col-12">
+<?php
 $args = array(
     'post_type' => 'manage_services',
     'posts_per_page' => -1,
     'meta_key'       => 'page_data_sort_order', // New parameter for sorting
     'orderby'        => 'meta_value_num',    // Sort by numeric value of meta_key
     'order'          => 'ASC',              // Ascending order
+	'offset'         => 1, 
 );
 $query = new WP_Query( $args );
 if ($query->have_posts()) {
