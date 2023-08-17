@@ -793,8 +793,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
                FROM $wpdb->posts
                WHERE post_parent = %d
                AND post_type = 'attachment'
-               AND post_mime_type = %s
-               AND post_status = 'inherit'               
+               AND post_mime_type = %s                            
                ",
                $postid,
                'application/pdf'
