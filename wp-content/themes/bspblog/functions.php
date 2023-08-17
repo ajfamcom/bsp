@@ -794,14 +794,7 @@ function save_pdf_meta($post_id) {
 
     
     $post_type = get_post_type($post_id);
-    //$custom_field_value = '';
-    
-   /*  $custom_field_key = 'custom_pdf_keywords'; 
-    if (isset($_POST['custom_pdf_keywords'])) {
-        $custom_field_value = wp_kses_post($_POST['custom_pdf_keywords']);
-       
-    }
-    $breakcode=explode(',',$custom_field_value); */
+    wp_remove_object_terms($post_id, 'post_tag',$post_type);
 
     
     if ($post_type === 'bsp_custom_polls') {
