@@ -29,7 +29,7 @@ $top_header = get_field('image_over_banner', $page_id);
 
 <div class="col-12 text-center">
 <?php if($top_header){?>
-<h1><?php echo $top_header;?></h1>
+<h1><?php print_r($top_header);?></h1>
 <?php } ?>
 <?php
 $args = array(
