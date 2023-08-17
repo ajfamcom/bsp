@@ -48,7 +48,9 @@ if ($query->have_posts()) {
 ?>
 <h2><?php the_title();?></h2>
 <?php the_content();?>
-<?php } }?>	
+<?php } 
+wp_reset_postdata();
+}?>	
 </div>
 
 		<div class="col-md-6 col-sm-6 col-12">
