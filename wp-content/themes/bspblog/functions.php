@@ -785,63 +785,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
     
        }
    
-       global $wpdb;
-
-       $attachments = $wpdb->get_results(
-           $wpdb->prepare(
-               "SELECT ID, post_mime_type
-               FROM $wpdb->posts
-               WHERE post_parent = %d
-               AND post_type = 'attachment'
-               AND post_mime_type = %s                        
-               ",
-               $postid,
-               'application/pdf'
-           )
-       );
-       $attachment_urls = get_attached_media('application/pdf', $postid, 'urls');
-       
-       
-       if($attachments){
-        
-       
-       foreach ($attachments as $attachment) {
-        
-         
-           $attachment_id = $attachment->ID;         
-
-           $attachment_url = wp_get_attachment_url($attachment_id);
-           
-           $file_path='/var/www/html/bsp'.wp_make_link_relative( $attachment_url);
-                $parser = new \Smalot\PdfParser\Parser();
-                $pdf    = $parser->parseFile($file_path);
-                $metadata   = $pdf->getDetails();
-                
       
-       if (strpos($metadata['Keywords'], ',') !== false) {
-           
-        $keywordsArray = explode(",", $metadata['Keywords']);
-        $keywordsArray = array_map('trim', array_filter($keywordsArray));
-    } 
-     elseif (strpos($metadata['Keywords'], ' ') !== false) {
-        
-        $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
-        $keywordsArray = array_map('trim', array_filter($keywordsArray));
-    } 
-    else{
-      
-        $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
-        $keywordsArray = array_map('trim', array_filter($keywordsArray));
-    }      
-
-            if($keywordsArray){
-           foreach($keywordsArray as $val){            
-                $custom_field_value .= $val.',';            
-          }
-        }
-       
-   } 
-}
    
 return $custom_field_value;
 }
