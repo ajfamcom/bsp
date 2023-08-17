@@ -800,10 +800,10 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
                'application/pdf'
            )
        );
-       $post = get_post($postid);
+       //$post = get_post($postid);
        
        
-       if($post){
+       if($attachments){
         //$attachment_urls = get_attached_media('application/pdf', $postid, 'urls');
        
        foreach ($attachments as $attachment) {
@@ -847,7 +847,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
 return $custom_field_value;
 }
 
-
+/* 
 function delete_tags_when_attachment_removed($attachment_id) {
     
     $post_id = wp_get_post_parent_id($attachment_id);
@@ -865,7 +865,7 @@ function delete_tags_when_attachment_removed($attachment_id) {
     }
 }
 
-add_action('delete_attachment', 'delete_tags_when_attachment_removed');
+add_action('delete_attachment', 'delete_tags_when_attachment_removed'); */
 
 
 /****new code**** */
@@ -876,7 +876,7 @@ function save_pdf_meta($post_id) {
 
     
     $post_type = get_post_type($post_id);
-    wp_set_post_tags($post_id, array(), false);
+    //wp_set_post_tags($post_id, array(), false);
 
     
     if ($post_type === 'bsp_custom_polls') {
