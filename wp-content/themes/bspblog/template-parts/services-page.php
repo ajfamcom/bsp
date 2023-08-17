@@ -30,12 +30,11 @@ $top_header_title= get_field('top_header_title', $page_id);
 
 	<div class="col-12 text-center">
 	   <?php if($top_header):?>
-       <h1><?php echo $top_header_title;?></h1>
+       <h2><?php echo $top_header_title;?></h2>
        <?php endif; ?>
 		<?php
 		if($top_header_title) {        
-		?>
-		<h2><?php the_title(); ?></h2>
+		?>		
 		<p><?php $top_header_title;?></p>
        <?php } ?>
 
