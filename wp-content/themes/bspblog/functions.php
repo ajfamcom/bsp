@@ -803,7 +803,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
            // Retrieve attachment metadata and perform actions
            $attachment_id = $attachment->ID;
            $attachment_url = wp_get_attachment_url($attachment_id);
-           $file_path='/var/www/html/bsp'.wp_make_link_relative($arr['post_pdf_attachment']['url']);
+           $file_path='/var/www/html/bsp'.wp_make_link_relative( $attachment_url);
                 $parser = new \Smalot\PdfParser\Parser();
                 $pdf    = $parser->parseFile($file_path);
                 $metadata   = $pdf->getDetails();
