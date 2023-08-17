@@ -75,7 +75,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 					<h4><?php echo $proven_track_record_one; ?></h4>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-4 col-12 my-2 my-xl-5">
+			<div class="col-md-3 col-sm-4 col-12 my-2 my-xl-4">
 				<div class="track-div">
 					<i class="fa-regular fa-circle-check"></i>
 					<h4><?php echo $proven_track_record_two; ?></h4>
@@ -87,7 +87,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 					<h4><?php echo $proven_track_record_three; ?></h4>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-4 col-12 my-2 my-xl-5">
+			<div class="col-md-3 col-sm-4 col-12 my-2 my-xl-4">
 				<div class="track-div">
 					<i class="fa-regular fa-circle-check"></i>
 					<h4><?php echo $proven_track_record_four; ?></h4>
