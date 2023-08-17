@@ -791,7 +791,25 @@ return $custom_field_value;
 }
 
 
+function post_content_has_pdf_attachments($post_id) {
+    $post = get_post($post_id);
 
+    if ($post) {
+        // Get all URLs from the post content
+        preg_match_all('/<a\s+(?:[^>]*?\s+)?href=(["\'])(.*?)\1/', $post->post_content, $matches);
+
+        // Loop through the URLs and check if they point to PDF files
+        $url_arr=array();
+        foreach ($matches[2] as $url) {
+            if (strpos($url, '.pdf') !== false) {
+                $url_arr[]=$url; 
+            }
+        }
+        return $url_arr
+    }
+
+    return false; // No PDF attachment URLs in post content
+}
 
 /****new code**** */
 function save_pdf_meta($post_id) {
@@ -837,7 +855,12 @@ function save_pdf_meta($post_id) {
     }
 
     }
- 
+    
+     /**content check */
+    $post_attach_content= post_content_has_pdf_attachments($post_id);
+
+    echo '<pre>';print_r($post_attach_content);die();
+
 }
 
 
