@@ -798,7 +798,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
                'application/pdf'
            )
        );
-       echo '<pre>';print_r($attachments);die();
+       
        foreach ($attachments as $attachment) {
            // Retrieve attachment metadata and perform actions
            $attachment_id = $attachment->ID;
@@ -832,6 +832,7 @@ function get_multiple_pdf_metadata_custom($postid,$type='polls') {
         }
        
    } 
+echo $custom_field_value;die();   
 return $custom_field_value;
 }
 
