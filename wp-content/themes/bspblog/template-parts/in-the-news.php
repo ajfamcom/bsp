@@ -25,12 +25,12 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 </div>
 
 
-<div class="container grid-post py-5 my-md-5 showtype-grid">	
+<div class="container grid-post py-5 my-md-5">	
 	<div class="col-md-12 py-md-5">
 
     <div class="d-flex align-items-center gap-3 mb-4">
-    <a href="#." onclick="show('grid');"><i style="background-color: #153d67;" class="fa-solid fa-grip fs-2 rounded-3 text-white py-1 px-2"></i></a>
-    <a href="#." onclick="show('list');"><i style="background-color: #153d67;" class="fa-solid fa-grip-lines fs-2 rounded-3 text-white py-1 px-2"></i></a>
+    <i style="background-color: #153d67;" class="fa-solid fa-grip fs-2 rounded-3 text-white py-1 px-2"></i>
+    <i style="background-color: #153d67;" class="fa-solid fa-grip-lines fs-2 rounded-3 text-white py-1 px-2"></i>
     </div>
 
 		<div class="row">
@@ -38,7 +38,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $args = array(
                 'post_type' => 'news_analysis',
-                'posts_per_page' => 2, 
+                'posts_per_page' => 12, 
                 'paged' => $paged, 
                 'meta_query' => array(
                     array(
@@ -78,7 +78,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
                         }
 						?> 
 							<div class="single-news col-md-4">
-								<div class="news-image-square"></div>
+								<div class="news-image-square"><?php echo $image_link;?></div>
 								<div class="news-info">
 								<h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
 								</div>
@@ -100,89 +100,18 @@ $image_over_banner = get_field('image_over_banner', $page_id);
     </div>
 </div>	
 
-<div class="container tile-post py-5 my-md-5 showtype-list">
+<div class="container tile-post py-5 my-md-5">
   <div class="row">
     <div class="col-12">
         <div class="tile-blog-post">
-        <?php
-			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-            $args = array(
-                'post_type' => 'news_analysis',
-                'posts_per_page' => 2, 
-                'paged' => $paged, 
-                'meta_query' => array(
-                    array(
-                        'key' => 'news_status', 
-                        'value'   => 'Active', 
-                        'compare' => '=',
-                    ),    
-                ),
-            );
-                     
-            
-            $query = new WP_Query( $args );   
-       
-    
-			if ($query->have_posts()) :
-					while ($query->have_posts()) :
-						$query->the_post();						
-                        $post_id = get_the_ID();
-                        $short_desc = get_field('short_description', $post_id);
-                        $link_data = get_field('external_link', $post_id);
-                        $link='javascript:void(0)';
-                        $target="";
-                        if($link_data){
-                            $link= $link_data;
-                            $target='_blank';
-                        }
-                        if (has_post_thumbnail($post_id)) {
-                           
-                            $thumbnail_id = get_post_thumbnail_id($post_id);                            
-                            $image_url = wp_get_attachment_url($thumbnail_id);                         
-                            $theme_directory_uri = get_template_directory_uri();    
-                            $noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';                          
-                          
-                            $image_link= '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
-                        } else {
-                            $image_link= '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
-                        }
-						?>     
         <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
-     <?php 
-     endwhile;
-    endif;
-     
-     ?>
+        <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
+        <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
+        <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
+        <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
         </div>
-        <!-- Pagination Links -->
-   <div class="pagination">
-                    <?php
-                    echo paginate_links(array(
-                        'total' => $query->max_num_pages,
-                        'current' => $paged,
-                        'prev_text' => '&laquo;',
-                        'next_text' => '&raquo;',
-                    ));
-                    ?>
-                </div>
     </div>
   </div>
-   
 </div>
-<script>
-    $(document).ready(function(){
-        //$('.showtype-list').css('display','none');
-        //$('.showtype-grid').css('display','block');
-    });
-    function show(showtype){
-      if(showtype=='grid'){
-        $('.showtype-list').css('display','none');
-        $('.showtype-grid').css('display','block');
-      }
-      if(showtype=='list'){
-        $('.showtype-list').css('display','block');
-        $('.showtype-grid').css('display','none');
-     }
-    }
-</script>
+
 <?php get_footer();?>
