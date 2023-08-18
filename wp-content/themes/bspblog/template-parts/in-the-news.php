@@ -3,7 +3,7 @@
 $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
-$show_type=($_GET['show_type'])?$_GET['show_type']:'show-type-grid';
+
 ?>
 <?php get_header();?>
 
@@ -30,7 +30,7 @@ $show_type=($_GET['show_type'])?$_GET['show_type']:'show-type-grid';
     <a href="#" onclick="show('list');"><i style="background-color: #153d67;" class="fa-solid fa-grip-lines fs-2 rounded-3 text-white py-1 px-2"></i></a>
 </div>
 </div>
-<div class="container grid-post py-5 my-md-5 show-type-grid" style="display:block;">	
+<div class="container grid-post py-5 my-md-5 show-type-grid">	
 	<div class="col-md-12 py-md-5">
 
    
@@ -92,7 +92,7 @@ $show_type=($_GET['show_type'])?$_GET['show_type']:'show-type-grid';
     </div>
 </div>	
 
-<div class="container tile-post py-5 my-md-5 show-type-list" style="display:none;">
+<div class="container tile-post py-5 my-md-5 show-type-list">
   <div class="row">
     <div class="col-12">
         <div class="tile-blog-post">
