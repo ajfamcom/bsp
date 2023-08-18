@@ -3,7 +3,7 @@
 Template Name: Custom Search Data Template
 */
 global $wpdb;
-if (!empty($search_keyword)) {
+/* if (!empty($search_keyword)) {
     $sql_query="SELECT * FROM wp_searchdata WHERE keyword LIKE '%$search_keyword%' LIMIT $result_count_filter";
     $fetch_dataquery = $wpdb->get_results($sql_query);
     $total_items =count($fetch_dataquery);
@@ -13,11 +13,11 @@ if (!empty($search_keyword)) {
     $fetch_dataquery = $wpdb->get_results($sql_query);
     $total_items =count($fetch_dataquery);
   }
-  else{
+  else{ */
       $sql_query="SELECT * FROM wp_searchdata";
       $fetch_dataquery = $wpdb->get_results($sql_query);
       $total_items =count($fetch_dataquery);
-  }
+  //}
 // Pagination variables
 $current_page = max(1, $_GET['paged']);
 $result_count_filter=isset($_GET['result_count_filter']) ? sanitize_text_field($_GET['result_count_filter']) : $total_items;
