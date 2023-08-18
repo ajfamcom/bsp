@@ -239,7 +239,7 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 <?php ?>
 <script>
      $(document).ready(function(){
-        alert('<?php echo $show_type; ?>');
+       /*  alert('<?php echo $show_type; ?>');
         var stype='<?php echo $show_type; ?>';
        
         if(stype=='show-type-grid'){
@@ -249,7 +249,7 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
       if(stype=='show-type-list'){
         $('.show-type-list').css('display','block');
         $('.show-type-grid').css('display','none');
-     }
+     } */
     }); 
     function show(showtype){
       if(showtype=='grid'){
