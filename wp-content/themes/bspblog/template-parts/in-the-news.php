@@ -162,6 +162,7 @@ wp_reset_postdata();
 </div>
 <script>
      $(document).ready(function(){
+        alert('test');
         var stype='<?php echo $show_type; ?>';
         alert(stype);
         //$('.show-type-list').css('display','none');
