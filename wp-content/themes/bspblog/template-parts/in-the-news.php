@@ -25,6 +25,7 @@ $base_url = get_permalink();
 		</div>
 	</div>
 </div>
+<?php if($showt=='grid'){ ?>
 <div class="container py-5 my-md-5">	
 <div class="d-flex align-items-center gap-3 mb-4">
     <a href="#" onclick="show('grid');"><i style="background-color: #153d67;" class="fa-solid fa-grip fs-2 rounded-3 text-white py-1 px-2"></i></a>
@@ -85,7 +86,7 @@ $base_url = get_permalink();
                     echo paginate_links(array(
                         'total' => $query->max_num_pages,
                         'current' => $paged,
-                        'base' => add_query_arg('show_type', $showt, $base_url . '%_%'),
+                        'base' => add_query_arg('show_type', 'grid', $base_url . '%_%'),
                         'format' => '?paged=%#%',
                         'prev_text' => '&laquo;',
                         'next_text' => '&raquo;',
@@ -94,7 +95,8 @@ $base_url = get_permalink();
                 </div>
     </div>
 </div>	
-
+<?php } ?>
+<?php if($showt=='list') { ?>
 <div class="container tile-post py-5 my-md-5 show-type-list">
   <div class="row">
     <div class="col-12">
@@ -145,7 +147,7 @@ wp_reset_postdata();
                     echo paginate_links(array(
                         'total' => $query->max_num_pages,
                         'current' => $paged,
-                        'base' => add_query_arg('show_type', $showt, $base_url . '%_%'),
+                        'base' => add_query_arg('show_type', 'list', $base_url . '%_%'),
                         'format' => '?paged=%#%',
                         'prev_text' => '&laquo;',
                         'next_text' => '&raquo;',
@@ -154,5 +156,5 @@ wp_reset_postdata();
                 </div>
   </div>
 </div>
-
+<?php } ?>
 <?php get_footer();?>
