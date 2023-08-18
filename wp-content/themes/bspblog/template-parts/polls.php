@@ -178,23 +178,24 @@ $results = $wpdb->get_results($query);
 		
 		/***count query */
 		$queryforcount = "
-		SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
-		FROM {$wpdb->prefix}posts
-		LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-		WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-		AND {$wpdb->prefix}posts.post_status='publish'
-		AND (
-			({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
-			OR {$wpdb->prefix}posts.post_title LIKE %s
-			OR {$wpdb->prefix}posts.post_content LIKE %s
-		)
-		AND {$wpdb->prefix}posts.post_date >= %s AND {$wpdb->prefix}posts.post_date <= %s
-		GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-		ORDER BY {$wpdb->prefix}posts.post_date DESC
-		
+		SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+    FROM {$wpdb->prefix}posts
+    LEFT JOIN {$wpdb->prefix}term_relationships ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}term_relationships.object_id)
+    LEFT JOIN {$wpdb->prefix}term_taxonomy ON ({$wpdb->prefix}term_relationships.term_taxonomy_id = {$wpdb->prefix}term_taxonomy.term_taxonomy_id)
+    LEFT JOIN {$wpdb->prefix}terms ON ({$wpdb->prefix}term_taxonomy.term_id = {$wpdb->prefix}terms.term_id)
+    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+    AND {$wpdb->prefix}posts.post_status = 'publish'
+    AND (
+        {$wpdb->prefix}posts.post_title LIKE %s
+        OR {$wpdb->prefix}posts.post_content LIKE %s
+        OR {$wpdb->prefix}terms.name LIKE %s
+    )
+    AND YEAR({$wpdb->prefix}posts.post_date) >= %d AND YEAR({$wpdb->prefix}posts.post_date) <= %d
+    GROUP BY {$wpdb->prefix}posts.ID
+    ORDER BY {$wpdb->prefix}posts.post_date DESC
 	";
 	
-	$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date, $modified_to_date);
+	$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $year_from, $year_to);
 	/***count query */
 	    $resultsforcount = count($wpdb->get_results($queryforcount));		
 		$total_count = $resultsforcount;		
@@ -204,107 +205,133 @@ $results = $wpdb->get_results($query);
 		{		
 
 			global $wpdb;
+
 			
-			//$modified_from_date=date('Y-m-d H:i:s',strtotime($from_date));
-			//$modified_to_date=date('Y-m-d H:i:s',strtotime($to_date));
 			$posts_per_page = 6;
 			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 			$offset = ($current_page - 1) * $posts_per_page;
 			
-			$query = "
-			SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
-			FROM {$wpdb->prefix}posts
-			LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-			WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-			AND {$wpdb->prefix}posts.post_status='publish'
-			AND (
-				({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
-				OR {$wpdb->prefix}posts.post_title LIKE %s
-				OR {$wpdb->prefix}posts.post_content LIKE %s
-			)			
-			GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-			ORDER BY {$wpdb->prefix}posts.post_date DESC
-			LIMIT %d
-			OFFSET %d
-		";
-		
-		$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%',  $posts_per_page, $offset);
-		
-		$results = $wpdb->get_results($query);
-		/***count query */
-		$queryforcount = "
-		SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
-		FROM {$wpdb->prefix}posts
-		LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-		WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-		AND {$wpdb->prefix}posts.post_status='publish'
-		AND (
-			({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
-			OR {$wpdb->prefix}posts.post_title LIKE %s
-			OR {$wpdb->prefix}posts.post_content LIKE %s
-		)		
-		GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-		ORDER BY {$wpdb->prefix}posts.post_date DESC
-		
-	";
-	
-	$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%');
-	/***count query */
-	    $resultsforcount = count($wpdb->get_results($queryforcount));		
-		$total_count = $resultsforcount;		
-		$max_num_pages = ceil($total_count / $posts_per_page);
+			$search_text = '%' . $wpdb->esc_like($search_text) . '%';
+			
+			$query = $wpdb->prepare(
+				"
+				SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+				FROM {$wpdb->prefix}posts
+				LEFT JOIN {$wpdb->prefix}term_relationships ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}term_relationships.object_id)
+				LEFT JOIN {$wpdb->prefix}term_taxonomy ON ({$wpdb->prefix}term_relationships.term_taxonomy_id = {$wpdb->prefix}term_taxonomy.term_taxonomy_id)
+				LEFT JOIN {$wpdb->prefix}terms ON ({$wpdb->prefix}term_taxonomy.term_id = {$wpdb->prefix}terms.term_id)
+				WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+				AND {$wpdb->prefix}posts.post_status = 'publish'
+				AND (
+					{$wpdb->prefix}posts.post_title LIKE %s
+					OR {$wpdb->prefix}posts.post_content LIKE %s
+					OR {$wpdb->prefix}terms.name LIKE %s
+				)				
+				GROUP BY {$wpdb->prefix}posts.ID
+				ORDER BY {$wpdb->prefix}posts.post_date DESC
+				LIMIT %d
+				OFFSET %d
+				",
+				$search_text,
+				$search_text,
+				$search_text,				
+				$posts_per_page,
+				$offset
+			);
+			
+			$results = $wpdb->get_results($query);
+			
+					
+					
+					/***count query */
+					$queryforcount = "
+					SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+				FROM {$wpdb->prefix}posts
+				LEFT JOIN {$wpdb->prefix}term_relationships ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}term_relationships.object_id)
+				LEFT JOIN {$wpdb->prefix}term_taxonomy ON ({$wpdb->prefix}term_relationships.term_taxonomy_id = {$wpdb->prefix}term_taxonomy.term_taxonomy_id)
+				LEFT JOIN {$wpdb->prefix}terms ON ({$wpdb->prefix}term_taxonomy.term_id = {$wpdb->prefix}terms.term_id)
+				WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+				AND {$wpdb->prefix}posts.post_status = 'publish'
+				AND (
+					{$wpdb->prefix}posts.post_title LIKE %s
+					OR {$wpdb->prefix}posts.post_content LIKE %s
+					OR {$wpdb->prefix}terms.name LIKE %s
+				)				
+				GROUP BY {$wpdb->prefix}posts.ID
+				ORDER BY {$wpdb->prefix}posts.post_date DESC
+				";
+				
+				$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%');
+				/***count query */
+					$resultsforcount = count($wpdb->get_results($queryforcount));		
+					$total_count = $resultsforcount;		
+					$max_num_pages = ceil($total_count / $posts_per_page);
 		}
 		else if(isset($search_text) && !empty($search_text) && !empty($from_date) && empty($to_date))
 		{		
 
 			global $wpdb;
-			
-			$modified_from_date=date('Y-m-d H:i:s',strtotime($from_date));
-			//$modified_to_date=date('Y-m-d H:i:s',strtotime($to_date));
-			$posts_per_page = 6;
-			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-			$offset = ($current_page - 1) * $posts_per_page;
-			
-			$query = "
-			SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
-			FROM {$wpdb->prefix}posts
-			LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-			WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-			AND {$wpdb->prefix}posts.post_status='publish'
-			AND (
-				({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
-				OR {$wpdb->prefix}posts.post_title LIKE %s
-				OR {$wpdb->prefix}posts.post_content LIKE %s
-			)
-			AND {$wpdb->prefix}posts.post_date >= %s 
-			GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-			ORDER BY {$wpdb->prefix}posts.post_date DESC
-			LIMIT %d
-			OFFSET %d
-		";
+
+$year_from = date('Y', strtotime($from_date));
+
+$posts_per_page = 6;
+$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$offset = ($current_page - 1) * $posts_per_page;
+
+$search_text = '%' . $wpdb->esc_like($search_text) . '%';
+
+$query = $wpdb->prepare(
+    "
+    SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+    FROM {$wpdb->prefix}posts
+    LEFT JOIN {$wpdb->prefix}term_relationships ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}term_relationships.object_id)
+    LEFT JOIN {$wpdb->prefix}term_taxonomy ON ({$wpdb->prefix}term_relationships.term_taxonomy_id = {$wpdb->prefix}term_taxonomy.term_taxonomy_id)
+    LEFT JOIN {$wpdb->prefix}terms ON ({$wpdb->prefix}term_taxonomy.term_id = {$wpdb->prefix}terms.term_id)
+    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+    AND {$wpdb->prefix}posts.post_status = 'publish'
+    AND (
+        {$wpdb->prefix}posts.post_title LIKE %s
+        OR {$wpdb->prefix}posts.post_content LIKE %s
+        OR {$wpdb->prefix}terms.name LIKE %s
+    )
+    AND YEAR({$wpdb->prefix}posts.post_date) >= %d
+    GROUP BY {$wpdb->prefix}posts.ID
+    ORDER BY {$wpdb->prefix}posts.post_date DESC
+    LIMIT %d
+    OFFSET %d
+    ",
+    $search_text,
+    $search_text,
+    $search_text,
+    $year_from,    
+    $posts_per_page,
+    $offset
+);
+
+$results = $wpdb->get_results($query);
+
 		
-		$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date, $posts_per_page, $offset);
 		
-		$results = $wpdb->get_results($query);
 		/***count query */
 		$queryforcount = "
-		SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
-		FROM {$wpdb->prefix}posts
-		LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-		WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-		AND {$wpdb->prefix}posts.post_status='publish'
-		AND (
-			({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
-			OR {$wpdb->prefix}posts.post_title LIKE %s
-			OR {$wpdb->prefix}posts.post_content LIKE %s
-		)
-		AND {$wpdb->prefix}posts.post_date >= %s 
-		GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-		ORDER BY {$wpdb->prefix}posts.post_date DESC
-		
+		SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+    FROM {$wpdb->prefix}posts
+    LEFT JOIN {$wpdb->prefix}term_relationships ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}term_relationships.object_id)
+    LEFT JOIN {$wpdb->prefix}term_taxonomy ON ({$wpdb->prefix}term_relationships.term_taxonomy_id = {$wpdb->prefix}term_taxonomy.term_taxonomy_id)
+    LEFT JOIN {$wpdb->prefix}terms ON ({$wpdb->prefix}term_taxonomy.term_id = {$wpdb->prefix}terms.term_id)
+    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+    AND {$wpdb->prefix}posts.post_status = 'publish'
+    AND (
+        {$wpdb->prefix}posts.post_title LIKE %s
+        OR {$wpdb->prefix}posts.post_content LIKE %s
+        OR {$wpdb->prefix}terms.name LIKE %s
+    )
+    AND YEAR({$wpdb->prefix}posts.post_date) >= %d
+    GROUP BY {$wpdb->prefix}posts.ID
+    ORDER BY {$wpdb->prefix}posts.post_date DESC
 	";
 	
-	$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date);
+	$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $year_from);
 	/***count query */
 	    $resultsforcount = count($wpdb->get_results($queryforcount));		
 		$total_count = $resultsforcount;		
@@ -314,53 +341,67 @@ $results = $wpdb->get_results($query);
 		{		
 
 			global $wpdb;
-			
-			//$modified_from_date=date('Y-m-d H:i:s',strtotime($from_date));
-			$modified_to_date=date('Y-m-d H:i:s',strtotime($to_date));
-			$posts_per_page = 6;
-			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-			$offset = ($current_page - 1) * $posts_per_page;
-			
-			$query = "
-			SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
-			FROM {$wpdb->prefix}posts
-			LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-			WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-			AND {$wpdb->prefix}posts.post_status='publish'
-			AND (
-				({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
-				OR {$wpdb->prefix}posts.post_title LIKE %s
-				OR {$wpdb->prefix}posts.post_content LIKE %s
-			)
-			 AND {$wpdb->prefix}posts.post_date <= %s
-			GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-			ORDER BY {$wpdb->prefix}posts.post_date DESC
-			LIMIT %d
-			OFFSET %d
-		";
+
+
+$year_to = date('Y', strtotime($to_date));
+$posts_per_page = 6;
+$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$offset = ($current_page - 1) * $posts_per_page;
+
+$search_text = '%' . $wpdb->esc_like($search_text) . '%';
+
+$query = $wpdb->prepare(
+    "
+    SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+    FROM {$wpdb->prefix}posts
+    LEFT JOIN {$wpdb->prefix}term_relationships ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}term_relationships.object_id)
+    LEFT JOIN {$wpdb->prefix}term_taxonomy ON ({$wpdb->prefix}term_relationships.term_taxonomy_id = {$wpdb->prefix}term_taxonomy.term_taxonomy_id)
+    LEFT JOIN {$wpdb->prefix}terms ON ({$wpdb->prefix}term_taxonomy.term_id = {$wpdb->prefix}terms.term_id)
+    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+    AND {$wpdb->prefix}posts.post_status = 'publish'
+    AND (
+        {$wpdb->prefix}posts.post_title LIKE %s
+        OR {$wpdb->prefix}posts.post_content LIKE %s
+        OR {$wpdb->prefix}terms.name LIKE %s
+    )
+    AND YEAR({$wpdb->prefix}posts.post_date) <= %d
+    GROUP BY {$wpdb->prefix}posts.ID
+    ORDER BY {$wpdb->prefix}posts.post_date DESC
+    LIMIT %d
+    OFFSET %d
+    ",
+    $search_text,
+    $search_text,
+    $search_text,    
+    $year_to,
+    $posts_per_page,
+    $offset
+);
+
+$results = $wpdb->get_results($query);
+
 		
-		$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_to_date, $posts_per_page, $offset);
 		
-		$results = $wpdb->get_results($query);
 		/***count query */
 		$queryforcount = "
-		SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
-		FROM {$wpdb->prefix}posts
-		LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-		WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-		AND {$wpdb->prefix}posts.post_status='publish'
-		AND (
-			({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
-			OR {$wpdb->prefix}posts.post_title LIKE %s
-			OR {$wpdb->prefix}posts.post_content LIKE %s
-		)
-		AND {$wpdb->prefix}posts.post_date <= %s
-		GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-		ORDER BY {$wpdb->prefix}posts.post_date DESC
-		
+		SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+    FROM {$wpdb->prefix}posts
+    LEFT JOIN {$wpdb->prefix}term_relationships ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}term_relationships.object_id)
+    LEFT JOIN {$wpdb->prefix}term_taxonomy ON ({$wpdb->prefix}term_relationships.term_taxonomy_id = {$wpdb->prefix}term_taxonomy.term_taxonomy_id)
+    LEFT JOIN {$wpdb->prefix}terms ON ({$wpdb->prefix}term_taxonomy.term_id = {$wpdb->prefix}terms.term_id)
+    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+    AND {$wpdb->prefix}posts.post_status = 'publish'
+    AND (
+        {$wpdb->prefix}posts.post_title LIKE %s
+        OR {$wpdb->prefix}posts.post_content LIKE %s
+        OR {$wpdb->prefix}terms.name LIKE %s
+    )
+    AND YEAR({$wpdb->prefix}posts.post_date) <= %d
+    GROUP BY {$wpdb->prefix}posts.ID
+    ORDER BY {$wpdb->prefix}posts.post_date DESC
 	";
 	
-	$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_to_date);
+	$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $year_to);
 	/***count query */
 	    $resultsforcount = count($wpdb->get_results($queryforcount));		
 		$total_count = $resultsforcount;		
@@ -368,42 +409,53 @@ $results = $wpdb->get_results($query);
 		}
 		else {
 			
-			                   global $wpdb;
+			global $wpdb;
 
-								$posts_per_page = 6;
-								$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-								$offset = ($current_page - 1) * $posts_per_page;
-
-								$query = "
-									SELECT {$wpdb->prefix}posts.*
-									FROM {$wpdb->prefix}posts
-									LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-									WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-									AND {$wpdb->prefix}posts.post_status='publish'
-									GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-									ORDER BY {$wpdb->prefix}posts.post_date DESC
-									LIMIT %d
-									OFFSET %d
-								";
-
-								$query = $wpdb->prepare($query, $posts_per_page, $offset);
-
-								$results = $wpdb->get_results($query);
-
-								// Query to count total posts matching the condition
-								$querycount = "
-									SELECT {$wpdb->prefix}posts.*
-									FROM {$wpdb->prefix}posts
-									LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-									WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-									AND {$wpdb->prefix}posts.post_status='publish'
-									GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-									ORDER BY {$wpdb->prefix}posts.post_date DESC
-									
-								";
-
-								$total_count = count($wpdb->get_results($querycount));
-								$max_num_pages = ceil($total_count / $posts_per_page);
+			
+			$posts_per_page = 6;
+			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+			$offset = ($current_page - 1) * $posts_per_page;			
+			
+			
+			$query = $wpdb->prepare(
+				"
+				SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+				FROM {$wpdb->prefix}posts
+				LEFT JOIN {$wpdb->prefix}term_relationships ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}term_relationships.object_id)
+				LEFT JOIN {$wpdb->prefix}term_taxonomy ON ({$wpdb->prefix}term_relationships.term_taxonomy_id = {$wpdb->prefix}term_taxonomy.term_taxonomy_id)
+				LEFT JOIN {$wpdb->prefix}terms ON ({$wpdb->prefix}term_taxonomy.term_id = {$wpdb->prefix}terms.term_id)
+				WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+				AND {$wpdb->prefix}posts.post_status = 'publish'
+				GROUP BY {$wpdb->prefix}posts.ID
+				ORDER BY {$wpdb->prefix}posts.post_date DESC
+				LIMIT %d
+				OFFSET %d
+				",				
+				$posts_per_page,
+				$offset
+			);
+			
+			$results = $wpdb->get_results($query);	
+					
+					
+					/***count query */
+					$queryforcount = "
+					SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+				FROM {$wpdb->prefix}posts
+				LEFT JOIN {$wpdb->prefix}term_relationships ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}term_relationships.object_id)
+				LEFT JOIN {$wpdb->prefix}term_taxonomy ON ({$wpdb->prefix}term_relationships.term_taxonomy_id = {$wpdb->prefix}term_taxonomy.term_taxonomy_id)
+				LEFT JOIN {$wpdb->prefix}terms ON ({$wpdb->prefix}term_taxonomy.term_id = {$wpdb->prefix}terms.term_id)
+				WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+				AND {$wpdb->prefix}posts.post_status = 'publish'
+				GROUP BY {$wpdb->prefix}posts.ID
+				ORDER BY {$wpdb->prefix}posts.post_date DESC
+				";
+				
+				$queryforcount = $wpdb->prepare($queryforcount);
+				/***count query */
+					$resultsforcount = count($wpdb->get_results($queryforcount));		
+					$total_count = $resultsforcount;		
+					$max_num_pages = ceil($total_count / $posts_per_page);
 		}
 		
 			if ($results) :
