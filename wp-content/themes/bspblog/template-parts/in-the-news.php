@@ -25,7 +25,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 </div>
 
 
-<div class="container py-5 my-md-5">	
+<div class="container grid-post py-5 my-md-5">	
 	<div class="col-md-12 py-md-5">
 		<div class="row">
 			<?php
@@ -93,5 +93,15 @@ $image_over_banner = get_field('image_over_banner', $page_id);
                 </div>
     </div>
 </div>	
+
+<div class="container tile-post py-5 my-md-5">
+  <div class="row">
+    <div class="col-12">
+        <div class="tile-blog-post">
+        <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
+        </div>
+    </div>
+  </div>
+</div>
 
 <?php get_footer();?>
