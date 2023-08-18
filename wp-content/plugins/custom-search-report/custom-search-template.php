@@ -30,7 +30,12 @@ $query .= " ORDER BY created_at DESC LIMIT $items_per_page OFFSET $offset";
 $fetchdata = $wpdb->get_results($query);
 
 // Count total number of rows without pagination
-$total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata");
+if($result_count_filter){
+    $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata LIMIT $result_count_filter");
+} else {
+    $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata");
+}
+
 if (!empty($search_keyword)) {
   $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata WHERE keyword LIKE '%$search_keyword%'");
 }
