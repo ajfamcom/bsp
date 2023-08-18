@@ -156,5 +156,16 @@ wp_reset_postdata();
                 </div>
   </div>
 </div>
-
+<script> 
+    function show(showtype){
+      if(showtype=='grid'){
+        $('.show-type-list').css('display','none');
+        $('.show-type-grid').css('display','block');
+      }
+      if(showtype=='list'){
+        $('.show-type-list').css('display','block');
+        $('.show-type-grid').css('display','none');
+     }
+    }
+</script>
 <?php get_footer();?>
