@@ -244,7 +244,7 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         alert(stype);
         $('.show-type-list').css('display','none');
         $('.show-type-grid').css('display','none');
-        $('.<?php echo $show_type;?>').css('display','none');
+        $('.<?php echo $show_type;?>').css('display','block');
     }); 
     function show(showtype){
       if(showtype=='grid'){
