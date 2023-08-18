@@ -85,7 +85,7 @@ $base_url = get_permalink();
                     echo paginate_links(array(
                         'total' => $query->max_num_pages,
                         'current' => $paged,
-                        'base' => add_query_arg('&show_type', 'grid', $base_url . '%_%'),
+                        'base' => add_query_arg('show_type', 'grid', $base_url . '%_%'),
                         'format' => '?paged=%#%',
                         'prev_text' => '&laquo;',
                         'next_text' => '&raquo;',
@@ -145,7 +145,7 @@ wp_reset_postdata();
                     echo paginate_links(array(
                         'total' => $query->max_num_pages,
                         'current' => $paged,
-                        'base' => add_query_arg('&show_type', 'list', $base_url . '%_%'),
+                        'base' => add_query_arg('show_type', 'list', $base_url . '%_%'),
                         'format' => '?paged=%#%',
                         'prev_text' => '&laquo;',
                         'next_text' => '&raquo;',
