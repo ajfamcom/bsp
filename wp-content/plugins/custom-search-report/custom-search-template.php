@@ -3,10 +3,24 @@
 Template Name: Custom Search Data Template
 */
 global $wpdb;
-
+/* if (!empty($search_keyword)) {
+    $sql_query="SELECT * FROM wp_searchdata WHERE keyword LIKE '%$search_keyword%' LIMIT $result_count_filter";
+    $fetch_dataquery = $wpdb->get_results($sql_query);
+    $total_items =count($fetch_dataquery);
+  }
+  if (empty($search_keyword) && !empty($result_count_filter)) {
+    $sql_query="SELECT * FROM wp_searchdata LIMIT $result_count_filter";
+    $fetch_dataquery = $wpdb->get_results($sql_query);
+    $total_items =count($fetch_dataquery);
+  }
+  else{ */
+      $sql_query="SELECT * FROM wp_searchdata";
+      $fetch_dataquery = $wpdb->get_results($sql_query);
+      $total_items =count($fetch_dataquery);
+  //}
 // Pagination variables
 $current_page = max(1, $_GET['paged']);
-$result_count_filter=isset($_GET['result_count_filter']) ? sanitize_text_field($_GET['result_count_filter']) : '';
+$result_count_filter=isset($_GET['result_count_filter']) ? sanitize_text_field($_GET['result_count_filter']) : $total_items;
 $items_per_page = 10; // Number of items per page
 $offset = ($current_page - 1) * $items_per_page;
 
@@ -26,7 +40,7 @@ if (!empty($search_keyword)) {
     $query .= " WHERE keyword LIKE '%$search_keyword%'";
 }
 
-$query .= " ORDER BY created_at DESC LIMIT $items_per_page OFFSET $offset";
+$query .= " ORDER BY created_at DESC";
 $fetchdata = $wpdb->get_results($query);
 
 // Count total number of rows without pagination
@@ -34,16 +48,7 @@ $fetchdata = $wpdb->get_results($query);
     
 
 
-if (!empty($search_keyword)) {
-  $sql_query="SELECT * FROM wp_searchdata WHERE keyword LIKE '%$search_keyword%' LIMIT $result_count_filter";
-  $fetch_dataquery = $wpdb->get_results($sql_query);
-  $total_items =count($fetch_dataquery);
-}
-else{
-    $sql_query="SELECT * FROM wp_searchdata LIMIT $result_count_filter";
-    $fetch_dataquery = $wpdb->get_results($sql_query);
-    $total_items =count($fetch_dataquery);
-}
+
 // Calculate total number of pages for pagination
 $total_pages = ceil($total_items / $items_per_page);
 ?>
@@ -110,18 +115,16 @@ $total_pages = ceil($total_items / $items_per_page);
 
   <form method="get" action="<?php echo esc_url($current_admin_url); ?>">
     <input type="hidden" name="page" value="search-report-display">
-    <input type="text" name="s" id="searchInput" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php echo esc_attr($search_keyword); ?>">
-    <input type="number" name="result_count_filter" id="result_count_filter" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php echo ($result_count_filter); ?>" step=20>
-    
-    </select>    
-    <button type="submit" class="custom-search-button btn btn-primary">Search</button>
+   <!--  <input type="text" name="s" id="searchInput" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php //echo esc_attr($search_keyword); ?>">
+    <input type="number" name="result_count_filter" id="result_count_filter" class="custom-search-input form-control mb-3" placeholder="Search by Count" value="<?php //echo ($result_count_filter); ?>" min="10" step=20 > -->  
+    <!-- <button type="submit" class="custom-search-button btn btn-primary">Search</button> -->
     <button type="button" class="custom-search-button btn btn-primary" onclick="location.href='<?php echo admin_url('admin.php').'?page=search-report-display';?>'">Reset</button>
     <button type="button" class="custom-search-button btn btn-primary btndownload">Download CSV</button>
-    <button type="button" class="custom-search-button btn btn-primary btndownload">Result Count: <b><?php echo $total_items;?></b></button>
+    <button type="button" class="custom-search-button btn btn-primary">Total Result Count: <b><?php echo $total_items;?></b></button>
    
 </form>
 
-  <table class="custom-search-table">
+  <table class="table table-striped table-bordered custom-search-table" id="sortTable">
     <thead>
       <tr>
         <th>Keyword</th>
@@ -147,7 +150,7 @@ $total_pages = ceil($total_items / $items_per_page);
   </table>
 
     <?php
-  if ($total_pages > 1) {
+  /* if ($total_pages > 1) {
       echo '<div class="custom-search-pagination">';
       echo paginate_links(array(
           'base' => admin_url('admin.php?page=search-report-display') . '%_%',
@@ -156,7 +159,7 @@ $total_pages = ceil($total_items / $items_per_page);
           'total' => $total_pages,
       ));
       echo '</div>';
-  } 
+  } */ 
   
 
 
@@ -165,14 +168,25 @@ $total_pages = ceil($total_items / $items_per_page);
   
   
 </div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
 <script>
+    
     jQuery(document).ready(function($) {
         $('.btndownload').on('click', function() {
+            var searchinput = $("input[type='search']").val();
+            
             $.ajax({
                 type: 'POST',
                 url: ajaxurl,
                 data: {
-                    action: 'custom_csv_download','search_text':'<?php echo $search_keyword ; ?>'
+                    action: 'custom_csv_download','search_text':searchinput
                 },
                 success: function(response) {
                     // Create a hidden anchor element to trigger the download
@@ -187,8 +201,14 @@ $total_pages = ceil($total_items / $items_per_page);
             });
         });
     });
+    
     </script>
-
+    <script>
+        jQuery(document).ready(function($) {
+          $('#sortTable').DataTable();
+          
+        });
+    </script>
 
 
 

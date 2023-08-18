@@ -42,8 +42,16 @@ endif;
 					<img src="<?php echo $image['url']; ?>" />
 					<?php 
 					if($contact_email)
-					{ ?>
-					<p><i class="fa fa-envelope"></i><a href="mailto:<?php echo $contact_email; ?>"><?php echo $contact_email; ?></a></p>
+					{
+						if (strpos($text, ' ') !== false) {
+							$email_show_data=explode(' ',$fullname);
+							$email_show=$email_show_data[0];
+						}
+						else{
+							$email_show=$fullname;
+						}
+						?>
+					<p><i class="fa fa-envelope"></i><a href="mailto:<?php echo $contact_email; ?>">Contact <?php echo $email_show; ?></a></p>
 					<?php } ?>
 					<?php 
 					if($contact_phone)
