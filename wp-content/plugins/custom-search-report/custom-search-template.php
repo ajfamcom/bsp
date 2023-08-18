@@ -111,7 +111,7 @@ $total_pages = ceil($total_items / $items_per_page);
   <form method="get" action="<?php echo esc_url($current_admin_url); ?>">
     <input type="hidden" name="page" value="search-report-display">
     <input type="text" name="s" id="searchInput" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php echo esc_attr($search_keyword); ?>">
-    <input type="number" name="result_count_filter" id="result_count_filter" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php echo ($result_count_filter); ?>" step=20>
+    <input type="number" name="result_count_filter" id="result_count_filter" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php echo ($result_count_filter); ?>" min="10" step=20>
     
     </select>    
     <button type="submit" class="custom-search-button btn btn-primary">Search</button>
