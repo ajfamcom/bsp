@@ -236,5 +236,24 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         }
     }); 
 </script>
+<script>
+     $(document).ready(function(){
+        alert('test');
+        //var stype='<?php //echo $show_type; ?>';
+        //alert(stype);
+        //$('.show-type-list').css('display','none');
+        //$('.show-type-grid').css('display','block');
+    }); 
+    function show(showtype){
+      if(showtype=='grid'){
+        $('.show-type-list').css('display','none');
+        $('.show-type-grid').css('display','block');
+      }
+      if(showtype=='list'){
+        $('.show-type-list').css('display','block');
+        $('.show-type-grid').css('display','none');
+     }
+    }
+</script>
 	</body>
 </html>
