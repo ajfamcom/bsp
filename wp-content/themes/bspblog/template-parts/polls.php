@@ -3,9 +3,9 @@
 $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
- $search_text=isset($_REQUEST['search_text'])?$_REQUEST['search_text']:'';
- $from_date=isset($_REQUEST['from_date'])?$_REQUEST['from_date']:'';
- $to_date=isset($_REQUEST['to_date'])?$_REQUEST['to_date']:'';
+ echo $search_text=isset($_REQUEST['search_text'])?$_REQUEST['search_text']:'';
+ echo $from_date=isset($_REQUEST['from_date'])?$_REQUEST['from_date']:'';
+ echo $to_date=isset($_REQUEST['to_date'])?$_REQUEST['to_date']:'';
  if ($search_text) {		
       
 	$search_term = trim($search_text);
