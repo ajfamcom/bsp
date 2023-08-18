@@ -101,9 +101,9 @@ $total_pages = ceil($total_items / $items_per_page);
     <input type="hidden" name="page" value="search-report-display">
     <input type="text" name="s" id="searchInput" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php echo esc_attr($search_keyword); ?>">
     <select name="result_count_filter">
-        <option value="5">5</option>
-        <option value="5">10</option>
-        <option value="5">15</option>
+    <?php for ($i = 1; $i <= $total_items; $i += 5) { ?>
+    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+    <?php } ?>
     </select>    
     <button type="submit" class="custom-search-button btn btn-primary">Search</button>
     <button type="button" class="custom-search-button btn btn-primary" onclick="location.href='<?php echo admin_url('admin.php').'?page=search-report-display';?>'">Reset</button>
