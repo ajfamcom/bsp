@@ -3,10 +3,19 @@
 Template Name: Custom Search Data Template
 */
 global $wpdb;
-
+if (!empty($search_keyword)) {
+    $sql_query="SELECT * FROM wp_searchdata WHERE keyword LIKE '%$search_keyword%' LIMIT $result_count_filter";
+    $fetch_dataquery = $wpdb->get_results($sql_query);
+    $total_items =count($fetch_dataquery);
+  }
+  else{
+      $sql_query="SELECT * FROM wp_searchdata LIMIT $result_count_filter";
+      $fetch_dataquery = $wpdb->get_results($sql_query);
+      $total_items =count($fetch_dataquery);
+  }
 // Pagination variables
 $current_page = max(1, $_GET['paged']);
-$result_count_filter=isset($_GET['result_count_filter']) ? sanitize_text_field($_GET['result_count_filter']) : '10000';
+$result_count_filter=isset($_GET['result_count_filter']) ? sanitize_text_field($_GET['result_count_filter']) : $total_items;
 $items_per_page = 10; // Number of items per page
 $offset = ($current_page - 1) * $items_per_page;
 
@@ -34,16 +43,7 @@ $fetchdata = $wpdb->get_results($query);
     
 
 
-if (!empty($search_keyword)) {
-  $sql_query="SELECT * FROM wp_searchdata WHERE keyword LIKE '%$search_keyword%' LIMIT $result_count_filter";
-  $fetch_dataquery = $wpdb->get_results($sql_query);
-  $total_items =count($fetch_dataquery);
-}
-else{
-    $sql_query="SELECT * FROM wp_searchdata LIMIT $result_count_filter";
-    $fetch_dataquery = $wpdb->get_results($sql_query);
-    $total_items =count($fetch_dataquery);
-}
+
 // Calculate total number of pages for pagination
 $total_pages = ceil($total_items / $items_per_page);
 ?>
