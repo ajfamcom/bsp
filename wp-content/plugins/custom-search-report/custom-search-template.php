@@ -181,7 +181,7 @@ $total_pages = ceil($total_items / $items_per_page);
     jQuery(document).ready(function($) {
         $('.btndownload').on('click', function() {
             var searchinput = $("input[type='search']").val();
-            alert(searchinput);
+            
             $.ajax({
                 type: 'POST',
                 url: ajaxurl,
