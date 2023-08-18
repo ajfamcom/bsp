@@ -28,9 +28,9 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 <div class="container grid-post py-5 my-md-5">	
 	<div class="col-md-12 py-md-5">
 
-    <div class="d-flex align-items-center">
-    <i class="fa-solid fa-grip"></i>
-    <i class="fa-solid fa-grip-lines"></i>
+    <div class="d-flex align-items-center gap-3 mb-4">
+    <i class="fa-solid fa-grip display-6 bg-secondary rounded-3 text-white p-2"></i>
+    <i class="fa-solid fa-grip-lines bg-secondary rounded-3 text-white p-2"></i>
     </div>
 
 		<div class="row">
