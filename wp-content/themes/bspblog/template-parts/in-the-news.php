@@ -146,6 +146,16 @@ wp_reset_postdata();
         ?>
         </div>
     </div>
+    <div class="pagination">
+                    <?php
+                    echo paginate_links(array(
+                        'total' => $query->max_num_pages,
+                        'current' => $paged,
+                        'prev_text' => '&laquo;',
+                        'next_text' => '&raquo;',
+                    ));
+                    ?>
+                </div>
   </div>
 </div>
 
