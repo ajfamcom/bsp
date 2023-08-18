@@ -518,7 +518,7 @@ footer {
     margin: 0 !important;
 }
 .inner-bnr.about-bnr {    
-    background-position: 100% 25%;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -578,9 +578,8 @@ footer {
 /*----- /about-us ------*/
 
 /*----- services-page -----*/
-.inner-bnr.services-bnr {
-    
-    background-position: 100% 25%;
+.inner-bnr.services-bnr {    
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -588,7 +587,7 @@ footer {
 
 /*----- services-page -----*/
 .inner-bnr.team-bnr {
-    background-position: 100% 25%;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
