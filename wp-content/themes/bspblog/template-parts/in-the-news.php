@@ -29,7 +29,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
     <a href="#." onclick="show('list');"><i style="background-color: #153d67;" class="fa-solid fa-grip-lines fs-2 rounded-3 text-white py-1 px-2"></i></a>
 </div>
 </div>
-<div class="container grid-post py-5 my-md-5">	
+<div class="container grid-post py-5 my-md-5 show-type-grid">	
 	<div class="col-md-12 py-md-5">
 
    
@@ -102,7 +102,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
     </div>
 </div>	
 
-<div class="container tile-post py-5 my-md-5">
+<div class="container tile-post py-5 my-md-5 show-type-list">
   <div class="row">
     <div class="col-12">
         <div class="tile-blog-post">
@@ -161,17 +161,17 @@ wp_reset_postdata();
 </div>
 <script>
     $(document).ready(function(){
-        $('.tile-post').css('display','none');
-        $('.grid-post').css('display','block');
+        $('.show-type-list').css('display','none');
+        $('.show-type-grid').css('display','block');
     });
     function show(showtype){
       if(showtype=='grid'){
-        $('.tile-post').css('display','none');
-        $('.grid-post').css('display','block');
+        $('.show-type-list').css('display','none');
+        $('.show-type-grid').css('display','block');
       }
       if(showtype=='list'){
-        $('.tile-post').css('display','block');
-        $('.grid-post').css('display','none');
+        $('.show-type-list').css('display','block');
+        $('.show-type-grid').css('display','none');
      }
     }
 </script>
