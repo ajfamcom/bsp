@@ -7,7 +7,7 @@ global $wpdb;
 // Pagination variables
 $current_page = max(1, $_GET['paged']);
 $result_count_filter=isset($_GET['result_count_filter']) ? sanitize_text_field($_GET['result_count_filter']) : '';
-$items_per_page = ($result_count_filter)?$result_count_filter:10; // Number of items per page
+$items_per_page = 10; // Number of items per page
 $offset = ($current_page - 1) * $items_per_page;
 
 // Search keyword
@@ -30,14 +30,15 @@ $query .= " ORDER BY created_at DESC LIMIT $items_per_page OFFSET $offset";
 $fetchdata = $wpdb->get_results($query);
 
 // Count total number of rows without pagination
-if($result_count_filter){
-    $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata LIMIT $result_count_filter");
-} else {
-    $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata");
-}
+
+    
+
 
 if (!empty($search_keyword)) {
-  $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata WHERE keyword LIKE '%$search_keyword%'");
+  $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata WHERE keyword LIKE '%$search_keyword%' LIMIT 0,$result_count_filter");
+}
+else{
+    $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata LIMIT 0,$result_count_filter");
 }
 // Calculate total number of pages for pagination
 $total_pages = ceil($total_items / $items_per_page);
