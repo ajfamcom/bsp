@@ -29,8 +29,8 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 	<div class="col-md-12 py-md-5">
 
     <div class="d-flex align-items-center gap-3 mb-4">
-    <i class="fa-solid fa-grip display-6 bg-secondary rounded-3 text-white p-2"></i>
-    <i class="fa-solid fa-grip-lines display-6 bg-secondary rounded-3 text-white p-2"></i>
+    <i style="background-color: #153d67;" class="fa-solid fa-grip fs-2 rounded-3 text-white py-1 px-2"></i>
+    <i style="background-color: #153d67;" class="fa-solid fa-grip-lines fs-2 rounded-3 text-white py-1 px-2"></i>
     </div>
 
 		<div class="row">
