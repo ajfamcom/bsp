@@ -237,10 +237,19 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     }); 
 </script>
 <?php $show_type=!empty($_GET['show_type'])?$_GET['show_type']:'grid';?>
+<?php if($show_type=='grid'){?>
 <script>
-     $(document).ready(function(){
-      show('<?php echo $show_type;?>');
-    }); 
+        $('.show-type-list').css('display','none');
+        $('.show-type-grid').css('display','block');
+    </script>
+    <?php } ?>
+    <?php if($show_type=='list'){?>
+    <script>
+        $('.show-type-list').css('display','block');
+        $('.show-type-grid').css('display','none');
+    </script>
+    <?php } ?>
+    <script> 
     function show(showtype){
       if(showtype=='grid'){
         $('.show-type-list').css('display','none');
