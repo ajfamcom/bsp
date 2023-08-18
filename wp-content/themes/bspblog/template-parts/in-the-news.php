@@ -3,6 +3,7 @@
 $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
+$show_type=($_GET['show_type'])?$_GET['show_type']:'show-type-grid';
 ?>
 <?php get_header();?>
 
@@ -93,7 +94,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
                     <?php
                     echo paginate_links(array(
                         'total' => $query->max_num_pages,
-                        'current' => $paged,
+                        'current' => $paged.'&show_type=show-type-grid',
                         'prev_text' => '&laquo;',
                         'next_text' => '&raquo;',
                     ));
@@ -151,7 +152,7 @@ wp_reset_postdata();
                     <?php
                     echo paginate_links(array(
                         'total' => $query->max_num_pages,
-                        'current' => $paged,
+                        'current' => $paged.'&show_type=show-type-list',
                         'prev_text' => '&laquo;',
                         'next_text' => '&raquo;',
                     ));
@@ -160,10 +161,12 @@ wp_reset_postdata();
   </div>
 </div>
 <script>
-   /*  $(document).ready(function(){
-        $('.show-type-list').css('display','none');
-        $('.show-type-grid').css('display','block');
-    }); */
+     $(document).ready(function(){
+        var stype='<?php echo $show_type; ?>';
+        alert(stype);
+        //$('.show-type-list').css('display','none');
+        //$('.show-type-grid').css('display','block');
+    }); 
     function show(showtype){
       if(showtype=='grid'){
         $('.show-type-list').css('display','none');
