@@ -67,20 +67,9 @@ $show_type=($_GET['show_type'])?$_GET['show_type']:'show-type-grid';
                             $link= $link_data;
                             $target='_blank';
                         }
-                        if (has_post_thumbnail($post_id)) {
-                           
-                            $thumbnail_id = get_post_thumbnail_id($post_id);                            
-                            $image_url = wp_get_attachment_url($thumbnail_id);                         
-                            $theme_directory_uri = get_template_directory_uri();    
-                            $noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';                          
-                          
-                            $image_link= '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
-                        } else {
-                            $image_link= '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
-                        }
+                       
 						?> 
-							<div class="single-news col-md-4">
-								<div class="news-image-square"><?php echo $image_link;?></div>
+							<div class="single-news col-md-4">								
 								<div class="news-info">
 								<h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
 								</div>
@@ -94,7 +83,7 @@ $show_type=($_GET['show_type'])?$_GET['show_type']:'show-type-grid';
                     <?php
                     echo paginate_links(array(
                         'total' => $query->max_num_pages,
-                        'current' => $paged.'&show_type=show-type-grid',
+                        'current' => $paged,
                         'prev_text' => '&laquo;',
                         'next_text' => '&raquo;',
                     ));
@@ -152,7 +141,7 @@ wp_reset_postdata();
                     <?php
                     echo paginate_links(array(
                         'total' => $query->max_num_pages,
-                        'current' => $paged.'&show_type=show-type-list',
+                        'current' => $paged,
                         'prev_text' => '&laquo;',
                         'next_text' => '&raquo;',
                     ));
@@ -163,8 +152,8 @@ wp_reset_postdata();
 <script>
      $(document).ready(function(){
         alert('test');
-        var stype='<?php echo $show_type; ?>';
-        alert(stype);
+        //var stype='<?php echo $show_type; ?>';
+        //alert(stype);
         //$('.show-type-list').css('display','none');
         //$('.show-type-grid').css('display','block');
     }); 
