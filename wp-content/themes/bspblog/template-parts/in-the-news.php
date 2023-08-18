@@ -32,7 +32,7 @@ $base_url = get_permalink();
     <a href="#" onclick="show('list');"><i style="background-color: #153d67;" class="fa-solid fa-grip-lines fs-2 rounded-3 text-white py-1 px-2"></i></a>
 </div>
 </div>
-<div class="container grid-post py-5 my-md-5 show-type-grid">	
+<div class="container grid-post py-5 my-md-5 show-type-grid" <?php echo ($showt == 'grid') ? 'style="display:block;"' : 'style="display:none;"'; ?>>	
 	<div class="col-md-12 py-md-5">
 
    
@@ -97,7 +97,7 @@ $base_url = get_permalink();
 </div>	
 
 
-<div class="container tile-post py-5 my-md-5 show-type-list">
+<div class="container tile-post py-5 my-md-5 show-type-list" <?php echo ($showt == 'list') ? 'style="display:block;"' : 'style="display:none;"'; ?>>
   <div class="row">
     <div class="col-12">
         <div class="tile-blog-post">

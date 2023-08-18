@@ -239,15 +239,15 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 
     <script> 
-    function show(showtype){
-      if(showtype=='grid'){
-        $('.show-type-list').css('display','none');
-        $('.show-type-grid').css('display','block');
-      }
-      if(showtype=='list'){
-        $('.show-type-list').css('display','block');
-        $('.show-type-grid').css('display','none');
-     }
+     function show(showtype) {
+        if (showtype == 'grid') {
+            $('.show-type-list').css('display', 'none');
+            $('.show-type-grid').css('display', 'block');
+        }
+        if (showtype == 'list') {
+            $('.show-type-list').css('display', 'block');
+            $('.show-type-grid').css('display', 'none');
+        }
     }
 </script>
 	</body>
