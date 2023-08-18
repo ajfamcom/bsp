@@ -29,8 +29,8 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 	<div class="col-md-12 py-md-5">
 
     <div class="d-flex align-items-center gap-3 mb-4">
-    <i style="background-color: #153d67;" class="fa-solid fa-grip fs-2 rounded-3 text-white py-1 px-2"></i>
-    <i style="background-color: #153d67;" class="fa-solid fa-grip-lines fs-2 rounded-3 text-white py-1 px-2"></i>
+    <a href="#." onclick="show('grid');"><i style="background-color: #153d67;" class="fa-solid fa-grip fs-2 rounded-3 text-white py-1 px-2"></i></a>
+    <a href="#." onclick="show('list');"><i style="background-color: #153d67;" class="fa-solid fa-grip-lines fs-2 rounded-3 text-white py-1 px-2"></i></a>
     </div>
 
 		<div class="row">
@@ -158,5 +158,20 @@ wp_reset_postdata();
                 </div>
   </div>
 </div>
-
+<script>
+    $(document).ready(function(){
+        $('.tile-post').css('display','none');
+        $('.grid-post').css('display','block');
+    });
+    function show(showtype){
+      if(showtype=='grid'){
+        $('.tile-post').css('display','none');
+        $('.grid-post').css('display','block');
+      }
+      if(showtype=='list'){
+        $('.tile-post').css('display','block');
+        $('.grid-post').css('display','none');
+     }
+    }
+</script>
 <?php get_footer();?>
