@@ -6,7 +6,7 @@ global $wpdb;
 
 // Pagination variables
 $current_page = max(1, $_GET['paged']);
-$result_count_filter=isset($_GET['result_count_filter']) ? sanitize_text_field($_GET['result_count_filter']) : '';
+$result_count_filter=isset($_GET['result_count_filter']) ? sanitize_text_field($_GET['result_count_filter']) : '10000';
 $items_per_page = 10; // Number of items per page
 $offset = ($current_page - 1) * $items_per_page;
 
@@ -111,7 +111,7 @@ $total_pages = ceil($total_items / $items_per_page);
   <form method="get" action="<?php echo esc_url($current_admin_url); ?>">
     <input type="hidden" name="page" value="search-report-display">
     <input type="text" name="s" id="searchInput" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php echo esc_attr($search_keyword); ?>">
-    <input type="number" name="result_count_filter" id="result_count_filter" class="custom-search-input form-control mb-3" placeholder="Search by Count" value="<?php echo ($result_count_filter)?$result_count_filter:500; ?>" min="10" step=20 >
+    <input type="number" name="result_count_filter" id="result_count_filter" class="custom-search-input form-control mb-3" placeholder="Search by Count" value="<?php echo ($result_count_filter); ?>" min="10" step=20 >
     
     </select>    
     <button type="submit" class="custom-search-button btn btn-primary">Search</button>
