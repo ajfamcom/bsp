@@ -43,7 +43,7 @@ endif;
 					<?php 
 					if($contact_email)
 					{ ?>
-					<p><i class="fa fa-envelope"></i><a href="mailto:<?php echo $contact_email; ?>"><?php echo $contact_email; ?></a></p>
+					<p><i class="fa fa-envelope"></i><a href="mailto:<?php echo $contact_email; ?>">Contact <?php echo $fullname; ?></a></p>
 					<?php } ?>
 					<?php 
 					if($contact_phone)
