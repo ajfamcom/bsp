@@ -177,7 +177,7 @@ $total_pages = ceil($total_items / $items_per_page);
 <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
 
 <script>
-    $(document).ready(function() {
+    jQuery(document).ready(function($) {
             // Initialize DataTable with custom search box ID
             $('#dataTable').DataTable({
                 dom: '<"search-box"lfr>t<"search-box"ip>',
