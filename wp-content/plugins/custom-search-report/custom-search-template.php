@@ -101,7 +101,7 @@ $total_pages = ceil($total_items / $items_per_page);
     <input type="hidden" name="page" value="search-report-display">
     <input type="text" name="s" id="searchInput" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php echo esc_attr($search_keyword); ?>">
     <select name="result_count_filter">
-    <?php for ($i = 5; $i <= $total_items; $i += 20) { ?>
+    <?php for ($i = 10; $i <= $total_items; $i += 20) { ?>
     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
     <?php } ?>
     </select>    
