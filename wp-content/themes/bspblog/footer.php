@@ -236,7 +236,7 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         }
     }); 
 </script>
-<?php $show_type=!empty($_GET['show_type'])?$_GET['show_type']:'list';?>
+<?php ?>
 <?php if($show_type=='grid'){?>
 <script>
   alert('grid');
