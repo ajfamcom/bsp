@@ -239,12 +239,14 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 <?php $show_type=!empty($_GET['show_type'])?$_GET['show_type']:'grid';?>
 <?php if($show_type=='grid'){?>
 <script>
+  alert('grid');
         $('.show-type-list').css('display','none');
         $('.show-type-grid').css('display','block');
     </script>
     <?php } ?>
     <?php if($show_type=='list'){?>
     <script>
+       alert('list');
         $('.show-type-list').css('display','block');
         $('.show-type-grid').css('display','none');
     </script>
