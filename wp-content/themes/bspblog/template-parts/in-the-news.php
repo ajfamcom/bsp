@@ -171,8 +171,8 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 </div>
 <script>
     $(document).ready(function(){
-        $('.showtype-list').css('display','none');
-        $('.showtype-grid').css('display','block');
+        //$('.showtype-list').css('display','none');
+        //$('.showtype-grid').css('display','block');
     });
     function show(showtype){
       if(showtype=='grid'){
