@@ -109,7 +109,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $args = array(
                 'post_type' => 'news_analysis',
-                'posts_per_page' => 12, 
+                'posts_per_page' => 2, 
                 'paged' => $paged, 
                 'meta_query' => array(
                     array(
