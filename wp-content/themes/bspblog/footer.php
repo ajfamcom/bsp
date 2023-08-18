@@ -100,8 +100,9 @@ if ( ! defined( 'ABSPATH' ) ) {
         });
 		jQuery(document).ready(function($) {
     $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd', // Set the desired date format
-        autoclose: true // Close the datepicker when a date is selected
+                minViewMode: 'years', // Show only years
+                format: 'yyyy',       // Format to display only year
+                autoclose: true
     });
 });
 
