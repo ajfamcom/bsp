@@ -8,8 +8,13 @@ if (!empty($search_keyword)) {
     $fetch_dataquery = $wpdb->get_results($sql_query);
     $total_items =count($fetch_dataquery);
   }
+  if (empty($search_keyword) && !empty($result_count_filter)) {
+    $sql_query="SELECT * FROM wp_searchdata LIMIT $result_count_filter";
+    $fetch_dataquery = $wpdb->get_results($sql_query);
+    $total_items =count($fetch_dataquery);
+  }
   else{
-      $sql_query="SELECT * FROM wp_searchdata LIMIT $result_count_filter";
+      $sql_query="SELECT * FROM wp_searchdata";
       $fetch_dataquery = $wpdb->get_results($sql_query);
       $total_items =count($fetch_dataquery);
   }
