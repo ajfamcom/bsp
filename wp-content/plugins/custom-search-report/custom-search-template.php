@@ -177,9 +177,22 @@ $total_pages = ceil($total_items / $items_per_page);
 <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
 
 <script>
+    $(document).ready(function() {
+            // Initialize DataTable with custom search box ID
+            $('#dataTable').DataTable({
+                dom: '<"search-box"lfr>t<"search-box"ip>',
+                language: {
+                    search: ''
+                }
+            });
+
+            // Add ID to the search box
+            $('.dataTables_filter input').attr('id', 'customSearchBox');
+        });
     jQuery(document).ready(function($) {
         $('.btndownload').on('click', function() {
-            var searchinput = $(".form-control-sm").val();
+            var searchinput = $("#customSearchBox").val();
+            alert(searchinput);
             $.ajax({
                 type: 'POST',
                 url: ajaxurl,
