@@ -242,9 +242,14 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         //alert('test');
         var stype='<?php echo $show_type; ?>';
        
+        if(stype=='show-type-grid'){
         $('.show-type-list').css('display','none');
+        $('.show-type-grid').css('display','block');
+      }
+      if(stype=='show-type-list'){
+        $('.show-type-list').css('display','block');
         $('.show-type-grid').css('display','none');
-        $('.<?php echo $show_type;?>').css('display','block');
+     }
     }); 
     function show(showtype){
       if(showtype=='grid'){
