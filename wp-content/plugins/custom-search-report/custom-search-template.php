@@ -35,12 +35,12 @@ $fetchdata = $wpdb->get_results($query);
 
 
 if (!empty($search_keyword)) {
-  $sql_query="SELECT COUNT(*) FROM wp_searchdata WHERE keyword LIKE '%$search_keyword%' LIMIT $result_count_filter";
+  $sql_query="SELECT * FROM wp_searchdata WHERE keyword LIKE '%$search_keyword%' LIMIT $result_count_filter";
   $fetch_dataquery = $wpdb->get_results($sql_query);
   $total_items =count($fetch_dataquery);
 }
 else{
-    $sql_query="SELECT COUNT(*) FROM wp_searchdata LIMIT $result_count_filter";
+    $sql_query="SELECT * FROM wp_searchdata LIMIT $result_count_filter";
     $fetch_dataquery = $wpdb->get_results($sql_query);
     $total_items =count($fetch_dataquery);
 }
