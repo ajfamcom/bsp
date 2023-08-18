@@ -6,7 +6,8 @@ global $wpdb;
 
 // Pagination variables
 $current_page = max(1, $_GET['paged']);
-$items_per_page = 10; // Number of items per page
+$result_count_filter=isset($_GET['result_count_filter']) ? sanitize_text_field($_GET['result_count_filter']) : '';
+$items_per_page = ($result_count_filter)?$result_count_filter:10; // Number of items per page
 $offset = ($current_page - 1) * $items_per_page;
 
 // Search keyword
