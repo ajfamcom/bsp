@@ -204,7 +204,10 @@ $total_pages = ceil($total_items / $items_per_page);
     </script>
     <script>
         jQuery(document).ready(function($) {
-          $('#sortTable').DataTable();
+          //$('#sortTable').DataTable();
+          new DataTable('#sortTable', {
+          pagingType: 'full_numbers'
+         });
         });
     </script>
 
