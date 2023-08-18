@@ -6,7 +6,8 @@ global $wpdb;
 
 // Pagination variables
 $current_page = max(1, $_GET['paged']);
-$items_per_page = 10; // Number of items per page
+$result_count_filter=isset($_GET['result_count_filter']) ? sanitize_text_field($_GET['result_count_filter']) : '';
+$items_per_page = ($result_count_filter)?$result_count_filter:10; // Number of items per page
 $offset = ($current_page - 1) * $items_per_page;
 
 // Search keyword
@@ -29,7 +30,12 @@ $query .= " ORDER BY created_at DESC LIMIT $items_per_page OFFSET $offset";
 $fetchdata = $wpdb->get_results($query);
 
 // Count total number of rows without pagination
-$total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata");
+if($result_count_filter){
+    $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata LIMIT $result_count_filter");
+} else {
+    $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata");
+}
+
 if (!empty($search_keyword)) {
   $total_items = $wpdb->get_var("SELECT COUNT(*) FROM wp_searchdata WHERE keyword LIKE '%$search_keyword%'");
 }
@@ -101,15 +107,9 @@ $total_pages = ceil($total_items / $items_per_page);
     <input type="hidden" name="page" value="search-report-display">
     <input type="text" name="s" id="searchInput" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php echo esc_attr($search_keyword); ?>">
     <select name="result_count_filter">
-        <?php 
-        if($total_items>1){
-            for($x=0;$x<=$total_items;$x++){
-                ?>
-                <option value="<?php echo $x; ?>">Fetch <?php echo $x;?> Record(s)</option>
-                <?php
-            }
-        }
-        ?>
+    <?php for ($i = 10; $i <= $total_items; $i += 20) { ?>
+    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+    <?php } ?>
     </select>    
     <button type="submit" class="custom-search-button btn btn-primary">Search</button>
     <button type="button" class="custom-search-button btn btn-primary" onclick="location.href='<?php echo admin_url('admin.php').'?page=search-report-display';?>'">Reset</button>
