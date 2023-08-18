@@ -821,13 +821,9 @@ ul.contact-social-links li a:hover i {
     object-fit: cover;
 }
 .single-news .news-info {
-    position: absolute;
-    width: 85%;
-    bottom: 20px;
-    z-index: 2;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
+    background: var(--blue);
+    padding: 20px;
+    border-radius: 6px;
 }
 .single-news .news-info h4 {
     font-size: 20px;
