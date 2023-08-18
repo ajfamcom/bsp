@@ -124,7 +124,7 @@ $total_pages = ceil($total_items / $items_per_page);
   <table class="custom-search-table">
     <thead>
       <tr>
-        <th>Keyword</th>
+        <th>Keyword <i class="fa-solid fa-arrow-up"></i> <i class="fa-solid fa-arrow-down"></i></th>
         <th>Visitor IP</th>
         <th>Search DateTime</th>
         <th>Search Page</th>
