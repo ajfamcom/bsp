@@ -40,7 +40,7 @@ if (!empty($search_keyword)) {
     $query .= " WHERE keyword LIKE '%$search_keyword%'";
 }
 
-$query .= " ORDER BY created_at DESC LIMIT $items_per_page OFFSET $offset";
+$query .= " ORDER BY created_at DESC";
 $fetchdata = $wpdb->get_results($query);
 
 // Count total number of rows without pagination
@@ -152,7 +152,7 @@ $total_pages = ceil($total_items / $items_per_page);
   </table>
 
     <?php
-  if ($total_pages > 1) {
+  /* if ($total_pages > 1) {
       echo '<div class="custom-search-pagination">';
       echo paginate_links(array(
           'base' => admin_url('admin.php?page=search-report-display') . '%_%',
@@ -161,7 +161,7 @@ $total_pages = ceil($total_items / $items_per_page);
           'total' => $total_pages,
       ));
       echo '</div>';
-  } 
+  } */ 
   
 
 
