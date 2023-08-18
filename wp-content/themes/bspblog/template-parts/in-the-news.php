@@ -27,6 +27,12 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 
 <div class="container grid-post py-5 my-md-5">	
 	<div class="col-md-12 py-md-5">
+
+    <div class="d-flex align-items-center">
+    <i class="fa-solid fa-grip"></i>
+    <i class="fa-solid fa-grip-lines"></i>
+    </div>
+
 		<div class="row">
 			<?php
 			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -98,6 +104,10 @@ $image_over_banner = get_field('image_over_banner', $page_id);
   <div class="row">
     <div class="col-12">
         <div class="tile-blog-post">
+        <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
+        <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
+        <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
+        <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
         <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
         </div>
     </div>
