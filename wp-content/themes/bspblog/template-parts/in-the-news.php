@@ -84,6 +84,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 								</div>
 							</div>
 					<?php endwhile; ?>
+                   <?php wp_reset_postdata();?>
 			<?php endif;?>
         </div>
 		        <!-- Pagination Links -->
@@ -104,11 +105,45 @@ $image_over_banner = get_field('image_over_banner', $page_id);
   <div class="row">
     <div class="col-12">
         <div class="tile-blog-post">
+        <?php
+			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+            $args = array(
+                'post_type' => 'news_analysis',
+                'posts_per_page' => 12, 
+                'paged' => $paged, 
+                'meta_query' => array(
+                    array(
+                        'key' => 'news_status', 
+                        'value'   => 'Active', 
+                        'compare' => '=',
+                    ),    
+                ),
+            );
+                     
+            
+            $query = new WP_Query( $args );   
+       
+    
+			if ($query->have_posts()) :
+					while ($query->have_posts()) :
+						$query->the_post();						
+                        $post_id = get_the_ID();
+                        $short_desc = get_field('short_description', $post_id);
+                        $link_data = get_field('external_link', $post_id);
+                        $link='javascript:void(0)';
+                        $target="";
+                        if($link_data){
+                            $link= $link_data;
+                            $target='_blank';
+                        }
+                       
+						?>     
         <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
-        <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
-        <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
-        <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
-        <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
+        <?php 
+        endwhile;
+wp_reset_postdata();
+    endif;
+        ?>
         </div>
     </div>
   </div>
