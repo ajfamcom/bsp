@@ -103,7 +103,7 @@ $total_pages = ceil($total_items / $items_per_page);
     <select name="result_count_filter">
         <?php 
         if($total_items>1){
-            for($x=0;$x<=$total_items;$x+5){
+            for($x=0;$x<=$total_items;$x++){
                 ?>
                 <option value="<?php echo $x; ?>">Fetch <?php echo $x;?> Record(s)</option>
                 <?php
