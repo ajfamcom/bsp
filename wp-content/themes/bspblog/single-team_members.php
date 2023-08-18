@@ -43,7 +43,7 @@ endif;
 					<?php 
 					if($contact_email)
 					{
-						if (strpos($text, ' ') !== false) {
+						if (strpos($fullname, ' ') !== false) {
 							$email_show_data=explode(' ',$fullname);
 							$email_show=$email_show_data[0];
 						}
