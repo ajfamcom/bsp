@@ -3,9 +3,9 @@
 $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
- echo $search_text=isset($_REQUEST['search_text'])?$_REQUEST['search_text']:'';
- echo $from_date=isset($_REQUEST['from_date'])?$_REQUEST['from_date']:'';
- echo $to_date=isset($_REQUEST['to_date'])?$_REQUEST['to_date']:'';
+  $search_text=isset($_REQUEST['search_text'])?$_REQUEST['search_text']:'';
+  $from_date=isset($_REQUEST['from_date'])?$_REQUEST['from_date']:'';
+  $to_date=isset($_REQUEST['to_date'])?$_REQUEST['to_date']:'';
  if ($search_text) {		
       
 	$search_term = trim($search_text);
@@ -134,34 +134,48 @@ get_header();
 		{		
 
 			global $wpdb;
-			
-			$modified_from_date=date('Y-m-d H:i:s',strtotime($from_date));
-			$modified_to_date=date('Y-m-d H:i:s',strtotime($to_date));
-			$posts_per_page = 6;
-			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-			$offset = ($current_page - 1) * $posts_per_page;
-			
-			$query = "
-			SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
-			FROM {$wpdb->prefix}posts
-			LEFT JOIN {$wpdb->prefix}postmeta ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id)
-			WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
-			AND {$wpdb->prefix}posts.post_status='publish'
-			AND (
-				({$wpdb->prefix}postmeta.meta_key = 'custom_pdf_keywords' AND {$wpdb->prefix}postmeta.meta_value LIKE %s)
-				OR {$wpdb->prefix}posts.post_title LIKE %s
-				OR {$wpdb->prefix}posts.post_content LIKE %s
-			)
-			AND {$wpdb->prefix}posts.post_date >= %s AND {$wpdb->prefix}posts.post_date <= %s
-			GROUP BY {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
-			ORDER BY {$wpdb->prefix}posts.post_date DESC
-			LIMIT %d
-			OFFSET %d
-		";
+
+$year_from = date('Y', strtotime($from_date));
+$year_to = date('Y', strtotime($to_date));
+$posts_per_page = 6;
+$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$offset = ($current_page - 1) * $posts_per_page;
+
+$search_text = '%' . $wpdb->esc_like($search_text) . '%';
+
+$query = $wpdb->prepare(
+    "
+    SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
+    FROM {$wpdb->prefix}posts
+    LEFT JOIN {$wpdb->prefix}term_relationships ON ({$wpdb->prefix}posts.ID = {$wpdb->prefix}term_relationships.object_id)
+    LEFT JOIN {$wpdb->prefix}term_taxonomy ON ({$wpdb->prefix}term_relationships.term_taxonomy_id = {$wpdb->prefix}term_taxonomy.term_taxonomy_id)
+    LEFT JOIN {$wpdb->prefix}terms ON ({$wpdb->prefix}term_taxonomy.term_id = {$wpdb->prefix}terms.term_id)
+    WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
+    AND {$wpdb->prefix}posts.post_status = 'publish'
+    AND (
+        {$wpdb->prefix}posts.post_title LIKE %s
+        OR {$wpdb->prefix}posts.post_content LIKE %s
+        OR {$wpdb->prefix}terms.name LIKE %s
+    )
+    AND YEAR({$wpdb->prefix}posts.post_date) >= %d AND YEAR({$wpdb->prefix}posts.post_date) <= %d
+    GROUP BY {$wpdb->prefix}posts.ID
+    ORDER BY {$wpdb->prefix}posts.post_date DESC
+    LIMIT %d
+    OFFSET %d
+    ",
+    $search_text,
+    $search_text,
+    $search_text,
+    $year_from,
+    $year_to,
+    $posts_per_page,
+    $offset
+);
+
+$results = $wpdb->get_results($query);
+
 		
-		$query = $wpdb->prepare($query, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $modified_from_date, $modified_to_date, $posts_per_page, $offset);
 		
-		$results = $wpdb->get_results($query);
 		/***count query */
 		$queryforcount = "
 		SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date ,{$wpdb->prefix}posts.post_status='publish'
