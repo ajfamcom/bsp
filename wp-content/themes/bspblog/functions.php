@@ -802,13 +802,13 @@ function post_content_has_pdf_attachments($post_id) {
 
         // Loop through the URLs and check if they point to PDF files
         $url_arr=array();
-        if($matches){
+        
         foreach ($matches[2] as $url) {
             if (strpos($url, '.pdf') !== false) {
                 $url_arr[]=$url; 
             }
         }
-    }
+    
         return $url_arr;
     }
 
@@ -890,11 +890,10 @@ function save_pdf_meta($post_id) {
             }      
         
                 $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published')); 
-                if($existing_tags)  
-                {
+                
                     $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
                     wp_set_post_tags($post_id, $combined_tags, false);
-                }              
+                             
                
                 
             } 
