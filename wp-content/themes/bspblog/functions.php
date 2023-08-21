@@ -872,7 +872,7 @@ function save_pdf_meta($post_id) {
                         $parser = new \Smalot\PdfParser\Parser();
                         $pdf    = $parser->parseFile($file_path);
                         $metadata   = $pdf->getDetails();
-                         echo '<script>alert('".$metadata['Keywords']."');</script>';die();
+                         echo '<script>alert("'.$metadata['Keywords'].'");</script>';die();
             
                         if (strpos($metadata['Keywords'], ',') !== false) {
                             // If a comma is found in the string
