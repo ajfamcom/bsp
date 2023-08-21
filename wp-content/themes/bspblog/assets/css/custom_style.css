@@ -867,6 +867,10 @@ ul.contact-social-links li a:hover i {
     background: var(--orange);
     color: #fff;
 }
+
+.section-format i {
+    background: #f2f2f2;
+}
 /*------ /in-the-news-page -----*/
 
 /*------- polls-page --------*/
