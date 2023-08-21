@@ -816,7 +816,7 @@ function post_content_has_pdf_attachments($post_id) {
 /****new code**** */
 function save_pdf_meta($post_id) {
    
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    //if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
     //if (!current_user_can('edit_post', $post_id)) return;
 
     
@@ -868,6 +868,7 @@ function save_pdf_meta($post_id) {
                     $attachment_url = $attachment; 
                              
                     $file_path='/var/www/html/bsp'.wp_make_link_relative($attachment_url);
+                    
                    
                         $parser = new \Smalot\PdfParser\Parser();
                         $pdf    = $parser->parseFile($file_path);
@@ -905,7 +906,7 @@ function save_pdf_meta($post_id) {
 }
 
 
-add_action('save_post', 'save_pdf_meta',20);
+add_action('save_post', 'save_pdf_meta');
 
 
 /********** */
