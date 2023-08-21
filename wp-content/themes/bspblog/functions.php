@@ -921,7 +921,7 @@ function save_pdf_meta($post_id) {
                 
             } 
     }
-
+    return true;
 }
 
 
