@@ -861,7 +861,7 @@ function save_pdf_meta($post_id) {
     }
     
      /**content check */
-    $post_attach_content= post_content_has_pdf_attachments($post_id);
+    $post_attach_content= '';//post_content_has_pdf_attachments($post_id);
 
     if($post_attach_content){
     
@@ -890,11 +890,10 @@ function save_pdf_meta($post_id) {
             }      
         
                 $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published')); 
-                //if($existing_tags)  
-                //{
+                
                     $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
                     wp_set_post_tags($post_id, $combined_tags, false);
-                //}              
+                             
                
                 
             } 
