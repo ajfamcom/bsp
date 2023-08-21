@@ -802,11 +802,13 @@ function post_content_has_pdf_attachments($post_id) {
 
         // Loop through the URLs and check if they point to PDF files
         $url_arr=array();
+        if($matches){
         foreach ($matches[2] as $url) {
             if (strpos($url, '.pdf') !== false) {
                 $url_arr[]=$url; 
             }
         }
+    }
         return $url_arr;
     }
 
