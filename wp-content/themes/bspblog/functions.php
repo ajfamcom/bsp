@@ -859,10 +859,10 @@ function save_pdf_meta($post_id) {
     }
     
      /**content check */
-    $post_attach_contents= post_content_has_pdf_attachments($post_id);
-    $post_attach_content='';
-    if($post_attach_content){
+    $post_attach_content= post_content_has_pdf_attachments($post_id);
     
+    if($post_attach_content){
+    echo '<pre>';print_r($post_attach_content);die();
                 foreach ($post_attach_content as $attachment) {     
                 
                     $attachment_url = $attachment;          
