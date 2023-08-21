@@ -842,9 +842,9 @@ ul.contact-social-links li a:hover i {
 .single-news .news-info h4 a {
     color: #fff;
 }
-.single-news .news-info h4:hover a {
+/* .single-news .news-info h4:hover a {
     color: var(--orange);
-}
+} */
 .pagination {
     justify-content: center;
     margin-top: 5%;
