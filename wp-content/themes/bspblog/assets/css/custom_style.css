@@ -824,6 +824,7 @@ ul.contact-social-links li a:hover i {
     background: var(--blue);
     padding: 20px;
     border-radius: 6px;
+    height: 100%;
 }
 .single-news .news-info h4 {
     font-size: 20px;

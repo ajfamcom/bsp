@@ -26,17 +26,17 @@ $base_url = get_permalink();
 	</div>
 </div>
 
-<div class="container py-5 my-md-5">	
+<div class="container pt-5 mt-md-5">	
 <div class="d-flex align-items-center gap-3 mb-4">
   <!--   <a href="#" onclick="show('grid');"><i style="background-color: #153d67;" class="fa-solid fa-grip fs-2 rounded-3 text-white py-1 px-2"></i></a>
     <a href="#" onclick="show('list');"><i style="background-color: #153d67;" class="fa-solid fa-grip-lines fs-2 rounded-3 text-white py-1 px-2"></i></a> -->
-    <a href="<?php echo add_query_arg('show_type', 'grid', $base_url); ?>"><i style="background-color: #153d67;" class="fa-solid fa-grip fs-2 rounded-3 text-white py-1 px-2"></i></a>
-        <a href="<?php echo add_query_arg('show_type', 'list', $base_url); ?>"><i style="background-color: #153d67;" class="fa-solid fa-grip-lines fs-2 rounded-3 text-white py-1 px-2"></i></a>
+    <a href="<?php echo add_query_arg('show_type', 'grid', $base_url); ?>"><i class="fa-solid fa-grip fs-2 rounded-3 text-white py-1 px-2"></i></a>
+        <a href="<?php echo add_query_arg('show_type', 'list', $base_url); ?>"><i class="fa-solid fa-grip-lines fs-2 rounded-3 text-white py-1 px-2"></i></a>
     
 </div>
 </div>
-<div class="container grid-post py-5 my-md-5 show-type-grid" <?php echo ($showt == 'grid') ? 'style="display:block;"' : 'style="display:none;"'; ?>>	
-	<div class="col-md-12 py-md-5">
+<div class="container grid-post pt-2 pb-5 mt-md-2 pb-5 mb-md-5 show-type-grid" <?php echo ($showt == 'grid') ? 'style="display:block;"' : 'style="display:none;"'; ?>>	
+	<div class="col-md-12">
 
    
 
@@ -105,7 +105,7 @@ $base_url = get_permalink();
 </div>	
 
 
-<div class="container tile-post py-5 my-md-5 show-type-list" <?php echo ($showt == 'list') ? 'style="display:block;"' : 'style="display:none;"'; ?>>
+<div class="container tile-post pt-2 pb-5 mt-md-2 pb-5 mb-md-5 show-type-list" <?php echo ($showt == 'list') ? 'style="display:block;"' : 'style="display:none;"'; ?>>
   <div class="row">
     <div class="col-12">
         <div class="tile-blog-post">
