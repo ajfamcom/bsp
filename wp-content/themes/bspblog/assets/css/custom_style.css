@@ -901,6 +901,30 @@ ul.contact-social-links li a:hover i {
     -ms-transition: all ease-in-out 0.3s;
     -o-transition: all ease-in-out 0.3s;
 }
+
+.tile-blog-post  {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.tile-blog-post .gray-tile {
+    background: #919191;
+    padding: 10px;
+    border-radius: 5px;
+}
+.tile-blog-post .red-tile {
+    background: var(--orange);
+    padding: 10px;
+    border-radius: 5px;
+}
+.tile-blog-post .blue-tile {
+    background: var(--blue);
+    padding: 10px;
+    border-radius: 5px;
+}
+.tile-blog-post h4 a {
+    color: #fff;
+}
 /*------ /in-the-news-page -----*/
 
 /*------- polls-page --------*/
