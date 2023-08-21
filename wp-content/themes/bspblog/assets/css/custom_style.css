@@ -925,6 +925,7 @@ ul.contact-social-links li a:hover i {
 .tile-blog-post h4 {
     padding: 15px;
     font-size: 20px;
+    border: 1px solid #ddd;
 }
 /*------ /in-the-news-page -----*/
 
