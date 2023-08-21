@@ -921,13 +921,13 @@ function save_pdf_meta($post_id) {
                 
             } 
     }
-    $edit_post_link = get_edit_post_link($post_id);
-    wp_redirect($edit_post_link);
-    exit(); // Make sure to exit after calling wp_redirect
+    //$edit_post_link = get_edit_post_link($post_id);
+   // wp_redirect($edit_post_link);
+   // exit(); // Make sure to exit after calling wp_redirect
 }
 
 
-add_action('save_post', 'save_pdf_meta',20);
+add_action('save_post', 'save_pdf_meta',99);
 
 
 /********** */
