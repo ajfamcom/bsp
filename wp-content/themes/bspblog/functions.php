@@ -818,7 +818,7 @@ function save_pdf_meta($post_id) {
    
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
     //if (!current_user_can('edit_post', $post_id)) return;
-    echo 'Testings';die();
+    
     
     $post_type = get_post_type($post_id);
     //wp_set_post_tags($post_id, array(), false);
