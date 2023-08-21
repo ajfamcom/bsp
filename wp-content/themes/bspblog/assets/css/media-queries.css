@@ -443,6 +443,13 @@
         gap: 20px;
         flex-wrap: wrap;
     }
+    .list-polls .news-image {
+        flex-basis: 100%;
+    }
+    .list-polls {
+        flex-direction: column;
+        margin-bottom: 6%;
+    }
 }
 
 /*================================= /media-queries ==================================*/
