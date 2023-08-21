@@ -878,11 +878,7 @@ function save_pdf_meta($post_id) {
                             // If a comma is found in the string
                             $keywordsArray = explode(",", $metadata['Keywords']);
                             $keywordsArray = array_map('trim', array_filter($keywordsArray));
-                        } elseif (strpos($metadata['Keywords'], ' ') !== false) {
-                
-                            $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
-                            $keywordsArray = array_map('trim', array_filter($keywordsArray));
-                        }                       
+                        }                        
                         else { 
                             // If no comma is found in the string
                             $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
