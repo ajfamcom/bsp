@@ -816,7 +816,7 @@ function post_content_has_pdf_attachments($post_id) {
 /****new code**** */
 function save_pdf_meta($post_id) {
    
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    //if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
     //if (!current_user_can('edit_post', $post_id)) return;
 
     
