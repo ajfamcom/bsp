@@ -506,7 +506,7 @@ $results = $wpdb->get_results($query);
 </div>	
 <!--grid view-->
 <!---list view --->
-<div class="container tile-post py-5 my-md-5 show-type-list" <?php echo ($showt == 'list') ? 'style="display:block;"' : 'style="display:none;"'; ?>>
+<div class="container tile-post pt-2 pb-5 mt-md-2 pb-5 mb-md-5 show-type-list" <?php echo ($showt == 'list') ? 'style="display:block;"' : 'style="display:none;"'; ?>>
 	<div class="row">
 		<div class="container mt-md-5">
 			<form class="post-filter-form">
