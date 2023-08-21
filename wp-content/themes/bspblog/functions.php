@@ -868,7 +868,7 @@ function save_pdf_meta($post_id) {
                 foreach ($post_attach_content as $attachment) {     
                 
                     $attachment_url = $attachment;          
-                    $file_path='/var/www/html/bsp'.wp_make_link_relative( $attachment_url);
+                    $file_path='/var/www/html/bsp'.wp_make_link_relative($attachment_url);
                         $parser = new \Smalot\PdfParser\Parser();
                         $pdf    = $parser->parseFile($file_path);
                         $metadata   = $pdf->getDetails();
@@ -882,7 +882,7 @@ function save_pdf_meta($post_id) {
                 
                 $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
                 $keywordsArray = array_map('trim', array_filter($keywordsArray));
-            } 
+            }  
             else{
             
                 $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
@@ -890,9 +890,15 @@ function save_pdf_meta($post_id) {
             }      
         
                 $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published')); 
-                
+                if(!empty($existing_tags))
+                {
                     $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
                     wp_set_post_tags($post_id, $combined_tags, false);
+                }
+                else{                    
+                    wp_set_post_tags($post_id, $keywordsArray, false);
+                }
+                   
                              
                
                 
