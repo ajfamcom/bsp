@@ -905,25 +905,26 @@ ul.contact-social-links li a:hover i {
 .tile-blog-post  {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 .tile-blog-post .gray-tile {
     background: #919191;
-    padding: 10px;
     border-radius: 5px;
 }
 .tile-blog-post .red-tile {
     background: var(--orange);
-    padding: 10px;
     border-radius: 5px;
 }
 .tile-blog-post .blue-tile {
     background: var(--blue);
-    padding: 10px;
     border-radius: 5px;
 }
 .tile-blog-post h4 a {
     color: #fff;
+}
+.tile-blog-post h4 {
+    padding: 15px;
+    font-size: 20px;
 }
 /*------ /in-the-news-page -----*/
 
