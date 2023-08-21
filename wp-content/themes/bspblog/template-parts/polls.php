@@ -466,7 +466,7 @@ $results = $wpdb->get_results($query);
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
 				} 
 		?>
-				<div class="news-block col-md-4">
+				<div class="news-block grid-polls col-md-4">
 					<div class="news-image"><?php echo $image_link; ?></div>
 					<div class="news-info">
 						<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
@@ -922,7 +922,7 @@ $results = $wpdb->get_results($query);
 					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
 				} 
 		?>
-				<div class="news-block col-12">
+				<div class="news-block list-polls col-12">
 					<div class="news-image"><?php echo $image_link; ?></div>
 					<div class="news-info">
 						<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
