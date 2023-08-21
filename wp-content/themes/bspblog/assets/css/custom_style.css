@@ -821,7 +821,8 @@ ul.contact-social-links li a:hover i {
     object-fit: cover;
 }
 .single-news .news-info {
-    background: var(--blue);
+    /* background: var(--blue); */
+    background-image: linear-gradient(180deg, var(--blue), #995e5e, var(--orange));
     padding: 20px;
     border-radius: 6px;
     height: 100%;
@@ -870,10 +871,26 @@ ul.contact-social-links li a:hover i {
 
 .section-format i {
     background: transparent;
-    padding: 10px;
+    padding: 7px 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     color: #333;
+    font-size: 20px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+.section-format i:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+    border-color: var(--orange);
+    color: var(--orange);
+    transition: all ease-in-out 0.3s;
+    -webkit-transition: all ease-in-out 0.3s;
+    -moz-transition: all ease-in-out 0.3s;
+    -ms-transition: all ease-in-out 0.3s;
+    -o-transition: all ease-in-out 0.3s;
 }
 /*------ /in-the-news-page -----*/
 
