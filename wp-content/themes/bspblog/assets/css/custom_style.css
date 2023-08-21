@@ -822,10 +822,19 @@ ul.contact-social-links li a:hover i {
 }
 .single-news .news-info {
     /* background: var(--blue); */
-    background-image: linear-gradient(180deg, var(--blue), #995e5e, var(--orange));
+    /* background-image: linear-gradient(180deg, var(--blue), #995e5e, var(--orange)); */
     padding: 20px;
     border-radius: 6px;
     height: 100%;
+}
+.gray-tile .news-info {
+    background: #919191;
+}
+.red-tile .news-info {
+    background: var(--orange);
+}
+.blue-tile .news-info {
+    background: var(--blue);
 }
 .single-news .news-info h4 {
     font-size: 20px;
