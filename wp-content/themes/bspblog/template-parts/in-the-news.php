@@ -58,10 +58,13 @@ $base_url = get_permalink();
                      
             
             $query = new WP_Query( $args );   
-       
+            $data = ["red-tile", "blue-tile", "gray-tile"];
     
+             $counter = 0;
+            
 			if ($query->have_posts()) :
 					while ($query->have_posts()) :
+                        $currentClass = ($counter % 3 === 0) ? "gray" : (($counter % 3 === 1) ? "red" : "blue");
 						$query->the_post();						
                         $post_id = get_the_ID();
                         $short_desc = get_field('short_description', $post_id);
@@ -74,12 +77,14 @@ $base_url = get_permalink();
                         }
                        
 						?> 
-							<div class="single-news col-md-4">								
+							<div class="single-news col-md-4 <?php echo $currentClass;?>">								
 								<div class="news-info">
 								<h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
 								</div>
 							</div>
-					<?php endwhile; ?>
+					<?php 
+                $counter++;
+                endwhile; ?>
                    <?php wp_reset_postdata();?>
 			<?php endif;?>
         </div>
@@ -122,9 +127,12 @@ $base_url = get_permalink();
             
             $query = new WP_Query( $args );   
        
+            $data = ["red-tile", "blue-tile", "gray-tile"];
     
+            $counter = 0;
 			if ($query->have_posts()) :
 					while ($query->have_posts()) :
+                        $currentClass = ($counter % 3 === 0) ? "gray" : (($counter % 3 === 1) ? "red" : "blue");
 						$query->the_post();						
                         $post_id = get_the_ID();
                         $short_desc = get_field('short_description', $post_id);
@@ -137,8 +145,9 @@ $base_url = get_permalink();
                         }
                        
 						?>     
-        <h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
+        <h4 class="news-details <?php echo $currentClass;?>"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
         <?php 
+        $counter++;
         endwhile;
 wp_reset_postdata();
     endif;
