@@ -865,9 +865,10 @@ function save_pdf_meta($post_id) {
    
                 foreach ($post_attach_content as $attachment) {     
                 
-                    $attachment_url = $attachment; 
+                    $attachment_url = 'https://bsp.thefamcomlab.com/wp-content/uploads/2023/08/Springboard-Mixed-Status-2021-Survey-Topline-Report.pdf';//$attachment; 
                              
                     $file_path='/var/www/html/bsp'.wp_make_link_relative($attachment_url);
+                    
                    
                         $parser = new \Smalot\PdfParser\Parser();
                         $pdf    = $parser->parseFile($file_path);
