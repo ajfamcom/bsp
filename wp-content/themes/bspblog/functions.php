@@ -816,7 +816,7 @@ function post_content_has_pdf_attachments($post_id) {
 /****new code**** */
 function save_pdf_meta($post_id) {
    
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    //if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
     //if (!current_user_can('edit_post', $post_id)) return;
 
     
@@ -865,7 +865,7 @@ function save_pdf_meta($post_id) {
    
                 foreach ($post_attach_content as $attachment) {     
                 
-                    $attachment_url = 'https://bsp.thefamcomlab.com/wp-content/uploads/2023/08/Springboard-Mixed-Status-2021-Survey-Topline-Report.pdf';//$attachment; 
+                    $attachment_url = $attachment; 
                              
                     $file_path='/var/www/html/bsp'.wp_make_link_relative($attachment_url);
                     
@@ -906,7 +906,7 @@ function save_pdf_meta($post_id) {
 }
 
 
-add_action('save_post', 'save_pdf_meta',20);
+add_action('save_post', 'save_pdf_meta');
 
 
 /********** */
