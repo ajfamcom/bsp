@@ -806,7 +806,7 @@ function post_content_has_pdf_attachments($post_id) {
                 $url_arr[]=$url; 
             }
         }
-        echo '<pre>';print_r($url_arr);die();
+       
         return $url_arr;
     }
 
