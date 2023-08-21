@@ -871,10 +871,11 @@ function save_pdf_meta($post_id) {
     }
     
      /**content check */
-    $post_attach_content= post_content_has_pdf_attachments($post_id);
+    
 
     
-    if ($post_type === 'bsp_custom_polls') {
+    if ($post_type === 'bsp_custom_polls' || $post_type === 'post') {
+        $post_attach_content= post_content_has_pdf_attachments($post_id); 
     if($post_attach_content){
    
                 foreach ($post_attach_content as $attachment) {     
