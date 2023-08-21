@@ -927,6 +927,17 @@ ul.contact-social-links li a:hover i {
     font-size: 20px;
     border: 1px solid #ddd;
 }
+
+.list-polls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 3%;
+}
+.list-polls .news-image {
+    flex-basis: 30%;
+    margin: 0px;
+}
 /*------ /in-the-news-page -----*/
 
 /*------- polls-page --------*/
