@@ -806,7 +806,7 @@ function post_content_has_pdf_attachments($post_id) {
                 $url_arr[]=$url; 
             }
         }
-    
+        echo '<pre>';print_r($url_arr);die();
         return $url_arr;
     }
 
@@ -872,27 +872,7 @@ function save_pdf_meta($post_id) {
     
      /**content check */
     $post_attach_content= post_content_has_pdf_attachments($post_id);
-// Specify the file path
-$file_path = 'var/www/html/bsp/wp-content/themes/bspblog/textfile.txt';
 
-// Data to be saved in the file
-$data_to_save = $post_attach_content;
-
-// Open the file for writing (creates the file if it doesn't exist)
-$file_handle = fopen($file_path, 'w');
-
-// Check if the file was opened successfully
-if ($file_handle === false) {
-    die("Unable to open the file for writing.");
-}
-
-// Write the data to the file
-if (fwrite($file_handle, $data_to_save) === false) {
-    die("Unable to write to the file.");
-}
-
-// Close the file handle
-fclose($file_handle);
     
     
     if($post_attach_content){
