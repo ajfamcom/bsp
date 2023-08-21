@@ -7,9 +7,9 @@
  * @package Astra
  * @since 1.0.0
  */
-ini_set('display_errors', 1);
+/* ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+error_reporting(E_ALL); */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -887,9 +887,13 @@ function save_pdf_meta($post_id) {
                 $keywordsArray = array_map('trim', array_filter($keywordsArray));
             }      
         
-                $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published'));                 
-                $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
-                wp_set_post_tags($post_id, $combined_tags, false);
+                $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published')); 
+                if($existing_tags)  
+                {
+                    $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
+                    wp_set_post_tags($post_id, $combined_tags, false);
+                }              
+               
                 
             } 
     }
