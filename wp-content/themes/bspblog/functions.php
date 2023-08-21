@@ -874,7 +874,7 @@ function save_pdf_meta($post_id) {
     $post_attach_content= post_content_has_pdf_attachments($post_id);
 
     
-    
+    if ($post_type === 'bsp_custom_polls') {
     if($post_attach_content){
    
                 foreach ($post_attach_content as $attachment) {     
@@ -921,6 +921,7 @@ function save_pdf_meta($post_id) {
                 
             } 
     }
+}
     //$edit_post_link = get_edit_post_link($post_id);
    // wp_redirect($edit_post_link);
    // exit(); // Make sure to exit after calling wp_redirect
