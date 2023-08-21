@@ -45,7 +45,7 @@ $base_url = get_permalink();
 			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $args = array(
                 'post_type' => 'news_analysis',
-                'posts_per_page' => 2, 
+                'posts_per_page' => 12, 
                 'paged' => $paged, 
                 'meta_query' => array(
                     array(
@@ -58,13 +58,13 @@ $base_url = get_permalink();
                      
             
             $query = new WP_Query( $args );   
-            $data = ["red-tile", "blue-tile", "gray-tile"];
+            
     
              $counter = 0;
             
 			if ($query->have_posts()) :
 					while ($query->have_posts()) :
-                        $currentClass = ($counter % 3 === 0) ? "gray" : (($counter % 3 === 1) ? "red" : "blue");
+                        $currentClass = ($counter % 3 === 0) ? "gray-tile" : (($counter % 3 === 1) ? "red-tile" : "blue-tile");
 						$query->the_post();						
                         $post_id = get_the_ID();
                         $short_desc = get_field('short_description', $post_id);
@@ -113,7 +113,7 @@ $base_url = get_permalink();
 			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $args = array(
                 'post_type' => 'news_analysis',
-                'posts_per_page' => 2, 
+                'posts_per_page' => 12, 
                 'paged' => $paged, 
                 'meta_query' => array(
                     array(
@@ -127,12 +127,12 @@ $base_url = get_permalink();
             
             $query = new WP_Query( $args );   
        
-            $data = ["red-tile", "blue-tile", "gray-tile"];
+           
     
             $counter = 0;
 			if ($query->have_posts()) :
 					while ($query->have_posts()) :
-                        $currentClass = ($counter % 3 === 0) ? "gray" : (($counter % 3 === 1) ? "red" : "blue");
+                        $currentClass = ($counter % 3 === 0) ? "gray-tile" : (($counter % 3 === 1) ? "red-tile" : "blue-tile");
 						$query->the_post();						
                         $post_id = get_the_ID();
                         $short_desc = get_field('short_description', $post_id);
