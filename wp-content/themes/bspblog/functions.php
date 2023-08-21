@@ -921,7 +921,9 @@ function save_pdf_meta($post_id) {
                 
             } 
     }
-    return true;
+    $edit_post_link = get_edit_post_link($post_id);
+    wp_redirect($edit_post_link);
+    exit(); // Make sure to exit after calling wp_redirect
 }
 
 
