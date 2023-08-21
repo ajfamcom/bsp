@@ -859,8 +859,8 @@ function save_pdf_meta($post_id) {
     }
     
      /**content check */
-    $post_attach_content= post_content_has_pdf_attachments($post_id);
-
+    $post_attach_contents= post_content_has_pdf_attachments($post_id);
+    $post_attach_content='';
     if($post_attach_content){
     
                 foreach ($post_attach_content as $attachment) {     
