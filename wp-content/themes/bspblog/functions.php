@@ -868,27 +868,23 @@ function save_pdf_meta($post_id) {
                     $attachment_url = $attachment; 
                              
                     $file_path='/var/www/html/bsp'.wp_make_link_relative($attachment_url);
-                    echo $post_id.'halllo';die();
+                   
                         $parser = new \Smalot\PdfParser\Parser();
                         $pdf    = $parser->parseFile($file_path);
                         $metadata   = $pdf->getDetails();
                         
             
-                if (strpos($metadata['Keywords'], ',') !== false) {            
-                $keywordsArray = explode(",", $metadata['Keywords']);
-                $keywordsArray = array_map('trim', array_filter($keywordsArray));
-            } 
-            elseif (strpos($metadata['Keywords'], ' ') !== false) {
-                
-                $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
-                $keywordsArray = array_map('trim', array_filter($keywordsArray));
-            }  
-            else{
-            
-                $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
-                $keywordsArray = array_map('trim', array_filter($keywordsArray));
-            }      
-        
+                        if (strpos($metadata['Keywords'], ',') !== false) {
+                            // If a comma is found in the string
+                            $keywordsArray = explode(",", $metadata['Keywords']);
+                            //$keywordsArray = array_map('trim', array_filter($keywordsArray));
+                        } else { 
+                            // If no comma is found in the string
+                            $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
+                            //$keywordsArray = array_map('trim', array_filter($keywordsArray));
+                        }
+                    echo 'hallo'.die();                             
+           
                 $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published')); 
                 if(!empty($existing_tags))
                 {
