@@ -906,7 +906,7 @@ function save_pdf_meta($post_id) {
 }
 
 
-@add_action('save_post', 'save_pdf_meta',20);
+add_action('save_post', 'save_pdf_meta',20);
 
 
 /********** */
