@@ -7,7 +7,7 @@
  * @package Astra
  * @since 1.0.0
  */
-ini_set('memory_limit', '256M');
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
