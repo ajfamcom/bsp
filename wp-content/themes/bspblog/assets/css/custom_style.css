@@ -869,7 +869,11 @@ ul.contact-social-links li a:hover i {
 }
 
 .section-format i {
-    background: #f2f2f2;
+    background: transparent;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #333;
 }
 /*------ /in-the-news-page -----*/
 
