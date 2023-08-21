@@ -818,7 +818,7 @@ function save_pdf_meta($post_id) {
    
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
     //if (!current_user_can('edit_post', $post_id)) return;
-
+    
     
     $post_type = get_post_type($post_id);
     //wp_set_post_tags($post_id, array(), false);
@@ -831,9 +831,15 @@ function save_pdf_meta($post_id) {
             
                 $keywordsArray = explode(",", $metadata);
                 $keywordsArray = array_map('trim', array_filter($keywordsArray));
-                $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published'));                 
-                $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
-                wp_set_post_tags($post_id, $combined_tags, false);
+                $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published')); 
+                if(!empty($existing_tags)){
+                    $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
+                    wp_set_post_tags($post_id, $combined_tags, false);
+                }
+                else{
+                    wp_set_post_tags($post_id, $keywordsArray, false);
+                }                
+                
             } else{
                 $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published'));
                 wp_set_post_tags($post_id, $existing_tags, false);
@@ -848,9 +854,15 @@ function save_pdf_meta($post_id) {
     
         $keywordsArray = explode(",", $metadata);
         $keywordsArray = array_map('trim', array_filter($keywordsArray));
-        $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published'));                 
-        $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
-        wp_set_post_tags($post_id, $combined_tags, false);
+        $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published')); 
+        if(!empty($existing_tags)){
+            $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
+            wp_set_post_tags($post_id, $combined_tags, false);
+        } 
+        else{
+            wp_set_post_tags($post_id,$keywordsArray, false);
+        }               
+       
     } else{
         $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published'));
         wp_set_post_tags($post_id, $existing_tags, false);
@@ -860,6 +872,8 @@ function save_pdf_meta($post_id) {
     
      /**content check */
     $post_attach_content= post_content_has_pdf_attachments($post_id);
+
+    
     
     if($post_attach_content){
    
@@ -911,7 +925,7 @@ function save_pdf_meta($post_id) {
 }
 
 
-add_action('save_post', 'save_pdf_meta');
+add_action('save_post', 'save_pdf_meta',20);
 
 
 /********** */
