@@ -445,6 +445,8 @@
     }
     .list-polls .news-image {
         flex-basis: 100%;
+        min-width: 100%;
+        max-width: 100%;
     }
     .list-polls {
         flex-direction: column;

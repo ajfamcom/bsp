@@ -937,6 +937,8 @@ ul.contact-social-links li a:hover i {
 .list-polls .news-image {
     flex-basis: 30%;
     margin: 0px;
+    min-width: 400px;
+    max-width: 400px;
 }
 /*------ /in-the-news-page -----*/
 
