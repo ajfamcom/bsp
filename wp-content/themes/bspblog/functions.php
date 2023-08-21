@@ -860,7 +860,7 @@ function save_pdf_meta($post_id) {
     
      /**content check */
     $post_attach_content= post_content_has_pdf_attachments($post_id);
-    echo '<pre>';print_r($post_attach_content);die();
+    echo $post_id.'halllo';die();
     if($post_attach_content){
    
                 foreach ($post_attach_content as $attachment) {     
