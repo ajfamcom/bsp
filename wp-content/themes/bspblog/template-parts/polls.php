@@ -43,16 +43,16 @@ get_header();
 		</div>
 	</div>
 </div>
-<div class="container py-5 my-md-5">	
+<div class="container pt-5 mt-md-5">	
 <div class="d-flex align-items-center gap-3 mb-4">
-  <a href="<?php echo add_query_arg('show_type', 'grid', $base_url); ?>"><i style="background-color: #153d67;" class="fa-solid fa-grip fs-2 rounded-3 text-white py-1 px-2"></i></a>
-  <a href="<?php echo add_query_arg('show_type', 'list', $base_url); ?>"><i style="background-color: #153d67;" class="fa-solid fa-grip-lines fs-2 rounded-3 text-white py-1 px-2"></i></a>    
+  <a class="section-format" href="<?php echo add_query_arg('show_type', 'grid', $base_url); ?>"><i class="fa-solid fa-grip"></i></a>
+  <a class="section-format" href="<?php echo add_query_arg('show_type', 'list', $base_url); ?>"><i class="fa-solid fa-bars"></i></a>    
 </div>
 </div>
 <!--grid view -->
-<div class="container grid-post py-5 my-md-5 show-type-grid" <?php echo ($showt == 'grid') ? 'style="display:block;"' : 'style="display:none;"'; ?>>
+<div class="container grid-post pt-2 pb-5 mt-md-2 pb-5 mb-md-5 show-type-grid" <?php echo ($showt == 'grid') ? 'style="display:block;"' : 'style="display:none;"'; ?>>
 	<div class="row">
-		<div class="container mt-md-5">
+		<div class="container">
 			<form class="post-filter-form">
 				<div class="post-fields">					
 					<input type="text" class="form-control" name="search_text" placeholder="Enter your search query" aria-label="Search" required value="<?php echo $search_text;?>" autocomplete="off">
