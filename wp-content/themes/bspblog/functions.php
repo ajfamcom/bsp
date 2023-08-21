@@ -860,12 +860,13 @@ function save_pdf_meta($post_id) {
     
      /**content check */
     $post_attach_content= post_content_has_pdf_attachments($post_id);
-    echo $post_id.'halllo';die();
+    
     if($post_attach_content){
    
                 foreach ($post_attach_content as $attachment) {     
                 
-                    $attachment_url = $attachment;          
+                    $attachment_url = $attachment; 
+                    echo $post_id.'halllo';die();         
                     $file_path='/var/www/html/bsp'.wp_make_link_relative($attachment_url);
                         $parser = new \Smalot\PdfParser\Parser();
                         $pdf    = $parser->parseFile($file_path);
