@@ -254,10 +254,10 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
   .popup {
     display: none;
     position: fixed;
-    top: 50%; 
+    top: 30%; 
     left: 50%; 
     transform: translate(-50%, -50%); 
-    width: 400px; 
+    width: 800px; 
     background-color: rgba(0, 0, 0, 0.7);
 }
 
