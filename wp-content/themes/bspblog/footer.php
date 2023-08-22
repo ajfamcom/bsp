@@ -252,7 +252,7 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 </script>
 <script>
   $(document).ready(function(){
-    $('#subscribe-btn').on('click',function(){
+    $('.subscribe-btn').on('click',function(){
         alert('show subscribe form');
     });
   });
