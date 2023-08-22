@@ -279,6 +279,13 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     <div class="popup-content">
         <!-- Your popup content goes here -->
         <?php echo do_shortcode('[mc4wp_form id=666]');?>
+        <p>
+	    <label>
+		  <input type="checkbox" name="mc4wp-subscribe" value="1" />
+		  Subscribe to our newsletter.	</label>
+     </p>
+
+
         <button id="close-popup">Close</button>
     </div>
 </div>
@@ -288,6 +295,7 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
   
     $('.subscribe-btn').on('click',function() {
         $('#custom-popup').fadeIn();
+        $('.mc4wp-alert').empty();
     });
 
     
