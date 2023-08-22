@@ -250,10 +250,45 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         }
     }
 </script>
+<style>
+  .popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+
+</style>  
+<div id="custom-popup" class="popup">
+    <div class="popup-content">
+        <!-- Your popup content goes here -->
+        <p>This is a custom popup!</p>
+        <button id="close-popup">Close</button>
+    </div>
+</div>
+
 <script>
   $(document).ready(function(){
-    $('.subscribe-btn').on('click',function(){
-        alert('show subscribe form');
+  
+    $('.subscribe-btn').on('click',function() {
+        $('#custom-popup').fadeIn();
+    });
+
+    
+    $('#close-popup').click(function() {
+        $('#custom-popup').fadeOut();
     });
   });
 </script>
