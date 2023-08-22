@@ -282,11 +282,7 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         <p>
 	    <label>
 		  <input type="checkbox" name="mc4wp-subscribe" value="1" />
-		  Subscribe to our newsletter.	</label>
-     </p>
-
-
-        <button id="close-popup">Close</button>
+		  Subscribe to our newsletter.	</label></p>
     </div>
 </div>
 
