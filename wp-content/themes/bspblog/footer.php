@@ -279,6 +279,8 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     <div class="popup-content">
         <button id="close-popup" style="float:right;">X</button>
         <!-- Your popup content goes here -->
+        <p><h3>JOIN OUR LIST</h3></p>
+        <p>Sign up to hear about our latest polls, projects, and analysis</p>
         <?php echo do_shortcode('[mc4wp_form id=666]');?>
         <!-- <p>
 	    <label>
