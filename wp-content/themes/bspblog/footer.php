@@ -259,7 +259,7 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     transform: translate(-50%, -50%); /* Center it precisely by offsetting 50% of its own width and height */
     width: 600px; /* Set the width to 600px */
     height: 600px; /* Set the height to 600px */
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .popup-content {
