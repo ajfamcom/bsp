@@ -280,10 +280,10 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         <button id="close-popup" style="float:right;">X</button>
         <!-- Your popup content goes here -->
         <?php echo do_shortcode('[mc4wp_form id=666]');?>
-        <p>
+        <!-- <p>
 	    <label>
 		  <input type="checkbox" name="mc4wp-subscribe" value="1" />
-		  Subscribe to our newsletter.	</label></p>
+		  Subscribe to our newsletter.	</label></p> -->
     </div>
 </div>
 
