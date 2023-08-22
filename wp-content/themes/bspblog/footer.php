@@ -292,7 +292,7 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
   
     $('.subscribe-btn').on('click',function() {
         $('#custom-popup').fadeIn();
-        $('.mc4wp-alert').empty();
+        //$('.mc4wp-alert').empty();
     });
 
     
