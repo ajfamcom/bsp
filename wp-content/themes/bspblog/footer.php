@@ -261,6 +261,7 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     background-color: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
+    z-index: 99999999;
 }
 
 .popup-content {
