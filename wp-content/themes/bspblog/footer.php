@@ -254,12 +254,14 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 .popup {
     display: none;
     position: fixed;
-    top: 50%; /* Position it 50% from the top of the viewport */
-    left: 50%; /* Position it 50% from the left of the viewport */
-    transform: translate(-50%, -50%); /* Center it precisely by offsetting 50% of its own width and height */
-    width: 600px; /* Set the width to 600px */
-    height: 600px; /* Set the height to 600px */
-    background-color: rgba(0, 0, 0, 0);
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 600px;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 99999999;
 }
 
 .popup-content {
@@ -268,6 +270,7 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     border-radius: 5px;
     box-shadow: 0px 0px 10px 0px #000;
 }
+
 
 
 
