@@ -1233,3 +1233,17 @@ section#slider-related-posts h2 {
     margin: 0;
 }
 /*--------- /search-result-page ----------*/
+
+/*---------- subscribe-popup ----------*/
+div#custom-popup {
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    padding: 60px;
+}
+.popup-content {
+    width: 100%;
+    max-width: 40%;
+    margin: 0 auto;
+    transform: translateY(30%);
+}
+/*--------- /subscribe-popup ----------*/
