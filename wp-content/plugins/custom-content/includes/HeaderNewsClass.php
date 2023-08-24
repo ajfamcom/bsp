@@ -19,15 +19,17 @@ public function display_news_header_section() {
      );
       $polls_args = array(
         'post_type' => 'bsp_custom_polls',
-        'posts_per_page' => 1,    
+        'posts_per_page' => 1, 
+        'orderby' => 'post_date',
+        'order' => 'DESC',    
         
     );
     
     $polls_query = new WP_Query( $polls_args );
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-            $post_id = get_the_ID();            
+    if ($polls_query->have_posts()) {
+        while ($polls_query->have_posts()) {
+            $polls_query->the_post();
+                      
               $title_of_poll=the_title(); 
         }
         wp_reset_postdata();
