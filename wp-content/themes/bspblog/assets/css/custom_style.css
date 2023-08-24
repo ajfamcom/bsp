@@ -1241,9 +1241,44 @@ div#custom-popup {
     padding: 60px;
 }
 .popup-content {
-    width: 100%;
-    max-width: 40%;
-    margin: 0 auto;
-    transform: translateY(30%);
+    background-color: #ffffff;
+    padding: 30px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px #000;
+    text-align: center;
+}
+.popup-content button#close-popup {
+    padding: 0;
+    line-height: 42px;
+    border-radius: 100px;
+    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    color: #d1d1d1;
+    border: 1px solid #d1d1d1;
+    background: transparent;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+.popup-content button#close-popup:hover {
+    background: var(--blue);
+    color: #fff;
+    border: 1px solid #d1d1d1 var(--blue);
+}
+.popup-content input[type="submit"] {
+    border-color: var(--blue) !important;
+    color: #fff !important;
+    background-color: var(--blue) !important;
+    border-radius: 8px !important;
+    padding: 14px 40px 10px 40px !important;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 /*--------- /subscribe-popup ----------*/
