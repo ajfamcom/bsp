@@ -30,7 +30,7 @@ public function display_news_header_section() {
         while ($polls_query->have_posts()) {
             $polls_query->the_post();
                       
-              $title_of_poll=the_title(); 
+              $title_of_poll='<p>'.the_title().'</p>'; 
         }
         wp_reset_postdata();
     } 
@@ -66,10 +66,7 @@ public function display_news_header_section() {
      $position = get_field('position', $id);
      if(!is_admin() && $position=='Header-Top'){     
      return '<span style="text-align:justify;">'.$title.'</span>';
-     }
-     if(!is_admin() && $post->post_type === 'bsp_custom_polls'){     
-        return '<p>'.$title.'</p>';
-        }
+     }     
      else{
          return $title;
      }
