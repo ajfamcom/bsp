@@ -304,6 +304,10 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
    if($(".mc4wp-alert").hasClass("mc4wp-error")){
     $('#custom-popup').fadeIn();
    }
+   if($(".mc4wp-alert").hasClass("mc4wp-success")){
+    $('#custom-popup').fadeIn();
+   }
+   
   
   });
 </script>
