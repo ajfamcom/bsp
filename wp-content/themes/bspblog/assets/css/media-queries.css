@@ -26,6 +26,12 @@
     }
 }}
 /*============= /safari-browser ================*/
+@media screen and (max-width: 2560px) and (min-width:1400px) {
+    .popup-content {
+        width: 100%;
+        max-width: 40%;
+    }
+}
 
 @media screen and (max-width: 1199px) and (min-width:992px) {
     .bnr-title {
@@ -122,6 +128,10 @@
     }
     .track-div h4 {
         word-wrap: break-word;
+    }
+    .popup-content {
+        width: 100%;
+        max-width: 70%;
     }
 }
 @media screen and (max-width: 991px) and (min-width:769px) { 
@@ -452,6 +462,22 @@
         flex-direction: column;
         margin-bottom: 6%;
     }
+    div#custom-popup {
+        padding: 20px;
+    }
+    .popup-content {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        transform: translateY(20%);
+        -webkit-transform: translateY(20%);
+        -moz-transform: translateY(20%);
+        -ms-transform: translateY(20%);
+        -o-transform: translateY(20%);
+}
+.popup-content input[type="text"], .popup-content input[type="email"] {
+    margin: 5% 0;
+}
 }
 
 /*================================= /media-queries ==================================*/
