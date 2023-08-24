@@ -1255,6 +1255,7 @@ div#custom-popup {
     -moz-border-radius: 8px;
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
+    text-align: center;
 }
 .popup-content button#close-popup {
     padding: 0;
@@ -1296,7 +1297,7 @@ div#custom-popup {
     font-size: 34px;
     font-weight: 500 !important;
     letter-spacing: 3px;
-    color: var(--orange) !important;
+    /* color: var(--orange) !important; */
 }
 .popup-content p {
     font-size: 18px;
