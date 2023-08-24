@@ -1249,14 +1249,20 @@ div#custom-popup {
     -moz-transform: translateY(40%);
     -ms-transform: translateY(40%);
     -o-transform: translateY(40%);
+    padding: 50px 30px 30px 30px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
 }
 .popup-content button#close-popup {
     padding: 0;
-    line-height: 42px;
+    line-height: 35px;
     border-radius: 100px;
-    font-size: 18px;
-    width: 40px;
-    height: 40px;
+    font-size: 16px;
+    width: 33px;
+    height: 33px;
     position: absolute;
     right: 12px;
     top: 12px;
@@ -1274,15 +1280,17 @@ div#custom-popup {
     color: #fff;
     border: 1px solid #d1d1d1 var(--blue);
 }
-.popup-content input[type="submit"] {
-    border-color: var(--blue) !important;
-    color: #fff !important;
-    background-color: var(--blue) !important;
+.popup-content form#mc4wp-form-1 input[type="submit"] {
+    border-color: var(--orange) !important;
+    background: var(--orange) !important;
     border-radius: 8px !important;
     padding: 14px 40px 10px 40px !important;
     font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 3px;
+    margin: 0 !important;
+    width: 100% !IMPORTANT;
+    color: #fff !important;
 }
 .popup-content h3 {
     font-size: 34px;
@@ -1293,5 +1301,19 @@ div#custom-popup {
 .popup-content p {
     font-size: 18px;
     letter-spacing: 1px;
+}
+.popup-content input {
+    max-width: 100% !important;
+    margin: 3% 0;
+    height: 46px !important;
+    border: 1px solid #dbdbdb !important;
+    border-radius: 8px !important;
+}
+.popup-content input[type="text"], .popup-content input[type="email"] {
+    max-width: 100% !important;
+    margin: 3% 0;
+    height: 46px !important;
+    border: 1px solid #dbdbdb !important;
+    border-radius: 8px !important;
 }
 /*--------- /subscribe-popup ----------*/
