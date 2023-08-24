@@ -30,7 +30,7 @@ public function display_news_header_section() {
         while ($polls_query->have_posts()) {
             $polls_query->the_post();
                       
-              $title_of_poll='<p>'.the_title().'</p>'; 
+              $title_of_poll=get_the_title();; 
         }
         wp_reset_postdata();
     } 
@@ -46,7 +46,7 @@ public function display_news_header_section() {
              $status = get_field('status', $post_id);
              if($position=='Header-Top' && $status=='Active')  {
                 the_title();
-                $title_of_poll; 
+                echo '<p>'.esc_html($title_of_poll).'</p>'; 
              }
             
          }
