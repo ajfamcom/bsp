@@ -17,11 +17,10 @@ public function display_news_header_section() {
              'terms' => 24)
          )*/
      );
-    /*  $polls_args = array(
+      $polls_args = array(
         'post_type' => 'bsp_custom_polls',
         'posts_per_page' => 1,    
-        'orderby' => 'post_date',
-        'order' => 'DESC', 
+        
     );
     
     $polls_query = new WP_Query( $polls_args );
@@ -32,8 +31,10 @@ public function display_news_header_section() {
               $title_of_poll=the_title(); 
         }
         wp_reset_postdata();
-    } */
-    $title_of_poll='Test data here';
+    } 
+
+    //$title_of_poll='Test data here';
+    
      $query = new WP_Query($args);    
      if ($query->have_posts()) {
          while ($query->have_posts()) {
