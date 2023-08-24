@@ -42,8 +42,8 @@ public function display_news_header_section() {
              $position = get_field('position', $post_id);
              $status = get_field('status', $post_id);
              if($position=='Header-Top' && $status=='Active')  {
-                echo $title_of_poll;
-                the_content(); 
+                the_title();
+               echo $title_of_poll; 
              }
             
          }
