@@ -67,6 +67,9 @@ public function display_news_header_section() {
      if(!is_admin() && $position=='Header-Top'){     
      return '<span style="text-align:justify;">'.$title.'</span>';
      }
+     if(!is_admin() && $post->post_type === 'bsp_custom_polls'){     
+        return '<p>'.$title.'</p>';
+        }
      else{
          return $title;
      }
