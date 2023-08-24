@@ -263,24 +263,18 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     align-items: center;
     z-index: 99999999;
 }
-
 .popup-content {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px 0px #000;
 }
-
-
-
-
 </style>  
 <div id="custom-popup" class="popup">
     <div class="popup-content">
-        <button id="close-popup" style="float:right;">X</button>
+        <button id="close-popup" style="float:right;"><i class="fa-solid fa-xmark"></i></button>
         <!-- Your popup content goes here -->
-        <p><h3>JOIN OUR LIST</h3></p>
-        <p>Sign up to hear about our latest polls, projects, and analysis</p>
+        <h3>JOIN OUR LIST</h3><p>Sign up to hear about our latest polls, projects, and analysis</p>
         <?php echo do_shortcode('[mc4wp_form id=666]');?>
         <!-- <p>
 	    <label>

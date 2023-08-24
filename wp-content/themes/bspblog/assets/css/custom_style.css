@@ -1241,17 +1241,20 @@ div#custom-popup {
     padding: 60px;
 }
 .popup-content {
-    background-color: #ffffff;
-    padding: 30px 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px 0px #000;
-    text-align: center;
+    width: 100%;
+    max-width: 50%;
+    margin: 0 auto;
+    transform: translateY(40%);
+    -webkit-transform: translateY(40%);
+    -moz-transform: translateY(40%);
+    -ms-transform: translateY(40%);
+    -o-transform: translateY(40%);
 }
 .popup-content button#close-popup {
     padding: 0;
     line-height: 42px;
     border-radius: 100px;
-    font-size: 14px;
+    font-size: 18px;
     width: 40px;
     height: 40px;
     position: absolute;
@@ -1280,5 +1283,15 @@ div#custom-popup {
     font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 3px;
+}
+.popup-content h3 {
+    font-size: 34px;
+    font-weight: 500 !important;
+    letter-spacing: 3px;
+    color: var(--orange) !important;
+}
+.popup-content p {
+    font-size: 18px;
+    letter-spacing: 1px;
 }
 /*--------- /subscribe-popup ----------*/
