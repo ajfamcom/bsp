@@ -1012,5 +1012,7 @@ function custom_excerpt_more($more) {
 }
 add_filter('excerpt_more', 'custom_excerpt_more');
 
+add_filter( 'allow_dev_auto_core_updates', '__return_false' );
+
 
 
