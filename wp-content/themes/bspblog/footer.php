@@ -292,6 +292,8 @@ $full_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     
     $('#close-popup').click(function() {
         $('#custom-popup').fadeOut();
+        $('.mc4wp-error').empty();
+        $('.mc4wp-success').empty();
     });
    if($(".mc4wp-alert").hasClass("mc4wp-error")){
     $('#custom-popup').fadeIn();
