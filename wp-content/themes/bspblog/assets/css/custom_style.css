@@ -823,9 +823,11 @@ ul.contact-social-links li a:hover i {
 .single-news .news-info {
     /* background: var(--blue); */
     /* background-image: linear-gradient(180deg, var(--blue), #995e5e, var(--orange)); */
-    padding: 20px;
+    padding: 230px 20px 30px 20px;
     border-radius: 6px;
     height: 100%;
+    display: flex;
+    align-items: end;
 }
 .gray-tile .news-info {
     background-image: linear-gradient(180deg, #494747, #919191);
