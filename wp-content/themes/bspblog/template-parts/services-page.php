@@ -27,23 +27,13 @@ $top_header = get_field('top_header', $page_id);
 
 <div class="container py-5 mt-xl-5 border-bottom">
     <div class="row gx-5 pt-5 pb-3">
-        <div class="col-md-5"><h3><i>BSP’s commitment to cultural competency sets us apart. Guided by that commitment, our team delivers results that are relevant, reliable, and useful.</i></h3></div>
+        <div class="col-md-5">
+		<?php if($top_header){?>
+			<h3><i><?php echo $top_header;?></i></h3>
+		<?php } ?>
+		</div>
         <div class="col-md-7">
-            <h3 class="services-heading">Our Clients</h3>
-            <p>Our clients include office holders or candidates who have run for president, Congress, governor, and state legislator, plus a variety of national, congressional, gubernatorial party committees. We also boast as clients a wide range of think tanks, universities, advocacy groups, citizen organization, and other non-profits.</p>
-        </div>
-    </div>
-</div>
-
-
-<div class="container pt-3 pb-5 mt-md-3 mb-mb-5">
-	<div class="row align-items-center py-xl-5">
-
-<div class="col-12 text-center mb-5">
-<?php if($top_header){?>
-<h1 class="mb-md-3"><?php echo $top_header;?></h1>
-<?php } ?>
-<?php
+		<?php
 $args = array(
     'post_type' => 'manage_services',
     'posts_per_page' => 1,
@@ -58,12 +48,19 @@ if ($query->have_posts()) {
         $post_id = get_the_ID();
         
 ?>
-<h2 style="color:#f63d45 !important;"><?php the_title();?></h2>
-<?php the_content();?>
+            <h3 class="services-heading"><?php the_title();?></h3>
+			<?php the_content();?>
 <?php } 
 wp_reset_postdata();
-}?>	
+}
+?>
+        </div>
+    </div>
 </div>
+
+
+<div class="container pt-3 pb-5 mt-md-3 mb-mb-5">
+	<div class="row align-items-center py-xl-5">
 
 		<div class="col-md-6 col-sm-6 col-12">
 		<?php
