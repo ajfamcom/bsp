@@ -942,7 +942,7 @@ add_filter('the_content', 'limit_custom_post_content');
 
 function limit_custom_post_content($content) {
    
-    if (get_post_type() === 'bsp_custom_polls') {
+    if (get_post_type() === 'bsp_custom_polls' && !is_single()) {
         
         $word_limit = 50;
         $words = explode(' ', $content);
