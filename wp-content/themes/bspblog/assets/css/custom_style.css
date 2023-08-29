@@ -1122,7 +1122,7 @@ ul.contact-social-links li a:hover i {
     border-radius: 10px;
     overflow: hidden;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
     margin: 0px;
 }
 .share-social-icons {

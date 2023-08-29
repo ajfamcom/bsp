@@ -478,6 +478,9 @@
 .popup-content input[type="text"], .popup-content input[type="email"] {
     margin: 5% 0;
 }
+.services-heading {
+    margin-top: 5%;
+}
 }
 
 /*================================= /media-queries ==================================*/
