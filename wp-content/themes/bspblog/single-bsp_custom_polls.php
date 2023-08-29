@@ -9,12 +9,13 @@ $permalink = get_permalink($post_id);
 $post_date = get_the_date('F j, Y \a\t g:i A e', $post_id);
 $author_name = get_the_author_meta('display_name', get_post_field('post_author', $post_id));
 $permalink = get_permalink($post_id);
+$theme_directory_uri = get_template_directory_uri();
+$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
 				if (has_post_thumbnail($post_id)) {
 
 					$thumbnail_id = get_post_thumbnail_id($post_id);
 					$image_url = wp_get_attachment_url($thumbnail_id);
-					$theme_directory_uri = get_template_directory_uri();
-					$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
+					
 
 					$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
 				} else {
