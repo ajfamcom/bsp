@@ -34,6 +34,10 @@ p:last-child {
     p {
         font-size: 18px !important;
     }
+    .track-record-section .subtitle {
+        font-size: 20px !important;
+        margin-bottom: 0;
+    }
 }
 /*======= header-top-bar ========*/
 .site-header {
@@ -78,7 +82,7 @@ input#search-field::placeholder {
     height: 46px !important;
     padding: 10px !important;
     margin: 0;
-    font-size: 14px;
+    font-size: 16px;
     border-radius: 0px !important;
     -webkit-border-radius: 0px !important;
     -moz-border-radius: 0px !important;
@@ -144,7 +148,7 @@ button.search-submit:hover {
     color: #fff;
 }
 .btn.btn-primary {
-    font-size: 13px;
+    font-size: 16px;
     text-transform: uppercase;
     border-radius: 0;
     background: var(--orange);
@@ -161,7 +165,7 @@ button.search-submit:hover {
     -o-transition: all ease-in-out 0.3s;
 }
 .btn.btn-default {
-    font-size: 13px;
+    font-size: 16px;
     text-transform: uppercase;
     border-radius: 0;
     background: var(--blue);
@@ -186,7 +190,7 @@ button.search-submit:hover {
     margin-bottom: 1%;
 }
 .banner-section p {
-    font-size: 36px;
+    font-size: 36px !important;
     letter-spacing: 2px;
     line-height: 1.4em;
     margin-bottom: 25px;
@@ -253,6 +257,21 @@ button.search-submit:hover {
 }
 .services-post p {
     margin: 0;
+}
+.services-heading {
+    padding-left: 70px;
+    position: relative;
+    color: var(--orange) !important;
+}
+.services-heading::before {
+    position: absolute;
+    content: '';
+    background: var(--orange);
+    width: 60px;
+    height: 1px;
+    left: 0px;
+    top: 50%;
+    margin-top: 0px;
 }
 /*========== /services-block ================*/
 
@@ -348,7 +367,7 @@ button.search-submit:hover {
 .news-single-block p {
     margin: 0;
     font-size: 14px;
-    line-height: 20px;
+    line-height: 22px;
     font-weight: 500 !important;
 }
 .news-single-block p a {
@@ -376,7 +395,7 @@ button.search-submit:hover {
     align-items: center;
 }
 .side-fpost-discription h2 {
-    font-size: 16px;
+    font-size: 18px;
 }
 .side-fpost-discription h2 a {
     color: #000;
@@ -439,7 +458,7 @@ button.search-submit:hover {
     margin: 20px 0;
 }
 .static-post-discription h2 {
-    font-size: 16px;
+    font-size: 18px;
     color: #000;
     line-height: 20px;
 }
@@ -476,7 +495,7 @@ footer {
 .copyright {
     padding: 13px 0;
     border-top: 1px solid rgba(255,255,255,0.2);
-    font-size: 13px;
+    font-size: 16px;
 }
 .social-links {
     margin-top: 2%;
@@ -578,10 +597,6 @@ footer {
     font-size: 52px;
     color: var(--orange);
     margin-bottom: 7%;
-}
-.track-record-section .subtitle {
-    font-size: 20px;
-    margin-bottom: 0;
 }
 /*----- /about-us ------*/
 

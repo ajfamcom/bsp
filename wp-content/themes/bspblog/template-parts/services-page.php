@@ -24,7 +24,19 @@ $top_header = get_field('top_header', $page_id);
 	</div>
 </div>
 
-<div class="container py-5 my-md-5">
+
+<div class="container py-5 mt-xl-5 border-bottom">
+    <div class="row pt-5 pb-3">
+        <div class="col-md-5"><h3><i>BSP’s commitment to cultural competency sets us apart. Guided by that commitment, our team delivers results that are relevant, reliable, and useful.</i></h3></div>
+        <div class="col-md-7">
+            <h3 class="services-heading">Our Clients</h3>
+            <p>Our clients include office holders or candidates who have run for president, Congress, governor, and state legislator, plus a variety of national, congressional, gubernatorial party committees. We also boast as clients a wide range of think tanks, universities, advocacy groups, citizen organization, and other non-profits.</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="container pt-3 pb-5 mt-md-3 mb-mb-5">
 	<div class="row align-items-center py-xl-5">
 
 <div class="col-12 text-center mb-5">
