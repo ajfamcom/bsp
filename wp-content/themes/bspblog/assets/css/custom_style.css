@@ -27,6 +27,14 @@ h3 {
 p:last-child {
     margin: 0;
 }
+@media screen and (min-width: 768px) {
+    body {
+        font-size: 18px !important;
+    }
+    p {
+        font-size: 18px !important;
+    }
+}
 /*======= header-top-bar ========*/
 .site-header {
     position: sticky !important;
@@ -533,7 +541,7 @@ footer {
     animation: moveUpDown 3s linear infinite;
     -webkit-animation: moveUpDown 3s linear infinite;
 }
-@keyframes moveUpDown {
+/* @keyframes moveUpDown {
     0%, 100% {
       transform: translateY(0);
     }
@@ -544,7 +552,7 @@ footer {
       -ms-transform: translateY(-15px);
       -o-transform: translateY(-15px);
 }
-  }
+} */
   .image-group {
     position: relative;
 }
@@ -902,6 +910,10 @@ ul.contact-social-links li a:hover i {
     -moz-transition: all ease-in-out 0.3s;
     -ms-transition: all ease-in-out 0.3s;
     -o-transition: all ease-in-out 0.3s;
+}
+.section-format.active i {
+    border-color: var(--orange);
+    color: var(--orange);
 }
 
 .tile-blog-post  {
