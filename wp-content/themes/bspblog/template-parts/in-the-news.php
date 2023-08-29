@@ -73,9 +73,10 @@ if($showt=='list')
              $counter = 0;
             
 			if ($query->have_posts()) :
+                $options = array('gray-tile', 'red-tile', 'blue-tile');
 					while ($query->have_posts()) :
                         //$currentClass = ($counter % 3 === 0) ? "gray-tile" : (($counter % 3 === 1) ? "red-tile" : "blue-tile");
-                        $options = array('gray-tile', 'red-tile', 'blue-tile');
+                        
 
                         $randomIndex = array_rand($options);
                         $currentClass = $options[$randomIndex];
@@ -145,9 +146,10 @@ if($showt=='list')
     
             $counter = 0;
 			if ($query->have_posts()) :
+                $options = array('gray-tile', 'red-tile', 'blue-tile');
 					while ($query->have_posts()) :
                         //$currentClass = ($counter % 3 === 0) ? "gray-tile" : (($counter % 3 === 1) ? "red-tile" : "blue-tile");
-                        $options = array('gray-tile', 'red-tile', 'blue-tile');
+                       
 
                         $randomIndex = array_rand($options);
                         $currentClass = $options[$randomIndex];
