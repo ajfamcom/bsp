@@ -23,12 +23,13 @@ $permalink = get_permalink($post_id);
 $post_date = get_the_date('F j, Y \a\t g:i A e', $post_id);
 $author_name = get_the_author_meta('display_name', get_post_field('post_author', $post_id));
 $permalink = get_permalink($post_id);
+$theme_directory_uri = get_template_directory_uri();
+$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
 				if (has_post_thumbnail($post_id)) {
 
 					$thumbnail_id = get_post_thumbnail_id($post_id);
 					$image_url = wp_get_attachment_url($thumbnail_id);
-					$theme_directory_uri = get_template_directory_uri();
-					$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
+					
 
 					$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
 				} else {
@@ -121,14 +122,9 @@ endwhile;
 
 <?php if($post_type=='post') { ?>
 <div class="col-md-12 py-5">
+<?php 
 
-<h2 class="text-center mb-4">Related Posts</h2>
-
-<section class="splide pb-md-5 mb-md-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
-        <div class="splide__track">
-            <ul class="splide__list">
-         <?php
-			global $wpdb;
+global $wpdb;
 				
 			$tag_names_list = "'" . implode("','", $tag_names) . "'";
 
@@ -147,8 +143,19 @@ endwhile;
 			";
 
 			$results = $wpdb->get_results($query);
+?>
+<?php
+ if ($results) : 	
+?>
+<h2 class="text-center mb-4">Related Posts</h2>
+
+<section class="splide pb-md-5 mb-md-5 width_90" id="slider-related-posts" aria-label="related-posts slider">
+        <div class="splide__track">
+            <ul class="splide__list">
+         <?php
+			
 		
-		if ($results) :
+		
 			foreach($results as $row) :
 				$post_id = $row->ID;
 				$permalink = get_permalink($post_id);
@@ -176,13 +183,13 @@ endwhile;
 					
 					<?php
 				endforeach;
-			endif;
+		
 			wp_reset_postdata();
                  ?>
             </ul>
         </div>
     </section>
-
+<?php 	endif; ?>
 </div>
 <?php } ?>
 </div>
