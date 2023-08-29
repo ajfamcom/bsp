@@ -188,6 +188,9 @@ if ($merged_query->have_posts()) :
     if (has_post_thumbnail()) {
     the_post_thumbnail(); 
     }
+    else{
+        echo '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="img-fluid">';
+    }
     ?>
     </div>
         <div class="side-fpost-discription">
