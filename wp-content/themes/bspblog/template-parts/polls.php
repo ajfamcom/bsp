@@ -20,7 +20,18 @@ $to_date=isset($_REQUEST['to_date'])?$_REQUEST['to_date']:'';
 	
 	}
 	$showt=isset($_REQUEST['show_type'])?$_REQUEST['show_type']:'grid';
-	$base_url = get_permalink();	
+	$base_url = get_permalink();
+	if($showt=='grid')
+{
+    $grid_active='active';
+    $list_active='';
+}
+if($showt=='list')
+{
+    $grid_active='';
+    $list_active='active';
+}
+		
 ?>
 <?php 
 get_header();
@@ -45,8 +56,8 @@ get_header();
 </div>
 <div class="container pt-5 mt-md-5">	
 <div class="d-flex align-items-center gap-3 mb-4">
-  <a class="section-format" href="<?php echo add_query_arg('show_type', 'grid', $base_url); ?>"><i class="fa-solid fa-grip"></i></a>
-  <a class="section-format" href="<?php echo add_query_arg('show_type', 'list', $base_url); ?>"><i class="fa-solid fa-bars"></i></a>    
+  <a class="section-format <?php echo $grid_active;?>" href="<?php echo add_query_arg('show_type', 'grid', $base_url); ?>"><i class="fa-solid fa-grip"></i></a>
+  <a class="section-format <?php echo $list_active;?>" href="<?php echo add_query_arg('show_type', 'list', $base_url); ?>"><i class="fa-solid fa-bars"></i></a>    
 </div>
 </div>
 <!--grid view -->
