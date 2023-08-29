@@ -3,7 +3,7 @@
 $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
-$showt=isset($_REQUEST['show_type'])?$_REQUEST['show_type']:'grid';
+echo $showt=isset($_REQUEST['show_type'])?$_REQUEST['show_type']:'grid';
 $base_url = get_permalink();
 ?>
 <?php get_header();?>
@@ -30,8 +30,8 @@ $base_url = get_permalink();
 <div class="d-flex align-items-center gap-3 mb-4">
   <!--   <a href="#" onclick="show('grid');"><i style="background-color: #153d67;" class="fa-solid fa-grip fs-2 rounded-3 text-white py-1 px-2"></i></a>
     <a href="#" onclick="show('list');"><i style="background-color: #153d67;" class="fa-solid fa-grip-lines fs-2 rounded-3 text-white py-1 px-2"></i></a> -->
-    <a class="section-format" href="<?php echo add_query_arg('show_type', 'grid', $base_url); ?>"><i class="fa-solid fa-grip"></i></a>
-    <a class="section-format" href="<?php echo add_query_arg('show_type', 'list', $base_url); ?>"><i class="fa-solid fa-bars"></i></a>
+    <a class="section-format <?php //echo $grid_active;?>" href="<?php echo add_query_arg('show_type', 'grid', $base_url); ?>"><i class="fa-solid fa-grip"></i></a>
+    <a class="section-format <?php //echo $list_active;?>" href="<?php echo add_query_arg('show_type', 'list', $base_url); ?>"><i class="fa-solid fa-bars"></i></a>
     
 </div>
 </div>
