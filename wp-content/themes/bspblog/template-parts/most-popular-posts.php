@@ -2,7 +2,8 @@
 <h1 class="title">Latest From BSP</h1>
 <div class="col-lg-7 col-md-8">
 <?php
-
+$theme_directory_uri = get_template_directory_uri();
+$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
 $args = array(
     'post_type' => 'bsp_custom_polls',
     'posts_per_page' => 1,    
@@ -31,6 +32,9 @@ if ($query->have_posts()) {
 	<?php
     if (has_post_thumbnail()) {
     the_post_thumbnail(); 
+    }
+    else{
+        echo '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="img-fluid">';
     }
     ?>
     </div>
@@ -79,6 +83,9 @@ if ($query->have_posts()) {
     if (has_post_thumbnail()) {
     the_post_thumbnail(); 
     }
+    else{
+        echo '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="img-fluid">';
+    }
     ?>
     </div>
     <div class="static-post-discription">
@@ -124,7 +131,7 @@ if ($query->have_posts()) {
 
 $args_post_type1 = array(
     'post_type' => 'bsp_custom_polls',
-    'posts_per_page' => 1,
+    'posts_per_page' => 3,
     'orderby' => 'date',
     'order' => 'DESC',    
     'meta_query' => array(
