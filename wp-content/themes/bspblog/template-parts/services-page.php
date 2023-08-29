@@ -26,7 +26,7 @@ $top_header = get_field('top_header', $page_id);
 
 
 <div class="container py-5 mt-xl-5 border-bottom">
-    <div class="row pt-5 pb-3">
+    <div class="row gx-5 pt-5 pb-3">
         <div class="col-md-5"><h3><i>BSP’s commitment to cultural competency sets us apart. Guided by that commitment, our team delivers results that are relevant, reliable, and useful.</i></h3></div>
         <div class="col-md-7">
             <h3 class="services-heading">Our Clients</h3>
