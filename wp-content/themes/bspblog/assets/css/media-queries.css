@@ -481,6 +481,12 @@
 .services-heading {
     margin-top: 5%;
 }
+.single-news .news-info {
+    padding: 130px 20px 30px 20px;
+}
+.single-news .news-info h4 {
+    font-size: 20px;
+}  
 }
 
 /*================================= /media-queries ==================================*/
