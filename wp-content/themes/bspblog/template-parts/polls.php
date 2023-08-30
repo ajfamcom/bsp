@@ -119,9 +119,9 @@ get_header();
 									$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="img-fluid">';
 								} 
 						?>
-				<!-- <div class="news-block">
-					<?php //echo $image_link;?>
-				</div> -->
+				 <div class="news-block">
+					<?php echo $image_link;?>
+				</div> 
 				<div class="news-block-content">
 						<h2 class="news-details"><a href="<?php echo $permalink;?>"><span class="news-title"><?php the_title(); ?></span></a></h2>
 						<!-- <p class="news-other-details"><span class="news-date"><?php //echo get_the_date('M j, Y');?></span></p> -->
@@ -478,7 +478,7 @@ $results = $wpdb->get_results($query);
 				} 
 		?>
 				<div class="news-block grid-polls col-md-4">
-					<!-- <div class="news-image"><?php //echo $image_link; ?></div> -->
+					 <div class="news-image"><?php echo $image_link; ?></div> 
 					<div class="news-info">
 						<h4 class="news-details"><a href="<?php echo $permalink; ?>"><span class="news-title"><?php echo $row->post_title; ?></span></a></h4>
 						<!-- <p class="news-other-details"><span class="news-date"><?php //echo date('M j, Y',strtotime($row->post_date));?></span></p>
@@ -575,9 +575,9 @@ $results = $wpdb->get_results($query);
 									$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="img-fluid">';
 								} 
 						?>
-				<!-- <div class="news-block">
-					<?php //echo $image_link;?>
-				</div> -->
+				 <div class="news-block">
+					<?php echo $image_link;?>
+				</div> 
 				<div class="news-block-content">
 						<h2 class="news-details"><a href="<?php echo $permalink;?>"><span class="news-title"><?php the_title(); ?></span></a></h2>
 						<!-- <p class="news-other-details"><span class="news-date"><?php //echo get_the_date('M j, Y');?></span></p>
@@ -934,7 +934,7 @@ $results = $wpdb->get_results($query);
 				} 
 		?>
 				<div class="news-block list-polls col-12">
-					<!-- <div class="news-image"><?php //echo $image_link; ?></div> -->
+					 <div class="news-image"><?php echo $image_link; ?></div> 
 					<div class="news-info">
 						<h4 class="news-details"><a href="<?php echo $permalink; ?>"><span class="news-title"><?php echo $row->post_title; ?></span></a></h4>
 						<!-- <p class="news-other-details"><span class="news-date"><?php //echo date('M j, Y',strtotime($row->post_date));?></span></p>
