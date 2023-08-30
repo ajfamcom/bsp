@@ -166,7 +166,7 @@ $results = $wpdb->get_results($query);
 				}
 
 				//$character_limit = 50; 
-               // $trimmed_content = mb_strimwidth($row->post_content, 0, $character_limit, '...');
+                // $trimmed_content = mb_strimwidth($row->post_content, 0, $character_limit, '...');
 		?>
                     <li class="splide__slide">
                        <div class="news-block">
@@ -174,7 +174,7 @@ $results = $wpdb->get_results($query);
 								<div class="news-info">
 									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
 									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
-									<p class="news-content"><?php //echo wpautop($row->post_content); ?></p>
+									<p class="news-content"><?php echo wpautop($row->post_content); ?></p>
 									
 									<p><a href="<?php echo $permalink; ?>">Read More</a></p>
 								</div>
