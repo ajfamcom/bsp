@@ -101,15 +101,15 @@ endwhile;
 				</div>
 				
 				<div class="share-and-dwn-btn">
-				<?php if(isset($multiple_pdf_attachment) && !empty($multiple_pdf_attachment)) {
-					foreach($multiple_pdf_attachment as $val){ ?>
-		    <div class="download-pdf-file">
+				<?php //if(isset($multiple_pdf_attachment) && !empty($multiple_pdf_attachment)) {
+					//foreach($multiple_pdf_attachment as $val){ ?>
+		    <!-- <div class="download-pdf-file">
 			<h3>Download the Poll</h3>                              
                                 <div class="text-center">
-								<a class="pdf-download" href="<?php echo $val['post_pdf_attachment']['url'];?>" download><span>Download Attached PDF</span> <i class="fa-solid fa-file-arrow-down"></i></a>
+								<a class="pdf-download" href="<?php //echo $val['post_pdf_attachment']['url'];?>" download><span>Download Attached PDF</span> <i class="fa-solid fa-file-arrow-down"></i></a>
 								</div>							
-			</div>
-			<?php  } } ?>
+			</div> -->
+			<?php  //} } ?>
 		<div class="share-social-icons">
 					<h3>Share this:</h3>
 					<?php dynamic_sidebar('sidebar-1'); ?>
@@ -168,7 +168,7 @@ global $wpdb;
 					$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
 					$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
 				} else {
-					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
+					$image_link = '';
 				}
 		?>
                     <li class="splide__slide">
