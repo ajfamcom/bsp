@@ -976,6 +976,8 @@ ul.contact-social-links li a:hover i {
     margin: 0px;
     min-width: 120px;
     max-width: 120px;
+    min-height: 120px;
+    max-height: 120px;
 }
 
 /*------ /in-the-news-page -----*/
