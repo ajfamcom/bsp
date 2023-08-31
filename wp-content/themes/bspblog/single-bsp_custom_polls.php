@@ -148,11 +148,12 @@ $results = $wpdb->get_results($query);
 	
 
 		
-		
+            $options = array('tile-block', 'tile-block-red', 'tile-block-grey');
 			foreach($results as $row) :
-
+				$randomIndex = array_rand($options);
+				$currentClass = $options[$randomIndex];
 				$post_id = $row->ID;
-				//$post_type=get_post_type($post_id);
+				$post_type_data=get_post_type($post_id);
 				$permalink = get_permalink($post_id);
 				 if (has_post_thumbnail($post_id)) {
 
@@ -171,10 +172,10 @@ $results = $wpdb->get_results($query);
 		?>
                     <li class="splide__slide">
                        <div class="news-block">
-						        <?php if($image_link){?>
+					         <?php if(!empty($image_link) && $post_type_data=='post'){?>
 								<div class="news-image"><?php echo $image_link;?></div>
 								<?php } else{ ?>
-								<div class="news-image tile-block">Tile block</div>	
+								<div class="news-image <?php echo $currentClass;?>"></div>	
 								<?php }	?>
 								<div class="news-info">
 									<h4 class="news-details"><a href="<?php echo $permalink; ?>"><span class="news-title"><?php echo $row->post_title; ?></span></a></h4>
