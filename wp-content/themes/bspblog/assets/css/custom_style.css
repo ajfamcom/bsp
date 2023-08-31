@@ -963,9 +963,12 @@ ul.contact-social-links li a:hover i {
 .list-polls {
     display: flex;
     align-items: center;
-    gap: 15px;
+    /* gap: 15px; */
     margin-bottom: 1.5%;
     background: #f2f2f2;
+}
+.list-polls .news-info {
+    padding: 15px;
 }
 .list-polls .news-image {
     flex-basis: 30%;
