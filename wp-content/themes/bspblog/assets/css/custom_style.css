@@ -964,13 +964,14 @@ ul.contact-social-links li a:hover i {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-bottom: 3%;
+    margin-bottom: 1.5%;
+    background: #f2f2f2;
 }
 .list-polls .news-image {
     flex-basis: 30%;
     margin: 0px;
-    min-width: 400px;
-    max-width: 400px;
+    min-width: 120px;
+    max-width: 120px;
 }
 /*------ /in-the-news-page -----*/
 
@@ -1020,8 +1021,8 @@ ul.contact-social-links li a:hover i {
 }
 .news-image {
     width: 100%;
-    max-height: 300px;
-    min-height: 300px;
+    max-height: 120px;
+    min-height: 120px;
     border-radius: 6px;
     overflow: hidden;
     margin-bottom: 4%;
