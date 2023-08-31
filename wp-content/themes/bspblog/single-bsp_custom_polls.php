@@ -174,7 +174,7 @@ $results = $wpdb->get_results($query);
 						        <?php if($image_link){?>
 								<div class="news-image"><?php echo $image_link;?></div>
 								<?php } else{ ?>
-								<div class="news-image tile-block"><?php echo $image_link;?></div>	
+								<div class="news-image tile-block">Tile block</div>	
 								<?php }	?>
 								<div class="news-info">
 									<h4 class="news-details"><a href="<?php echo $permalink; ?>"><span class="news-title"><?php echo $row->post_title; ?></span></a></h4>

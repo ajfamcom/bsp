@@ -176,7 +176,7 @@ global $wpdb;
 					            <?php if($image_link){?>
 								<div class="news-image"><?php echo $image_link;?></div>
 								<?php } else { ?>
-								<div class="news-image tile-block"></div>	
+								<div class="news-image tile-block">Tile block</div>	
 								<?php } ?>	
 								<div class="news-info">
 									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
