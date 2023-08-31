@@ -983,13 +983,13 @@ ul.contact-social-links li a:hover i {
 /*------ /in-the-news-page -----*/
 
 /*------- polls-page --------*/
-.tile-block {
+.grid-post .tile-block {
     background-image: linear-gradient(180deg, #06213d, var(--blue));
 }
-.tile-block-grey {
+.grid-post .tile-block-grey {
     background-image: linear-gradient(180deg, #494747, #919191);
 }
-.tile-block-red {
+.grid-post .tile-block-red {
     background-image: linear-gradient(180deg, #b10f1e, var(--orange));
 }
 .highlight-post {
