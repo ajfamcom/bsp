@@ -52,18 +52,18 @@ endwhile;
 	</div>
 </div>
 
-<div class="container">
+<!--<div class="container">
 
 	<div class="col-md-12 pt-2 pb-5">
 		<div class="row">
 		
 				<div class="single-poll col-12">
 					<div class="single-poll-content">
-						<!-- <div class="-single-poll-image">
+						<div class="-single-poll-image">
 							<?php
 							//echo $image_link;
 							?>
-						</div> -->
+						</div> 
 
 					</div>
 				</div>
@@ -72,7 +72,7 @@ endwhile;
 
 	</div>
 
-</div>
+</div>-->
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-sm-10 col-12 offset-md-1 offset-sm-1">

@@ -33,7 +33,8 @@ $noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
 
 					$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
 				} else {
-					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
+					//$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
+					$image_link = '';
 				}
 				$tags = wp_get_post_tags($post_id);
 
@@ -63,7 +64,7 @@ endwhile;
 		</div>
 	</div>
 </div>
-
+<?php if($image_link) { ?>
 <div class="container">
 
 	<div class="col-md-12 pt-2 pb-5">
@@ -85,6 +86,7 @@ endwhile;
 	</div>
 
 </div>
+<?php } ?>
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-sm-10 col-12 offset-md-1 offset-sm-1">
