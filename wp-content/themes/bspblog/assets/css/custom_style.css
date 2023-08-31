@@ -986,6 +986,12 @@ ul.contact-social-links li a:hover i {
 .tile-block {
     background-image: linear-gradient(180deg, #06213d, var(--blue));
 }
+.tile-block-grey {
+    background-image: linear-gradient(180deg, #494747, #919191);
+}
+.tile-block-red {
+    background-image: linear-gradient(180deg, #b10f1e, var(--orange));
+}
 .highlight-post {
     display: flex;
     background: #f7f7f7;
