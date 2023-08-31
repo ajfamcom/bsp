@@ -975,6 +975,9 @@ ul.contact-social-links li a:hover i {
 /*------ /in-the-news-page -----*/
 
 /*------- polls-page --------*/
+.tile-block {
+    background-image: linear-gradient(180deg, #06213d, var(--blue));
+}
 .highlight-post {
     display: flex;
     background: #f7f7f7;
