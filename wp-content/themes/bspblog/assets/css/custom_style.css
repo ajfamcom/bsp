@@ -977,6 +977,15 @@ ul.contact-social-links li a:hover i {
     min-width: 120px;
     max-width: 120px;
 }
+
+.show-type-grid .news-image {
+    width: 100%;
+    max-height: 300px;
+    min-height: 300px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 4%;
+}
 /*------ /in-the-news-page -----*/
 
 /*------- polls-page --------*/
