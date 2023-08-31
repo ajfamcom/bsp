@@ -501,7 +501,7 @@ $results = $wpdb->get_results($query);
 
 	       
 
-	<div class="row">
+	<div class="polls-post-block">
 		<?php
 		
 		if(isset($search_text) && isset($from_date) && isset($to_date) && !empty($search_text) && !empty($from_date) && !empty($to_date))
