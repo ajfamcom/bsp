@@ -86,60 +86,7 @@ get_header();
 		</div>
 	</div>
 
-	        <div class="highlight-post">
-						<?php		
-						$fargs = array(
-							'post_type'      => 'bsp_custom_polls',
-							'posts_per_page' => 1,
-							'meta_query'     => array(
-								array(
-									'key'     => 'is_featured_poll',
-									'value'   => 'Yes', 
-									'compare' => '='
-								),				
-							),			          
-						); 
-
-						$fquery = new WP_Query( $fargs );
-						$theme_directory_uri = get_template_directory_uri();
-						$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
-						if ($fquery->have_posts()) :
-							while ($fquery->have_posts()) :
-								$fquery->the_post();
-								$post_id = get_the_ID();				
-								$permalink = get_permalink($post_id);
-								if (has_post_thumbnail($post_id)) {
-
-									$thumbnail_id = get_post_thumbnail_id($post_id);
-									$image_url = wp_get_attachment_url($thumbnail_id);
-									
-
-									$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="img-fluid">';
-								} else {
-									$image_link = '';
-								} 
-						?>
-				<?php if($image_link) {?>		
-				 <div class="news-block">
-					<?php echo $image_link;?>
-				</div>
-				<?php } else { ?>
-				<div class="news-block tile-block">
-				   Tile block
-				</div>
-				<?php } ?>
-				<div class="news-block-content">
-						<h2 class="news-details"><a href="<?php echo $permalink;?>"><span class="news-title"><?php the_title(); ?></span></a></h2>
-						<!-- <p class="news-other-details"><span class="news-date"><?php //echo get_the_date('M j, Y');?></span></p> -->
-						<!-- <p class="news-content"><?php //the_content();?></p>
-						<p><a href="<?php //echo $permalink;?>">Read More</a></p> -->
-				</div>
-							<?php
-							endwhile;
-							wp_reset_postdata();
-							endif;
-							?>
-	        </div>
+	       
 
 	<div class="row">
 		<?php
@@ -487,7 +434,7 @@ $results = $wpdb->get_results($query);
 					<?php if($image_link){?>
 					 <div class="news-image"><?php echo $image_link; ?></div> 
 					 <?php } else { ?>
-					<div class="news-image tile-block">Tile block </div> 
+					<div class="news-image tile-block"> </div> 
 					<?php } ?>
 					<div class="news-info">
 						<h4 class="news-details"><a href="<?php echo $permalink; ?>"><span class="news-title"><?php echo $row->post_title; ?></span></a></h4>
@@ -552,60 +499,7 @@ $results = $wpdb->get_results($query);
 		</div>
 	</div>
 
-	        <div class="highlight-post">
-						<?php		
-						$fargs = array(
-							'post_type'      => 'bsp_custom_polls',
-							'posts_per_page' => 1,
-							'meta_query'     => array(
-								array(
-									'key'     => 'is_featured_poll',
-									'value'   => 'Yes', 
-									'compare' => '='
-								),				
-							),			          
-						); 
-
-						$fquery = new WP_Query( $fargs );
-
-						if ($fquery->have_posts()) :
-							while ($fquery->have_posts()) :
-								$fquery->the_post();
-								$post_id = get_the_ID();				
-								$permalink = get_permalink($post_id);
-								if (has_post_thumbnail($post_id)) {
-
-									$thumbnail_id = get_post_thumbnail_id($post_id);
-									$image_url = wp_get_attachment_url($thumbnail_id);
-									$theme_directory_uri = get_template_directory_uri();
-									$noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
-
-									$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="img-fluid">';
-								} else {
-									$image_link = '';
-								} 
-						?>
-				<?php if($image_link){?>		
-				 <div class="news-block">
-					<?php echo $image_link;?>
-				</div> 
-				<?php } else { ?>
-				<div class="news-block tile-block">
-					Tile block
-				</div>
-				<?php } ?>
-				<div class="news-block-content">
-						<h2 class="news-details"><a href="<?php echo $permalink;?>"><span class="news-title"><?php the_title(); ?></span></a></h2>
-						<!-- <p class="news-other-details"><span class="news-date"><?php //echo get_the_date('M j, Y');?></span></p>
-						<p class="news-content"><?php //the_content();?></p>
-						<p><a href="<?php //echo $permalink;?>">Read More</a></p> -->
-				</div>
-							<?php
-							endwhile;
-							wp_reset_postdata();
-							endif;
-							?>
-	        </div>
+	       
 
 	<div class="row">
 		<?php
@@ -949,12 +843,11 @@ $results = $wpdb->get_results($query);
 					$image_link = '';
 				} 
 		?>
-				<div class="news-block list-polls col-12">
+				<div class="news-block list-polls">
 					<?php if($image_link){ ?>
 						<div class="news-image"><?php echo $image_link; ?></div> 
-					<?php } else { ?>
-						<div class="news-image tile-block">Tile block</div> 
-					<?php } ?>
+					<?php }  ?>
+						
 					 
 					<div class="news-info">
 						<h4 class="news-details"><a href="<?php echo $permalink; ?>"><span class="news-title"><?php echo $row->post_title; ?></span></a></h4>
