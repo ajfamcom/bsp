@@ -59,11 +59,11 @@ endwhile;
 		
 				<div class="single-poll col-12">
 					<div class="single-poll-content">
-						<div class="-single-poll-image">
+						<!-- <div class="-single-poll-image">
 							<?php
-							echo $image_link;
+							//echo $image_link;
 							?>
-						</div>
+						</div> -->
 
 					</div>
 				</div>
@@ -90,17 +90,17 @@ endwhile;
 				<div class="share-and-dwn-btn">
 				<?php 
 				
-				if(isset($multiple_pdf_attachment) && !empty($multiple_pdf_attachment)) {
-					foreach($multiple_pdf_attachment as $val){ ?>
-		<div class="download-pdf-file">
+				//if(isset($multiple_pdf_attachment) && !empty($multiple_pdf_attachment)) {
+					//foreach($multiple_pdf_attachment as $val){ ?>
+		<!-- <div class="download-pdf-file">
 		<h3>Download the Poll</h3>
                               
 								<div class="text-center">
-                                <a class="pdf-download" href="<?php echo $val['poll_pdf_attachment']['url'];?>" download><span>Download Attached PDF</span> <i class="fa-solid fa-file-arrow-down"></i></a>
+                                <a class="pdf-download" href="<?php //echo $val['poll_pdf_attachment']['url'];?>" download><span>Download Attached PDF</span> <i class="fa-solid fa-file-arrow-down"></i></a>
 								</div>
 							
-							</div> 
-							<?php  } }?>
+							</div>  -->
+							<?php  //} }?>
 		
 		<div class="share-social-icons">
 					<h3>Share this:</h3>
@@ -170,7 +170,7 @@ $results = $wpdb->get_results($query);
 		?>
                     <li class="splide__slide">
                        <div class="news-block">
-								<div class="news-image"><?php echo $image_link;?></div>
+								<div class="news-image"><?php //echo $image_link;?></div>
 								<div class="news-info">
 									<h4 class="news-details"><a href="<?php echo $permalink; ?>"><span class="news-title"><?php echo $row->post_title; ?></span></a></h4>
 									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
