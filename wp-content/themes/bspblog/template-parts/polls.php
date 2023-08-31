@@ -417,6 +417,7 @@ $results = $wpdb->get_results($query);
 			if ($results) :
 			foreach($results as $row) :
 				$post_id = $row->ID;
+				$post_type=get_post_type($post_id);
 				$permalink = get_permalink($post_id);
 				 if (has_post_thumbnail($post_id)) {
 
@@ -431,7 +432,7 @@ $results = $wpdb->get_results($query);
 				} 
 		?>
 				<div class="news-block grid-polls col-md-4">
-					<?php if($image_link){?>
+					<?php if(!empty($image_link) && $post_type=='post'){?>
 					 <div class="news-image"><?php echo $image_link; ?></div> 
 					 <?php } else { ?>
 					<div class="news-image tile-block"> </div> 
@@ -830,6 +831,7 @@ $results = $wpdb->get_results($query);
 			if ($results) :
 			foreach($results as $row) :
 				$post_id = $row->ID;
+				$post_type=get_post_type($post_id);
 				$permalink = get_permalink($post_id);
 				 if (has_post_thumbnail($post_id)) {
 
@@ -844,7 +846,7 @@ $results = $wpdb->get_results($query);
 				} 
 		?>
 				<div class="news-block list-polls">
-					<?php if($image_link){ ?>
+				<?php if(!empty($image_link) && $post_type=='post'){?>
 						<div class="news-image"><?php echo $image_link; ?></div> 
 					<?php }  ?>
 						
