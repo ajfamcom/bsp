@@ -846,9 +846,8 @@ $results = $wpdb->get_results($query);
 				<div class="news-block list-polls">
 					<?php if($image_link){ ?>
 						<div class="news-image"><?php echo $image_link; ?></div> 
-					<?php } else { ?>
-						<div class="news-image tile-block"></div> 
-					<?php } ?>
+					<?php }  ?>
+						
 					 
 					<div class="news-info">
 						<h4 class="news-details"><a href="<?php echo $permalink; ?>"><span class="news-title"><?php echo $row->post_title; ?></span></a></h4>
