@@ -971,21 +971,13 @@ ul.contact-social-links li a:hover i {
 .list-polls .news-info {
     padding: 15px;
 }
-.list-polls .news-image {
+.tile-post .list-polls .news-image {
     flex-basis: 30%;
     margin: 0px;
     min-width: 120px;
     max-width: 120px;
 }
 
-.show-type-grid .news-image {
-    width: 100%;
-    max-height: 300px;
-    min-height: 300px;
-    border-radius: 6px;
-    overflow: hidden;
-    margin-bottom: 4%;
-}
 /*------ /in-the-news-page -----*/
 
 /*------- polls-page --------*/
@@ -1032,10 +1024,18 @@ ul.contact-social-links li a:hover i {
     background: var(--orange);
     color: #fff;
 }
-.news-image {
+.tile-post .news-image {
     width: 100%;
     max-height: 120px;
     min-height: 120px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 4%;
+}
+.news-image {
+    width: 100%;
+    max-height: 300px;
+    min-height: 300px;
     border-radius: 6px;
     overflow: hidden;
     margin-bottom: 4%;
