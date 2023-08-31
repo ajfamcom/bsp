@@ -981,8 +981,8 @@ ul.contact-social-links li a:hover i {
 }
 
 /*------ /in-the-news-page -----*/
-
-/*------- polls-page --------*/
+  
+/*------- polls-page --------*/ 
 .grid-post .tile-block {
     background-image: linear-gradient(180deg, #06213d, var(--blue));
 }
