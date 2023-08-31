@@ -152,6 +152,7 @@ $results = $wpdb->get_results($query);
 			foreach($results as $row) :
 
 				$post_id = $row->ID;
+				//$post_type=get_post_type($post_id);
 				$permalink = get_permalink($post_id);
 				 if (has_post_thumbnail($post_id)) {
 
@@ -162,7 +163,7 @@ $results = $wpdb->get_results($query);
 
 					$image_link = '<img src="' . esc_url($image_url) . '" alt="Featured Image" class="news-image">';
 				} else {
-					$image_link = '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="news-image">';
+					$image_link = '';
 				}
 
 				$character_limit = 50; 
@@ -170,7 +171,11 @@ $results = $wpdb->get_results($query);
 		?>
                     <li class="splide__slide">
                        <div class="news-block">
-								<div class="news-image"><?php //echo $image_link;?></div>
+						        <?php if($image_link){?>
+								<div class="news-image"><?php echo $image_link;?></div>
+								<?php } else{ ?>
+								<div class="news-image tile-block"><?php echo $image_link;?></div>	
+								<?php }	?>
 								<div class="news-info">
 									<h4 class="news-details"><a href="<?php echo $permalink; ?>"><span class="news-title"><?php echo $row->post_title; ?></span></a></h4>
 									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>

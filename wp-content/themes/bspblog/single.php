@@ -173,7 +173,11 @@ global $wpdb;
 		?>
                     <li class="splide__slide">
                        <div class="news-block">
+					            <?php if($image_link){?>
 								<div class="news-image"><?php echo $image_link;?></div>
+								<?php } else { ?>
+								<div class="news-image tile-block"></div>	
+								<?php } ?>	
 								<div class="news-info">
 									<h4 class="news-details"><span class="news-title"><?php echo $row->post_title; ?></span></h4>
 									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
