@@ -170,7 +170,7 @@ $results = $wpdb->get_results($query);
 		?>
                     <li class="splide__slide">
                        <div class="news-block">
-								<div class="news-image blue-tile"><?php //echo $image_link;?></div>
+								<div class="news-image"><?php //echo $image_link;?></div>
 								<div class="news-info">
 									<h4 class="news-details"><a href="<?php echo $permalink; ?>"><span class="news-title"><?php echo $row->post_title; ?></span></a></h4>
 									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
