@@ -486,6 +486,10 @@
 }
 .single-news .news-info h4 {
     font-size: 20px;
+}
+.grid-polls .news-image {
+    max-height: 230px;
+    min-height: 230px;
 }  
 }
 
