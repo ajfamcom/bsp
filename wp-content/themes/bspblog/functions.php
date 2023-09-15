@@ -1042,7 +1042,7 @@ function subscribe_to_mailchimp($email, $firstname) {
         error_log('Error subscribing to MailChimp: ' . $response->get_error_message());
     } */
 
-    $apiKey = '5b9f1ee7110c127ef6f43a6fb08a3a0b-us21';
+    $apiKey = 'c9e670c4fe1ee1dd89a4932e0381d71e-us21';
     $listId = '0e2a3b129f';
 
 // Define the URL to the MailChimp API endpoint
