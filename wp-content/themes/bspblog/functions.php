@@ -1028,7 +1028,7 @@ function subscribe_to_mailchimp($email, $firstname) {
         )
     );
 
-    $url = 'https://api.mailchimp.com/3.0/lists/' . $list_id . '/members/';
+    $url = 'https://us21.api.mailchimp.com/3.0/lists/' . $list_id . '/members/';
 
     $response = wp_remote_post($url, array(
         'headers' => array(
