@@ -1016,7 +1016,7 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 add_filter( 'allow_dev_auto_core_updates', '__return_false' );
 
 function subscribe_to_mailchimp($email, $firstname) {
-    $api_key = '5773f299ca59ab2a03041d2d7b391804-us21';
+    $api_key = 'a5ffdf3bcedf9117e4f41b9d195f8e4b-us21';
     $list_id = '0e2a3b129f';
 
     $data = array(
