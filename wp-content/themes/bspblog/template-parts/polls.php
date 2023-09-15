@@ -19,7 +19,7 @@ $to_date=isset($_REQUEST['to_date'])?$_REQUEST['to_date']:'';
 	$wpdb->insert($tablename,$insert_data);		  
 	
 	}
-	$showt=isset($_REQUEST['show_type'])?$_REQUEST['show_type']:'grid';
+	$showt=isset($_REQUEST['show_type'])?$_REQUEST['show_type']:'list';
 	$base_url = get_permalink();
 	if($showt=='grid')
 {

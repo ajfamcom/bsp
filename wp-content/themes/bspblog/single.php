@@ -57,7 +57,7 @@ endwhile;
 					<?php //echo get_breadcrumbs(); ?>
 					<div class="page-title">
 						<h2><?php echo get_the_title(); ?></h2>
-						<p>WLRN 91.3 FM | By <?php echo $author_name;?> , Published <?php echo $post_date; ?></p>
+						<!-- <p>WLRN 91.3 FM | By <?php echo $author_name;?> , Published <?php echo $post_date; ?></p> -->
 					</div>
 				</div>
 			</div>
