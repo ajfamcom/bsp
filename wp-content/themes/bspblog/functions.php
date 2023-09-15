@@ -1015,7 +1015,7 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 
 add_filter( 'allow_dev_auto_core_updates', '__return_false' );
 
-function subscribe_to_mailchimp($email, $firstname) {
+/* function subscribe_to_mailchimp($email, $firstname) {
 
 
     $apiKey = 'c93f98cbf944bbb9496ca939852c60d6-us21';
@@ -1052,7 +1052,35 @@ function subscribe_to_mailchimp($email, $firstname) {
  curl_close($ch);
 
  echo $httpCode;
-}
+} */
 
+function subscribe_to_mailchimp($email, $firstname) {
+    $api_key = '8b35a6aa84e8aec1a0bba7d572c9ea79-us21';
+    $list_id = '0e2a3b129f';
+    $dataCenter = substr($api_key,strpos($api_key,'-')+1);
+    $data = array(
+        'apikey' => $api_key,
+        'email_address' => $email,
+        'status' => 'subscribed',
+        'merge_fields' => array(
+            'FNAME' => $firstname
+        )
+    );
+
+    //$url = 'https://usX.api.mailchimp.com/3.0/lists/' . $list_id . '/members/';
+    $url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $list_id . '/members/';
+
+    $response = wp_remote_post($url, array(
+        'headers' => array(
+            'Content-Type' => 'application/json',
+            //'Authorization' => 'Basic ' . base64_encode('anystring:' . $api_key)
+        ),
+        'body' => json_encode($data)
+    ));
+
+    if (is_wp_error($response)) {
+        error_log('Error subscribing to MailChimp: ' . $response->get_error_message());
+    }
+}
 
 
