@@ -1046,7 +1046,14 @@ function subscribe_to_mailchimp($email, $firstname) {
     $listId = '0e2a3b129f';
 
 // Define the URL to the MailChimp API endpoint
-$url = 'https://us21.api.mailchimp.com/3.0/lists/' . $listId . '/members/';
+//$url = 'https://us21.api.mailchimp.com/3.0/lists/' . $listId . '/members/';
+
+
+$server = explode( '-', $apiKey );
+
+
+$url = 'https://' . $server[1] . '.api.mailchimp.com/3.0/lists/' . $listId . '/members/';
+
 
 // Create an array with the user's information
 $data = array(
@@ -1067,7 +1074,7 @@ $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Type: application/json',
-    'Authorization: Basic ' . base64_encode('anystring:' . $apiKey)
+    'Authorization:' . ('apikey ' . $apiKey)
 ));
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
