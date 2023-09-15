@@ -1015,7 +1015,7 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 
 add_filter( 'allow_dev_auto_core_updates', '__return_false' );
 
-/* function subscribe_to_mailchimp($email, $firstname) {
+ function subscribe_to_mailchimp($email, $firstname) {
 
 
     $apiKey = 'c93f98cbf944bbb9496ca939852c60d6-us21';
@@ -1052,9 +1052,9 @@ add_filter( 'allow_dev_auto_core_updates', '__return_false' );
  curl_close($ch);
 
  echo $httpCode;
-} */
+}
 
-function subscribe_to_mailchimp($email, $firstname) {
+/* function subscribe_to_mailchimp($email, $firstname) {
     $api_key = '8b35a6aa84e8aec1a0bba7d572c9ea79-us21';
     $list_id = '0e2a3b129f';
     $dataCenter = substr($api_key,strpos($api_key,'-')+1);
@@ -1081,6 +1081,6 @@ function subscribe_to_mailchimp($email, $firstname) {
     if (is_wp_error($response)) {
         error_log('Error subscribing to MailChimp: ' . $response->get_error_message());
     }
-}
+} */
 
 
