@@ -1015,7 +1015,7 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 
 add_filter( 'allow_dev_auto_core_updates', '__return_false' );
 
- function subscribe_to_mailchimp($email, $firstname) {
+ function subscribe_to_mailchimp_old($email, $firstname) {
 
 
     $apiKey = 'c93f98cbf944bbb9496ca939852c60d6-us21';
@@ -1083,4 +1083,20 @@ add_filter( 'allow_dev_auto_core_updates', '__return_false' );
     }
 } */
 
+function subscribe_to_mailchimp($email, $firstname) {
+    // Check if this is the correct contact form (replace with your contact form ID)
+   
 
+    // Check if the subscription checkbox is checked
+    //$subscribe_checkbox = isset($_POST['subscribe_checkbox']) ? $_POST['subscribe_checkbox'] : false;
+    //if ($subscribe_checkbox) {
+        // Get the user's email (assuming it's in the form)
+      
+
+        // Subscribe the user to Mailchimp (using the plugin you installed)
+        if (!empty($email)) {
+            // Add the email to the Mailchimp list
+            MC4WP::sync_user($email);
+        }
+    //}
+}
