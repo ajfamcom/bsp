@@ -281,6 +281,9 @@ button.search-submit:hover {
 span.commit-text {
     color: var(--orange);
 }
+.single-bsp_custom_polls .single-poll-content .single-poll-info p a {
+    font-size: 22px;
+}
 /*========== /services-block ================*/
 
 /*================latest-news-section================*/
