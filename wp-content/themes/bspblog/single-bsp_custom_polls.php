@@ -182,7 +182,7 @@ $results = $wpdb->get_results($query);
 									<p class="news-other-details"><span class="news-date"><?php echo date('M j, Y',strtotime($row->post_date));?></span></p>
 									<p class="news-content"><?php echo wpautop($trimmed_content); ?></p>
 									
-									
+									<p><a href="<?php echo $permalink; ?>">Read More</a></p>
 								</div>
 						</div>
                     </li>
