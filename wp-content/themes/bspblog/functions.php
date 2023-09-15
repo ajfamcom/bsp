@@ -1018,7 +1018,7 @@ add_filter( 'allow_dev_auto_core_updates', '__return_false' );
 function subscribe_to_mailchimp($email, $firstname) {
 
 
-    $apiKey = 'cad53f97e7e32f48ebe01f8723b28409-us21';
+    $apiKey = '50b3108a62a27b410811441459d48275-us21';
     $listID = '0e2a3b129f';
 
 
@@ -1031,7 +1031,7 @@ function subscribe_to_mailchimp($email, $firstname) {
  // member information
  $json = json_encode([
      'email_address' => $email,
-     'status'        => 'subscribed',
+     'status'        => 'pending',
      'merge_fields'  => [
          'FNAME'     => $firstname
         
