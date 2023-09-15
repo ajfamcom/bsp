@@ -1016,10 +1016,10 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 add_filter( 'allow_dev_auto_core_updates', '__return_false' );
 
 function subscribe_to_mailchimp($email, $firstname) {
-    $api_key = '95b0d2bffaf588a5a2b948a4173a8f0c-us21';
-    $list_id = '0e2a3b129f';
+   /*  $api_key = '95b0d2bffaf588a5a2b948a4173a8f0c-us21';
+    $list_id = '0e2a3b129f'; */
 
-    $data = array(
+  /*   $data = array(
         'apikey' => $api_key,
         'email_address' => $email,
         'status' => 'subscribed',
@@ -1033,14 +1033,59 @@ function subscribe_to_mailchimp($email, $firstname) {
     $response = wp_remote_request($url, array(
         'headers' => array(
             'Content-Type' => 'application/json',
-           // 'Authorization' => 'Basic ' . base64_encode('anystring:' . $api_key)
+            'Authorization' => 'Basic ' . base64_encode('anystring:' . $api_key)
         ),
         'body' => json_encode($data)
     ));
 
     if (is_wp_error($response)) {
         error_log('Error subscribing to MailChimp: ' . $response->get_error_message());
-    }
+    } */
+
+    $apiKey = '5b9f1ee7110c127ef6f43a6fb08a3a0b-us21';
+    $listId = '0e2a3b129f';
+
+// Define the URL to the MailChimp API endpoint
+$url = 'https://us21.api.mailchimp.com/3.0/lists/' . $listId . '/members/';
+
+// Create an array with the user's information
+$data = array(
+    'email_address' => $email,
+    'status' => 'subscribed',
+    'merge_fields' => array(
+        'FNAME' => $firstname
+    )
+);
+
+// Convert the data to JSON format
+$jsonData = json_encode($data);
+
+// Initialize cURL session
+$ch = curl_init();
+
+// Set cURL options
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Authorization: Basic ' . base64_encode('anystring:' . $apiKey)
+));
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Execute the cURL request
+$response = curl_exec($ch);
+
+// Close cURL session
+curl_close($ch);
+
+// Handle the response
+if ($response === false) {
+    echo 'Error: ' . curl_error($ch);
+} else {
+    echo 'User subscribed successfully!';
+}
+
 }
 
 
