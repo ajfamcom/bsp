@@ -1030,10 +1030,10 @@ function subscribe_to_mailchimp($email, $firstname) {
 
     $url = 'https://us21.api.mailchimp.com/3.0/lists/' . $list_id . '/members/';
 
-    $response = wp_remote_post($url, array(
+    $response = wp_remote_request($url, array(
         'headers' => array(
             'Content-Type' => 'application/json',
-            'Authorization' => 'Basic ' . base64_encode('anystring:' . $api_key)
+           // 'Authorization' => 'Basic ' . base64_encode('anystring:' . $api_key)
         ),
         'body' => json_encode($data)
     ));
