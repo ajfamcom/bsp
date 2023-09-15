@@ -1018,7 +1018,7 @@ add_filter( 'allow_dev_auto_core_updates', '__return_false' );
 function subscribe_to_mailchimp($email, $firstname) {
 
 
-    $apiKey = '50b3108a62a27b410811441459d48275-us21';
+    $apiKey = 'd20be12ad688108162d3fe3a3d920be7-us21';
     $listID = '0e2a3b129f';
 
 
