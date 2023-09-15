@@ -1099,11 +1099,13 @@ function subscribe_to_mailchimp($email, $firstname) {
         $subscriber_id = $api->add_subscriber($subscriber_data);
 
         if ($subscriber_id) {
-            return true; // User added successfully
+            echo 'user added';//return true; // User added successfully
         } else {
-            return false; // Error adding user
+            echo 'user not added';
+            //return false; // Error adding user
         }
     } else {
-        return false; // MC4WP is not active
+        echo 'not active';
+        //return false; // MC4WP is not active
     }
 }
