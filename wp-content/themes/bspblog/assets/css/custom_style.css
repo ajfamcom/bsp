@@ -277,6 +277,10 @@ button.search-submit:hover {
     top: 50%;
     margin-top: 0px;
 } */
+
+span.commit-text {
+    color: var(--orange);
+}
 /*========== /services-block ================*/
 
 /*================latest-news-section================*/
