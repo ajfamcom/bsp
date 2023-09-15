@@ -1084,19 +1084,26 @@ add_filter( 'allow_dev_auto_core_updates', '__return_false' );
 } */
 
 function subscribe_to_mailchimp($email, $firstname) {
-    // Check if this is the correct contact form (replace with your contact form ID)
-   
+    // Check if MC4WP is active
+    if (class_exists('MC4WP_API')) {
+        // Initialize MC4WP API
+        $api = MC4WP_API::get_instance();
 
-    // Check if the subscription checkbox is checked
-    //$subscribe_checkbox = isset($_POST['subscribe_checkbox']) ? $_POST['subscribe_checkbox'] : false;
-    //if ($subscribe_checkbox) {
-        // Get the user's email (assuming it's in the form)
-      
+        // Define user data
+        $subscriber_data = array(
+            'EMAIL' => $email,
+            'FNAME' => $firstname
+        );
 
-        // Subscribe the user to Mailchimp (using the plugin you installed)
-        if (!empty($email)) {
-            // Add the email to the Mailchimp list
-            MC4WP::sync_user($email);
+        // Add user to MC4WP list
+        $subscriber_id = $api->add_subscriber($subscriber_data);
+
+        if ($subscriber_id) {
+            return true; // User added successfully
+        } else {
+            return false; // Error adding user
         }
-    //}
+    } else {
+        return false; // MC4WP is not active
+    }
 }
