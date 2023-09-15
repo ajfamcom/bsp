@@ -1084,28 +1084,29 @@ add_filter( 'allow_dev_auto_core_updates', '__return_false' );
 } */
 
 function subscribe_to_mailchimp($email, $firstname) {
-    // Check if MC4WP is active
-    if (class_exists('MC4WP_API')) {
+     // Check if MC4WP is active
+     if (class_exists('MC4WP_API_V3')) {
         // Initialize MC4WP API
-        $api = MC4WP_API::get_instance();
+        $api = MC4WP_API_V3::get_instance();
 
         // Define user data
         $subscriber_data = array(
-            'EMAIL' => $email,
-            'FNAME' => $firstname
+            'email_address' => $email,
+            'status'        => 'subscribed',
+            'merge_fields'  => array(
+                'FNAME' => $firstname
+            )
         );
 
         // Add user to MC4WP list
-        $subscriber_id = $api->add_subscriber($subscriber_data);
+        $result = $api->list_subscribe('0e2a3b129f', $email, $subscriber_data);
 
-        if ($subscriber_id) {
-            echo 'user added';//return true; // User added successfully
+        if ($result && !isset($result['status']) || $result['status'] == 'subscribed') {
+            return true; // User added successfully
         } else {
-            echo 'user not added';
-            //return false; // Error adding user
+            return false; // Error adding user
         }
     } else {
-        echo 'not active';
-        //return false; // MC4WP is not active
+        return false; // MC4WP is not active or incorrect version
     }
 }
