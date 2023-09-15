@@ -1016,7 +1016,7 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 add_filter( 'allow_dev_auto_core_updates', '__return_false' );
 
 function subscribe_to_mailchimp($email, $firstname) {
-    $api_key = 'a5ffdf3bcedf9117e4f41b9d195f8e4b-us21';
+    $api_key = '8ea006c979f73f634cab40de416aeba9-us21';
     $list_id = '0e2a3b129f';
 
     $data = array(
@@ -1028,7 +1028,7 @@ function subscribe_to_mailchimp($email, $firstname) {
         )
     );
 
-    $url = 'https://usX.api.mailchimp.com/3.0/lists/' . $list_id . '/members/';
+    $url = 'https://api.mailchimp.com/3.0/lists/' . $list_id . '/members/';
 
     $response = wp_remote_post($url, array(
         'headers' => array(
