@@ -1018,7 +1018,7 @@ add_filter( 'allow_dev_auto_core_updates', '__return_false' );
 function subscribe_to_mailchimp($email, $firstname) {
 
 
-    $apiKey = 'd20be12ad688108162d3fe3a3d920be7-us21';
+    $apiKey = 'c93f98cbf944bbb9496ca939852c60d6-us21';
     $listID = '0e2a3b129f';
 
 
@@ -1045,7 +1045,7 @@ function subscribe_to_mailchimp($email, $firstname) {
  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
  curl_setopt($ch, CURLOPT_TIMEOUT, 10);
  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
- curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
  curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
  $result = curl_exec($ch);
  $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
