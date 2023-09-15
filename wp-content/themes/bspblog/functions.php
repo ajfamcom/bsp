@@ -1038,9 +1038,9 @@ function subscribe_to_mailchimp($email, $firstname) {
         'body' => json_encode($data)
     ));
 
-    //if (is_wp_error($response)) {
-    //    error_log('Error subscribing to MailChimp: ' . $response->get_error_message());
-    //}
+    if (is_wp_error($response)) {
+        error_log('Error subscribing to MailChimp: ' . $response->get_error_message());
+    }
 }
 
 
