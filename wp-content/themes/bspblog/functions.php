@@ -1051,6 +1051,7 @@ function subscribe_to_mailchimp($email, $firstname) {
  $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
  curl_close($ch);
 
+ echo $httpCode;
 }
 
 
