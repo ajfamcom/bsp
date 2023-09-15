@@ -3,7 +3,7 @@
 $page_id = get_the_ID();
 $full_banner = get_field('full_banner', $page_id);
 $image_over_banner = get_field('image_over_banner', $page_id);
-$showt=isset($_REQUEST['show_type'])?$_REQUEST['show_type']:'grid';
+$showt=isset($_REQUEST['show_type'])?$_REQUEST['show_type']:'list';
 $base_url = get_permalink();
 if($showt=='grid')
 {
