@@ -267,7 +267,7 @@ button.search-submit:hover {
     color: var(--orange) !important;
     margin-bottom: 1%;
 }
-.services-heading::before {
+/* .services-heading::before {
     position: absolute;
     content: '';
     background: var(--orange);
@@ -276,7 +276,7 @@ button.search-submit:hover {
     left: 0px;
     top: 50%;
     margin-top: 0px;
-}
+} */
 /*========== /services-block ================*/
 
 /*================latest-news-section================*/
