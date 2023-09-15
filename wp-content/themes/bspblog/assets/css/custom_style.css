@@ -1015,9 +1015,12 @@ ul#slider-related-posts-list li .news-block .news-info {
     color: #fff;
 }
 ul#slider-related-posts-list li .news-block .news-info h4 {
-    color: #fff;
+    color: #fff !important;
 }
 ul#slider-related-posts-list li .news-block .news-info p a {
+    color: #fff;
+}
+ul#slider-related-posts-list li .news-block .news-info span.news-date {
     color: #fff;
 }
 
