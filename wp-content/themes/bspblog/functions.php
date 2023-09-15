@@ -1102,11 +1102,11 @@ function subscribe_to_mailchimp($email, $firstname) {
         $result = $api->list_subscribe('0e2a3b129f', $email, $subscriber_data);
 
         if ($result && !isset($result['status']) || $result['status'] == 'subscribed') {
-            echo 'added';//return true; // User added successfully
+             return true; // User added successfully
         } else {
-            echo 'not added';//return false; // Error adding user
+            return false; // Error adding user
         }
     } else {
-        echo 'not active';//return false; // MC4WP is not active or incorrect version
+        return false; // MC4WP is not active or incorrect version
     }
 }
