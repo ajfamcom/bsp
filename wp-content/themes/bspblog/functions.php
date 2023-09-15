@@ -504,6 +504,7 @@ function custom_contact_form() {
     if(!empty($name) && !empty($email) && !empty($message)){
         $wpdb->insert( $table_name, $data );
         //wp_mail('dipti@famcominc.com', 'Test Email', 'This is a test email from WordPress.');
+        subscribe_to_mailchimp($email,$name);
         wp_mail( $to, $subject, $all_message, $headers );  
         wp_mail( $user_to, $user_subject, $user_message, $user_headers );      
         $msg="Thank you for your inquiry! We will get back to you within 48 hours.We've sent you a confirmation email, please click the link to verify your address.";
@@ -1013,6 +1014,34 @@ function custom_excerpt_more($more) {
 add_filter('excerpt_more', 'custom_excerpt_more');
 
 add_filter( 'allow_dev_auto_core_updates', '__return_false' );
+
+function subscribe_to_mailchimp($email, $firstname) {
+    $api_key = '5773f299ca59ab2a03041d2d7b391804-us21';
+    $list_id = '0e2a3b129f';
+
+    $data = array(
+        'apikey' => $api_key,
+        'email_address' => $email,
+        'status' => 'subscribed',
+        'merge_fields' => array(
+            'FNAME' => $firstname
+        )
+    );
+
+    $url = 'https://usX.api.mailchimp.com/3.0/lists/' . $list_id . '/members/';
+
+    $response = wp_remote_post($url, array(
+        'headers' => array(
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Basic ' . base64_encode('anystring:' . $api_key)
+        ),
+        'body' => json_encode($data)
+    ));
+
+    //if (is_wp_error($response)) {
+    //    error_log('Error subscribing to MailChimp: ' . $response->get_error_message());
+    //}
+}
 
 
 
