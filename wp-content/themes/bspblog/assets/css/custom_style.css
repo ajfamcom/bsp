@@ -262,7 +262,7 @@ button.search-submit:hover {
     margin: 0;
 }
 .services-heading {
-    padding-left: 70px;
+    /* padding-left: 70px; */
     position: relative;
     color: var(--orange) !important;
     margin-bottom: 1%;
