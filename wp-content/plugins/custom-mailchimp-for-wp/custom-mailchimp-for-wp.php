@@ -38,13 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
            $all_message .='<p>Email:'.$email.'</p>';
            $all_message .='<p>Message:'.$message.'</p>';
            
-           if($is_signup=='Yes')
-           {
-             
-            
-               @add_or_update_member('1407967842',$email,$name);
-              
-           }
+           
           
            //save in db
            global $wpdb;        
@@ -73,7 +67,14 @@ if ( ! defined( 'ABSPATH' ) ) {
            //wp_mail('dipti@famcominc.com', 'Test Email', 'This is a test email from WordPress.');
           
           
-           wp_mail( $to, $subject, $all_message, $headers );  
+           if(wp_mail( $to, $subject, $all_message, $headers )){
+                if($is_signup=='Yes')
+            {            
+                
+                @add_or_update_member('1407967842',$email,$name);
+                
+            }
+           }  
            wp_mail( $user_to, $user_subject, $user_message, $user_headers );      
            $msg="Thank you for your inquiry! We will get back to you within 48 hours.We've sent you a confirmation email, please click the link to verify your address.";
            
@@ -154,16 +155,11 @@ if ( ! defined( 'ABSPATH' ) ) {
                 // Add a new member
                 //$result = $api->add_new_list_member($listid, $subscriber_data);
                 
-                $response=$api->add_list_member($listid, $subscriber_data);
-
-                print_r($response);die();
+               $api->add_list_member($listid, $subscriber_data);              
     
-                if($response){
+              
                    return true;
-                }
-                else{
-                    return false;
-                }
+               
                 
            
        
