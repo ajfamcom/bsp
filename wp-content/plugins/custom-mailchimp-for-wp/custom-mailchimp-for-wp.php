@@ -159,9 +159,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                              
                
                 $api->add_list_member($listid, $subscriber_data);            
-               
-              
-                   return true;
+                $response=$api->get_last_response_body();
+                print_r($response);die();
+                return true;
                
                 
            
