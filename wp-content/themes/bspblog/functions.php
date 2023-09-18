@@ -509,12 +509,10 @@ function custom_contact_form() {
         wp_mail( $to, $subject, $all_message, $headers );  
         wp_mail( $user_to, $user_subject, $user_message, $user_headers );      
         $msg="Thank you for your inquiry! We will get back to you within 48 hours.We've sent you a confirmation email, please click the link to verify your address.";
-        if($is_signup=='Yes'){
+        if(!empty($is_signup) && $is_signup!='No'){
             @add_or_update_member('0e2a3b129f',$email,$name);
         }
-        else{
-            //
-        }
+        
     }
     else{
         $error="Please fill the reqired fields!";
