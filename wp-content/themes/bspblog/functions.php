@@ -1085,7 +1085,7 @@ add_filter( 'allow_dev_auto_core_updates', '__return_false' );
         error_log('Error subscribing to MailChimp: ' . $response->get_error_message());
     }
 } */
-
+/* 
 function subscribe_to_mailchimp($email, $firstname) {
      // Check if MC4WP is active
      if (class_exists('MC4WP_API_V3')) {
@@ -1112,10 +1112,10 @@ function subscribe_to_mailchimp($email, $firstname) {
     } else {
         return false; // MC4WP is not active or incorrect version
     }
-}
+} */
 function add_or_update_member($listid,$email,$firstname) {
     // Check if MC4WP is active
-     $api_key='b83bc3c916351135330ee15a84157044-us21';    
+     $api_key='b83bc709fb8e489b165351ae0585b54d6a4c9-us21';    
      $api = new MC4WP_API_V3($api_key);
      
      $subscriber_hash=md5( strtolower( trim( $email) ) );
