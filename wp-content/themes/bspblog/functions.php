@@ -504,13 +504,16 @@ function custom_contact_form() {
     if(!empty($name) && !empty($email) && !empty($message)){
         $wpdb->insert( $table_name, $data );
         //wp_mail('dipti@famcominc.com', 'Test Email', 'This is a test email from WordPress.');
-        echo $is_signup;die();
+        
        
         wp_mail( $to, $subject, $all_message, $headers );  
         wp_mail( $user_to, $user_subject, $user_message, $user_headers );      
         $msg="Thank you for your inquiry! We will get back to you within 48 hours.We've sent you a confirmation email, please click the link to verify your address.";
-        if($is_signup!='No'){
+        if($is_signup=='Yes'){
             @add_or_update_member('0e2a3b129f',$email,$name);
+        }
+        else{
+            //
         }
     }
     else{
