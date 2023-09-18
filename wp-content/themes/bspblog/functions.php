@@ -504,7 +504,10 @@ function custom_contact_form() {
     if(!empty($name) && !empty($email) && !empty($message)){
         $wpdb->insert( $table_name, $data );
         //wp_mail('dipti@famcominc.com', 'Test Email', 'This is a test email from WordPress.');
-        subscribe_to_mailchimp($email,$name);
+        if(!empty($is_signup)){
+            @add_or_update_member('0e2a3b129f',$email,$name);
+        }
+       
         wp_mail( $to, $subject, $all_message, $headers );  
         wp_mail( $user_to, $user_subject, $user_message, $user_headers );      
         $msg="Thank you for your inquiry! We will get back to you within 48 hours.We've sent you a confirmation email, please click the link to verify your address.";
@@ -1109,4 +1112,30 @@ function subscribe_to_mailchimp($email, $firstname) {
     } else {
         return false; // MC4WP is not active or incorrect version
     }
+}
+function add_or_update_member($listid,$email,$firstname) {
+    // Check if MC4WP is active
+     $api_key='cfbca35892bccce14c9aa50e46145989-us21';    
+     $api = new MC4WP_API_V3($api_key);
+     
+     $subscriber_hash=md5( strtolower( trim( $email) ) );
+
+        // Define user data
+       $subscriber_data = array(
+            'email_address' => $email,
+            'fname' => $firstname,
+            'status'=>'subscribed',
+            'merge_fields'=> [
+                'FNAME'=>$firstname
+                ]
+        );
+        
+       
+            // Add a new member
+            //$result = $api->add_new_list_member($listid, $subscriber_data);
+            
+            $api->add_list_member($listid, $subscriber_data);
+            
+       return true;
+   
 }
