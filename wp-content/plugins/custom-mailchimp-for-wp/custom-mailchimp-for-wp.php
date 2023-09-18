@@ -163,11 +163,21 @@ if ( ! defined( 'ABSPATH' ) ) {
                 
                              
                
-                $api->add_list_member($listid, $subscriber_data);            
-                $response=$api->get_last_response_body();
+                           
+               
                 
-                return true;             
-                
+                         
+                try {
+                    // Add a new member
+                    $api->add_list_member($listid, $subscriber_data); 
+                    $response = $api->get_last_response_body();
+                    
+                    return true;
+                } catch (Exception $e) {
+                    // Handle the exception (fatal error) here
+                    // Log the error, send a notification, or perform any necessary action
+                    return false; // Or handle the error in an appropriate way
+                } 
            
        
     }
