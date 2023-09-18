@@ -68,15 +68,15 @@ if ( ! defined( 'ABSPATH' ) ) {
            if($is_signup=='Yes')
             {            
                 
-                @add_or_update_member('1407967842',$email,$name);
+                add_or_update_member('1407967842',$email,$name);
                 
             }
            
-           @wp_mail( $to, $subject, $all_message, $headers );
+           wp_mail( $to, $subject, $all_message, $headers );
                
            
            
-           @wp_mail( $user_to, $user_subject, $user_message, $user_headers );      
+           wp_mail( $user_to, $user_subject, $user_message, $user_headers );      
            $msg="Thank you for your inquiry! We will get back to you within 48 hours.We've sent you a confirmation email, please click the link to verify your address.";
            
            
@@ -159,7 +159,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                              
                
                 $api->add_list_member($listid, $subscriber_data);            
-                print_r($response);die();
+               
               
                    return true;
                
