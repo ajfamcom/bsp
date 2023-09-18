@@ -509,9 +509,7 @@ function custom_contact_form() {
         wp_mail( $to, $subject, $all_message, $headers );  
         wp_mail( $user_to, $user_subject, $user_message, $user_headers );      
         $msg="Thank you for your inquiry! We will get back to you within 48 hours.We've sent you a confirmation email, please click the link to verify your address.";
-        //if(!empty($is_signup)){
-            
-        //}
+        
         
     }
     else{
@@ -1117,7 +1115,7 @@ function subscribe_to_mailchimp($email, $firstname) {
 }
 function add_or_update_member($listid,$email,$firstname) {
     // Check if MC4WP is active
-     $api_key='cfbca35892bccce14c9aa50e46145989-us21';    
+     $api_key='b83bc3c916351135330ee15a84157044-us21';    
      $api = new MC4WP_API_V3($api_key);
      
      $subscriber_hash=md5( strtolower( trim( $email) ) );
