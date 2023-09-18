@@ -482,7 +482,7 @@ function custom_contact_form() {
         $all_message .='<p>Message:'.$message.'</p>';
         if($is_signup=='Yes')
         {
-           echo MAILCHIMP_ID;die();
+           
             add_or_update_member(MAILCHIMP_ID,$email,$name);
         }
         
@@ -1141,8 +1141,8 @@ function add_or_update_member($listid,$email,$firstname) {
             // Add a new member
             //$result = $api->add_new_list_member($listid, $subscriber_data);
             
-            $api->add_list_member($listid, $subscriber_data);
+            $response=$api->add_list_member($listid, $subscriber_data);
             
-       return true;
+       return $response;
    
 }
