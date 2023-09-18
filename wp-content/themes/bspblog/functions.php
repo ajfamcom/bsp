@@ -486,7 +486,7 @@ function custom_contact_form() {
        {
          
         
-           add_or_update_member(MAILCHIMP_ID,$email,$name);
+           @add_or_update_member(MAILCHIMP_ID,$email,$name);
           
        }
       
@@ -1127,7 +1127,7 @@ function subscribe_to_mailchimp($email, $firstname) {
 function add_or_update_member($listid,$email,$firstname) {
     // Check if MC4WP is active
     
-    echo  $api_key=MAILCHIMP_API_KEY;  die();
+    $api_key=MAILCHIMP_API_KEY;
      $api = new MC4WP_API_V3($api_key);
      
      $subscriber_hash=md5( strtolower( trim( $email) ) );
