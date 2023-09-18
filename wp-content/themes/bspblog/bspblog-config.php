@@ -1,5 +1,5 @@
 <?php
-define('MAILCHIMP_API_KEY', '4a254d95e82b0f5ec7c2143c7ca89116-us21');
-define('MAILCHIMP_ID', '0e2a3b129f');
+define('MAILCHIMP_API_KEY', '439e9a8a6cc20ae615a1d81122ee8d99-us8');
+define('MAILCHIMP_ID', '316f471ac9');
 // Add more configuration options as needed...
 ?>
