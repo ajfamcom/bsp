@@ -155,10 +155,17 @@ if ( ! defined( 'ABSPATH' ) ) {
                 //$result = $api->add_new_list_member($listid, $subscriber_data);
                 
                 $response=$api->add_list_member($listid, $subscriber_data);
+
+                print_r($response);die();
     
+                if($response){
+                   return true;
+                }
+                else{
+                    return false;
+                }
                 
-                
-           return true;
+           
        
     }
 //}
