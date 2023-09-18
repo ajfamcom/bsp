@@ -461,7 +461,7 @@ function custom_contact_form() {
       if ( isset( $_POST['submit_form'] ) ) {      
  
          require_once ABSPATH . WPINC . '/pluggable.php';
-         require_once get_template_directory() . '/bspblog-config.php';
+         require_once get_template_directory() . '/configsettings/bspblog-config.php';
  
          $aname="BSP Research";
          $name = sanitize_text_field( $_POST['fname'] );
