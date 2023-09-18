@@ -463,7 +463,7 @@ function custom_contact_form() {
          require_once ABSPATH . WPINC . '/pluggable.php';
          
          require_once get_template_directory() . '/mailchimpsettings/bspblog-config.php';
-         echo 'before';die();
+         
          $aname="BSP Research";
          $name = sanitize_text_field( $_POST['fname'] );
          $email = sanitize_email( $_POST['email'] );
@@ -484,11 +484,11 @@ function custom_contact_form() {
          
          if($is_signup=='Yes')
          {
-            echo  'inside';
+           
             
-             add_or_update_member(MAILCHIMP_ID,$email,$name);
+             @add_or_update_member(MAILCHIMP_ID,$email,$name);
          }
-         echo 'after';
+        
          //save in db
          global $wpdb;        
          $table_name = $wpdb->prefix . 'contactus';
@@ -1125,8 +1125,8 @@ function subscribe_to_mailchimp($email, $firstname) {
 } */
 function add_or_update_member($listid,$email,$firstname) {
     // Check if MC4WP is active
-    echo 'hi';
-     echo $api_key=MAILCHIMP_API_KEY;    
+    
+      $api_key=MAILCHIMP_API_KEY;    
      $api = new MC4WP_API_V3($api_key);
      
      $subscriber_hash=md5( strtolower( trim( $email) ) );
@@ -1147,6 +1147,6 @@ function add_or_update_member($listid,$email,$firstname) {
             
             $response=$api->add_list_member($listid, $subscriber_data);
             
-       return $response;die();
+       return true;
    
 }
