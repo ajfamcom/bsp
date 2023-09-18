@@ -158,8 +158,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                 
                              
                
-                @$api->add_list_member($listid, $subscriber_data);            
-            
+                $api->add_list_member($listid, $subscriber_data);            
+                print_r($response);die();
               
                    return true;
                
