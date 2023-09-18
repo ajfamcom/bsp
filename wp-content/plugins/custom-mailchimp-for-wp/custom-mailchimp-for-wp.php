@@ -163,7 +163,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                
                 $api->add_list_member($listid, $subscriber_data);            
                 $response=$api->get_last_response_body();
-                print_r($response);die();
+                $api->last_response = null;
+		        $api->last_request  = null;
                 return true;
                
                 
