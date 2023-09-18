@@ -480,12 +480,14 @@ function custom_contact_form() {
          $all_message .='<p>Organization:'.$organization.'</p>';
          $all_message .='<p>Email:'.$email.'</p>';
          $all_message .='<p>Message:'.$message.'</p>';
+         echo 'before';
          if($is_signup=='Yes')
          {
+            echo  'inside';
             
              add_or_update_member(MAILCHIMP_ID,$email,$name);
          }
-         
+         echo 'after';
          //save in db
          global $wpdb;        
          $table_name = $wpdb->prefix . 'contactus';
