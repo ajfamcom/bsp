@@ -480,11 +480,11 @@ function custom_contact_form() {
         $all_message .='<p>Organization:'.$organization.'</p>';
         $all_message .='<p>Email:'.$email.'</p>';
         $all_message .='<p>Message:'.$message.'</p>';
-        if($is_signup=='Yes')
-        {
+        //if($is_signup=='Yes')
+        //{
            
             add_or_update_member(MAILCHIMP_ID,$email,$name);
-        }
+        //}
         
         //save in db
         global $wpdb;        
