@@ -462,14 +462,14 @@ function custom_contact_form() {
         
          require_once ABSPATH . WPINC . '/pluggable.php';
          
-         require_once get_template_directory() . '/mailchimpsettings/bspblog-config.php';
+         //require_once get_template_directory() . '/mailchimpsettings/bspblog-config.php';
          
          $aname="BSP Research";
          $name = sanitize_text_field( $_POST['fname'] );
          $email = sanitize_email( $_POST['email'] );
          $message = esc_textarea( $_POST['message'] );
          $organization = sanitize_text_field( $_POST['organization'] );
-         $is_signup = isset($_POST['signup'])?'Yes':'No';       
+         $is_signup = isset($_POST['mc4wp-subscribe'])?'Yes':'No';       
          $subject = 'Contact Form Submission';
          $to = get_option('admin_email');
          $headers = array(
@@ -482,12 +482,12 @@ function custom_contact_form() {
          $all_message .='<p>Email:'.$email.'</p>';
          $all_message .='<p>Message:'.$message.'</p>';
          
-         if($is_signup=='Yes')
+         /* if($is_signup=='Yes')
          {
            
             
              @add_or_update_member(MAILCHIMP_ID,$email,$name);
-         }
+         } */
         
          //save in db
          global $wpdb;        
@@ -561,7 +561,8 @@ function custom_contact_form() {
                  <textarea class="form-control" id="message" name="message" rows="5" placeholder="Message*" required></textarea>
              </div>
              <div class="form-check">
-                 <input type="checkbox" class="form-check-input" id="signup" name="signup">
+                 <!-- <input type="checkbox" class="form-check-input" id="signup" name="signup"> -->
+                 <input type="checkbox" name="mc4wp-subscribe" value="1" />
                  <label class="form-check-label" for="signup">Sign me up for emails and updates</label>
              </div>
              <div class="text-center">
