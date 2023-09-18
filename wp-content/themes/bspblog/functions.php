@@ -481,12 +481,13 @@ function custom_contact_form() {
        $all_message .='<p>Organization:'.$organization.'</p>';
        $all_message .='<p>Email:'.$email.'</p>';
        $all_message .='<p>Message:'.$message.'</p>';
-       echo 'here';die();
+       
        if($is_signup=='Yes')
        {
          
-          
+        echo 'ttthere';
            @add_or_update_member(MAILCHIMP_ID,$email,$name);
+           echo 'here';die();
        }
       
        //save in db
