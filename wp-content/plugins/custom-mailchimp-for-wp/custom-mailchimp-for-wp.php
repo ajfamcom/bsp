@@ -130,11 +130,13 @@ if ( ! defined( 'ABSPATH' ) ) {
        <?php
     }
     add_shortcode( 'custom_contact_form', 'custom_contact_form' ); 
+
+    
     function add_or_update_member($listid,$email,$firstname) {
         // Check if MC4WP is active
         
-         $api_key='3c444e91de05942b83efaa74ae7b31fd-us13';//mc4wp_get_api_v3;
-         $api = new MC4WP_API_V3($api_key);
+         //$api_key='3c444e91de05942b83efaa74ae7b31fd-us13';//mc4wp_get_api_v3;
+         $api = mc4wp( 'api' );
          
          $subscriber_hash=md5( strtolower( trim( $email) ) );
     
