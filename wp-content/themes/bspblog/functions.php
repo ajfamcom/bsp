@@ -463,7 +463,7 @@ function custom_contact_form() {
        require_once ABSPATH . WPINC . '/pluggable.php';
        
        require_once get_template_directory() . '/mailchimpsettings/bspblog-config.php';
-       echo 'here';die();
+       
        $aname="BSP Research";
        $name = sanitize_text_field( $_POST['fname'] );
        $email = sanitize_email( $_POST['email'] );
@@ -481,7 +481,7 @@ function custom_contact_form() {
        $all_message .='<p>Organization:'.$organization.'</p>';
        $all_message .='<p>Email:'.$email.'</p>';
        $all_message .='<p>Message:'.$message.'</p>';
-       
+       echo 'here';die();
        if($is_signup=='Yes')
        {
          
