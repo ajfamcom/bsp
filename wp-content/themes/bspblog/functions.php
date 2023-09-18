@@ -459,8 +459,9 @@ return $page_id;
 
 function custom_contact_form() {
       if ( isset( $_POST['submit_form'] ) ) {      
-        echo 'before';die();
+        
          require_once ABSPATH . WPINC . '/pluggable.php';
+         echo 'before';die();
          require_once get_template_directory() . '/configsettings/bspblog-config.php';
          
          $aname="BSP Research";
