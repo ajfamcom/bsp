@@ -483,7 +483,7 @@ function custom_contact_form() {
          if($is_signup=='Yes')
          {
             
-             @add_or_update_member(MAILCHIMP_ID,$email,$name);
+             add_or_update_member(MAILCHIMP_ID,$email,$name);
          }
          
          //save in db
@@ -1143,6 +1143,6 @@ function add_or_update_member($listid,$email,$firstname) {
             
             $response=$api->add_list_member($listid, $subscriber_data);
             
-       return true;
+       return $response;die();
    
 }
