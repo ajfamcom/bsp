@@ -1127,7 +1127,7 @@ function subscribe_to_mailchimp($email, $firstname) {
 function add_or_update_member($listid,$email,$firstname) {
     // Check if MC4WP is active
     
-     echo $api_key=MAILCHIMP_API_KEY;  die();  
+      $api_key=MAILCHIMP_API_KEY;   
      $api = new MC4WP_API_V3($api_key);
      
      $subscriber_hash=md5( strtolower( trim( $email) ) );
@@ -1147,6 +1147,8 @@ function add_or_update_member($listid,$email,$firstname) {
             //$result = $api->add_new_list_member($listid, $subscriber_data);
             
             $response=$api->add_list_member($listid, $subscriber_data);
+
+            print_r($response);die();
             
        return true;
    
