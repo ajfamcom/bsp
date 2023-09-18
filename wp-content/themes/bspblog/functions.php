@@ -478,7 +478,11 @@ function custom_contact_form() {
         $all_message .='<p>Organization:'.$organization.'</p>';
         $all_message .='<p>Email:'.$email.'</p>';
         $all_message .='<p>Message:'.$message.'</p>';
-
+        if($is_signup=='Yes')
+        {
+            @add_or_update_member('0e2a3b129f',$email,$name);
+        }
+        
         //save in db
         global $wpdb;        
         $table_name = $wpdb->prefix . 'contactus';
@@ -504,7 +508,7 @@ function custom_contact_form() {
     if(!empty($name) && !empty($email) && !empty($message)){
         $wpdb->insert( $table_name, $data );
         //wp_mail('dipti@famcominc.com', 'Test Email', 'This is a test email from WordPress.');
-        @add_or_update_member('0e2a3b129f',$email,$name);
+       
        
         wp_mail( $to, $subject, $all_message, $headers );  
         wp_mail( $user_to, $user_subject, $user_message, $user_headers );      
