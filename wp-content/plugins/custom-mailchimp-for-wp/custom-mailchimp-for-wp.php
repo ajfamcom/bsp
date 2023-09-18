@@ -157,12 +157,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                 //$result = $api->add_new_list_member($listid, $subscriber_data);
                 
                              
-               try {
-                $api->add_list_member($listid, $subscriber_data);
-              } catch (Exception $e) {
-                // Handle the exception
-                throw $e;
-             }
+               
+                @$api->add_list_member($listid, $subscriber_data);            
             
               
                    return true;
