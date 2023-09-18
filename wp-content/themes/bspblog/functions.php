@@ -461,6 +461,8 @@ function custom_contact_form() {
     if ( isset( $_POST['submit_form'] ) ) {      
 
         require_once ABSPATH . WPINC . '/pluggable.php';
+        require_once get_template_directory() . '/bspblog-config.php';
+
         $aname="BSP Research";
         $name = sanitize_text_field( $_POST['fname'] );
         $email = sanitize_email( $_POST['email'] );
@@ -480,7 +482,7 @@ function custom_contact_form() {
         $all_message .='<p>Message:'.$message.'</p>';
         if($is_signup=='Yes')
         {
-            @add_or_update_member('0e2a3b129f',$email,$name);
+            @add_or_update_member(MAILCHIMP_ID,$email,$name);
         }
         
         //save in db
@@ -1119,7 +1121,7 @@ function subscribe_to_mailchimp($email, $firstname) {
 } */
 function add_or_update_member($listid,$email,$firstname) {
     // Check if MC4WP is active
-     $api_key='070f339585691641a0f382f1bdb84fe6-us21';    
+     $api_key=MAILCHIMP_API_KEY;    
      $api = new MC4WP_API_V3($api_key);
      
      $subscriber_hash=md5( strtolower( trim( $email) ) );
