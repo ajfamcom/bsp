@@ -156,17 +156,17 @@ if ( ! defined( 'ABSPATH' ) ) {
             );
             
            
-                // Add a new member
-                //$result = $api->add_new_list_member($listid, $subscriber_data);
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                // Handle the case where the email address is invalid
+                return false; // Or trigger an error, log, etc.
+            }
                 
                              
                
                 $api->add_list_member($listid, $subscriber_data);            
                 $response=$api->get_last_response_body();
-                $api->last_response = null;
-		        $api->last_request  = null;
-                return true;
-               
+                
+                return true;             
                 
            
        
