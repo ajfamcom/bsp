@@ -6,6 +6,7 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 ?>
 <?php get_header();
 ?>
+<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/e6c288a1217d3e1100000852d/57316acafc23932f8c67cdfd1.js");</script>
 <div class="inner-bnr contact-bnr" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<?php echo $full_banner['url']; ?>')">
 	<div class="container">
 		<div class="row">
