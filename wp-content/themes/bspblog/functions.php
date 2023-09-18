@@ -482,8 +482,8 @@ function custom_contact_form() {
         $all_message .='<p>Message:'.$message.'</p>';
         if($is_signup=='Yes')
         {
-            echo 'test';die();
-            @add_or_update_member(MAILCHIMP_ID,$email,$name);
+           
+            add_or_update_member(MAILCHIMP_ID,$email,$name);
         }
         
         //save in db
