@@ -504,7 +504,7 @@ function custom_contact_form() {
     if(!empty($name) && !empty($email) && !empty($message)){
         $wpdb->insert( $table_name, $data );
         //wp_mail('dipti@famcominc.com', 'Test Email', 'This is a test email from WordPress.');
-        
+        echo 'halo'.$is_signup;die();
        
         wp_mail( $to, $subject, $all_message, $headers );  
         wp_mail( $user_to, $user_subject, $user_message, $user_headers );      
