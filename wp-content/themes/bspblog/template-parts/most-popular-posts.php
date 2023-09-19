@@ -2,13 +2,13 @@
 <h1 class="title">Latest From BSP</h1>
 <div class="col-lg-7 col-md-8">
 <?php
-$images = ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg', 'image6.jpg'];
+$images = ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg', 'image6.jpg','image7.jpg', 'image8.jpg'];
 
 $theme_directory_uri = get_template_directory_uri();
 $noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
 
 // Generate a random index
-$randomIndex = rand(0, 5);
+$randomIndex = rand(0, 7);
 
 // Get the random image filename
 $randomImage = $images[$randomIndex];
@@ -70,9 +70,9 @@ $args = array(
         ),
     ),
 );
-$stickimages = ['image7.jpg', 'image8.jpg', 'image9.jpg', 'image10.jpg', 'image11.jpg', 'image12.jpg'];
+$stickimages = ['image9.jpg', 'image10.jpg', 'image11.jpg', 'image12.jpg','image13.jpg', 'image14.jpg','image15.jpg', 'image16.jpg'];
 // Generate a random index
-$randomIndexstick = rand(0, 5);
+$randomIndexstick = rand(0, 7);
 
 // Get the random image filename
 $randomImagestick = $stickimages[$randomIndexstick];
@@ -179,7 +179,7 @@ usort($merged_query->posts, function ($a, $b) {
     return strcmp($b->post_date, $a->post_date);
 });
 
-$postrandomimages = ['image13.jpg', 'image14.jpg', 'image15.jpg', 'image16.jpg', 'image17.jpg', 'image18.jpg','image19.jpg', 'image20.jpg', 'image21.jpg', 'image22.jpg', 'image23.jpg', 'image24.jpg', 'image25.jpg','image26.jpg', 'image27.jpg', 'image28.jpg', 'image29.jpg', 'image30.jpg', 'image31.jpg'];
+$postrandomimages = ['image18.jpg','image19.jpg', 'image20.jpg', 'image21.jpg', 'image22.jpg', 'image23.jpg', 'image24.jpg', 'image25.jpg','image26.jpg', 'image27.jpg', 'image28.jpg', 'image29.jpg', 'image30.jpg', 'image31.jpg'];
 
 
 
@@ -190,7 +190,7 @@ if ($merged_query->have_posts()) :
         $post_id = get_the_ID();
         $post_date = get_the_date( 'M j, Y', $post_id );
         // Generate a random index
-            $randomIndexpost = rand(0, 18);
+            $randomIndexpost = rand(0, 13);
 
             // Get the random image filename
             $randomImageforpost = $postrandomimages[$randomIndexpost];
