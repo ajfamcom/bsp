@@ -179,7 +179,7 @@ usort($merged_query->posts, function ($a, $b) {
     return strcmp($b->post_date, $a->post_date);
 });
 
-$postrandomimages = ['image17.jpg','image18.jpg','image19.jpg', 'image20.jpg', 'image21.jpg', 'image22.jpg', 'image23.jpg', 'image24.jpg', 'image25.jpg','image26.jpg', 'image27.jpg', 'image28.jpg', 'image29.jpg', 'image30.jpg', 'image31.jpg'];
+
 
 
 if ($merged_query->have_posts()) :
@@ -188,7 +188,7 @@ if ($merged_query->have_posts()) :
         
         $post_id = get_the_ID();
         $post_date = get_the_date( 'M j, Y', $post_id );
-        // Generate a random index
+        $postrandomimages = ['image17.jpg','image18.jpg','image19.jpg', 'image20.jpg', 'image21.jpg', 'image22.jpg', 'image23.jpg', 'image24.jpg', 'image25.jpg','image26.jpg', 'image27.jpg', 'image28.jpg', 'image29.jpg', 'image30.jpg', 'image31.jpg'];
             $randomIndexpost = rand(0, 14);
 
             // Get the random image filename
