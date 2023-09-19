@@ -961,6 +961,9 @@ ul.contact-social-links li a:hover i {
     background-image: linear-gradient(180deg, #06213d, var(--blue));
     border-radius: 5px;
 }
+.tile-blog-post .blue-tile:hover {
+    background-image: linear-gradient(180deg, #b10f1e, var(--orange));
+}
 .tile-blog-post h4 a {
     color: #fff;
 }
