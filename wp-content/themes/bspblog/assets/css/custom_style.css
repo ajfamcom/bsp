@@ -1212,6 +1212,14 @@ ul#slider-related-posts-list li .news-block .news-info span.news-date {
 .news-block.col-md-4 {
     margin-bottom: 3%;
 }
+
+.single-poll-content .single-poll-info ul {
+    margin: 0 0 0 15px;
+}
+.single-poll-content .single-poll-info ul li a {
+    font-size: 22px;
+    line-height: 1.7em;
+}
 /*------ /polls-page --------*/
 
 /*-------- post-discription-page --------*/
