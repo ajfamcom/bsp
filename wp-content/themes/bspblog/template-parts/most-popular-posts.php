@@ -184,6 +184,7 @@ $postrandomimages = ['image17.jpg','image18.jpg','image19.jpg', 'image20.jpg', '
             shuffle($postrandomimages);
 
 if ($merged_query->have_posts()) :
+    $randomImageIndex = 0;
     while ($merged_query->have_posts()):
         $merged_query->the_post();
         
@@ -193,8 +194,11 @@ if ($merged_query->have_posts()) :
             $randomIndexpost = rand(0, 14);
 
             // Get the random image filename
-            $randomImageforpost = $postrandomimages[$randomIndexpost];
+            $randomImageforpost = $postrandomimages[$randomImageIndex];
             $poststaticimage = $theme_directory_uri . '/assets/home-page-images/'.$randomImageforpost;
+            // Increment the index for the next post
+        $randomImageIndex = ($randomImageIndex + 1) % count($postrandomimages);
+
         ?>
         <div class="side-fpost">
         <div class="side-fpost-img">
