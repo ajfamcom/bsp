@@ -2,8 +2,17 @@
 <h1 class="title">Latest From BSP</h1>
 <div class="col-lg-7 col-md-8">
 <?php
+$images = ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg', 'image6.jpg'];
+
 $theme_directory_uri = get_template_directory_uri();
 $noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
+
+// Generate a random index
+$randomIndex = rand(0, 6);
+
+// Get the random image filename
+$randomImage = $images[$randomIndex];
+$featimage = $theme_directory_uri . '/assets/home-page-images/'.$randomImage;
 $args = array(
     'post_type' => 'bsp_custom_polls',
     'posts_per_page' => 1,    
@@ -29,13 +38,8 @@ if ($query->have_posts()) {
     <?php //if(isset($featured_post) && $featured_post[0]=='Yes'){ ?>
     <div class="featured-post">
     <div class="featured-post-img">
-	<?php
-    if (has_post_thumbnail()) {
-    the_post_thumbnail(); 
-    }
-    else{
-        echo '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="img-fluid">';
-    }
+	<?php    
+        echo '<img src="' . esc_url($featimage) . '" alt="Featured Image" class="img-fluid">';    
     ?>
     </div>
     <div class="featured-post-discription">
