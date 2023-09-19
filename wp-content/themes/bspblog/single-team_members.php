@@ -60,7 +60,7 @@ endif;
 					<?php } ?>
 				    </div>
 					<div class="single-member-info">
-						<h1 class="member-details"><span class="member-name"><?php echo $fullname; ?></span>,<span class="member-education"><?php echo $education; ?></span></h1>
+						<h1 class="member-details"><span class="member-name"><?php echo $fullname; ?></span><span class="member-education"><?php echo ($education)?",".$education:''; ?></span></h1>
 						<p class="other-details"><span class="member-position"><?php echo $designation; ?></span></p>
 						<?php the_content(); ?>
 					</div>
