@@ -8,7 +8,7 @@ $theme_directory_uri = get_template_directory_uri();
 $noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
 
 // Generate a random index
-$randomIndex = rand(0, 6);
+$randomIndex = rand(0, 5);
 
 // Get the random image filename
 $randomImage = $images[$randomIndex];
@@ -72,7 +72,7 @@ $args = array(
 );
 $stickimages = ['image7.jpg', 'image8.jpg', 'image9.jpg', 'image10.jpg', 'image11.jpg', 'image12.jpg'];
 // Generate a random index
-$randomIndexstick = rand(0, 6);
+$randomIndexstick = rand(0, 5);
 
 // Get the random image filename
 $randomImagestick = $stickimages[$randomIndexstick];
@@ -190,7 +190,7 @@ if ($merged_query->have_posts()) :
         $post_id = get_the_ID();
         $post_date = get_the_date( 'M j, Y', $post_id );
         // Generate a random index
-            $randomIndexpost = rand(0, 19);
+            $randomIndexpost = rand(0, 18);
 
             // Get the random image filename
             $randomImageforpost = $postrandomimages[$randomIndexpost];
