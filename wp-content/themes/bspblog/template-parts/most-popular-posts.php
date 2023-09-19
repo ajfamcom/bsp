@@ -189,7 +189,7 @@ if ($merged_query->have_posts()) :
         $post_id = get_the_ID();
         $post_date = get_the_date( 'M j, Y', $post_id );
         // Generate a random index
-            $randomIndexpost = rand(0, 13);
+            $randomIndexpost = rand(0, 14);
 
             // Get the random image filename
             $randomImageforpost = $postrandomimages[$randomIndexpost];
