@@ -79,7 +79,7 @@ if($showt=='list')
                         
 
                         $randomIndex = array_rand($options);
-                        $currentClass = 'blue-tile';//$options[$randomIndex];
+                        $currentClass = $options[$randomIndex];
 						$query->the_post();						
                         $post_id = get_the_ID();
                         $short_desc = get_field('short_description', $post_id);
