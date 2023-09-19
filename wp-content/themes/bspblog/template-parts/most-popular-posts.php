@@ -70,7 +70,13 @@ $args = array(
         ),
     ),
 );
+$stickimages = ['image7.jpg', 'image8.jpg', 'image9.jpg', 'image10.jpg', 'image11.jpg', 'image12.jpg'];
+// Generate a random index
+$randomIndexstick = rand(0, 6);
 
+// Get the random image filename
+$randomImagestick = $stickimages[$randomIndexstick];
+$stickyimage = $theme_directory_uri . '/assets/home-page-images/'.$randomImagestick;
 $query = new WP_Query( $args );
 
 if ($query->have_posts()) {
@@ -84,12 +90,9 @@ if ($query->have_posts()) {
     <div class="static-post">
     <div class="static-post-img">
 	<?php
-    if (has_post_thumbnail()) {
-    the_post_thumbnail(); 
-    }
-    else{
-        echo '<img src="' . esc_url($noimage) . '" alt="Featured Image" class="img-fluid">';
-    }
+    
+        echo '<img src="' . esc_url($stickyimage) . '" alt="Featured Image" class="img-fluid">';
+    
     ?>
     </div>
     <div class="static-post-discription">
