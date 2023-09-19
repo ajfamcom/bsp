@@ -180,12 +180,7 @@ usort($merged_query->posts, function ($a, $b) {
 });
 
 $postrandomimages = ['image13.jpg', 'image14.jpg', 'image15.jpg', 'image16.jpg', 'image17.jpg', 'image18.jpg','image19.jpg', 'image20.jpg', 'image21.jpg', 'image22.jpg', 'image23.jpg', 'image24.jpg', 'image25.jpg','image26.jpg', 'image27.jpg', 'image28.jpg', 'image29.jpg', 'image30.jpg', 'image31.jpg'];
-// Generate a random index
-$randomIndexpost = rand(0, 19);
 
-// Get the random image filename
-$randomImageforpost = $postrandomimages[$randomIndexpost];
-$poststaticimage = $theme_directory_uri . '/assets/home-page-images/'.$randomImageforpost;
 
 
 if ($merged_query->have_posts()) :
@@ -194,6 +189,12 @@ if ($merged_query->have_posts()) :
         
         $post_id = get_the_ID();
         $post_date = get_the_date( 'M j, Y', $post_id );
+        // Generate a random index
+            $randomIndexpost = rand(0, 19);
+
+            // Get the random image filename
+            $randomImageforpost = $postrandomimages[$randomIndexpost];
+            $poststaticimage = $theme_directory_uri . '/assets/home-page-images/'.$randomImageforpost;
         ?>
         <div class="side-fpost">
         <div class="side-fpost-img">
