@@ -265,7 +265,7 @@ button.search-submit:hover {
     /* padding-left: 70px; */
     position: relative;
     color: var(--orange) !important;
-    margin-bottom: 1%;
+    /* margin-bottom: 1%; */
 }
 /* .services-heading::before {
     position: absolute;
