@@ -280,6 +280,7 @@ button.search-submit:hover {
 
 span.commit-text {
     color: var(--orange);
+    font-style: normal !important;
 }
 .single-bsp_custom_polls .single-poll-content .single-poll-info p a {
     font-size: 22px;
