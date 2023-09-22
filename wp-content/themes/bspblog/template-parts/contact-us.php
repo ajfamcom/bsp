@@ -29,11 +29,8 @@ $image_over_banner = get_field('image_over_banner', $page_id);
 		<div class="col-md-4 col-sm-4 col-12">
 			<h2>Start working with our team today</h2>
 			<p>Interested in polling or message testing research? Focus groups or qualitative interviews? Modeling and data analytics? Contact us today to discuss the possibilities...</p>
-			<ul class="contact-social-links">
-				<li><a href="#"><i class="fa-brands fa-facebook-f"></i> - Facebook</a></li>
-				<li><a href="#"><i class="fa-brands fa-instagram"></i> - Instagram</a></li>
-				<li><a href="#"><i class="fa-brands fa-twitter"></i> - Twitter</a></li>
-			</ul>
+			
+			<?php dynamic_sidebar('header-widget'); ?>
 		</div>
 		<div class="col-md-8 col-sm-8 col-12">
 		<!-- Content of "Contact Us" page -->
