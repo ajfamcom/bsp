@@ -61,6 +61,9 @@ p:last-child {
 .head-news p {
     margin: 0px;
 }
+.head-news p a {
+    color: #fff;
+}
 .head-news span {
     color: var(--orange);
     text-transform: uppercase;
