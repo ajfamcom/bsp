@@ -18,7 +18,7 @@ search_page
 FROM wp_searchdata WHERE 1=1";
 
 if (!empty($search_page)) {
-    $query .= " AND search_page LIKE %'$search_page'%";
+    $query .= " AND search_page LIKE '$search_page'";
 }
 
 if (!empty($start_date) && !empty($end_date)) {
