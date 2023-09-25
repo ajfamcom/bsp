@@ -217,20 +217,21 @@ $total_pages = ceil($total_items / $items_per_page);
         }); */
 
        
-    $(document).ready(function() {
-        var table = $('#sortTable').DataTable({
-            "columnDefs": [
-                { "type": "datetime", "targets": 2 } // Assuming the date column is at index 2
-            ]
-        });
-
-        $('#start_date, #end_date').on('change', function () {
-            var start_date = $('#start_date').val();
-            var end_date = $('#end_date').val();
-
-            table.columns(2).search(start_date + ' to ' + end_date).draw();
-        });
+        $(document).ready(function() {
+    var table = $('#sortTable').DataTable({
+        "columnDefs": [
+            { "type": "datetime", "targets": 2 } // Assuming the datetime column is at index 2
+        ]
     });
+
+    $('#start_date, #end_date').on('change', function () {
+        var start_date = $('#start_date').val();
+        var end_date = $('#end_date').val();
+
+        table.columns(2).search(start_date + ' to ' + end_date, true, false).draw();
+    });
+});
+
 
 
     </script>
