@@ -225,8 +225,8 @@ $total_pages = ceil($total_items / $items_per_page);
     });
 
     $('#start_date, #end_date').on('change', function () {
-        var start_date = $('#start_date').val();
-        var end_date = $('#end_date').val();
+        var start_date ='2023-08-15 19:33:59';// $('#start_date').val();
+        var end_date = '2023-08-18 10:47:32';//$('#end_date').val();
 
         table.columns(2).search(start_date + ' to ' + end_date, true, false).draw();
     });
