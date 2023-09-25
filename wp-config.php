@@ -83,7 +83,9 @@ define( 'WP_DEBUG', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
 define( 'WP_AUTO_UPDATE_CORE', true );
-
+define('FS_METHOD', 'direct');
+define('FS_CHMOD_DIR',0755);
+define('FS_CHMOD_FILE',0644);
 
 /* That's all, stop editing! Happy publishing. */
 
