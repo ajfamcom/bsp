@@ -118,8 +118,8 @@ $fetchdata = $wpdb->get_results($query);
         <label for="end_date">Search Page:</label>
         <select name="search_page" id="search_page">
             <option value="">Select</option>
-            <option value="Polls Page">Polls Page</option>
-            <option value="Top Header">Top Header</option>
+            <option value="polls_page">Polls Page</option>
+            <option value="top_header">Top Header</option>
         </select>
     </div>
     <div class="form-group">
@@ -143,8 +143,8 @@ $fetchdata = $wpdb->get_results($query);
             echo '<tr><td>' . $item->keyword . '</td>';
             echo '<td>' . $item->visitor_ip . '</td>';
             echo '<td>' . $item->created_at . '</td>';
-            //echo '<td>' . ucwords(str_replace('_',' ',$item->search_page)) . '</td></tr>';
-            echo '<td>' . (($item->search_page)) . '</td></tr>';
+            echo '<td>' . ucwords(str_replace('_',' ',$item->search_page)) . '</td></tr>';
+           
         }
     } else {
         echo '<tr><td colspan="4">No data found.</td></tr>';
