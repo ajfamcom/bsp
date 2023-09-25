@@ -19,7 +19,7 @@ global $wpdb;
       visitor_ip,
       DATE_FORMAT(created_at, '%Y-%m-%d') as formatted_date,
       search_page
-  FROM wp_searchdata;";
+  FROM wp_searchdata";
       $fetch_dataquery = $wpdb->get_results($sql_query);
       $total_items =count($fetch_dataquery);
   //}
@@ -38,7 +38,12 @@ if (!empty($search_keyword)) {
     $current_admin_url = add_query_arg(array('s' => urlencode($search_keyword)), $current_admin_url);
 }
 // Query to fetch data with pagination
-$query = "SELECT * FROM wp_searchdata";
+$query = "SELECT 
+keyword,
+visitor_ip,
+DATE_FORMAT(created_at, '%Y-%m-%d') as formatted_date,
+search_page
+FROM wp_searchdata";
 
 // If search keyword is provided, add WHERE clause
 if (!empty($search_keyword)) {
