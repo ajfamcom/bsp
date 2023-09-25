@@ -44,9 +44,13 @@ public function display_news_header_section() {
              $post_id = get_the_ID();
              $position = get_field('position', $post_id);
              $status = get_field('status', $post_id);
+             $line1=get_field('line1', $post_id);
+                $line2=get_field('line2', $post_id);
+                $line3=get_field('line3', $post_id);                
+                $link=get_field('link', $post_id);
              if($position=='Header-Top' && $status=='Active')  {
                 the_title();
-                echo '<p>'.esc_html($title_of_poll).'</p>'; 
+                echo '<p><a href="'.$link.'">'.$line1.' '.$line2.' '.$line3.'</a></p>'; 
              }
             
          }
