@@ -4,7 +4,7 @@ Template Name: Custom Search Data Template
 */
 global $wpdb;
 
-      $sql_query="SELECT 
+      /* $sql_query="SELECT 
       keyword,
       visitor_ip,
       created_at,
@@ -19,14 +19,14 @@ $items_per_page = 10; // Number of items per page
 $offset = ($current_page - 1) * $items_per_page;
 
 // Search keyword
-$search_keyword = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : '';
+$search_keyword = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : ''; */
 $current_admin_url = admin_url('admin.php');
 $current_admin_url = add_query_arg(array('page' => 'search-report-display'), $current_admin_url);
 
-if (!empty($search_keyword)) {
+/* if (!empty($search_keyword)) {
     $current_admin_url = add_query_arg(array('s' => urlencode($search_keyword)), $current_admin_url);
-}
-// Query to fetch data with pagination
+} */
+
 $query = "SELECT 
 keyword,
 visitor_ip,
@@ -35,9 +35,9 @@ search_page
 FROM wp_searchdata";
 
 // If search keyword is provided, add WHERE clause
-if (!empty($search_keyword)) {
+/* if (!empty($search_keyword)) {
     $query .= " WHERE keyword LIKE '%$search_keyword%'";
-}
+} */
 
 $query .= " ORDER BY created_at DESC";
 $fetchdata = $wpdb->get_results($query);
@@ -49,7 +49,7 @@ $fetchdata = $wpdb->get_results($query);
 
 
 // Calculate total number of pages for pagination
-$total_pages = ceil($total_items / $items_per_page);
+/* $total_pages = ceil($total_items / $items_per_page); */
 ?>
 <style>
     /* table, th, td {
