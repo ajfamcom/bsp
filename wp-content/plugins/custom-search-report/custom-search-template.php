@@ -239,14 +239,8 @@ $total_pages = ceil($total_items / $items_per_page);
         table.column(2).search('').draw(); // Reset date filtering
 
         if (start_date && end_date) {
-            table.column(2).data().each(function (value, index) {
-                var date = new Date(value);
-
-                if (date >= start_date && date <= end_date) {
-                    table.row.nodes().show();
-                }
-            });
-
+            var date = new Date(start_date);
+            table.columns(2).search('>=' + searchValue, true, false).draw();
             table.draw();
         }
     });
