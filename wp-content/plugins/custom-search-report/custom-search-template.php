@@ -119,6 +119,10 @@ $total_pages = ceil($total_items / $items_per_page);
 .custom-search-pagination a:hover {
     background-color: #ddd;
 }
+.date-range-match {
+    background-color: yellow; /* Adjust the styling as needed */
+}
+
 </style>
 <div class="container mt-5">
   <h2>Search Data</h2>
@@ -232,19 +236,22 @@ $total_pages = ceil($total_items / $items_per_page);
         var start_date = new Date($('#start_date').val());
         var end_date = new Date($('#end_date').val());
 
-        table.draw(); // Reset the table to its original state
+        table.column(2).search('').draw(); // Reset date filtering
 
         if (start_date && end_date) {
-            table
-                .column(2)
-                .search(
-                    '^' + start_date.getFullYear() + '-' + (start_date.getMonth() + 1) + '-' + start_date.getDate(),
-                    true, false
-                )
-                .draw();
+            table.column(2).data().each(function (value, index) {
+                var date = new Date(value);
+
+                if (date >= start_date && date <= end_date) {
+                    table.row(index).nodes().to$().addClass('date-range-match');
+                }
+            });
+
+            table.draw();
         }
     });
 });
+
 
 
 
