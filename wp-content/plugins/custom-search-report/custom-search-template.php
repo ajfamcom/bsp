@@ -239,23 +239,20 @@ table.rows().data().each(function (value, index) {
 }); */
 
     $('#start_date, #end_date').on('change', function () {
-        var start_date = new Date($('#start_date').val());
-        var year = start_date.getFullYear();
-        var month = String(start_date.getMonth() + 1).padStart(2, '0'); // Adding 1 because months are 0-based
-         var day = String(start_date.getDate()).padStart(2, '0');
+        var start_date = $('#start_date').val();
+        
 
-        var formattedStartDate = `${year}-${month}-${day}`;
+        var end_date = $('#end_date').val();
+       // Assuming start_date is a Date object
+var formattedStartDate = start_date.getFullYear() + '-' + String(start_date.getMonth() + 1).padStart(2, '0') + '-' + String(start_date.getDate()).padStart(2, '0');
 
-        var end_date = new Date($('#end_date').val());
-        var endyear = end_date.getFullYear();
-        var endmonth = String(end_date.getMonth() + 1).padStart(2, '0'); // Adding 1 because months are 0-based
-         var endday = String(end_date.getDate()).padStart(2, '0');
+var searchValue = '>=' + formattedStartDate;
 
-        var formattedEndDate = `${endyear}-${endmonth}-${endday}`;
+table.columns(2).search(searchValue, true, false).draw();
 
-        console.log(typeof formattedStartDate);
-        console.log(typeof formattedEndDate);
-        table.columns(2).search(formattedStartDate + ' to ' + formattedEndDate, true, false).draw();
+
+        
+        //table.columns(2).search(start_date + ' to ' + end_date, true, false).draw();
     });
 });
 
