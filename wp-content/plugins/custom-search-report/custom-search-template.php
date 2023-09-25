@@ -220,7 +220,7 @@ $total_pages = ceil($total_items / $items_per_page);
     $(document).ready(function() {
         var table = $('#sortTable').DataTable({
             "columnDefs": [
-                { "type": "date", "targets": 3 } // Assuming the date column is at index 2
+                { "type": "datetime", "targets": 2 } // Assuming the date column is at index 2
             ]
         });
 
