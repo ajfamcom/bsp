@@ -116,10 +116,10 @@ $fetchdata = $wpdb->get_results($query);
     </div>
     <div class="form-group">
         <label for="end_date">Search Page:</label>
-        <select name="search_page" id="search_page">
+        <select name="search_page" id="search_page" class="form-control">
             <option value="">Select</option>
-            <option value="polls_page">Polls Page</option>
-            <option value="top_header">Top Header</option>
+            <option value="polls_page" <?php echo isset($_GET['search_page']) ? 'selected' : ''; ?>>Polls Page</option>
+            <option value="top_header" <?php echo isset($_GET['search_page']) ? 'selected' : ''; ?>>Top Header</option>
         </select>
     </div>
     <div class="form-group">
