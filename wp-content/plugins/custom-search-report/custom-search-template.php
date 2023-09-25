@@ -121,7 +121,14 @@ $total_pages = ceil($total_items / $items_per_page);
     <button type="button" class="custom-search-button btn btn-primary" onclick="location.href='<?php echo admin_url('admin.php').'?page=search-report-display';?>'">Reset</button>
     <button type="button" class="custom-search-button btn btn-primary btndownload">Download CSV</button>
     <button type="button" class="custom-search-button btn btn-primary">Total Result Count: <b><?php echo $total_items;?></b></button>
-   
+    <div class="form-group">
+        <label for="start_date">Start Date:</label>
+        <input type="date" name="start_date" id="start_date" class="form-control" value="<?php echo isset($_GET['start_date']) ? $_GET['start_date'] : ''; ?>">
+    </div>
+    <div class="form-group">
+        <label for="end_date">End Date:</label>
+        <input type="date" name="end_date" id="end_date" class="form-control" value="<?php echo isset($_GET['end_date']) ? $_GET['end_date'] : ''; ?>">
+    </div>
 </form>
 
   <table class="table table-striped table-bordered custom-search-table" id="sortTable">
@@ -204,10 +211,28 @@ $total_pages = ceil($total_items / $items_per_page);
     
     </script>
     <script>
-        jQuery(document).ready(function($) {
+      /*   jQuery(document).ready(function($) {
           $('#sortTable').DataTable();
           
+        }); */
+
+       
+    $(document).ready(function() {
+        var table = $('#sortTable').DataTable({
+            "columnDefs": [
+                { "type": "date", "targets": 2 } // Assuming the date column is at index 2
+            ]
         });
+
+        $('#start_date, #end_date').on('change', function () {
+            var start_date = $('#start_date').val();
+            var end_date = $('#end_date').val();
+
+            table.columns(2).search(start_date + ' to ' + end_date).draw();
+        });
+    });
+
+
     </script>
 
 
