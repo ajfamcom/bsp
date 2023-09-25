@@ -224,14 +224,16 @@ $total_pages = ceil($total_items / $items_per_page);
     });
     
     </script>
-    <script>
-   
+    <script>  
 
-
+       jQuery(document).ready(function($) {
+          $('#sortTable').DataTable();
+          
+        });
 
 
        
-         $(document).ready(function() {
+       /*   $(document).ready(function() {
             var table = $('#sortTable').DataTable({
         "columnDefs": [
             { "type": "date", "targets": 2 } // Assuming the datetime column is at index 2
@@ -258,7 +260,7 @@ table.columns(2).search(searchValue, true, false).draw();
         
     });
 }); 
-
+ */
 
 
     </script>
