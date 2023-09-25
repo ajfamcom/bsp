@@ -54,7 +54,7 @@ p:last-child {
     display: flex;
     align-items: center;
     color: #fff;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1em;
     height: 100%;
 }
@@ -63,6 +63,7 @@ p:last-child {
 }
 .head-news p a {
     color: #fff;
+    font-size: 14px;
 }
 .head-news span {
     color: var(--orange);
