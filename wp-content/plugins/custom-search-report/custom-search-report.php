@@ -85,11 +85,26 @@ function custom_csv_download_ajax() {
     if (isset($_POST['action']) && $_POST['action'] === 'custom_csv_download') {
         global $wpdb;
         $search=$_POST['search_text'];
-        $query="SELECT keyword, visitor_ip, created_at, search_page FROM wp_searchdata";
+        $start_date=$_POST['start_date'];
+        $end_date=$_POST['end_date'];
+        $search_page=$_POST['search_page'];
+
+        $query="SELECT keyword, visitor_ip, created_at, search_page FROM wp_searchdata WHERE 1=1";
         if (!empty($search)) {
             $search_keyword = sanitize_text_field($search);
-            $query .= " WHERE keyword LIKE '%$search%'";
+            $query .= " AND keyword LIKE '%$search%'";
         }
+        if (!empty($start_date) && !empty($end_date)) {
+            $query .= " AND created_at BETWEEN '$start_date' AND '$end_date' ";
+        } elseif (!empty($start_date)) {
+            $query .= " AND created_at >= '$start_date' ";
+        } elseif (!empty($end_date)) {
+            $query .= " AND created_at <= '$end_date' ";
+        }
+        if (!empty($search_page)) {
+            $query .= " AND search_page LIKE '%$search_page%'";
+        }
+        $query .= " ORDER BY created_at DESC";
         $data = $wpdb->get_results($query);
         
         // Set headers for CSV download

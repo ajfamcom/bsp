@@ -170,12 +170,14 @@ $fetchdata = $wpdb->get_results($query);
     jQuery(document).ready(function($) {
         $('.btndownload').on('click', function() {
             var searchinput = $("input[type='search']").val();
-            
+            var start_date = $("#start_date").val();
+            var end_date = $("end_date").val();
+            var search_page = $("#search_page").val();
             $.ajax({
                 type: 'POST',
                 url: ajaxurl,
                 data: {
-                    action: 'custom_csv_download','search_text':searchinput
+                    action: 'custom_csv_download','search_text':searchinput,'start_date':start_date,'end_date':end_date,'search_page':search_page
                 },
                 success: function(response) {
                     // Create a hidden anchor element to trigger the download
