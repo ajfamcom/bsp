@@ -14,7 +14,12 @@ global $wpdb;
     $total_items =count($fetch_dataquery);
   }
   else{ */
-      $sql_query="SELECT * FROM wp_searchdata";
+      $sql_query="SELECT 
+      keyword,
+      visitor_ip,
+      DATE_FORMAT(created_at, '%d-%m-%y') as formatted_date,
+      search_page
+  FROM wp_searchdata;";
       $fetch_dataquery = $wpdb->get_results($sql_query);
       $total_items =count($fetch_dataquery);
   //}
@@ -146,7 +151,7 @@ $total_pages = ceil($total_items / $items_per_page);
         foreach ($fetchdata as $item) {
             echo '<tr><td>' . $item->keyword . '</td>';
             echo '<td>' . $item->visitor_ip . '</td>';
-            echo '<td>' . $item->created_at . '</td>';
+            echo '<td>' . $item->formatted_date . '</td>';
             echo '<td>' . ucwords(str_replace('_',' ',$item->search_page)) . '</td></tr>';
         }
     } else {
@@ -220,13 +225,13 @@ $total_pages = ceil($total_items / $items_per_page);
         $(document).ready(function() {
     var table = $('#sortTable').DataTable({
         "columnDefs": [
-            { "type": "datetime", "targets": 2 } // Assuming the datetime column is at index 2
+            { "type": "date", "targets": 2 } // Assuming the datetime column is at index 2
         ]
     });
 
     $('#start_date, #end_date').on('change', function () {
-        var start_date ='2023-08-15 19:33:59';// $('#start_date').val();
-        var end_date = '2023-08-18 10:47:32';//$('#end_date').val();
+        var start_date = $('#start_date').val();
+        var end_date = $('#end_date').val();
 
         table.columns(2).search(start_date + ' to ' + end_date, true, false).draw();
     });
