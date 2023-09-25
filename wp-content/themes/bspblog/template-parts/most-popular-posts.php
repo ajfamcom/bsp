@@ -2,17 +2,32 @@
 <h1 class="title">Latest From BSP</h1>
 <div class="col-lg-7 col-md-8">
 <?php
-$images = ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg', 'image6.jpg','image7.jpg', 'image8.jpg'];
+$upload_dir = wp_upload_dir();
+$custom_images_dir = $upload_dir['basedir'] . '/custom-images';
+
+if (is_dir($custom_images_dir)) {
+    $images = glob($custom_images_dir . '/*.{jpg,png,gif}', GLOB_BRACE);
+}
+$imageList=array();
+if (!empty($images)) {
+
+    foreach ($images as $image) {
+        $image_name = basename($image);
+        array_push($imageList,$image_name);
+    }
+}
+//$images = ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg', 'image6.jpg','image7.jpg', 'image8.jpg'];
 
 $theme_directory_uri = get_template_directory_uri();
 $noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
 
 // Generate a random index
+shuffle($imageList);
 $randomIndex = rand(0, 7);
 
 // Get the random image filename
-$randomImage = $images[$randomIndex];
-$featimage = $theme_directory_uri . '/assets/home-page-images/'.$randomImage;
+$randomImage = $imageList[$randomIndex];
+$featimage = $upload_dir['baseurl'] . '/custom-images/' .$randomImage;
 $args = array(
     'post_type' => 'bsp_custom_polls',
     'posts_per_page' => 1,    
@@ -70,13 +85,14 @@ $args = array(
         ),
     ),
 );
-$stickimages = ['image9.jpg', 'image10.jpg', 'image11.jpg', 'image12.jpg','image13.jpg', 'image14.jpg','image15.jpg', 'image16.jpg'];
+//$stickimages = ['image9.jpg', 'image10.jpg', 'image11.jpg', 'image12.jpg','image13.jpg', 'image14.jpg','image15.jpg', 'image16.jpg'];
 // Generate a random index
+shuffle($imageList);
 $randomIndexstick = rand(0, 7);
 
 // Get the random image filename
-$randomImagestick = $stickimages[$randomIndexstick];
-$stickyimage = $theme_directory_uri . '/assets/home-page-images/'.$randomImagestick;
+$randomImagestick = $imageList[$randomIndexstick];
+$stickyimage = $upload_dir['baseurl'] . '/custom-images/'.$randomImagestick;
 $query = new WP_Query( $args );
 
 if ($query->have_posts()) {
@@ -180,8 +196,8 @@ usort($merged_query->posts, function ($a, $b) {
 });
 
 
-$postrandomimages = ['image17.jpg','image18.jpg','image19.jpg', 'image20.jpg', 'image21.jpg', 'image22.jpg', 'image23.jpg', 'image24.jpg', 'image25.jpg','image26.jpg', 'image27.jpg', 'image28.jpg', 'image29.jpg', 'image30.jpg', 'image31.jpg'];
-            shuffle($postrandomimages);
+//$postrandomimages = ['image17.jpg','image18.jpg','image19.jpg', 'image20.jpg', 'image21.jpg', 'image22.jpg', 'image23.jpg', 'image24.jpg', 'image25.jpg','image26.jpg', 'image27.jpg', 'image28.jpg', 'image29.jpg', 'image30.jpg', 'image31.jpg'];
+            shuffle($imageList);
 
 if ($merged_query->have_posts()) :
     $randomImageIndex = 0;
@@ -194,10 +210,10 @@ if ($merged_query->have_posts()) :
             $randomIndexpost = rand(0, 14);
 
             // Get the random image filename
-            $randomImageforpost = $postrandomimages[$randomImageIndex];
-            $poststaticimage = $theme_directory_uri . '/assets/home-page-images/'.$randomImageforpost;
+            $randomImageforpost = $imageList[$randomImageIndex];
+            $poststaticimage = $upload_dir['baseurl'] . '/custom-images/' .$randomImageforpost;
             // Increment the index for the next post
-        $randomImageIndex = ($randomImageIndex + 1) % count($postrandomimages);
+        $randomImageIndex = ($randomImageIndex + 1) % count($imageList);
 
         ?>
         <div class="side-fpost">
