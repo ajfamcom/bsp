@@ -17,7 +17,7 @@ global $wpdb;
       $sql_query="SELECT 
       keyword,
       visitor_ip,
-      DATE_FORMAT(created_at, '%d-%m-%y') as formatted_date,
+      DATE_FORMAT(created_at, '%Y-%m-%d') as formatted_date,
       search_page
   FROM wp_searchdata;";
       $fetch_dataquery = $wpdb->get_results($sql_query);
