@@ -238,7 +238,5 @@ else :
     echo 'No posts found.';
 endif;
 ?>
-
-
 </div>
 
