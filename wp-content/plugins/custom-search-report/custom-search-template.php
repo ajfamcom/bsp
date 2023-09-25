@@ -239,10 +239,10 @@ table.rows().data().each(function (value, index) {
 }); */
 
     $('#start_date, #end_date').on('change', function () {
-        var start_date = $('#start_date').val();
+        var start_date = Date($('#start_date').val());
         
 
-        var end_date = $('#end_date').val();
+        var end_date = Date($('#end_date').val());
        // Assuming start_date is a Date object
 var formattedStartDate = start_date.getFullYear() + '-' + String(start_date.getMonth() + 1).padStart(2, '0') + '-' + String(start_date.getDate()).padStart(2, '0');
 
