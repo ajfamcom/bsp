@@ -225,7 +225,7 @@ $total_pages = ceil($total_items / $items_per_page);
     
     </script>
     <script>
-    $(document).ready(function() {
+  $(document).ready(function() {
     var table = $('#sortTable').DataTable({
         "columnDefs": [
             { "type": "date", "targets": 2 } // Assuming the datetime column is at index 2
@@ -236,21 +236,19 @@ $total_pages = ceil($total_items / $items_per_page);
         var start_date = new Date($('#start_date').val());
         var end_date = new Date($('#end_date').val());
 
-        table.column(2).search('').draw(); // Reset date filtering
+        table.column(2).data().each(function (value, index) {
+            var date = new Date(value);
+            var row = table.row(index);
 
-        if (start_date && end_date) {
-            table.column(2).data().each(function (value, index) {
-                var date = new Date(value);
-
-                if (date >= start_date && date <= end_date) {
-                    table.row(index).nodes().to$().addClass('date-range-match');
-                }
-            });
-
-            table.draw();
-        }
+            if (date >= start_date && date <= end_date) {
+                row.nodes().to$().show();
+            } else {
+                row.nodes().to$().hide();
+            }
+        });
     });
 });
+
 
 
 
