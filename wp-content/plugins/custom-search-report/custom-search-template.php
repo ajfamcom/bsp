@@ -228,19 +228,20 @@ $total_pages = ceil($total_items / $items_per_page);
 
        
         $(document).ready(function() {
-          /*   var table = $('#sortTable').DataTable({
+            var table = $('#sortTable').DataTable({
         "columnDefs": [
             { "type": "date-eu", "targets": 2 } // Assuming the datetime column is at index 2
         ]
-    }); */
-    var table = $('#sortTable').DataTable();
+    }); 
+   /*  var table = $('#sortTable').DataTable();
 table.rows().data().each(function (value, index) {
     console.log(typeof value[2]); // Assuming datetime column is at index 2
-});
+}); */
 
     $('#start_date, #end_date').on('change', function () {
-        var start_date = $('#start_date').val();
-        var end_date = $('#end_date').val();
+        var start_date = new Date($('#start_date').val());
+        var end_date = new Date($('#end_date').val());
+
         console.log(typeof start_date);
         console.log(typeof end_date);
         table.columns(2).search(start_date + ' to ' + end_date, true, false).draw();
