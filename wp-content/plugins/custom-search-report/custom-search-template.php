@@ -243,7 +243,7 @@ $total_pages = ceil($total_items / $items_per_page);
        // Assuming start_date is a Date object
 var formattedStartDate = start_date.getFullYear() + '-' + String(start_date.getMonth() + 1).padStart(2, '0') + '-' + String(start_date.getDate()).padStart(2, '0');
 
-var searchValue = '>=' + formattedStartDate;
+var searchValue =  formattedStartDate;
 console.log("Start Date: " + typeof formattedStartDate);
 console.log("Search Value: " +typeof searchValue);
 
