@@ -232,7 +232,8 @@ $total_pages = ceil($total_items / $items_per_page);
     $('#start_date, #end_date').on('change', function () {
         var start_date = $('#start_date').val();
         var end_date = $('#end_date').val();
-
+        console.log("Start Date: " + start_date);
+        console.log("End Date: " + end_date);
         table.columns(2).search(start_date + ' to ' + end_date, true, false).draw();
     });
 });
