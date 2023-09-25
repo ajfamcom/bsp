@@ -221,13 +221,28 @@ $total_pages = ceil($total_items / $items_per_page);
     
     </script>
     <script>
-      /*   jQuery(document).ready(function($) {
-          $('#sortTable').DataTable();
-          
-        }); */
+    $(document).ready(function() {
+    var table = $('#sortTable').DataTable({
+        "columnDefs": [
+            { "type": "date", "targets": 2 } // Assuming the datetime column is at index 2
+        ]
+    });
+
+    $('#start_date, #end_date').on('change', function () {
+        var start_date = new Date($('#start_date').val());
+        var end_date = new Date($('#end_date').val());
+
+        // Assuming start_date and end_date are Date objects
+        table
+            .column(2)
+            .between(start_date, end_date)
+            .draw();
+    });
+});
+
 
        
-        $(document).ready(function() {
+      /*   $(document).ready(function() {
             var table = $('#sortTable').DataTable({
         "columnDefs": [
             { "type": "date", "targets": 2 } // Assuming the datetime column is at index 2
@@ -240,7 +255,7 @@ $total_pages = ceil($total_items / $items_per_page);
         
 
         var end_date = new Date($('#end_date').val());
-       // Assuming start_date is a Date object
+     
 var formattedStartDate = start_date.getFullYear() + '-' + String(start_date.getMonth() + 1).padStart(2, '0') + '-' + String(start_date.getDate()).padStart(2, '0');
 
 var searchValue =  formattedStartDate;
@@ -251,9 +266,9 @@ table.columns(2).search(searchValue, true, false).draw();
 
 
         
-        //table.columns(2).search(start_date + ' to ' + end_date, true, false).draw();
+        
     });
-});
+}); */
 
 
 
