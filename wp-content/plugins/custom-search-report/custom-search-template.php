@@ -105,7 +105,7 @@ $fetchdata = $wpdb->get_results($query);
     <!-- <button type="submit" class="custom-search-button btn btn-primary">Search</button> -->
     <button type="button" class="custom-search-button btn btn-primary" onclick="location.href='<?php echo admin_url('admin.php').'?page=search-report-display';?>'">Reset</button>
     <button type="button" class="custom-search-button btn btn-primary btndownload">Download CSV</button>
-    <button type="button" class="custom-search-button btn btn-primary">Total Result Count: <b><?php echo $total_items;?></b></button>
+    <button type="button" class="custom-search-button btn btn-primary">Total Result Count: <b><?php echo $count($fetchdata);?></b></button>
     <div class="form-group">
         <label for="start_date">Start Date:</label>
         <input type="date" name="start_date" id="start_date" class="form-control" value="<?php echo isset($_GET['start_date']) ? $_GET['start_date'] : ''; ?>" required>
