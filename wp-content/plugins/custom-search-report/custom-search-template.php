@@ -235,7 +235,7 @@ $total_pages = ceil($total_items / $items_per_page);
     }); */
     var table = $('#sortTable').DataTable();
 table.rows().data().each(function (value, index) {
-    console.log(value[2]); // Assuming datetime column is at index 2
+    console.log(typeof value[2]); // Assuming datetime column is at index 2
 });
 
     $('#start_date, #end_date').on('change', function () {
