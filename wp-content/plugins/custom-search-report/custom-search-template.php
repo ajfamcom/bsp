@@ -123,7 +123,16 @@ $total_pages = ceil($total_items / $items_per_page);
     <button type="button" class="custom-search-button btn btn-primary">Total Result Count: <b><?php echo $total_items;?></b></button>
    
 </form>
-
+<table border="0" cellspacing="5" cellpadding="5">
+        <tbody><tr>
+            <td>Minimum date:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+        <tr>
+            <td>Maximum date:</td>
+            <td><input type="text" id="max" name="max"></td>
+        </tr>
+    </tbody></table>
   <table class="table table-striped table-bordered custom-search-table" id="sortTable">
     <thead>
       <tr>
