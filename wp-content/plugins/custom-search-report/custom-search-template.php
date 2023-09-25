@@ -4,28 +4,11 @@ Template Name: Custom Search Data Template
 */
 global $wpdb;
 
-      /* $sql_query="SELECT 
-      keyword,
-      visitor_ip,
-      created_at,
-      search_page
-  FROM wp_searchdata";
-      $fetch_dataquery = $wpdb->get_results($sql_query);
-      $total_items =count($fetch_dataquery);
- 
-$current_page = max(1, $_GET['paged']);
-$result_count_filter=isset($_GET['result_count_filter']) ? sanitize_text_field($_GET['result_count_filter']) : $total_items;
-$items_per_page = 10; // Number of items per page
-$offset = ($current_page - 1) * $items_per_page;
-
-// Search keyword
-$search_keyword = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : ''; */
 $current_admin_url = admin_url('admin.php');
 $current_admin_url = add_query_arg(array('page' => 'search-report-display'), $current_admin_url);
-
-/* if (!empty($search_keyword)) {
-    $current_admin_url = add_query_arg(array('s' => urlencode($search_keyword)), $current_admin_url);
-} */
+// Add this code to your existing PHP code, after the form submission check.
+$start_date = isset($_GET['start_date']) ? sanitize_text_field($_GET['start_date']) : '';
+$end_date = isset($_GET['end_date']) ? sanitize_text_field($_GET['end_date']) : '';
 
 $query = "SELECT 
 keyword,
@@ -34,22 +17,17 @@ created_at,
 search_page
 FROM wp_searchdata";
 
-// If search keyword is provided, add WHERE clause
-/* if (!empty($search_keyword)) {
-    $query .= " WHERE keyword LIKE '%$search_keyword%'";
-} */
+if (!empty($start_date) && !empty($end_date)) {
+    $query .= " WHERE created_at BETWEEN '$start_date' AND '$end_date'";
+} elseif (!empty($start_date)) {
+    $query .= " WHERE created_at >= '$start_date'";
+} elseif (!empty($end_date)) {
+    $query .= " WHERE created_at <= '$end_date'";
+}
 
 $query .= " ORDER BY created_at DESC";
 $fetchdata = $wpdb->get_results($query);
 
-// Count total number of rows without pagination
-
-    
-
-
-
-// Calculate total number of pages for pagination
-/* $total_pages = ceil($total_items / $items_per_page); */
 ?>
 <style>
     /* table, th, td {
@@ -116,7 +94,7 @@ $fetchdata = $wpdb->get_results($query);
 <div class="container mt-5">
   <h2>Search Data</h2>
 
-  <form method="get" action="<?php echo esc_url($current_admin_url); ?>">
+  <form method="post" action="<?php echo esc_url($current_admin_url); ?>">
     <input type="hidden" name="page" value="search-report-display">
    <!--  <input type="text" name="s" id="searchInput" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php //echo esc_attr($search_keyword); ?>">
     <input type="number" name="result_count_filter" id="result_count_filter" class="custom-search-input form-control mb-3" placeholder="Search by Count" value="<?php //echo ($result_count_filter); ?>" min="10" step=20 > -->  
@@ -126,11 +104,14 @@ $fetchdata = $wpdb->get_results($query);
     <button type="button" class="custom-search-button btn btn-primary">Total Result Count: <b><?php echo $total_items;?></b></button>
     <div class="form-group">
         <label for="start_date">Start Date:</label>
-        <input type="date" name="start_date" id="start_date" class="form-control" value="<?php echo isset($_GET['start_date']) ? $_GET['start_date'] : ''; ?>">
+        <input type="date" name="start_date" id="start_date" class="form-control" value="<?php echo isset($_GET['start_date']) ? $_GET['start_date'] : ''; ?>" required>
     </div>
     <div class="form-group">
         <label for="end_date">End Date:</label>
-        <input type="date" name="end_date" id="end_date" class="form-control" value="<?php echo isset($_GET['end_date']) ? $_GET['end_date'] : ''; ?>">
+        <input type="date" name="end_date" id="end_date" class="form-control" value="<?php echo isset($_GET['end_date']) ? $_GET['end_date'] : ''; ?>" required>
+    </div>
+    <div class="form-group">
+        <button type="submit" name="Search"  class="custom-search-button btn btn-primary">Search</button>
     </div>
 </form>
 
