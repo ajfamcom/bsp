@@ -50,7 +50,7 @@ public function display_news_header_section() {
                 $link=get_field('link', $post_id);
              if($position=='Header-Top' && $status=='Active')  {
                 the_title();
-                echo '<p><h2><a class="news-txt" href="'.$link.'">'.$line1.' '.$line2.' '.$line3.'</a></h2></p>'; 
+                echo '<p><a class="news-txt" href="'.$link.'">'.$line1.' '.$line2.' '.$line3.'</a></p>'; 
              }
             
          }
