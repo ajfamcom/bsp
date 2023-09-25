@@ -9,20 +9,24 @@ $current_admin_url = add_query_arg(array('page' => 'search-report-display'), $cu
 // Add this code to your existing PHP code, after the form submission check.
 $start_date = isset($_GET['start_date']) ? sanitize_text_field($_GET['start_date']) : '';
 $end_date = isset($_GET['end_date']) ? sanitize_text_field($_GET['end_date']) : '';
-
+$search_page = isset($_GET['search_page']) ? ($_GET['search_page']) : '';
 $query = "SELECT 
 keyword,
 visitor_ip,
 created_at,
 search_page
-FROM wp_searchdata";
+FROM wp_searchdata WHERE 1=1";
 
 if (!empty($start_date) && !empty($end_date)) {
-    $query .= " WHERE created_at BETWEEN '$start_date' AND '$end_date'";
+    $query .= " AND search_page LIKE %'$search_page'%";
+}
+
+if (!empty($start_date) && !empty($end_date)) {
+    $query .= " AND created_at BETWEEN '$start_date' AND '$end_date'";
 } elseif (!empty($start_date)) {
-    $query .= " WHERE created_at >= '$start_date'";
+    $query .= " AND created_at >= '$start_date'";
 } elseif (!empty($end_date)) {
-    $query .= " WHERE created_at <= '$end_date'";
+    $query .= " AND created_at <= '$end_date'";
 }
 
 $query .= " ORDER BY created_at DESC";
@@ -109,6 +113,14 @@ $fetchdata = $wpdb->get_results($query);
     <div class="form-group">
         <label for="end_date">End Date:</label>
         <input type="date" name="end_date" id="end_date" class="form-control" value="<?php echo isset($_GET['end_date']) ? $_GET['end_date'] : ''; ?>" required>
+    </div>
+    <div class="form-group">
+        <label for="end_date">Search Page:</label>
+        <select name="search_page" id="search_page">
+            <option value="">Select</option>
+            <option value="Polls Page">Polls Page</option>
+            <option value="Top Header">Top Header</option>
+        </select>
     </div>
     <div class="form-group">
         <button type="submit" name="Search"  class="custom-search-button btn btn-primary">Search</button>
