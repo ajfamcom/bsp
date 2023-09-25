@@ -244,8 +244,8 @@ $total_pages = ceil($total_items / $items_per_page);
 var formattedStartDate = start_date.getFullYear() + '-' + String(start_date.getMonth() + 1).padStart(2, '0') + '-' + String(start_date.getDate()).padStart(2, '0');
 
 var searchValue = '>=' + formattedStartDate;
-console.log("Start Date: " + formattedStartDate);
-console.log("Search Value: " + searchValue);
+console.log("Start Date: " + typeof formattedStartDate);
+console.log("Search Value: " +typeof searchValue);
 
 table.columns(2).search(searchValue, true, false).draw();
 
