@@ -94,7 +94,7 @@ $fetchdata = $wpdb->get_results($query);
 <div class="container mt-5">
   <h2>Search Data</h2>
 
-  <form method="post" action="<?php echo esc_url($current_admin_url); ?>">
+  <form method="get" action="<?php echo esc_url($current_admin_url); ?>">
     <input type="hidden" name="page" value="search-report-display">
    <!--  <input type="text" name="s" id="searchInput" class="custom-search-input form-control mb-3" placeholder="Search by Keyword" value="<?php //echo esc_attr($search_keyword); ?>">
     <input type="number" name="result_count_filter" id="result_count_filter" class="custom-search-input form-control mb-3" placeholder="Search by Count" value="<?php //echo ($result_count_filter); ?>" min="10" step=20 > -->  
