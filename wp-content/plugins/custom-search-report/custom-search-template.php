@@ -232,13 +232,20 @@ $total_pages = ceil($total_items / $items_per_page);
         var start_date = new Date($('#start_date').val());
         var end_date = new Date($('#end_date').val());
 
-        // Assuming start_date and end_date are Date objects
-        table
-            .column(2)
-            .between(start_date, end_date)
-            .draw();
+        table.draw(); // Reset the table to its original state
+
+        if (start_date && end_date) {
+            table
+                .column(2)
+                .search(
+                    '^' + start_date.getFullYear() + '-' + (start_date.getMonth() + 1) + '-' + start_date.getDate(),
+                    true, false
+                )
+                .draw();
+        }
     });
 });
+
 
 
        
