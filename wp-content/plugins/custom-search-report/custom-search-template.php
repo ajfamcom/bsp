@@ -3,27 +3,16 @@
 Template Name: Custom Search Data Template
 */
 global $wpdb;
-/* if (!empty($search_keyword)) {
-    $sql_query="SELECT * FROM wp_searchdata WHERE keyword LIKE '%$search_keyword%' LIMIT $result_count_filter";
-    $fetch_dataquery = $wpdb->get_results($sql_query);
-    $total_items =count($fetch_dataquery);
-  }
-  if (empty($search_keyword) && !empty($result_count_filter)) {
-    $sql_query="SELECT * FROM wp_searchdata LIMIT $result_count_filter";
-    $fetch_dataquery = $wpdb->get_results($sql_query);
-    $total_items =count($fetch_dataquery);
-  }
-  else{ */
+
       $sql_query="SELECT 
       keyword,
       visitor_ip,
-      DATE_FORMAT(created_at, '%Y-%m-%d') as formatted_date,
+      created_at,
       search_page
   FROM wp_searchdata";
       $fetch_dataquery = $wpdb->get_results($sql_query);
       $total_items =count($fetch_dataquery);
-  //}
-// Pagination variables
+ 
 $current_page = max(1, $_GET['paged']);
 $result_count_filter=isset($_GET['result_count_filter']) ? sanitize_text_field($_GET['result_count_filter']) : $total_items;
 $items_per_page = 10; // Number of items per page
@@ -41,7 +30,7 @@ if (!empty($search_keyword)) {
 $query = "SELECT 
 keyword,
 visitor_ip,
-DATE_FORMAT(created_at, '%Y-%m-%d') as formatted_date,
+created_at,
 search_page
 FROM wp_searchdata";
 
@@ -160,7 +149,7 @@ $total_pages = ceil($total_items / $items_per_page);
         foreach ($fetchdata as $item) {
             echo '<tr><td>' . $item->keyword . '</td>';
             echo '<td>' . $item->visitor_ip . '</td>';
-            echo '<td>' . $item->formatted_date . '</td>';
+            echo '<td>' . $item->created_at . '</td>';
             echo '<td>' . ucwords(str_replace('_',' ',$item->search_page)) . '</td></tr>';
         }
     } else {
@@ -170,22 +159,7 @@ $total_pages = ceil($total_items / $items_per_page);
     </tbody>
   </table>
 
-    <?php
-  /* if ($total_pages > 1) {
-      echo '<div class="custom-search-pagination">';
-      echo paginate_links(array(
-          'base' => admin_url('admin.php?page=search-report-display') . '%_%',
-          'format' => '&paged=%#%',
-          'current' => $current_page,
-          'total' => $total_pages,
-      ));
-      echo '</div>';
-  } */ 
-  
-
-
-
-  ?>
+    
   
   
 </div>
