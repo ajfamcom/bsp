@@ -9,7 +9,7 @@ $current_admin_url = add_query_arg(array('page' => 'search-report-display'), $cu
 // Add this code to your existing PHP code, after the form submission check.
 $start_date = isset($_GET['start_date']) ? sanitize_text_field($_GET['start_date']) : '';
 $end_date = isset($_GET['end_date']) ? sanitize_text_field($_GET['end_date']) : '';
-$search_page = isset($_GET['search_page']) ? ($_GET['search_page']) : '';
+$search_page = isset($_GET['search_page']) ? sanitize_text_field($_GET['search_page']) : '';
 $query = "SELECT 
 keyword,
 visitor_ip,
