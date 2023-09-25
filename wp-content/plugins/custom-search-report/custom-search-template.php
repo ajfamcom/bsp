@@ -33,6 +33,7 @@ $query .= " ORDER BY created_at DESC";
 $fetchdata = $wpdb->get_results($query);
 
 ?>
+
 <style>
     /* table, th, td {
   border: 1px solid black;
