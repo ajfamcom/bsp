@@ -6,6 +6,8 @@
  * Author: Famcom
  * Author URI: https://famcom.com
  */
+error_reporting(0);
+
 if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Invalid request.' );
 }
