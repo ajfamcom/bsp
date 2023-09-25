@@ -225,32 +225,13 @@ $total_pages = ceil($total_items / $items_per_page);
     
     </script>
     <script>
-    $(document).ready(function() {
-    var table = $('#sortTable').DataTable({
-        "columnDefs": [
-            { "type": "date", "targets": 2 } // Assuming the datetime column is at index 2
-        ]
-    });
-
-    $('#start_date, #end_date').on('change', function () {
-        var start_date = new Date($('#start_date').val());
-        var end_date = new Date($('#end_date').val());
-
-        table.column(2).search('').draw(); // Reset date filtering
-
-        if (start_date && end_date) {
-            var date = new Date(start_date);
-            table.columns(2).search('>=' + searchValue, true, false).draw();
-            table.draw();
-        }
-    });
-});
+   
 
 
 
 
        
-      /*   $(document).ready(function() {
+         $(document).ready(function() {
             var table = $('#sortTable').DataTable({
         "columnDefs": [
             { "type": "date", "targets": 2 } // Assuming the datetime column is at index 2
@@ -276,7 +257,7 @@ table.columns(2).search(searchValue, true, false).draw();
         
         
     });
-}); */
+}); 
 
 
 
