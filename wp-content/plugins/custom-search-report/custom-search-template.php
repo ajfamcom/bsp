@@ -146,7 +146,7 @@ $total_pages = ceil($total_items / $items_per_page);
         foreach ($fetchdata as $item) {
             echo '<tr><td>' . $item->keyword . '</td>';
             echo '<td>' . $item->visitor_ip . '</td>';
-            echo '<td>' . $item->created_at . '</td>';
+            echo '<td>' . date('d-m-Y',strtotime($item->created_at)) . '</td>';
             echo '<td>' . ucwords(str_replace('_',' ',$item->search_page)) . '</td></tr>';
         }
     } else {
