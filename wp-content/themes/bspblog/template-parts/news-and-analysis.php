@@ -47,7 +47,7 @@ if ($query->have_posts()) {
     }
     ?>
     </div>
-    <p><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></p>
+    <p><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php echo $short_desc;?></a></p>
 </div>
 <?php
     }
