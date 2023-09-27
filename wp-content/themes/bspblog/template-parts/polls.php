@@ -164,7 +164,7 @@ $results = $wpdb->get_results($query);
 		}
 		else if(isset($search_text) && !empty($search_text) && empty($from_date) && empty($to_date))
 		{		
-            echo 'testing';die();
+            
 			global $wpdb;			
 			$posts_per_page = 6;
 			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
