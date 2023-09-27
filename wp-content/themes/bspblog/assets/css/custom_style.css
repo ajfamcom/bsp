@@ -1033,13 +1033,13 @@ ul.contact-social-links li a:hover i {
     background-image: linear-gradient(180deg, #b10f1e, var(--orange));
 }
 
-.grid-post .tile-block:hover {
+.grid-post .grid-polls:hover .tile-block {
     background-image: linear-gradient(180deg, #b10f1e, var(--orange));
 }
-.grid-post .tile-block-grey:hover {
+.grid-post .grid-polls:hover .tile-block-grey {
     background-image: linear-gradient(180deg, #b10f1e, var(--orange));
 }
-.grid-post .tile-block-red:hover {
+.grid-post .grid-polls:hover .tile-block-red {
     background-image: linear-gradient(180deg, #b10f1e, var(--orange));
 }
 
