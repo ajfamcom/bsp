@@ -38,9 +38,9 @@ p:last-child {
         font-size: 20px !important;
         margin-bottom: 0;
     }
-    .grid-polls .news-info h4.news-details {
+    /* .grid-polls .news-info h4.news-details {
     font-size: 28px;
-}
+} */
 }
 /*======= header-top-bar ========*/
 .site-header {
@@ -879,6 +879,17 @@ ul.contact-social-links li a:hover i {
 .blue-tile .news-info {
     background-image: linear-gradient(180deg, #06213d, var(--blue));
 }
+
+.gray-tile .news-info:hover {
+    background-image: linear-gradient(180deg, #b10f1e, var(--orange));
+}
+.red-tile .news-info:hover {
+    background-image: linear-gradient(180deg, #b10f1e, var(--orange));
+}
+.blue-tile .news-info:hover {
+    background-image: linear-gradient(180deg, #b10f1e, var(--orange));
+}
+
 .single-news .news-info h4 {
     font-size: 24px;
 }
@@ -1021,6 +1032,19 @@ ul.contact-social-links li a:hover i {
 .grid-post .tile-block-red {
     background-image: linear-gradient(180deg, #b10f1e, var(--orange));
 }
+
+.grid-post .tile-block:hover {
+    background-image: linear-gradient(180deg, #b10f1e, var(--orange));
+}
+.grid-post .tile-block-grey:hover {
+    background-image: linear-gradient(180deg, #b10f1e, var(--orange));
+}
+.grid-post .tile-block-red:hover {
+    background-image: linear-gradient(180deg, #b10f1e, var(--orange));
+}
+
+
+
 div#slider-related-posts-track .tile-block {
     background-image: linear-gradient(180deg, #06213d, var(--blue));
 }
