@@ -217,7 +217,7 @@ $results = $wpdb->get_results($query);
 				ORDER BY {$wpdb->prefix}posts.post_date DESC
 				";
 				
-				$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%');
+				$queryforcount = $wpdb->prepare($queryforcount,  $wpdb->esc_like($search_text) ,  $wpdb->esc_like($search_text) ,  $wpdb->esc_like($search_text) );
 				/***count query */
 					$resultsforcount = count($wpdb->get_results($queryforcount));		
 					$total_count = $resultsforcount;		
