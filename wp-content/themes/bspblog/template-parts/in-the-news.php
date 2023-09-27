@@ -94,7 +94,7 @@ if($showt=='list')
 						?> 
 							<div class="single-news col-md-4 <?php echo $currentClass;?>">								
 								<div class="news-info">
-								<h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
+								<h4 class="news-details"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php echo $short_desc;?></a></h4>
 								</div>
 							</div>
 					<?php 
@@ -165,7 +165,7 @@ if($showt=='list')
                         }
                        
 						?>     
-        <h4 class="news-details <?php echo $currentClass;?>"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php the_title();?></a></h4>
+        <h4 class="news-details <?php echo $currentClass;?>"><a href="<?php echo $link;?>" target="<?php echo  $target;?>" ><?php echo $short_desc;?></a></h4>
         <?php 
         $counter++;
         endwhile;
