@@ -102,7 +102,7 @@ $posts_per_page = 6;
 $current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $offset = ($current_page - 1) * $posts_per_page;
 
-$search_text = '%' . $wpdb->esc_like($search_text) . '%';
+$search_text =  $wpdb->esc_like($search_text);
 
 $query = $wpdb->prepare(
     "
@@ -156,7 +156,7 @@ $results = $wpdb->get_results($query);
     ORDER BY {$wpdb->prefix}posts.post_date DESC
 	";
 	
-	$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $year_from, $year_to);
+	$queryforcount = $wpdb->prepare($queryforcount,  $wpdb->esc_like($search_text) ,  $wpdb->esc_like($search_text) , $wpdb->esc_like($search_text) , $year_from, $year_to);
 	/***count query */
 	    $resultsforcount = count($wpdb->get_results($queryforcount));		
 		$total_count = $resultsforcount;		
@@ -234,7 +234,7 @@ $results = $wpdb->get_results($query);
 				$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 				$offset = ($current_page - 1) * $posts_per_page;
 
-				$search_text = '%' . $wpdb->esc_like($search_text) . '%';
+				$search_text =  $wpdb->esc_like($search_text) ;
 
 				$query = $wpdb->prepare(
 					"
@@ -287,7 +287,7 @@ $results = $wpdb->get_results($query);
 					ORDER BY {$wpdb->prefix}posts.post_date DESC
 					";
 					
-					$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $year_from);
+					$queryforcount = $wpdb->prepare($queryforcount,  $wpdb->esc_like($search_text) ,  $wpdb->esc_like($search_text) , $wpdb->esc_like($search_text), $year_from);
 					/***count query */
 						$resultsforcount = count($wpdb->get_results($queryforcount));		
 						$total_count = $resultsforcount;		
@@ -304,7 +304,7 @@ $results = $wpdb->get_results($query);
 				$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 				$offset = ($current_page - 1) * $posts_per_page;
 
-				$search_text = '%' . $wpdb->esc_like($search_text) . '%';
+				$search_text =  $wpdb->esc_like($search_text) ;
 
 				$query = $wpdb->prepare(
 					"
@@ -357,7 +357,7 @@ $results = $wpdb->get_results($query);
 				ORDER BY {$wpdb->prefix}posts.post_date DESC
 				";
 				
-				$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $year_to);
+				$queryforcount = $wpdb->prepare($queryforcount,  $wpdb->esc_like($search_text) ,  $wpdb->esc_like($search_text) ,$wpdb->esc_like($search_text) , $year_to);
 				/***count query */
 					$resultsforcount = count($wpdb->get_results($queryforcount));		
 					$total_count = $resultsforcount;		
@@ -519,7 +519,7 @@ $posts_per_page = 6;
 $current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $offset = ($current_page - 1) * $posts_per_page;
 
-$search_text = '%' . $wpdb->esc_like($search_text) . '%';
+$search_text =  $wpdb->esc_like($search_text) ;
 
 $query = $wpdb->prepare(
     "
@@ -573,7 +573,7 @@ $results = $wpdb->get_results($query);
     ORDER BY {$wpdb->prefix}posts.post_date DESC
 	";
 	
-	$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $year_from, $year_to);
+	$queryforcount = $wpdb->prepare($queryforcount,  $wpdb->esc_like($search_text) ,  $wpdb->esc_like($search_text) ,  $wpdb->esc_like($search_text) , $year_from, $year_to);
 	/***count query */
 	    $resultsforcount = count($wpdb->get_results($queryforcount));		
 		$total_count = $resultsforcount;		
@@ -586,7 +586,7 @@ $results = $wpdb->get_results($query);
 			$posts_per_page = 6;
 			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 			$offset = ($current_page - 1) * $posts_per_page;			
-			$search_text = '%' . $wpdb->esc_like($search_text) . '%';			
+			$search_text = $wpdb->esc_like($search_text) ;			
 			$query = $wpdb->prepare(
 				"
 				SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
@@ -634,7 +634,7 @@ $results = $wpdb->get_results($query);
 				ORDER BY {$wpdb->prefix}posts.post_date DESC
 				";
 				
-				$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%');
+				$queryforcount = $wpdb->prepare($queryforcount,  $wpdb->esc_like($search_text) ,  $wpdb->esc_like($search_text) ,  $wpdb->esc_like($search_text));
 				/***count query */
 					$resultsforcount = count($wpdb->get_results($queryforcount));		
 					$total_count = $resultsforcount;		
@@ -651,7 +651,7 @@ $results = $wpdb->get_results($query);
 				$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 				$offset = ($current_page - 1) * $posts_per_page;
 
-				$search_text = '%' . $wpdb->esc_like($search_text) . '%';
+				$search_text =  $wpdb->esc_like($search_text) ;
 
 				$query = $wpdb->prepare(
 					"
@@ -704,7 +704,7 @@ $results = $wpdb->get_results($query);
 					ORDER BY {$wpdb->prefix}posts.post_date DESC
 					";
 					
-					$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $year_from);
+					$queryforcount = $wpdb->prepare($queryforcount,  $wpdb->esc_like($search_text) ,  $wpdb->esc_like($search_text) ,  $wpdb->esc_like($search_text) , $year_from);
 					/***count query */
 						$resultsforcount = count($wpdb->get_results($queryforcount));		
 						$total_count = $resultsforcount;		
@@ -721,7 +721,7 @@ $results = $wpdb->get_results($query);
 				$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 				$offset = ($current_page - 1) * $posts_per_page;
 
-				$search_text = '%' . $wpdb->esc_like($search_text) . '%';
+				$search_text =  $wpdb->esc_like($search_text);
 
 				$query = $wpdb->prepare(
 					"
@@ -774,7 +774,7 @@ $results = $wpdb->get_results($query);
 				ORDER BY {$wpdb->prefix}posts.post_date DESC
 				";
 				
-				$queryforcount = $wpdb->prepare($queryforcount, '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', '%' . $wpdb->esc_like($search_text) . '%', $year_to);
+				$queryforcount = $wpdb->prepare($queryforcount, $wpdb->esc_like($search_text) ,  $wpdb->esc_like($search_text),  $wpdb->esc_like($search_text), $year_to);
 				/***count query */
 					$resultsforcount = count($wpdb->get_results($queryforcount));		
 					$total_count = $resultsforcount;		
