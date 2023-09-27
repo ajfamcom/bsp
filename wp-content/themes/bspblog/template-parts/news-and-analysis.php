@@ -33,6 +33,12 @@ if ($query->have_posts()) {
             $link= $link_data;
             $target='_blank';
         }
+        else{
+            $permalink = get_permalink($post_id);
+            $link= $permalink;
+            $target='_blank';
+
+        }
         $theme_directory_uri = get_template_directory_uri();
         $noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
         ?>
