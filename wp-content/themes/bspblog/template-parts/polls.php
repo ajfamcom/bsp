@@ -96,8 +96,8 @@ get_header();
 
 			global $wpdb;
 
-$year_from = date('Y', strtotime($from_date));
-$year_to = date('Y', strtotime($to_date));
+$year_from = $from_date;//date('Y', strtotime($from_date));
+$year_to = $to_date;//date('Y', strtotime($to_date));
 $posts_per_page = 6;
 $current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $offset = ($current_page - 1) * $posts_per_page;
@@ -513,8 +513,8 @@ $results = $wpdb->get_results($query);
 
 			global $wpdb;
 
-$year_from = date('Y', strtotime($from_date));
-$year_to = date('Y', strtotime($to_date));
+$year_from = $from_date;//date('Y', strtotime($from_date));
+$year_to = $to_date;//date('Y', strtotime($to_date));
 $posts_per_page = 6;
 $current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $offset = ($current_page - 1) * $posts_per_page;
