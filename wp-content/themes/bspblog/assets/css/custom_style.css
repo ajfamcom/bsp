@@ -521,6 +521,7 @@ footer {
 .social-links a {
     font-size: 26px;
     padding: 0px 5px;
+    color: var(--orange);
 }
 .social-links a:hover {
     color: #fff;
