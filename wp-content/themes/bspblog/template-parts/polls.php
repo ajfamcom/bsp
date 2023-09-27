@@ -114,7 +114,7 @@ $query = $wpdb->prepare(
     WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
     AND {$wpdb->prefix}posts.post_status = 'publish'
     AND (
-        OR{$wpdb->prefix}posts.post_title LIKE %s
+        {$wpdb->prefix}posts.post_title LIKE %s
         OR {$wpdb->prefix}posts.post_content LIKE %s
         OR {$wpdb->prefix}terms.name LIKE %s
     )
@@ -147,7 +147,7 @@ $results = $wpdb->get_results($query);
     WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
     AND {$wpdb->prefix}posts.post_status = 'publish'
     AND (
-        OR{$wpdb->prefix}posts.post_title LIKE %s
+        {$wpdb->prefix}posts.post_title LIKE %s
         OR {$wpdb->prefix}posts.post_content LIKE %s
         OR {$wpdb->prefix}terms.name LIKE %s
     )
@@ -180,7 +180,7 @@ $results = $wpdb->get_results($query);
 				WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
 				AND {$wpdb->prefix}posts.post_status = 'publish'
 				AND (
-					{$wpdb->prefix}posts.post_title LIKE %s
+					OR {$wpdb->prefix}posts.post_title LIKE %s
 					OR {$wpdb->prefix}posts.post_content LIKE %s
 					OR {$wpdb->prefix}terms.name LIKE %s
 				)				
@@ -209,7 +209,7 @@ $results = $wpdb->get_results($query);
 				WHERE ({$wpdb->prefix}posts.post_type = 'bsp_custom_polls' OR {$wpdb->prefix}posts.post_type = 'post')
 				AND {$wpdb->prefix}posts.post_status = 'publish'
 				AND (
-					{$wpdb->prefix}posts.post_title LIKE %s
+					OR {$wpdb->prefix}posts.post_title LIKE %s
 					OR {$wpdb->prefix}posts.post_content LIKE %s
 					OR {$wpdb->prefix}terms.name LIKE %s
 				)				
