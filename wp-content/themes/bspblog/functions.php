@@ -1012,7 +1012,7 @@ function subscribe_to_mailchimp($email, $firstname) {
 function custom_rename_widgets($translated_text, $text, $domain) {
     $translations = array(
         // Replace 'Main Sidebar' with the desired name for the sidebar
-        'Main Sidebar' => 'Social LInks for Single Polls Page',
+        'Main Sidebar' => 'Social LInks for Footer and Single Polls Page',
 
         // Replace 'Header' with the desired name for the header
         'Header' => 'Social links for Contactus Page'
