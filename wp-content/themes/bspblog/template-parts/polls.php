@@ -195,7 +195,7 @@ $results = $wpdb->get_results($query);
 				$posts_per_page,
 				$offset
 			);
-			
+			echo $query;die();
 			$results = $wpdb->get_results($query);		
 					
 					
