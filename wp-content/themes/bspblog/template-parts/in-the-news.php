@@ -90,7 +90,12 @@ if($showt=='list')
                             $link= $link_data;
                             $target='_blank';
                         }
-                       
+                        else{
+                            $permalink = get_permalink($post_id);
+                            $link= $permalink;
+                            $target='_blank';
+                
+                        }
 						?> 
 							<div class="single-news col-md-4 <?php echo $currentClass;?>">								
 								<div class="news-info">
@@ -162,6 +167,12 @@ if($showt=='list')
                         if($link_data){
                             $link= $link_data;
                             $target='_blank';
+                        }
+                        else{
+                            $permalink = get_permalink($post_id);
+                            $link= $permalink;
+                            $target='_blank';
+                
                         }
                        
 						?>     
