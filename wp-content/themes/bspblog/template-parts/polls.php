@@ -169,7 +169,7 @@ $results = $wpdb->get_results($query);
 			$posts_per_page = 6;
 			$current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
 			$offset = ($current_page - 1) * $posts_per_page;			
-			$search_text = '%' . $wpdb->esc_like($search_text) . '%';			
+			echo $search_text = '%' . $wpdb->esc_like($search_text) . '%';die();			
 			$query = $wpdb->prepare(
 				"
 				SELECT {$wpdb->prefix}posts.ID, {$wpdb->prefix}posts.post_title, {$wpdb->prefix}posts.post_content, {$wpdb->prefix}posts.post_date
@@ -195,7 +195,7 @@ $results = $wpdb->get_results($query);
 				$posts_per_page,
 				$offset
 			);
-			echo $query;die();
+			
 			$results = $wpdb->get_results($query);		
 					
 					
