@@ -1008,3 +1008,22 @@ function subscribe_to_mailchimp($email, $firstname) {
         return false; // MC4WP is not active or incorrect version
     }
 } */
+
+function custom_rename_widgets($translated_text, $text, $domain) {
+    $translations = array(
+        // Replace 'Main Sidebar' with the desired name for the sidebar
+        'Main Sidebar' => 'Social LInks for Single Polls Page',
+
+        // Replace 'Header' with the desired name for the header
+        'Header' => 'Social links for Contactus Page'
+    );
+
+    if (isset($translations[$text])) {
+        return $translations[$text];
+    }
+
+    return $translated_text;
+}
+
+add_filter('gettext', 'custom_rename_widgets', 20, 3);
+
