@@ -1029,20 +1029,21 @@ add_filter('gettext', 'custom_rename_widgets', 20, 3);
 
 
 // Function to display a list of authors
+// Function to display a list of authors
 function custom_display_authors_metabox($post) {
     $authors = get_users(array('role' => 'author'));
-    if (!empty($authors)) {
-        echo '<label for="custom_author">Select Author:</label>';
-        echo '<select id="custom_author" name="custom_author">';
-        echo '<option value="">Select an author</option>';
-        foreach ($authors as $author) {
-            $selected = selected(get_post_meta($post->ID, 'custom_author', true), $author->ID, false);
-            echo '<option value="' . esc_attr($author->ID) . '" ' . $selected . '>' . esc_html($author->display_name) . '</option>';
-        }
-        echo '</select>';
-    } else {
-        echo 'No authors found.';
+    $selected_author = get_post_meta($post->ID, 'custom_author', true);
+
+    echo '<label for="custom_author">Select Author:</label>';
+    echo '<select id="custom_author" name="custom_author">';
+    echo '<option value="">Select an author</option>';
+    
+    foreach ($authors as $author) {
+        $selected = selected($selected_author, $author->ID, false);
+        echo '<option value="' . esc_attr($author->ID) . '" ' . $selected . '>' . esc_html($author->display_name) . '</option>';
     }
+
+    echo '</select>';
 }
 
 // Function to save the selected author
@@ -1062,3 +1063,4 @@ function custom_add_author_metabox() {
 
 add_action('add_meta_boxes', 'custom_add_author_metabox');
 add_action('save_post', 'custom_save_author_meta');
+
