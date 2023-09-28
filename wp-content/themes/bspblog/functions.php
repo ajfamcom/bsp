@@ -1103,7 +1103,7 @@ function custom_save_author_meta($post_id) {
             // Update the post author in the database
             $wpdb->update(
                 $wpdb->posts,
-                array('post_author' => $current_author_id),
+                array('post_author' => $new_author_id),
                 array('ID' => $post_id),
                 array('%d'),
                 array('%d')
