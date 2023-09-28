@@ -824,7 +824,7 @@ function save_pdf_meta($post_id) {
                 else{
                                         
                     wp_set_post_tags($post_id, $keywordsArray, false);
-                    print_r($subjectArray);die();
+                    print_r($metadata['dc:subject']);die();
                     if($subjectArray){
                         $existing_tags_new = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published'));
                         if($existing_tags_new) {
