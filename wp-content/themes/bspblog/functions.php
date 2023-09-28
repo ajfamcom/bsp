@@ -1027,3 +1027,38 @@ function custom_rename_widgets($translated_text, $text, $domain) {
 
 add_filter('gettext', 'custom_rename_widgets', 20, 3);
 
+
+// Function to display a list of authors
+function custom_display_authors_metabox($post) {
+    $authors = get_users(array('role' => 'author'));
+    if (!empty($authors)) {
+        echo '<label for="custom_author">Select Author:</label>';
+        echo '<select id="custom_author" name="custom_author">';
+        echo '<option value="">Select an author</option>';
+        foreach ($authors as $author) {
+            $selected = selected(get_post_meta($post->ID, 'custom_author', true), $author->ID, false);
+            echo '<option value="' . esc_attr($author->ID) . '" ' . $selected . '>' . esc_html($author->display_name) . '</option>';
+        }
+        echo '</select>';
+    } else {
+        echo 'No authors found.';
+    }
+}
+
+// Function to save the selected author
+function custom_save_author_meta($post_id) {
+    if (isset($_POST['custom_author'])) {
+        update_post_meta($post_id, 'custom_author', sanitize_text_field($_POST['custom_author']));
+    }
+}
+
+// Hook to add the custom meta box to posts and custom post types
+function custom_add_author_metabox() {
+    $post_types = array('post', 'bsp_custom_polls','news_analysis'); // Add your custom post type slug here
+    foreach ($post_types as $post_type) {
+        add_meta_box('custom_author_metabox', 'Author', 'custom_display_authors_metabox', $post_type, 'side', 'default');
+    }
+}
+
+add_action('add_meta_boxes', 'custom_add_author_metabox');
+add_action('save_post', 'custom_save_author_meta');
