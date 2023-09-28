@@ -1071,7 +1071,7 @@ function custom_display_authors_metabox($post) {
 
     echo '<label for="custom_author">Select Author:</label>';
     echo '<select id="custom_author" name="custom_author" required>';
-    echo '<option value="">Select an author '.$selected_author.'</option>';
+    echo '<option value="">Select an author</option>';
     
     foreach ($authors as $author) {
         $selected = ($selected_author == $author->ID) ? 'selected="selected"' : '';
@@ -1096,7 +1096,19 @@ function custom_save_author_meta($post_id) {
         $current_author_id = get_post_field('post_author', $post_id);
 
         if ($new_author_id !== $current_author_id) {
-            wp_update_post(array('ID' => $post_id, 'post_author' => $new_author_id));
+            /* wp_update_post(array('ID' => $post_id, 'post_author' => $new_author_id)); */
+            global $wpdb;          
+            
+
+            // Update the post author in the database
+            $wpdb->update(
+                $wpdb->posts,
+                array('post_author' => $current_author_id),
+                array('ID' => $post_id),
+                array('%d'),
+                array('%d')
+            );
+
         }
     }
 }
