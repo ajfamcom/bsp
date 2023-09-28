@@ -804,11 +804,11 @@ function save_pdf_meta($post_id) {
                             $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
                             $keywordsArray = array_map('trim', array_filter($keywordsArray));
                         }
-                         if(isset($metadata['Subject']) && !empty($metadata['Subject'])){
+                         if(isset($metadata['dc:subject']) && !empty($metadata['dc:subject'])){
                             $subjectArray = array_map('trim', array_filter($metadata['dc:subject']));
                         } 
 
-                   print_r($subjectArray);die();                            
+                   print_r($metadata['dc:subject']);die();                            
            
                 $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published')); 
                 if(!empty($existing_tags))
