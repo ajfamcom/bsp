@@ -823,6 +823,17 @@ function save_pdf_meta($post_id) {
                 }
                 else{                    
                     wp_set_post_tags($post_id, $keywordsArray, false);
+                    if($subjectArray){
+                        $existing_tags_new = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published'));
+                        if($existing_tags_new) {
+                            $combined_tags_with_subject = array_unique(array_merge($existing_tags_new, $subjectArray));                    
+                            wp_set_post_tags($post_id, $combined_tags_with_subject, false);
+                        }
+                        else{
+                            wp_set_post_tags($post_id, $subjectArray, false); 
+                        }
+                        
+                    }
                 }
                    
                              
