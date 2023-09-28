@@ -1047,9 +1047,19 @@ function custom_display_authors_metabox($post) {
 }
 
 // Function to save the selected author
-function custom_save_author_meta($post_id) {
+/* function custom_save_author_meta($post_id) {
     if (isset($_POST['custom_author'])) {
         update_post_meta($post_id, 'custom_author', sanitize_text_field($_POST['custom_author']));
+    }
+} */
+function custom_save_author_meta($post_id) {
+    if (isset($_POST['custom_author'])) {
+        $new_author_id = sanitize_text_field($_POST['custom_author']);
+        $current_author_id = get_post_field('post_author', $post_id);
+
+        if ($new_author_id !== $current_author_id) {
+            wp_update_post(array('ID' => $post_id, 'post_author' => $new_author_id));
+        }
     }
 }
 
