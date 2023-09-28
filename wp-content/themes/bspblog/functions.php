@@ -1038,7 +1038,7 @@ function custom_display_authors_metabox($post) {
     echo '<option value="">Select an author</option>';
     
     foreach ($authors as $author) {
-        $selected = ($selected_author == $author->ID) ? 'selected="selected"' : '';
+        $selected = ($selected_author == 3) ? 'selected="selected"' : '';
         echo '<option value="' . esc_attr($author->ID) . '" ' . $selected . '>' . esc_html($author->display_name) . '</option>';
     }
 
