@@ -804,13 +804,22 @@ function save_pdf_meta($post_id) {
                             $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
                             $keywordsArray = array_map('trim', array_filter($keywordsArray));
                         }
+                         if(isset($metadata['dc:subject']) && !empty($metadata['dc:subject'])){
+                            $subjectArray = array_map('trim', array_filter($metadata['dc:subject']));
+                        } 
+
                                                
            
                 $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published')); 
                 if(!empty($existing_tags))
                 {
-                    $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));
+                    $combined_tags = array_unique(array_merge($existing_tags, $keywordsArray));                    
                     wp_set_post_tags($post_id, $combined_tags, false);
+                    if($subjectArray){
+                        $existing_tags_new = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published')); 
+                        $combined_tags_with_subject = array_unique(array_merge($existing_tags_new, $subjectArray));                    
+                        wp_set_post_tags($post_id, $combined_tags_with_subject, false);
+                    }
                 }
                 else{                    
                     wp_set_post_tags($post_id, $keywordsArray, false);
