@@ -1039,12 +1039,13 @@ function custom_display_authors_metabox($post) {
     echo '<option value="">Select an author</option>';
     
     foreach ($authors as $author) {
-        $selected = selected($selected_author, $author->ID, false);
+        $selected = ($selected_author == $author->ID) ? 'selected' : '';
         echo '<option value="' . esc_attr($author->ID) . '" ' . $selected . '>' . esc_html($author->display_name) . '</option>';
     }
 
     echo '</select>';
 }
+
 
 // Function to save the selected author
 /* function custom_save_author_meta($post_id) {
