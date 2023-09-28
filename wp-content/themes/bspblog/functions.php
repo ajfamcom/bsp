@@ -1048,11 +1048,9 @@ function custom_display_authors_metabox($post) {
 // Function to save the selected author
 function custom_save_author_meta($post_id) {
     if (isset($_POST['custom_author'])) {
-        $author_id = sanitize_text_field($_POST['custom_author']);
-        wp_update_post(array('ID' => $post_id, 'post_author' => $author_id));
+        update_post_meta($post_id, 'custom_author', sanitize_text_field($_POST['custom_author']));
     }
 }
-
 
 // Hook to add the custom meta box to posts and custom post types
 function custom_add_author_metabox() {
