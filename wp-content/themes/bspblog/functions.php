@@ -804,7 +804,7 @@ function save_pdf_meta($post_id) {
                             $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
                             $keywordsArray = array_map('trim', array_filter($keywordsArray));
                         }
-                         if(isset($metadata['dc:subject']) && !empty($metadata['dc:subject'])){
+                         if(isset($metadata['Subject']) && !empty($metadata['Subject'])){
                             $subjectArray = array_map('trim', array_filter($metadata['dc:subject']));
                         } 
 
