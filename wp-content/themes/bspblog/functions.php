@@ -808,7 +808,7 @@ function save_pdf_meta($post_id) {
                             $subjectArray = array_map('trim', array_filter($metadata['dc:subject']));
                         } 
 
-                   echo '<pre>';print_r($metadata);die();                            
+                   echo '<pre>';print_r($metadata['Subject']);die();                            
            
                 $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published')); 
                 if(!empty($existing_tags))
