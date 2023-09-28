@@ -1031,7 +1031,7 @@ add_filter('gettext', 'custom_rename_widgets', 20, 3);
 // Function to display a list of authors
 function custom_display_authors_metabox($post) {
     $authors = get_users(array('role' => 'author'));
-    $selected_author = get_post_meta($post->ID, 'custom_author', true);
+    $selected_author = get_post_meta($post->ID, 'post_author', true);
 
     echo '<label for="custom_author">Select Author:</label>';
     echo '<select id="custom_author" name="custom_author" required>';
