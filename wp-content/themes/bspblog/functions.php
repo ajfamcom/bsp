@@ -1032,11 +1032,10 @@ add_filter('gettext', 'custom_rename_widgets', 20, 3);
 // Function to display a list of authors
 function custom_display_authors_metabox($post) {
     $authors = get_users(array('role' => 'author'));
-    $selected_author = get_post_meta($post->ID, 'custom_author', true);
+    $selected_author = get_post_field('post_author', $post->ID);
 
     echo '<label for="custom_author">Select Author:</label>';
     echo '<select id="custom_author" name="custom_author">';
-    echo '<option value="">Select an author</option>';
     
     foreach ($authors as $author) {
         $selected = selected($selected_author, $author->ID, false);
@@ -1049,7 +1048,7 @@ function custom_display_authors_metabox($post) {
 // Function to save the selected author
 function custom_save_author_meta($post_id) {
     if (isset($_POST['custom_author'])) {
-        update_post_meta($post_id, 'custom_author', sanitize_text_field($_POST['custom_author']));
+        wp_update_post(array('ID' => $post_id, 'post_author' => sanitize_text_field($_POST['custom_author'])));
     }
 }
 
