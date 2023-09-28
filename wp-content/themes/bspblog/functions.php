@@ -808,7 +808,7 @@ function save_pdf_meta($post_id) {
                             $subjectArray = array_map('trim', array_filter($metadata['dc:subject']));
                         } 
 
-                                               
+                        print_r($metadata['dc:subject']);die();                       
            
                 $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published')); 
                 if(!empty($existing_tags))
@@ -824,7 +824,7 @@ function save_pdf_meta($post_id) {
                 else{
                                         
                     wp_set_post_tags($post_id, $keywordsArray, false);
-                    print_r($metadata['dc:subject']);die();
+                    
                     if($subjectArray){
                         $existing_tags_new = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published'));
                         if($existing_tags_new) {
