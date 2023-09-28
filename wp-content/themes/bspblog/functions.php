@@ -804,11 +804,25 @@ function save_pdf_meta($post_id) {
                             $keywordsArray = preg_split("/\r\n|\n|\r/", $metadata['Keywords']);        
                             $keywordsArray = array_map('trim', array_filter($keywordsArray));
                         }
-                         if(isset($metadata['dc:subject']) && !empty($metadata['dc:subject'])){
-                            $subjectArray = array_map('trim', array_filter($metadata['dc:subject']));
-                        } 
 
-                   echo '<pre>';print_r($metadata['Subject']);die();                            
+                        if (strpos($metadata['Subject'], ',') !== false) {
+                            // If a comma is found in the string
+                            $subjectArray = explode(",", $metadata['Subject']);
+                            $subjectArray = array_map('trim', array_filter($subjectArray));
+                        }  
+                        elseif (strpos($metadata['Subject'], ' ') !== false) {
+                
+                            $subjectArray = preg_split("/\r\n|\n|\r/", $metadata['Subject']);        
+                            $subjectArray = array_map('trim', array_filter($subjectArray));
+                        }                      
+                        else { 
+                            // If no comma is found in the string
+                            $subjectArray = preg_split("/\r\n|\n|\r/", $metadata['Subject']);        
+                            $subjectArray = array_map('trim', array_filter($subjectArray));
+                        }
+                       
+
+                                             
            
                 $existing_tags = wp_get_post_tags($post_id, array('fields' => 'names','status'=>'published')); 
                 if(!empty($existing_tags))
