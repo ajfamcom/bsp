@@ -1035,7 +1035,7 @@ function custom_display_authors_metabox($post) {
     $selected_author = get_post_meta($post->ID, 'custom_author', true);
 
     echo '<label for="custom_author">Select Author:</label>';
-    echo '<select id="custom_author" name="custom_author">';
+    echo '<select id="custom_author" name="custom_author" required>';
     echo '<option value="">Select an author</option>';
     
     foreach ($authors as $author) {
