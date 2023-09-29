@@ -1059,6 +1059,9 @@ div#slider-related-posts-track .tile-block-red {
 ul#slider-related-posts-list li .news-block {
     position: relative;
 }
+ul#slider-related-posts-list li .news-block:hover .news-image.tile-block {
+    background-image: linear-gradient(180deg, #b10f1e, var(--orange));
+}
 ul#slider-related-posts-list li .news-block .news-info {
     position: absolute;
     bottom: 30px;
