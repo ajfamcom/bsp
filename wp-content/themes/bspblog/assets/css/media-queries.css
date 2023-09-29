@@ -494,6 +494,7 @@
 
 .mc4wp-response {
     position: relative;
+    top: inherit;
 }
 }
 
