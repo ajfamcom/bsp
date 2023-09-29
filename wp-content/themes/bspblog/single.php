@@ -160,7 +160,7 @@ global $wpdb;
 			$options = array('tile-block', 'tile-block-red', 'tile-block-grey');
 			foreach($results as $row) :
 				$randomIndex = array_rand($options);
-				$currentClass = $options[$randomIndex];
+				$currentClass = 'tile-block';//$options[$randomIndex];
 				$post_id = $row->ID;
 				$post_type_data=get_post_type($post_id);
 				$permalink = get_permalink($post_id);
