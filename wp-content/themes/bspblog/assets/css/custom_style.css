@@ -1490,4 +1490,13 @@ div#custom-popup {
     border: 1px solid #dbdbdb !important;
     border-radius: 8px !important;
 }
+
+form#mc4wp-form-1 {
+    position: relative;
+}
+.mc4wp-response {
+    position: absolute;
+    top: -32px;
+    width: 100%;
+}
 /*--------- /subscribe-popup ----------*/
