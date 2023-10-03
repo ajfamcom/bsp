@@ -1126,6 +1126,7 @@ add_action('save_post', 'custom_save_author_meta');
 
 function filter_author_dropdown($query_args, $r) {
     $screen = get_current_screen();
+    echo '<pre>';print_r($screen);die();
 
     if ($screen && $screen->post_type == 'post') {
         $query_args['role'] = 'author';
