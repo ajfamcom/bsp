@@ -1124,8 +1124,4 @@ function custom_add_author_metabox() {
 add_action('add_meta_boxes', 'custom_add_author_metabox');
 add_action('save_post', 'custom_save_author_meta');
 
-function remove_author_box() {
-    remove_meta_box('authordiv', 'post', 'side');
-}
 
-add_action('admin_menu', 'remove_author_box');
