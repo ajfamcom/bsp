@@ -1115,7 +1115,7 @@ function custom_save_author_meta($post_id) {
 
 // Hook to add the custom meta box to posts and custom post types
 function custom_add_author_metabox() {
-    $post_types = array('post', 'bsp_custom_polls','news_analysis'); // Add your custom post type slug here
+    $post_types = array('bsp_custom_polls','news_analysis'); // Add your custom post type slug here
     foreach ($post_types as $post_type) {
         add_meta_box('custom_author_metabox', 'Author', 'custom_display_authors_metabox', $post_type, 'side', 'default');
     }
@@ -1123,5 +1123,16 @@ function custom_add_author_metabox() {
 
 add_action('add_meta_boxes', 'custom_add_author_metabox');
 add_action('save_post', 'custom_save_author_meta');
+
+function filter_author_dropdown($query_args, $r) {
+    $screen = get_current_screen();
+
+    if ($screen && $screen->post_type == 'post') {
+        $query_args['role'] = 'author';
+    }
+
+    return $query_args;
+}
+add_filter('wp_dropdown_users_args', 'filter_author_dropdown', 10, 2);
 
 
