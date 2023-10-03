@@ -1124,16 +1124,16 @@ function custom_add_author_metabox() {
 add_action('add_meta_boxes', 'custom_add_author_metabox');
 add_action('save_post', 'custom_save_author_meta');
 
-function filter_author_dropdown($query_args, $r) {
+function filter_author_dropdown($query_args) {
     $screen = get_current_screen();
-    echo '<pre>';print_r($screen);die();
 
     if ($screen && $screen->post_type == 'post') {
-        $query_args['role'] = 'author';
+        $query_args['role__in'] = array('author');
     }
 
     return $query_args;
 }
-add_filter('wp_dropdown_users_args', 'filter_author_dropdown', 10, 2);
+add_filter('wp_dropdown_users_args', 'filter_author_dropdown', 10, 1);
+
 
 
