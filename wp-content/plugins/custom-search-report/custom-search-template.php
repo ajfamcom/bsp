@@ -20,10 +20,18 @@ FROM wp_searchdata WHERE 1=1";
 
 
 if (!empty($start_date) && !empty($end_date)) {
-    $query .= " AND created_at BETWEEN '$start_date' AND '$end_date' ";
+    //$query .= " AND created_at BETWEEN '$start_date' AND '$end_date' ";
+    $start_date = date('Y-m-d', strtotime($start_date));
+   
+    $end_date = date('Y-m-d', strtotime($end_date . ' +1 day'));
+    $query .= " AND created_at >= '$start_date' ";
+    $query .= " AND created_at <= '$end_date' ";
 } elseif (!empty($start_date)) {
+    $start_date = date('Y-m-d', strtotime($start_date));
     $query .= " AND created_at >= '$start_date' ";
 } elseif (!empty($end_date)) {
+    
+    $end_date = date('Y-m-d', strtotime($end_date . ' +1 day'));
     $query .= " AND created_at <= '$end_date' ";
 }
 if (!empty($search_page)) {
