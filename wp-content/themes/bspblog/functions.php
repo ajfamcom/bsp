@@ -1199,7 +1199,9 @@ function add_custom_caps_to_author_role(  ) {
         // Add capabilities for the second custom post type
         $author_role->add_cap('edit_news_analysis'); // Replace with your custom post type slug
         $author_role->add_cap('publish_news_analysis'); // Replace with your custom post type slug
-  
+        $author_role->remove_cap('edit_posts'); // Example: Remove the capability to edit posts
+        $author_role->remove_cap('publish_posts'); // Example: Remove the capability to publish posts
+        
         // Remove capabilities not in the allowed list
         /* foreach ( $allcaps as $cap => $value ) {
             if ( ! in_array( $cap, $allowed_caps ) ) {
