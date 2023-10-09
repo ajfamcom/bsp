@@ -144,14 +144,23 @@ if ( ! defined( 'ABSPATH' ) ) {
          $api = mc4wp( 'api' );
          
          $subscriber_hash=md5( strtolower( trim( $email) ) );
-    
-            // Define user data
+
+         if (strpos($firstname, ' ') !== false) {
+            $splitdata=explode(' ',$firstname);
+            $lastname=$splitdata[1];
+            $firstname=$splitdata[0];
+        } else {
+             $lastname='';
+            
+        }
+            // Define user data$firstname
            $subscriber_data = array(
                 'email_address' => $email,
-                'fname' => $firstname,
+                'fname' => $firstname,                
                 'status'=>'subscribed',
                 'merge_fields'=> [
-                    'FNAME'=>$firstname
+                    'FNAME'=>$firstname,
+                    'LNAME'=>$lastname
                     ]
             );
             
@@ -169,9 +178,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                          
                 try {
                     // Add a new member
-                    //$api->add_list_member($listid, $subscriber_data);
-                    $api->subscribe($subscriber_data); 
-                    //$response = $api->get_last_response_body();
+                    $api->add_list_member($listid, $subscriber_data);                     
+                    $response = $api->get_last_response_body();
                     
                     return true;
                 } catch (Exception $e) {
