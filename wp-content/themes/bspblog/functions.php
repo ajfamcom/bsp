@@ -1135,7 +1135,7 @@ add_filter( 'mc4wp_form_subscriber_data', 'customize_mc4wp_subscriber_data', 10,
 
 function customize_mc4wp_subscriber_data( $subscriber_data, $form_id ) {
     // Modify the $subscriber_data array as needed
-   print_r($subscriber_data['FNAME']);die();
+   print_r($subscriber_data);die();
     //if($form_id=='666') {
     if (strpos($subscriber_data['FNAME'], ' ') !== false) {
        $splitdata=explode(' ',$subscriber_data['FNAME']);
