@@ -1187,7 +1187,7 @@ function hide_menu_links_for_author() {
         remove_menu_page('edit.php'); 
 
         
-        //remove_menu_page('edit.php?post_type=manage_services'); 
+        remove_menu_page('edit.php?post_type=manage_services'); 
         remove_menu_page('edit.php?post_type=team_members'); 
         remove_menu_page('edit.php?post_type=custom_content');
     }
