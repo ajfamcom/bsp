@@ -1179,14 +1179,49 @@ function change_author_role_name() {
 
 add_action( 'init', 'change_author_role_name' );
 
+function add_custom_caps_to_author_role(  ) {
+    //$allcaps, $cap, $args
+    $author_role = get_role('author');
+    // Check if the current user has the 'author' role
+    //if ( isset( $allcaps['author'] ) && $allcaps['author'] ) {
+        if ($author_role) {
+        // Define the allowed capabilities for 'author'
+        /* $allowed_caps = array(
+            'edit_bsp_custom_polls',
+            'publish_bsp_custom_polls',
+            'edit_news_analysis',
+            'publish_news_analysis'
+        ); */
+        $author_role->remove_cap('edit_posts'); // Example: Remove the capability to edit posts
+        $author_role->remove_cap('publish_posts'); // Example: Remove the capability to publish posts
+        $author_role->add_cap('edit_bsp_custom_polls'); // Replace with your custom post type slug
+        $author_role->add_cap('publish_bsp_custom_polls'); // Replace with your custom post type slug
 
+        // Add capabilities for the second custom post type
+        $author_role->add_cap('edit_news_analysis'); // Replace with your custom post type slug
+        $author_role->add_cap('publish_news_analysis'); // Replace with your custom post type slug
+      
+        
+        // Remove capabilities not in the allowed list
+        /* foreach ( $allcaps as $cap => $value ) {
+            if ( ! in_array( $cap, $allowed_caps ) ) {
+                $allcaps[$cap] = false;
+            }
+        } */
+        // Remove menu pages for other custom post types
+        
+        
+        // Add more lines for each custom post type you want to hide
+    }
+    //return $allcaps;limit_author_capabilities
+}
+//add_filter( 'init', 'add_custom_caps_to_author_role' );
 
 function remove_regular_posts_capabilities_from_author_role() {
     $author_role = get_role('author');
 
     if ($author_role) {
-        $author_role->remove_cap('edit_posts'); // Remove capability to edit regular posts
-        $author_role->remove_cap('publish_posts'); // Remove capability to publish regular posts
+        
         $author_role->add_cap('edit_bsp_custom_polls'); // Replace with your custom post type slug
         $author_role->add_cap('publish_bsp_custom_polls'); // Replace with your custom post type slug        
         $author_role->add_cap('edit_news_analysis'); // Replace with your custom post type slug
