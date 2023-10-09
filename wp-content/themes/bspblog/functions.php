@@ -1167,5 +1167,7 @@ function custom_admin_roles() {
     $wp_roles->remove_role('subscriber');
     $wp_roles->remove_role('contributor');
     $wp_roles->remove_role('editor');
+    $wp_roles->remove_role('shop_manager');
+    $wp_roles->remove_role('customer');
 }
 add_action('init', 'custom_admin_roles');
