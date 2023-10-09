@@ -1179,30 +1179,38 @@ function change_author_role_name() {
 
 add_action( 'init', 'change_author_role_name' );
 
-function limit_author_capabilities( $allcaps, $cap, $args ) {
+function add_custom_caps_to_author_role(  ) {
+    //$allcaps, $cap, $args
+    $author_role = get_role('author');
     // Check if the current user has the 'author' role
-    if ( isset( $allcaps['author'] ) && $allcaps['author'] ) {
+    //if ( isset( $allcaps['author'] ) && $allcaps['author'] ) {
+        if ($author_role) {
         // Define the allowed capabilities for 'author'
-        $allowed_caps = array(
+        /* $allowed_caps = array(
             'edit_bsp_custom_polls',
             'publish_bsp_custom_polls',
             'edit_news_analysis',
             'publish_news_analysis'
-        );
+        ); */
+        
+        $author_role->add_cap('edit_bsp_custom_polls'); // Replace with your custom post type slug
+        $author_role->add_cap('publish_bsp_custom_polls'); // Replace with your custom post type slug
 
+        // Add capabilities for the second custom post type
+        $author_role->add_cap('edit_news_analysis'); // Replace with your custom post type slug
+        $author_role->add_cap('publish_news_analysis'); // Replace with your custom post type slug
+  
         // Remove capabilities not in the allowed list
-        foreach ( $allcaps as $cap => $value ) {
+        /* foreach ( $allcaps as $cap => $value ) {
             if ( ! in_array( $cap, $allowed_caps ) ) {
                 $allcaps[$cap] = false;
             }
-        }
+        } */
         // Remove menu pages for other custom post types
         
-        remove_menu_page('edit.php?post_type=manage_services'); // Replace with another custom post type slug
-        remove_menu_page('edit.php?post_type=team_members'); // Replace with another custom post type slug
-        remove_menu_page('edit.php?post_type=custom_content'); // Replace with another custom post type slug
+        
         // Add more lines for each custom post type you want to hide
     }
-    return $allcaps;
+    //return $allcaps;limit_author_capabilities
 }
-add_filter( 'map_meta_cap', 'limit_author_capabilities', 10, 3 );
+add_filter( 'init', 'add_custom_caps_to_author_role' );
