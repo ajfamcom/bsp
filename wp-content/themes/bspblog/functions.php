@@ -1135,10 +1135,10 @@ add_filter( 'mc4wp_form_subscriber_data', 'customize_mc4wp_subscriber_data', 10,
 
 function customize_mc4wp_subscriber_data( $subscriber_data, $form_id ) {
     // Modify the $subscriber_data array as needed
-   echo '<pre>';print_r($subscriber_data->merge_fields);die();
+   echo '<pre>';print_r($subscriber_data->merge_fields['FNAME']);die();
     //if($form_id=='666') {
-    if (strpos($subscriber_data['FNAME'], ' ') !== false) {
-       $splitdata=explode(' ',$subscriber_data['FNAME']);
+    if (strpos($subscriber_data->merge_fields['FNAME'], ' ') !== false) {
+       $splitdata=explode(' ',$subscriber_data->merge_fields['FNAME']);
        $lastname=$splitdata[1];
        $firstname=$splitdata[0];
    } else {
