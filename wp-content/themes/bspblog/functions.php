@@ -1133,7 +1133,7 @@ add_action('init', 'remove_post_support');
 
 add_filter( 'mc4wp_form_subscriber_data', 'customize_mc4wp_subscriber_data', 10, 2 );
 
-function customize_mc4wp_subscriber_data( $subscriber_data, $form_id ) {
+function customize_mc4wp_subscriber_data( $subscriber_data, $list_id ) {
     // Modify the $subscriber_data array as needed
    
    
