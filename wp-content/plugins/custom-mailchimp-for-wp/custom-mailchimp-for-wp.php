@@ -147,7 +147,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
          if (strpos($firstname, ' ') !== false) {
             $splitdata=explode(' ',$firstname);
-            $lastname=$splitdata[1];
+            $lastname='';
+            for($count=1;$count<=count($splitdata);$count++){
+              $lastname.=$splitdata[$count].' ';
+            }
             $firstname=$splitdata[0];
         } else {
              $lastname='';

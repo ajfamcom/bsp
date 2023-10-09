@@ -1139,7 +1139,10 @@ function customize_mc4wp_subscriber_data( $subscriber_data, $list_id ) {
    
      if (strpos($subscriber_data->merge_fields['FNAME'], ' ') !== false) {
        $splitdata=explode(' ',$subscriber_data->merge_fields['FNAME']);
-       $lastname=$splitdata[1];
+       $lastname='';
+            for($count=1;$count<=count($splitdata);$count++){
+              $lastname.=$splitdata[$count].' ';
+            }
        $firstname=$splitdata[0];
    } else {
         $lastname='';
