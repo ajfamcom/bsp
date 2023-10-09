@@ -1146,10 +1146,12 @@ function customize_mc4wp_subscriber_data( $subscriber_data, $form_id ) {
         $firstname=$subscriber_data->merge_fields['FNAME'];
    }
    $subscriber_data->merge_fields['FNAME'] = $firstname;
-   //$subscriber_data->merge_fields['LNAME'] = $lastname;
+   $subscriber_data->merge_fields['LNAME'] = $lastname;
+
+   echo '<pre>'; print_r($subscriber_data->merge_fields);die();
 
     // Remove the separate first name and last name fields
-    unset( $subscriber_data->merge_fields['FNAME'] );  
+    //unset( $subscriber_data->merge_fields['FNAME'] );  
   
     return $subscriber_data;
 }
