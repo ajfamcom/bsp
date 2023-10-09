@@ -1198,7 +1198,7 @@ add_action( 'init', 'change_author_role_name' );
 } */
 //add_action('admin_menu', 'hide_menu_links_for_author');
 
-function assign_custom_capabilities_to_author_role() {
+/* function assign_custom_capabilities_to_author_role() {
     $author_role = get_role('author');
 
     if ($author_role) {
@@ -1208,7 +1208,26 @@ function assign_custom_capabilities_to_author_role() {
         $author_role->add_cap('publish_news_analysis'); // Replace with your custom post type slug
     }
 }
-add_action('init', 'assign_custom_capabilities_to_author_role');
+add_action('init', 'assign_custom_capabilities_to_author_role'); */
 
+function limit_author_capabilities( $allcaps, $cap, $args ) {
+    // Check if the current user has the 'author' role
+    if ( isset( $allcaps['author'] ) && $allcaps['author'] ) {
+        // Define the allowed capabilities for 'author'
+        $allowed_caps = array(
+            'edit_bsp_custom_polls',
+            'publish_bsp_custom_polls',
+        );
+
+        // Remove capabilities not in the allowed list
+        foreach ( $allcaps as $cap => $value ) {
+            if ( ! in_array( $cap, $allowed_caps ) ) {
+                $allcaps[$cap] = false;
+            }
+        }
+    }
+    return $allcaps;
+}
+add_filter( 'map_meta_cap', 'limit_author_capabilities', 10, 3 );
 
 
