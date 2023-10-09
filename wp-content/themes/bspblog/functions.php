@@ -1228,5 +1228,5 @@ function remove_regular_posts_capabilities_from_author_role() {
         $author_role->add_cap('publish_news_analysis'); // Replace with your custom post type slug */
     }
 }
-add_action('init', 'remove_regular_posts_capabilities_from_author_role');
+//add_action('init', 'remove_regular_posts_capabilities_from_author_role');
 
