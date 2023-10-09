@@ -1154,13 +1154,7 @@ function customize_mc4wp_subscriber_data( $subscriber_data, $list_id ) {
     return $subscriber_data;
 }
 
-function change_author_role_name( $translated_text, $text, $domain ) {
-    if ( $text === 'Author' && $domain === 'default' ) {
-        return 'Content Editor';
-    }
-    return $translated_text;
-}
-add_filter( 'gettext', 'change_author_role_name', 20, 3 );
+
 
 function custom_admin_roles() {
     global $wp_roles;
@@ -1171,3 +1165,16 @@ function custom_admin_roles() {
     $wp_roles->remove_role('customer');
 }
 add_action('init', 'custom_admin_roles');
+
+function change_author_role_name() {
+    global $wp_roles;
+    
+    if ( ! isset( $wp_roles ) )
+        $wp_roles = new WP_Roles();
+
+    // Change the display name of the 'Author' role to 'Content Editor'
+    $wp_roles->roles['author']['name'] = 'Content Editor';
+    $wp_roles->role_names['author'] = 'Content Editor';
+}
+
+add_action( 'init', 'change_author_role_name' );
