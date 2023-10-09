@@ -1192,15 +1192,15 @@ function add_custom_caps_to_author_role(  ) {
             'edit_news_analysis',
             'publish_news_analysis'
         ); */
-        
+        $author_role->remove_cap('edit_posts'); // Example: Remove the capability to edit posts
+        $author_role->remove_cap('publish_posts'); // Example: Remove the capability to publish posts
         $author_role->add_cap('edit_bsp_custom_polls'); // Replace with your custom post type slug
         $author_role->add_cap('publish_bsp_custom_polls'); // Replace with your custom post type slug
 
         // Add capabilities for the second custom post type
         $author_role->add_cap('edit_news_analysis'); // Replace with your custom post type slug
         $author_role->add_cap('publish_news_analysis'); // Replace with your custom post type slug
-        $author_role->remove_cap('edit_posts'); // Example: Remove the capability to edit posts
-        $author_role->remove_cap('publish_posts'); // Example: Remove the capability to publish posts
+      
         
         // Remove capabilities not in the allowed list
         /* foreach ( $allcaps as $cap => $value ) {
