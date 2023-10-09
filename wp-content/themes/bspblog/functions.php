@@ -1180,18 +1180,16 @@ function change_author_role_name() {
 add_action( 'init', 'change_author_role_name' );
 
 
-
+/*Hide menu links if role is author*/ 
 function hide_menu_links_for_author() {
     if (current_user_can('author')) {
-        // Remove links for regular posts
-        remove_menu_page('edit.php'); // Removes 'Posts'
+        
+        remove_menu_page('edit.php'); 
 
-        // Remove links for custom post types (replace with your custom post type slugs)
-        remove_menu_page('edit.php?post_type=manage_services'); // Replace with your custom post type slug
-        remove_menu_page('edit.php?post_type=team_members'); // Replace with another custom post type slug
-
-        // Keep links for the two custom post types you want to show
-        // ...
+        
+        remove_menu_page('edit.php?post_type=manage_services'); 
+        remove_menu_page('edit.php?post_type=team_members'); 
+        remove_menu_page('edit.php?post_type=custom_content');
     }
 }
 add_action('admin_menu', 'hide_menu_links_for_author');
