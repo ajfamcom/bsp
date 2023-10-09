@@ -1222,10 +1222,10 @@ function remove_regular_posts_capabilities_from_author_role() {
 
     if ($author_role) {
         
-        $author_role->add_cap('edit_bsp_custom_polls'); // Replace with your custom post type slug
+       /*  $author_role->add_cap('edit_bsp_custom_polls'); // Replace with your custom post type slug
         $author_role->add_cap('publish_bsp_custom_polls'); // Replace with your custom post type slug        
         $author_role->add_cap('edit_news_analysis'); // Replace with your custom post type slug
-        $author_role->add_cap('publish_news_analysis'); // Replace with your custom post type slug
+        $author_role->add_cap('publish_news_analysis'); // Replace with your custom post type slug */
     }
 }
 add_action('init', 'remove_regular_posts_capabilities_from_author_role');
