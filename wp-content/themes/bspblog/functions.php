@@ -1181,7 +1181,7 @@ add_action( 'init', 'change_author_role_name' );
 
 
 /*Hide menu links if role is author*/ 
-function hide_menu_links_for_author() {
+/* function hide_menu_links_for_author() {
     if (current_user_can('author')) {
         
         remove_menu_page('edit.php'); 
@@ -1190,8 +1190,25 @@ function hide_menu_links_for_author() {
         remove_menu_page('edit.php?post_type=manage_services'); 
         remove_menu_page('edit.php?post_type=team_members'); 
         remove_menu_page('edit.php?post_type=custom_content');
+        remove_menu_page('post-new.php'); // Removes 'Add New' under 'Pages'
+        remove_menu_page('edit.php?post_type=page'); // Removes 'Pages'
+        remove_submenu_page('edit.php?post_type=your_custom_post_type', 'post-new.php?post_type=your_custom_post_type');
+   
+    }
+} */
+//add_action('admin_menu', 'hide_menu_links_for_author');
+
+function assign_custom_capabilities_to_author_role() {
+    $author_role = get_role('author');
+
+    if ($author_role) {
+        $author_role->add_cap('edit_bsp_custom_polls'); // Replace with your custom post type slug
+        $author_role->add_cap('publish_bsp_custom_polls'); // Replace with your custom post type slugnews_analysis
+        $author_role->add_cap('edit_news_analysis'); // Replace with your custom post type slug
+        $author_role->add_cap('publish_news_analysis'); // Replace with your custom post type slug
     }
 }
-add_action('admin_menu', 'hide_menu_links_for_author');
+add_action('init', 'assign_custom_capabilities_to_author_role');
+
 
 
