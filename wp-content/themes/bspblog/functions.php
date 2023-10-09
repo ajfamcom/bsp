@@ -1154,3 +1154,18 @@ function customize_mc4wp_subscriber_data( $subscriber_data, $list_id ) {
     return $subscriber_data;
 }
 
+function change_author_role_name( $translated_text, $text, $domain ) {
+    if ( $text === 'Author' && $domain === 'default' ) {
+        return 'Content Editor';
+    }
+    return $translated_text;
+}
+add_filter( 'gettext', 'change_author_role_name', 20, 3 );
+
+function custom_admin_roles() {
+    global $wp_roles;
+    $wp_roles->remove_role('subscriber');
+    $wp_roles->remove_role('contributor');
+    $wp_roles->remove_role('editor');
+}
+add_action('init', 'custom_admin_roles');
