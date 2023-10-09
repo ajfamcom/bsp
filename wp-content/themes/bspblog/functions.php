@@ -1196,6 +1196,12 @@ function limit_author_capabilities( $allcaps, $cap, $args ) {
                 $allcaps[$cap] = false;
             }
         }
+        // Remove menu pages for other custom post types
+        remove_menu_page('edit.php?post_type=post'); // Replace with your custom post type slug
+        remove_menu_page('edit.php?post_type=manage_services'); // Replace with another custom post type slug
+        remove_menu_page('edit.php?post_type=team_members'); // Replace with another custom post type slug
+        remove_menu_page('edit.php?post_type=custom_content'); // Replace with another custom post type slug
+        // Add more lines for each custom post type you want to hide
     }
     return $allcaps;
 }
