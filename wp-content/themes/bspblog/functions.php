@@ -1167,7 +1167,7 @@ function custom_admin_roles() {
     $wp_roles->remove_role('shop_manager');
     $wp_roles->remove_role('customer');
 }
-add_action('init', 'custom_admin_roles');
+//add_action('init', 'custom_admin_roles');
 
 function change_author_role_name() {
     global $wp_roles;
@@ -1180,7 +1180,7 @@ function change_author_role_name() {
     $wp_roles->role_names['author'] = 'Content Editor';
 }
 
-add_action( 'init', 'change_author_role_name' );
+//sadd_action( 'init', 'change_author_role_name' );
 
 
 /*Hide menu links if role is author*/ 
@@ -1231,6 +1231,6 @@ function limit_author_capabilities( $allcaps, $cap, $args ) {
     }
     return $allcaps;
 }
-add_filter( 'map_meta_cap', 'limit_author_capabilities', 10, 3 );
+//add_filter( 'map_meta_cap', 'limit_author_capabilities', 10, 3 );
 
 
