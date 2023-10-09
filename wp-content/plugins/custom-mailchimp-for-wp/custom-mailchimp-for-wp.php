@@ -169,8 +169,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                          
                 try {
                     // Add a new member
-                    $api->add_list_member($listid, $subscriber_data); 
-                    $response = $api->get_last_response_body();
+                    //$api->add_list_member($listid, $subscriber_data);
+                    $api->subscribe($subscriber_data); 
+                    //$response = $api->get_last_response_body();
                     
                     return true;
                 } catch (Exception $e) {
