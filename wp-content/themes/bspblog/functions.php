@@ -1135,8 +1135,8 @@ add_filter( 'mc4wp_form_subscriber_data', 'customize_mc4wp_subscriber_data', 10,
 
 function customize_mc4wp_subscriber_data( $subscriber_data, $form_id ) {
     // Modify the $subscriber_data array as needed
-    echo $form_id;die();
-    if($form_id=='666') {
+   print_r($subscriber_data);die();
+    //if($form_id=='666') {
     if (strpos($subscriber_data['FNAME'], ' ') !== false) {
        $splitdata=explode(' ',$subscriber_data['FNAME']);
        $lastname=$splitdata[1];
@@ -1150,7 +1150,7 @@ function customize_mc4wp_subscriber_data( $subscriber_data, $form_id ) {
 
     // Remove the separate first name and last name fields
     unset( $subscriber_data['FNAME'] );    
-    }
+   // }
     return $subscriber_data;
 }
 
