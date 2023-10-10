@@ -1333,7 +1333,7 @@ function remove_post_capabilities_from_editor() {
         // Remove capabilities for default posts
         $editor_role->remove_cap('edit_posts');
         $editor_role->remove_cap('publish_posts');
-        $editor_role->remove_cap('read');
+        //$editor_role->remove_cap('read');
         $editor_role->remove_cap('delete_posts');
     }
 }
