@@ -1312,7 +1312,7 @@ function remove_post_capabilities_from_editor() {
     $editor_role = get_role('editor');
 
     if ($editor_role) {
-        $editor_role->add_cap('edit_posts');
+       /*  $editor_role->add_cap('edit_posts');
         $editor_role->add_cap('publish_posts');
         $editor_role->add_cap('create_posts');
         $editor_role->add_cap('add_bsp_custom_polls');
@@ -1320,7 +1320,21 @@ function remove_post_capabilities_from_editor() {
         $editor_role->add_cap('publish_bsp_custom_polls');
         $editor_role->remove_cap('edit_manage_services');
         $editor_role->remove_cap('publish_manage_services');
-        $editor_role->remove_cap('create_manage_services');
+        $editor_role->remove_cap('create_manage_services'); */
+
+
+        $editor_role->add_cap('edit_bsp_custom_polls');
+        $editor_role->add_cap('edit_published_bsp_custom_polls');
+        $editor_role->add_cap('publish_bsp_custom_polls');
+        $editor_role->add_cap('read_bsp_custom_polls');
+        $editor_role->add_cap('delete_bsp_custom_polls');
+        // Add other capabilities as needed
+
+        // Remove capabilities for default posts
+        $editor_role->remove_cap('edit_posts');
+        $editor_role->remove_cap('publish_posts');
+        $editor_role->remove_cap('read');
+        $editor_role->remove_cap('delete_posts');
     }
 }
 add_action('init', 'remove_post_capabilities_from_editor');
