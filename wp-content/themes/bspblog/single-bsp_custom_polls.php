@@ -32,6 +32,7 @@ $noimage = $theme_directory_uri . '/assets/images/on-image-placeholder.jpg';
 
 				$multiple_pdf_attachment=get_field('multiple_pdf_attachments',$post_id);
 				//echo ($multiple_pdf_attachment)[0]['poll_pdf_attachment']['url'];
+				
 
 endwhile;
 
@@ -44,7 +45,8 @@ endwhile;
 					<?php //echo get_breadcrumbs(); ?>
 					<div class="page-title">
 						<h2><?php echo get_the_title(); ?></h2>
-						 <p> By <?php echo $author_name;?> </p>
+						<p> By <?php //echo $author_name;?> </p> 
+						
 					</div>
 				</div>
 			</div>
