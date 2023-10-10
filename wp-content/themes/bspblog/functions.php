@@ -1158,7 +1158,7 @@ function customize_mc4wp_subscriber_data( $subscriber_data, $list_id ) {
 }
 
 
-
+/**new changes */
 function custom_admin_roles() {
     global $wp_roles;
     $wp_roles->remove_role('subscriber');
@@ -1177,8 +1177,7 @@ function change_author_role_name() {
     // Change the display name of the 'Author' role to 'Content Editor'
     $wp_roles->roles['editor']['name'] = 'Content Editor';
     $wp_roles->role_names['editor'] = 'Content Editor';
-    $wp_roles->roles['author']['name'] = 'Author';
-    $wp_roles->role_names['author'] = 'Author';
+   
 }
 
 add_action( 'init', 'change_author_role_name' );
@@ -1202,7 +1201,7 @@ add_action( 'init', 'change_author_role_name' );
 } */
 //add_action('admin_menu', 'hide_menu_links_for_author');
 
-/* function assign_custom_capabilities_to_author_role() {
+ /* function assign_custom_capabilities_to_author_role() {
     $author_role = get_role('author');
 
     if ($author_role) {
@@ -1212,9 +1211,9 @@ add_action( 'init', 'change_author_role_name' );
         $author_role->add_cap('publish_news_analysis'); // Replace with your custom post type slug
     }
 }
-add_action('init', 'assign_custom_capabilities_to_author_role'); */
+add_action('init', 'assign_custom_capabilities_to_author_role');  */
 
-function limit_author_capabilities( $allcaps, $cap, $args ) {
+/* function limit_author_capabilities( $allcaps, $cap, $args ) {
     // Check if the current user has the 'author' role
     if ( isset( $allcaps['author'] ) && $allcaps['author'] ) {
         // Define the allowed capabilities for 'author'
@@ -1231,7 +1230,15 @@ function limit_author_capabilities( $allcaps, $cap, $args ) {
         }
     }
     return $allcaps;
-}
+} */
 //add_filter( 'map_meta_cap', 'limit_author_capabilities', 10, 3 );
 
+function limit_editor_capabilities($allcaps, $cap, $args) {
+    if ($cap === 'edit_bsp_custom_polls' || $cap === 'edit_news_analysis') {
+        $allcaps[$cap] = true;
+    }
+
+    return $allcaps;
+}
+add_filter('user_has_cap', 'limit_editor_capabilities', 10, 3);
 
