@@ -1240,8 +1240,8 @@ add_action('init', 'assign_custom_capabilities_to_author_role');  */
     return $allcaps;
 }
 add_filter('user_has_cap', 'limit_editor_capabilities', 10, 3); */
-/* 
-function add_all_capabilities_to_role() {
+
+/*function add_all_capabilities_to_role() {
     $role = get_role('editor'); // Replace 'editor' with the desired role
 
     if ($role) {
@@ -1309,8 +1309,10 @@ add_action('init', 'add_all_capabilities_to_role'); */
 add_action('admin_menu', 'hide_admin_menu_items'); 
 
 function remove_new_content_from_admin_bar() {
+    if (is_admin() && current_user_can('editor')) {
     global $wp_admin_bar;
     $wp_admin_bar->remove_node('new-content');
+    }
 }
 
 add_action('wp_before_admin_bar_render', 'remove_new_content_from_admin_bar');
