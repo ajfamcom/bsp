@@ -1302,7 +1302,7 @@ function hide_admin_menu_items() {
         remove_menu_page('edit.php?post_type=manage_services');
         remove_menu_page('edit.php?post_type=custom_content');
         remove_menu_page('edit.php?post_type=team_members');
-        remove_menu_pages('tools.php');
+        
     }
 }
 
