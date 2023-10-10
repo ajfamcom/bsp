@@ -1307,3 +1307,12 @@ function hide_admin_menu_items() {
 }
 
 add_action('admin_menu', 'hide_admin_menu_items');
+
+function remove_new_dropdown_capability() {
+    $role = get_role('editor'); // Replace 'editor' with the desired role
+
+    if ($role) {
+        $role->remove_cap('create_posts');
+    }
+}
+add_action('init', 'remove_new_dropdown_capability');
