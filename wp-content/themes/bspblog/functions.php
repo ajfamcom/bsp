@@ -1317,8 +1317,8 @@ add_action('wp_before_admin_bar_render', 'remove_new_content_from_admin_bar');
 
 function restrict_custom_post_type_edit_page() {
     if (is_admin() && current_user_can('editor')) {
-        $screen = get_current_screen();
-        print_r($screen);die(); 
+        $screen = isset($_GET['post_type']) ? $_GET['post_type'] : '';
+        echo($screen);die(); 
         // Check if it's the edit.php page for custom post types
         $restricted_post_types = array('manage_services', 'team_members', 'custom_content','post');
 
