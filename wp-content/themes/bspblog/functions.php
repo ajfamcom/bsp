@@ -1162,12 +1162,11 @@ function customize_mc4wp_subscriber_data( $subscriber_data, $list_id ) {
 function custom_admin_roles() {
     global $wp_roles;
     $wp_roles->remove_role('subscriber');
-    $wp_roles->remove_role('contributor');
-    $wp_roles->remove_role('editor');
+    $wp_roles->remove_role('contributor');    
     $wp_roles->remove_role('shop_manager');
     $wp_roles->remove_role('customer');
 }
-//add_action('init', 'custom_admin_roles');
+add_action('init', 'custom_admin_roles');
 
 function change_author_role_name() {
     global $wp_roles;
@@ -1176,11 +1175,11 @@ function change_author_role_name() {
         $wp_roles = new WP_Roles();
 
     // Change the display name of the 'Author' role to 'Content Editor'
-    $wp_roles->roles['author']['name'] = 'Content Editor';
-    $wp_roles->role_names['author'] = 'Content Editor';
+    $wp_roles->roles['editor']['name'] = 'Content Editor';
+    $wp_roles->role_names['editor'] = 'Content Editor';
 }
 
-//sadd_action( 'init', 'change_author_role_name' );
+add_action( 'init', 'change_author_role_name' );
 
 
 /*Hide menu links if role is author*/ 
