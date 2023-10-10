@@ -1289,7 +1289,7 @@ function add_all_capabilities_to_role() {
     }
 }
 add_action('init', 'add_all_capabilities_to_role'); */
-/* function hide_admin_menu_items() {
+ function hide_admin_menu_items() {
     // Get the current user's role
     $current_user = wp_get_current_user();
     $user_roles = $current_user->roles;
@@ -1306,36 +1306,7 @@ add_action('init', 'add_all_capabilities_to_role'); */
     }
 }
 
-add_action('admin_menu', 'hide_admin_menu_items'); */
-
-function remove_post_capabilities_from_editor() {
-    $editor_role = get_role('editor');
-
-    if ($editor_role) {
-       /*  $editor_role->add_cap('edit_posts');
-        $editor_role->add_cap('publish_posts');
-        $editor_role->add_cap('create_posts');
-        $editor_role->add_cap('add_bsp_custom_polls');
-        $editor_role->add_cap('edit_bsp_custom_polls');
-        $editor_role->add_cap('publish_bsp_custom_polls');
-        $editor_role->remove_cap('edit_manage_services');
-        $editor_role->remove_cap('publish_manage_services');
-        $editor_role->remove_cap('create_manage_services'); */
+add_action('admin_menu', 'hide_admin_menu_items'); 
 
 
-        $editor_role->add_cap('edit_bsp_custom_polls');
-        $editor_role->add_cap('edit_published_bsp_custom_polls');
-        $editor_role->add_cap('publish_bsp_custom_polls');
-        $editor_role->add_cap('read_bsp_custom_polls');
-        $editor_role->add_cap('delete_bsp_custom_polls');
-        // Add other capabilities as needed
-
-        // Remove capabilities for default posts
-        $editor_role->add_cap('edit_posts');
-        $editor_role->add_cap('publish_posts');
-        $editor_role->add_cap('read');
-        $editor_role->add_cap('delete_posts');
-    }
-}
-add_action('init', 'remove_post_capabilities_from_editor');
 
