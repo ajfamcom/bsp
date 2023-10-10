@@ -1312,9 +1312,9 @@ function remove_post_capabilities_from_editor() {
     $editor_role = get_role('editor');
 
     if ($editor_role) {
-        //$editor_role->remove_cap('edit_posts');
-        //$editor_role->remove_cap('publish_posts');
-        //$editor_role->remove_cap('create_posts');
+        $editor_role->add_cap('edit_posts');
+        $editor_role->add_cap('publish_posts');
+        $editor_role->add_cap('create_posts');
         $editor_role->add_cap('add_bsp_custom_polls');
         $editor_role->add_cap('edit_bsp_custom_polls');
         $editor_role->add_cap('publish_bsp_custom_polls');
