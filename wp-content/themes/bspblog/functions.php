@@ -1233,12 +1233,12 @@ add_action('init', 'assign_custom_capabilities_to_author_role');  */
 } */
 //add_filter( 'map_meta_cap', 'limit_author_capabilities', 10, 3 );
 
-function limit_editor_capabilities($allcaps, $cap, $args) {
+/* function limit_editor_capabilities($allcaps, $cap, $args) {
     if ($cap === 'edit_bsp_custom_polls' || $cap === 'edit_news_analysis') {
         $allcaps[$cap] = true;
     }
 
     return $allcaps;
 }
-add_filter('user_has_cap', 'limit_editor_capabilities', 10, 3);
+add_filter('user_has_cap', 'limit_editor_capabilities', 10, 3); */
 
