@@ -1185,21 +1185,19 @@ add_action( 'init', 'change_author_role_name' );
 
 
 /*Hide menu links if role is author*/ 
-/* function hide_menu_links_for_author() {
-    if (current_user_can('author')) {
+ /* function hide_menu_links_for_author() {
+    if (current_user_can('editor')) {
         
         remove_menu_page('edit.php'); 
-
-        
         remove_menu_page('edit.php?post_type=manage_services'); 
         remove_menu_page('edit.php?post_type=team_members'); 
         remove_menu_page('edit.php?post_type=custom_content');
         remove_menu_page('post-new.php'); // Removes 'Add New' under 'Pages'
         remove_menu_page('edit.php?post_type=page'); // Removes 'Pages'
-        remove_submenu_page('edit.php?post_type=your_custom_post_type', 'post-new.php?post_type=your_custom_post_type');
+        //remove_submenu_page('edit.php?post_type=manage_services', 'post-new.php?post_type=manage_services');
    
     }
-} */
+}  */
 //add_action('admin_menu', 'hide_menu_links_for_author');
 
  /* function assign_custom_capabilities_to_author_role() {
@@ -1291,3 +1289,20 @@ function add_all_capabilities_to_role() {
     }
 }
 add_action('init', 'add_all_capabilities_to_role'); */
+function hide_admin_menu_items() {
+    // Get the current user's role
+    $current_user = wp_get_current_user();
+    $user_roles = $current_user->roles;
+
+    // If the user has the role of "editor"
+    if (in_array('editor', $user_roles)) {
+        // Remove the "Posts" menu item
+        remove_menu_page('edit.php');
+        remove_menu_page('edit-comments.php');
+        remove_menu_page('edit.php?post_type=manage_services');
+        remove_menu_page('edit.php?post_type=custom_content');
+        remove_menu_page('edit.php?post_type=team_members');
+    }
+}
+
+add_action('admin_menu', 'hide_admin_menu_items');
