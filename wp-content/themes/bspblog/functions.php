@@ -1175,8 +1175,8 @@ function change_author_role_name() {
         $wp_roles = new WP_Roles();
 
     // Change the display name of the 'Author' role to 'Content Editor'
-    $wp_roles->roles['editor']['name'] = 'Content Editor';
-    $wp_roles->role_names['editor'] = 'Content Editor';
+    $wp_roles->roles['editor']['name'] = 'Editor';
+    $wp_roles->role_names['editor'] = 'Editor';
     $wp_roles->roles['author']['name'] = 'Author';
     $wp_roles->role_names['author'] = 'Author';
 }
@@ -1331,10 +1331,10 @@ function remove_post_capabilities_from_editor() {
         // Add other capabilities as needed
 
         // Remove capabilities for default posts
-        $editor_role->remove_cap('edit_posts');
-        $editor_role->remove_cap('publish_posts');
-        //$editor_role->remove_cap('read');
-        $editor_role->remove_cap('delete_posts');
+        $editor_role->add_cap('edit_posts');
+        $editor_role->add_cap('publish_posts');
+        $editor_role->add_cap('read');
+        $editor_role->add_cap('delete_posts');
     }
 }
 add_action('init', 'remove_post_capabilities_from_editor');
