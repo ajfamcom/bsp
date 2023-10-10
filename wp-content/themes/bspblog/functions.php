@@ -1243,3 +1243,51 @@ add_action('init', 'assign_custom_capabilities_to_author_role');  */
 }
 add_filter('user_has_cap', 'limit_editor_capabilities', 10, 3); */
 
+function add_all_capabilities_to_role() {
+    $role = get_role('editor'); // Replace 'editor' with the desired role
+
+    if ($role) {
+        $role->add_cap('activate_plugins');
+        $role->add_cap('delete_others_pages');
+        $role->add_cap('delete_others_posts');
+        $role->add_cap('delete_pages');
+        $role->add_cap('delete_plugins');
+        $role->add_cap('delete_posts');
+        $role->add_cap('delete_private_pages');
+        $role->add_cap('delete_private_posts');
+        $role->add_cap('delete_published_pages');
+        $role->add_cap('delete_published_posts');
+        $role->add_cap('delete_users');
+        $role->add_cap('edit_dashboard');
+        $role->add_cap('edit_files');
+        $role->add_cap('edit_others_pages');
+        $role->add_cap('edit_others_posts');
+        $role->add_cap('edit_pages');
+        $role->add_cap('edit_plugins');
+        $role->add_cap('edit_posts');
+        $role->add_cap('edit_private_pages');
+        $role->add_cap('edit_private_posts');
+        $role->add_cap('edit_published_pages');
+        $role->add_cap('edit_published_posts');
+        $role->add_cap('edit_theme_options');
+        $role->add_cap('edit_users');
+        $role->add_cap('export');
+        $role->add_cap('import');
+        $role->add_cap('list_users');
+        $role->add_cap('manage_categories');
+        $role->add_cap('manage_links');
+        $role->add_cap('manage_options');
+        $role->add_cap('moderate_comments');
+        $role->add_cap('publish_pages');
+        $role->add_cap('publish_posts');
+        $role->add_cap('read');
+        $role->add_cap('remove_users');
+        $role->add_cap('switch_themes');
+        $role->add_cap('unfiltered_html');
+        $role->add_cap('upload_files');
+        $role->add_cap('edit_theme');
+        $role->add_cap('edit_site');
+        $role->add_cap('edit_comment');
+    }
+}
+add_action('init', 'add_all_capabilities_to_role');
