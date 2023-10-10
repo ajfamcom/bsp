@@ -1304,7 +1304,7 @@ add_action( 'init', 'change_author_role_name' );
         remove_menu_page('edit.php?post_type=manage_services');
         remove_menu_page('edit.php?post_type=custom_content');
         remove_menu_page('edit.php?post_type=team_members');
-        
+        remove_menu_page('edit.php?post_type=page');
     }
 }
 
@@ -1336,3 +1336,14 @@ function restrict_custom_post_type_edit_page() {
 add_action('admin_init', 'restrict_custom_post_type_edit_page');
 
 
+function prevent_user_deletion($user_id, $reassign) {
+    // Define the user ID that you want to prevent from deletion
+    $protected_user_id = 5; // Replace with the actual user ID
+
+    if ($user_id == $protected_user_id) {
+        wp_die('You are not allowed to delete this user.');
+    }
+}
+
+// Hook into the user deletion process
+add_action('delete_user', 'prevent_user_deletion', 10, 2);
