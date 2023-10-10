@@ -1308,11 +1308,14 @@ add_action('init', 'add_all_capabilities_to_role'); */
 
 add_action('admin_menu', 'hide_admin_menu_items'); */
 
-function remove_new_dropdown_capability() {
-    $role = get_role('editor'); // Replace 'editor' with the desired role
+function remove_post_capabilities_from_editor() {
+    $editor_role = get_role('editor');
 
-    if ($role) {
-        $role->remove_cap('create_posts');
+    if ($editor_role) {
+        $editor_role->remove_cap('edit_posts');
+        $editor_role->remove_cap('publish_posts');
+        $editor_role->remove_cap('create_posts');
     }
 }
-add_action('init', 'remove_new_dropdown_capability');
+add_action('init', 'remove_post_capabilities_from_editor');
+
