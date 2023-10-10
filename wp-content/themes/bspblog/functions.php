@@ -1242,7 +1242,7 @@ add_action('init', 'assign_custom_capabilities_to_author_role');  */
     return $allcaps;
 }
 add_filter('user_has_cap', 'limit_editor_capabilities', 10, 3); */
-
+/* 
 function add_all_capabilities_to_role() {
     $role = get_role('editor'); // Replace 'editor' with the desired role
 
@@ -1290,4 +1290,4 @@ function add_all_capabilities_to_role() {
         $role->add_cap('edit_comment');
     }
 }
-add_action('init', 'add_all_capabilities_to_role');
+add_action('init', 'add_all_capabilities_to_role'); */
