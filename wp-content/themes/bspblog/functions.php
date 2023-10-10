@@ -1177,7 +1177,8 @@ function change_author_role_name() {
     // Change the display name of the 'Author' role to 'Content Editor'
     $wp_roles->roles['editor']['name'] = 'Content Editor';
     $wp_roles->role_names['editor'] = 'Content Editor';
-   
+    $wp_roles->roles['author']['name'] = 'Author';
+    $wp_roles->role_names['author'] = 'Author';
 }
 
 add_action( 'init', 'change_author_role_name' );
