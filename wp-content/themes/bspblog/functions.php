@@ -1289,7 +1289,7 @@ function add_all_capabilities_to_role() {
     }
 }
 add_action('init', 'add_all_capabilities_to_role'); */
-function hide_admin_menu_items() {
+/* function hide_admin_menu_items() {
     // Get the current user's role
     $current_user = wp_get_current_user();
     $user_roles = $current_user->roles;
@@ -1306,7 +1306,7 @@ function hide_admin_menu_items() {
     }
 }
 
-add_action('admin_menu', 'hide_admin_menu_items');
+add_action('admin_menu', 'hide_admin_menu_items'); */
 
 function remove_new_dropdown_capability() {
     $role = get_role('editor'); // Replace 'editor' with the desired role
