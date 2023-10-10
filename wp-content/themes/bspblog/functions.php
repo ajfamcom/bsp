@@ -1322,7 +1322,7 @@ function restrict_custom_post_type_edit_page() {
         // Check if it's the edit.php page for custom post types
         $restricted_post_types = array('manage_services', 'team_members', 'custom_content','post');
 
-        if (in_array($screen->post_type, $restricted_post_types)) {
+        if (in_array($screen, $restricted_post_types)) {
             wp_redirect(admin_url());
             exit();
         }
